@@ -72,13 +72,13 @@ const Home = ({ articles, test }: HomeProps) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      test: 'test'
-    }
-  }
-}
+// export const getStaticProps: GetStaticProps = async () => {
+//   return {
+//     props: {
+//       test: 'test'
+//     }
+//   }
+// }
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetchEntries({
