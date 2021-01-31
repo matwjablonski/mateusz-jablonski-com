@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {GetStaticProps} from "next";
+import {GetServerSideProps, GetStaticProps} from "next";
 import { fetchEntries } from '../contentful'
 
 interface HomeProps {
-  articles: any[]
+  articles: any[],
+  test: string,
 }
 
-const Home = ({ articles }: HomeProps) => {
+const Home = ({ articles, test }: HomeProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +17,7 @@ const Home = ({ articles }: HomeProps) => {
       </Head>
 
       <main className={styles.main}>
-        {console.log(articles)}
+        {console.log(articles, test)}
         <h1 className={styles.title}>
           Hi to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -72,6 +73,14 @@ const Home = ({ articles }: HomeProps) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {
+      test: 'test'
+    }
+  }
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetchEntries({
     content_type: 'article'
   })
