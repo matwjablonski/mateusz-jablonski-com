@@ -79,7 +79,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const articles = await res.map(p => p.fields)
 
   return {
-    props: articles
+    props: {
+      articles
+    }
   }
 }
 
