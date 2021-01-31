@@ -1,17 +1,24 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import {GetStaticProps} from "next";
+import { fetchEntries } from '../contentful'
 
-export default function Home() {
+interface HomeProps {
+  articles: any[]
+}
+
+const Home = ({ articles }: HomeProps) => {
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico"/>
       </Head>
 
       <main className={styles.main}>
+        {console.log(articles)}
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Hi to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -57,9 +64,23 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo}/>
         </a>
       </footer>
     </div>
   )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetchEntries({
+    content_type: 'article'
+  })
+
+  const articles = await res.map(p => p.fields)
+
+  return {
+    props: articles
+  }
+}
+
+export default Home
