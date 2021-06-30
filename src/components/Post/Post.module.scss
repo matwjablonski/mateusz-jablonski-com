@@ -1,0 +1,33 @@
+@use '../../styles/settings/global';
+
+.wrapper {
+  .title {
+    font-family: global.$font-main;
+    font-weight: 700;
+  }
+
+  .content {
+    font-family: global.$font-main;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 800px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .footer {
+    background: global.$color-lighter-gray;
+    display: flex;
+    flex-direction: column;
+    margin: 2em auto 0;
+    max-width: 800px;
+    padding: 1em 2em 2em;
+  }
+
+  .footerTitle {
+    margin-top: 1em;
+  }
+}

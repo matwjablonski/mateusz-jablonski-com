@@ -1,0 +1,35 @@
+@use '../../styles/settings/global';
+
+.postCoverImage {
+  border: 1px solid global.$color-lighter-gray;
+  border-radius: global.$border-radius;
+  height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.postCoverImageSource {
+  color: global.$color-white;
+  font-size: 0.7em;
+  line-height: 1;
+  padding: 10px 15px;
+  position: absolute;
+  top: 0;
+  transform: rotate(90deg);
+  transform-origin: left top;
+  white-space: nowrap;
+}
+
+.newPostLabel {
+  position: absolute;
+  top: 0;
+  left: -30px;
+  text-transform: uppercase;
+  width: 300px;
+  background: global.$color-primary;
+  color: global.$color-white;
+  text-align: center;
+  padding: global.$gutter-small global.$gutter;
+  transform: rotate(-45deg) translate(-25%, -25%);
+  font-weight: 700;
+}

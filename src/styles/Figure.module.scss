@@ -1,0 +1,17 @@
+@use './settings/global';
+
+.figure {
+  margin: 1em 0;
+  position: relative;
+
+  &.overflowFigure {
+    overflow: hidden;
+  }
+}
+
+.figcaption {
+  color: global.$color-light-gray;
+  font-family: global.$font-main;
+  font-size: 0.8rem;
+  text-align: center;
+}

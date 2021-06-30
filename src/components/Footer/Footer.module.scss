@@ -1,0 +1,27 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+
+.footer {
+  margin: gutters.$gutter-bigger 0 gutters.$gutter-biggest;
+
+  .copy {
+    align-items: center;
+    border-top: 1px solid colors.$color-primary;
+    display: flex;
+    justify-content: space-between;
+    padding-top: gutters.$gutter-medium;
+  }
+
+  .copyInner {
+    align-items: center;
+    display: flex;
+  }
+
+  .info {
+    color: colors.$color-primary;
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: -0.02em;
+    margin: 0 0 0 gutters.$gutter;
+  }
+}
