@@ -1,0 +1,28 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+
+.fundsInfo {
+  align-items: center;
+  border: 2px solid rgba(colors.$color-foundation, 0.5);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: gutters.$gutter-medium + gutters.$gutter-small;
+  padding: (gutters.$gutter-medium + gutters.$gutter-small) gutters.$gutter-medium;
+
+  .fundsInfoContent {
+    flex: 0 1 60%;
+  }
+
+  strong,
+  a {
+    color: colors.$color-foundation;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 24px;
+    margin: 0 0 gutters.$gutter-medium;
+    padding: 0;
+  }
+}

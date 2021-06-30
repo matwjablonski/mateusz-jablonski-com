@@ -24,4 +24,22 @@
     letter-spacing: -0.02em;
     margin: 0 0 0 gutters.$gutter;
   }
+
+  .footerMenu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footerMenuItem {
+    color: colors.$color-primary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    text-decoration: underline;
+    padding: 0 0 0 gutters.$gutter-medium;
+  }
 }
