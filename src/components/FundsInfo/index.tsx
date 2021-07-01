@@ -2,7 +2,6 @@ import React, { FunctionComponent, memo } from 'react';
 import Image from 'next/image';
 import externalLinks from '../../data/external-sources.json';
 import styles from './FundsInfo.module.scss';
-import foundationLogo from '../../public/foundation-logo.png';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 
@@ -21,7 +20,7 @@ const FundsInfo: FunctionComponent = memo(() => (
         label="Wspomóż fundację"
       />
     </div>
-    <Image src={foundationLogo} width={343} height={68}/>
+    <Image src="../../public/foundation-logo.png" width={343} height={68}/>
   </section>
 ));
 

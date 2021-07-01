@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ButtonProps, ButtonType } from './Button.types';
 import styles from './Button.module.scss';
-import blueArrow from '../../public/arrow.svg';
 import cx from 'classnames';
 
 const Button: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ type, href, label = '', ...rest}) => {
@@ -13,7 +12,7 @@ const Button: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & Button
         {label}
         {type === ButtonType.CLEAN && (
           <div className={styles.arrow}>
-            <Image src={blueArrow} width={49} height={6}/>
+            <Image src="../../public/arrow.svg" width={49} height={6}/>
           </div>
         )}
       </a>
