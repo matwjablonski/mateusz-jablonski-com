@@ -12,7 +12,7 @@ const Button: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & Button
         {label}
         {type === ButtonType.CLEAN && (
           <div className={styles.arrow}>
-            <Image src="../../public/arrow.svg" width={49} height={6}/>
+            <Image src="/public/arrow.svg" width={49} height={6}/>
           </div>
         )}
       </a>

@@ -21,7 +21,7 @@ const Footer: FunctionComponent = memo(() => {
               href="/"
             >
               <a>
-                <Image src="../../public/logo-footer.svg" width={114} height={24}/>
+                <Image src="/logo-footer.svg" alt="" width={114} height={24}/>
               </a>
             </Link>
             <p className={styles.info}>© {date} Woodpecker sp z o.o. All rights reserved</p>
