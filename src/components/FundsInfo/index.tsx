@@ -21,7 +21,7 @@ const FundsInfo: FunctionComponent = memo(() => (
         label="Wspomóż fundację"
       />
     </div>
-    <Image src={foundationLogo || '/public/foundation-logo.png'} width={343} height={68}/>
+    <Image src={foundationLogo || '/foundation-logo.png'} width={343} height={68}/>
   </section>
 ));
 
