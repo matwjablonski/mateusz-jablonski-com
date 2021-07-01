@@ -5,6 +5,7 @@ import Grid from '../Grid';
 import styles from './Footer.module.scss';
 import menu from '../../data/footer-menu.json';
 import FundsInfo from '../FundsInfo';
+import logo from '../../public/logo-footer.svg'
 
 const Footer: FunctionComponent = memo(() => {
   const date: string = useMemo(
@@ -21,7 +22,7 @@ const Footer: FunctionComponent = memo(() => {
               href="/"
             >
               <a>
-                <Image src="/logo-footer.svg" alt="" width={114} height={24}/>
+                <Image src={logo || '/public/logo-footer.svg'} alt="" width={114} height={24}/>
               </a>
             </Link>
             <p className={styles.info}>© {date} Woodpecker sp z o.o. All rights reserved</p>

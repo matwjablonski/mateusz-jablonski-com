@@ -4,6 +4,7 @@ import externalLinks from '../../data/external-sources.json';
 import styles from './FundsInfo.module.scss';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
+import foundationLogo from '../../public/foundation-logo.png'
 
 const FundsInfo: FunctionComponent = memo(() => (
   <section className={styles.fundsInfo}>
@@ -20,7 +21,7 @@ const FundsInfo: FunctionComponent = memo(() => (
         label="Wspomóż fundację"
       />
     </div>
-    <Image src="/foundation-logo.png" width={343} height={68}/>
+    <Image src={foundationLogo || '/public/foundation-logo.png'} width={343} height={68}/>
   </section>
 ));
 
