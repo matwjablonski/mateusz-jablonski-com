@@ -1,0 +1,22 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+
+.footerSocialMedia {
+  display: flex;
+  margin-bottom: gutters.$gutter-big;
+
+  .title {
+    color: colors.$color-primary;
+    font-family: fonts.$font-headline;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-right: gutters.$gutter;
+    max-width: 350px;
+
+    span {
+      color: colors.$color-primary-500;
+    }
+  }
+}

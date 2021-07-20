@@ -6,6 +6,7 @@ import styles from './Footer.module.scss';
 import menu from '../../data/footer-menu.json';
 import FundsInfo from '../FundsInfo';
 import logo from '../../public/logo-footer.svg'
+import FooterSocialMedia from '../FooterSocialMedia';
 
 const Footer: FunctionComponent = memo(() => {
   const date: string = useMemo(
@@ -15,6 +16,7 @@ const Footer: FunctionComponent = memo(() => {
   return (
     <Grid>
       <footer className={styles.footer}>
+        <FooterSocialMedia />
         <FundsInfo />
         <section className={styles.copy}>
           <div className={styles.copyInner}>
