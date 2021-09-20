@@ -9,7 +9,7 @@ const FooterSocialMedia: FunctionComponent = memo(() => {
       <h2 className={styles.title}>
         Zajrzyj na moje <span>social media!</span>
       </h2>
-      <div>
+      <div className={styles.socialMediaTiles}>
         <SocialMediaTile href="/" socialMediaType={SocialMediaType.TWITTER}/>
         <SocialMediaTile href="https://www.facebook.com/blogmateuszjablonski/" socialMediaType={SocialMediaType.FACEBOOK}/>
         <SocialMediaTile href="/" socialMediaType={SocialMediaType.INSTAGRAM}/>
