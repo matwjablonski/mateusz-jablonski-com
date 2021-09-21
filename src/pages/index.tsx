@@ -7,18 +7,26 @@ import Grid from '../components/Grid';
 import MainLayout from '../layouts/index'
 import TitleBarWithCounter from '../components/TitleBarWithCounter';
 
-interface HomeProps {
-  articles: any[],
-  test: string,
+interface HomeData {
+  lastArticlesDescription: string;
+  lastPodcastsDescription: string;
 }
 
-const Home = ({articles, test}: HomeProps) => {
+interface HomeProps {
+  articles: any[],
+  data: HomeData;
+}
+
+const Home = ({articles, data}: HomeProps) => {
+  const { lastArticlesDescription, lastPodcastsDescription } = data; 
+  console.log(articles);
   return (
       <MainLayout>
         <Grid>
           <section>
             <TitleBarWithCounter 
               title={<>Ostatnie <strong>artykuły</strong></>}
+              text={lastArticlesDescription}
               nextItemName="artykuł"
               days={14}
             />
@@ -26,6 +34,7 @@ const Home = ({articles, test}: HomeProps) => {
           <section>
             <TitleBarWithCounter 
               title={<>Ostatnie <strong>podcasty</strong></>}
+              text={lastPodcastsDescription}
               nextItemName="podcast"
               days={1}
             />
@@ -36,14 +45,21 @@ const Home = ({articles, test}: HomeProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const homeRes = await fetchEntries({
+    content_type: 'home'
+  });
+
   const res = await fetchEntries({
     content_type: 'article'
-  })
+  });
+
+  const homeDetails = await homeRes.map(p => p.fields).shift();
 
   const articles = await res.map(p => p.fields)
 
   return {
     props: {
+      data: homeDetails,
       articles
     }
   }

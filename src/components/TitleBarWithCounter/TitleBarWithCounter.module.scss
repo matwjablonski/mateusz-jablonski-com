@@ -5,6 +5,18 @@
 .bar {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: gutters.$gutter-small * 7;
+
+    .text {
+        color: colors.$color-text;
+        font-family: fonts.$font-content;
+        font-size: 18px;
+        font-weight: 400;
+        max-width: 660px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+    }
 
     .counter {
         display: flex;
@@ -38,6 +50,7 @@
         color: colors.$color-primary-300;
         text-transform: uppercase;
         margin-bottom: gutters.$gutter-small;
+        white-space: nowrap;
     }
 
     .remainingDays {
