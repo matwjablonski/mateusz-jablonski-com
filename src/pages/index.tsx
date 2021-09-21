@@ -6,6 +6,8 @@ import PageTitle from '../components/Title';
 import Grid from '../components/Grid';
 import MainLayout from '../layouts/index'
 import TitleBarWithCounter from '../components/TitleBarWithCounter';
+import ArticlePreview from '../components/ArticlePreview';
+import LastArticles from '../components/LastArticles';
 
 interface HomeData {
   lastArticlesDescription: string;
@@ -30,6 +32,7 @@ const Home = ({articles, data}: HomeProps) => {
               nextItemName="artykuł"
               days={14}
             />
+            <LastArticles articles={articles} />
           </section>
           <section>
             <TitleBarWithCounter 

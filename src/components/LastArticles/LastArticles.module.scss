@@ -1,0 +1,6 @@
+@use '../../styles/settings/gutters';
+
+.lastArticles {
+    display: flex;
+    margin-bottom: gutters.$gutter * 8;
+}
