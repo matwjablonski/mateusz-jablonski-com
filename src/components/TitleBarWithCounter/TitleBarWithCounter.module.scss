@@ -1,0 +1,52 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+
+    .counter {
+        display: flex;
+    }
+
+    .counterText {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding-right: gutters.$gutter-medium;
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(90.1deg, rgba(20, 166, 255, 0.14) 0.08%, rgba(20, 165, 255, 0.2) 99.21%);
+        box-shadow: 0px 4px 8px rgba(20, 165, 255, 0.24);
+        border-radius: 4px;
+    }
+
+    .nextTitle {
+        font-family: fonts.$font-headline;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.15;
+        letter-spacing: 0.04em;
+        color: colors.$color-primary-300;
+        text-transform: uppercase;
+        margin-bottom: gutters.$gutter-small;
+    }
+
+    .remainingDays {
+        font-family: fonts.$font-headline;
+        font-weight: 400;
+        font-size: 26px;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        color: colors.$color-primary;
+        text-transform: uppercase;
+    }
+}
