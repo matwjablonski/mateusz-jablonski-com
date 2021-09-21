@@ -8,6 +8,7 @@ import MainLayout from '../layouts/index'
 import TitleBarWithCounter from '../components/TitleBarWithCounter';
 import ArticlePreview from '../components/ArticlePreview';
 import LastArticles from '../components/LastArticles';
+import HomeNewsletter from '../components/HomeNewletter';
 
 interface HomeData {
   lastArticlesDescription: string;
@@ -41,6 +42,9 @@ const Home = ({articles, data}: HomeProps) => {
               nextItemName="podcast"
               days={1}
             />
+          </section>
+          <section>
+            <HomeNewsletter />
           </section>
         </Grid>
       </MainLayout>
