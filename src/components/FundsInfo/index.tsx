@@ -13,8 +13,8 @@ const FundsInfo: FunctionComponent = memo(() => (
                                          rel="nofollow noreferrer noopener">Patronite</a> i ze sprzedaży kursów
         przekazuję do fundacji <a href={externalLinks.foundation} target="_blank" rel="nofollow noreferrer noopener">Radość
           z Uśmiechu</a>. Ciebie też zachęcam!</p>
-      <Button
-        type={ButtonType.CLEAN}
+      <Button.L
+        pattern={ButtonType.CLEAN}
         href={`${externalLinks.foundation}#wplacam`}
         target="_blank"
         rel="nofollow noreferrer noopener"

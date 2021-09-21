@@ -6,7 +6,7 @@ export enum ButtonType {
 }
 
 export interface ButtonProps {
-  type: ButtonType;
-  href: string;
+  pattern: ButtonType;
+  href?: string;
   label: string;
 }

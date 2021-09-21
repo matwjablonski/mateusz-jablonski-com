@@ -68,4 +68,8 @@
         letter-spacing: -0.01em;
         margin: 0 0 gutters.$gutter-medium;
     }
+
+    .input {
+        margin-bottom: gutters.$gutter;
+    }
 }
