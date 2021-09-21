@@ -5,6 +5,7 @@
 .footerSocialMedia {
   display: flex;
   margin-bottom: gutters.$gutter-big;
+  justify-content: space-between;
 
   .title {
     color: colors.$color-primary;
@@ -26,5 +27,6 @@
   .socialMediaTiles {
     display: flex;
     width: 100%;
+    margin-right: -(gutters.$gutter);
   }
 }
