@@ -1,0 +1,6 @@
+@use '../../styles/settings/gutters';
+
+.articlePreview {
+    flex: 0 1 352px;
+    margin: 0 gutters.$gutter;
+}

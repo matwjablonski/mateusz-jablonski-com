@@ -12,6 +12,7 @@ const LastArticles = ({articles}) => {
                     slug={article.slug}
                     excerpt={article.excerpt}
                     createdDate={article.createdDate}
+                    featuredImage={article.featuredImage}
                 />)
             }
         </div>

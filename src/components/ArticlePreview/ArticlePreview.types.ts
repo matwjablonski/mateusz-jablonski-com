@@ -3,4 +3,5 @@ export interface ArticlePreviewProps {
     excerpt: any;
     slug: string;
     createdDate: string;
+    featuredImage: object;
 }

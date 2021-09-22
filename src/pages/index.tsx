@@ -57,12 +57,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
   });
 
   const res = await fetchEntries({
-    content_type: 'article'
+    content_type: 'article',
+    include: 5
   });
 
   const homeDetails = await homeRes.map(p => p.fields).shift();
 
-  const articles = await res.map(p => p.fields)
+  const articles = await res.map(p => ({
+    ...p.fields,
+    featuredImage: p.fields?.featuredImage?.fields || null,
+  }));
 
   return {
     props: {
