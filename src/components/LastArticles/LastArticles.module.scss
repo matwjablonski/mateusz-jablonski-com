@@ -1,7 +1,30 @@
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+
+.lastArticlesWrapper {
+    margin-bottom: gutters.$gutter * 8;
+}
+
+.lastArticlesSection {
+    border-bottom: 4px solid colors.$color-border;
+    margin-bottom: gutters.$gutter + gutters.$gutter-medium;
+    position: relative;
+
+    &::after {
+        content: "";
+        height: 4px;
+        width: 270px;
+        position: absolute;
+        display: block;
+        background: colors.$color-border-darker;
+        border-radius: 4px;
+    }
+}
 
 .lastArticles {
     display: flex;
-    margin-bottom: gutters.$gutter * 8;
+    margin-left: -(gutters.$gutter);
+    margin-right: -(gutters.$gutter);
     width: 1536px;
+    padding-bottom: gutters.$gutter-medium + gutters.$gutter;
 }

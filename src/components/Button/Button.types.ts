@@ -9,4 +9,5 @@ export interface ButtonProps {
   pattern: ButtonType;
   href?: string;
   label: string;
+  action?: () => void;
 }
