@@ -1,3 +1,15 @@
+@use '../../styles/settings/gutters';
+
 .wrapper {
     margin-bottom: 185px;
+    display: flex;
+
+    .main {
+        flex: 0 1 736px;
+        margin-right: gutters.$gutter * 2;
+    }
+
+    .column {
+        flex: auto;
+    }
 }

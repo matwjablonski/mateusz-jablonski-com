@@ -1,4 +1,6 @@
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
 
 .lastPodcastPreview {
     position: relative;
@@ -28,11 +30,34 @@
         position: absolute;
         bottom: gutters.$gutter-medium;
         left: gutters.$gutter-medium;
-        padding: gutters.$gutter-medium + gutters.$gutter-small;
+        padding: (gutters.$gutter-medium + gutters.$gutter-small) (gutters.$gutter-bigger) (gutters.$gutter-medium + gutters.$gutter-small) (gutters.$gutter-medium + gutters.$gutter-small);
         max-width: 545px;
+    }
+
+    .date {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: colors.$color-text;
+        line-height: 1.4;
+        margin: 0 0 (gutters.$gutter-small * 1.5);
     }
 
     .title {
         position: relative;
+        color: colors.$color-primary;
+        font-size: 24px;
+        line-height: 1.25;
+        font-family: fonts.$font-headline;
+        letter-spacing: -0.01em;
+        margin: 0 0 gutters.$gutter-small;
+    }
+
+    .text {
+        color: colors.$color-black;
+        font-size: 14px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        margin: 0;
     }
 }

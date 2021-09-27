@@ -22,9 +22,9 @@ const LastPodcastPreview: FunctionComponent<Pick<Podcast, 'title' | 'createdDate
                     </div>
                     <EpisodeNumber episode={episode} size={EpisodeNumberSize.BIG} className={styles.episode} />
                     <div className={styles.content}>
-                        <span>{createdDate}</span>
+                        <div className={styles.date}>{createdDate}</div>
                         <h3 className={styles.title}>{title}</h3>
-                        <p>{excerpt}</p>
+                        <p className={styles.text}>{excerpt}</p>
                     </div>
                 </article>
             </a>
