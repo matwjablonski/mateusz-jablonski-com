@@ -21,6 +21,10 @@
     font-weight: 400;
     font-family: fonts.$font-buttons;
     line-height: 1.15;
+
+    &:hover {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90.1deg, #0136F8 0.08%, #14A5FF 67.71%, #14D5FF 99.21%);
+    }
   }
 
   &.clean {

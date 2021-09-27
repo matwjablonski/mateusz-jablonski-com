@@ -1,0 +1,32 @@
+@use '../../styles/settings/gutters';
+
+.lastPodcastPreview {
+    position: relative;
+    min-height: 605px;
+    border-radius: 4px;
+
+    .imageWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .image {
+        border-radius: 4px;
+    }
+
+    .content {
+        background: linear-gradient(180deg, rgba(222, 243, 255, 0.85) 0%, rgba(255, 255, 255, 0.68) 100%);
+        backdrop-filter: blur(39px);
+        border-radius: 4px;
+        position: absolute;
+        bottom: gutters.$gutter-medium;
+        left: gutters.$gutter-medium;
+        padding: gutters.$gutter-medium + gutters.$gutter-small;
+        max-width: 545px;
+    }
+
+    .title {
+        position: relative;
+    }
+}
