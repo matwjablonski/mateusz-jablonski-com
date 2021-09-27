@@ -1,10 +1,7 @@
-import {GetServerSideProps, GetStaticProps} from "next";
-import {fetchEntries} from '../../contentful'
+import React from 'react';
+import { NextPageContext } from "next";
+import { fetchEntries } from '../../contentful'
 import { Podcast } from "../../types/common/Podcast.types";
-
-const Rss = () => {
-
-}
 
 const getPodcastsRssXml = (podcasts: Podcast[]) => {
     let rssItemsXml = "";
@@ -19,45 +16,44 @@ const getPodcastsRssXml = (podcasts: Podcast[]) => {
           </description>
       </item>`;
     });
+
     return {
       rssItemsXml,
       latestPodcastDate: podcasts[0].createdDate,
     };
-  };
+};
   
-  const getRssXml = (podcasts: Podcast[]) => {
+const getRssXml = (podcasts: Podcast[]) => {
     const { rssItemsXml, latestPodcastDate } = getPodcastsRssXml(podcasts);
     return `<?xml version="1.0" ?>
-    <rss version="2.0">
-      <channel>
-          <title>Mateusz Jabłoński</title>
-          <link>https://mateuszjablonski.com</link>
-          <description>test</description>
-          <language>pl</language>
-          <lastBuildDate>${latestPodcastDate}</lastBuildDate>
-          ${rssItemsXml}
-      </channel>
-    </rss>`;
-  };
+        <rss version="2.0">
+            <channel>
+                <title>Mateusz Jabłoński</title>
+                <link>https://mateuszjablonski.com</link>
+                <description>test</description>
+                <language>pl</language>
+                <lastBuildDate>${latestPodcastDate}</lastBuildDate>
+                ${rssItemsXml}
+            </channel>
+        </rss>`;
+};
   
 
-export const getServerSideProps = async (context) => {
-    const res = context.res;
-    if (!res) {
-        return;
+export default class Rss extends React.Component {
+    static async getInitialProps({ res }: NextPageContext) {
+        if (!res) {
+            return;
+        }
+        const podcastsRes = await fetchEntries({
+            content_type: 'podcast',
+            include: 2,
+            order: '-fields.createdDate',
+            limit: 5,
+        });
+
+        const content = getRssXml(podcastsRes.map(p => p.fields));
+        res.setHeader("Content-Type", "text/xml");
+        res.write(content);
+        res.end();
     }
-
-    const podcastsRes = await fetchEntries({
-        content_type: 'podcast',
-        include: 2,
-        order: '-fields.createdDate',
-        limit: 5,
-    });
-
-    const blogPosts = getRssXml(podcastsRes.map(p => p.fields));
-    res.setHeader("Content-Type", "text/xml");
-    res.write(blogPosts);
-    res.end();
-  }
-
-export default Rss;
+}
