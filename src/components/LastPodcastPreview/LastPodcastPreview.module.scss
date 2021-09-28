@@ -7,6 +7,30 @@
     min-height: 605px;
     border-radius: 4px;
 
+    &.small {
+        min-height: 191px;
+        margin-bottom: gutters.$gutter;
+
+        .episode {
+            top: 0;
+            left: gutters.$gutter;
+        }
+
+        .content {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.57) 0%, #DEF3FF 100%);
+            left: 0;
+            bottom: 0;
+            max-width: 100%;
+            width: 100%;
+            padding: gutters.$gutter;
+        }
+
+        .title {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+    }
+
     .imageWrapper {
         position: absolute;
         top: 0;

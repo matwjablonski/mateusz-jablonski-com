@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import {GetServerSideProps, GetStaticProps} from "next";
@@ -12,6 +12,8 @@ import HomeNewsletter from '../components/HomeNewletter';
 import { Podcast } from '../types/common/Podcast.types';
 import { Article } from '../types/common/Article.types';
 import LastPodcasts from '../components/LastPodcasts';
+import { Book } from '../types/common/Book.types';
+import PageTitle from '../components/Title';
 
 interface HomeData {
   lastArticlesDescription: string;
@@ -21,10 +23,11 @@ interface HomeData {
 interface HomeProps {
   podcasts: Podcast[],
   articles: Article[],
+  books: Book[],
   data: HomeData;
 }
 
-const Home = ({articles, podcasts, data}: HomeProps) => {
+const Home = ({articles, podcasts, books, data}: HomeProps) => {
   const { lastArticlesDescription, lastPodcastsDescription } = data; 
   console.log(podcasts);
   return (
@@ -48,6 +51,13 @@ const Home = ({articles, podcasts, data}: HomeProps) => {
             />
             <LastPodcasts podcasts={podcasts} />
           </section>
+        </Grid>
+          <section className={styles.booksSection}>
+            <Grid>
+              <PageTitle>Polecane <strong>książki</strong></PageTitle>
+            </Grid>
+          </section>
+        <Grid>
           <section>
             <HomeNewsletter />
           </section>
@@ -74,6 +84,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
     limit: 5,
   });
 
+  const booksRes = await fetchEntries({
+    content_type: 'book',
+    include: 2,
+    order: '-fields.createdDate',
+    limit: 4,
+  });
+
   const homeDetails = await homeRes.map(p => p.fields).shift();
 
   const articles = await artilesRes.map(p => ({
@@ -87,11 +104,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
     createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
   }));
 
+  const books = await booksRes.map(p => ({
+    ...p.fields,
+    createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
+  }));
+
   return {
     props: {
       data: homeDetails,
       articles,
       podcasts,
+      books,
     }
   }
 }
