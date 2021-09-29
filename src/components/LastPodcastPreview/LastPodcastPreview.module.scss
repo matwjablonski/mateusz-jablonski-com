@@ -45,6 +45,7 @@
         position: absolute;
         top: gutters.$gutter-medium;
         left: gutters.$gutter-medium;
+        z-index: 1;
     }
 
     .content {
