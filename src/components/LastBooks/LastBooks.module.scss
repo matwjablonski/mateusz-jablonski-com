@@ -8,5 +8,7 @@
     > * {
         margin-left: gutters.$gutter;
         margin-right: gutters.$gutter;
+        flex: 1;
+        max-width: calc(25% - 32px);
     }
 }
