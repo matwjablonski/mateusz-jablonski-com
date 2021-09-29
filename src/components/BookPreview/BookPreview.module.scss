@@ -1,0 +1,40 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+
+.bookPreview {
+    
+    .imageWrapper {
+        background: linear-gradient(180deg, rgba(252, 252, 252, 0.19) 0%, rgba(249, 249, 249, 0) 100%);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        padding: gutters.$gutter * 2;
+        font-size: 0;
+        margin-bottom: gutters.$gutter-medium;
+    }
+
+    .image {
+        border-radius: 4px;
+    }
+
+    .title {
+        color: colors.$color-primary;
+        margin: 0 0 gutters.$gutter-small;
+        font-family: fonts.$font-headline;
+        text-align: center;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+        line-height: 1.2;
+    }
+
+    .author {
+        text-align: center;
+        color: colors.$color-primary-500;
+        margin: 0;
+        font-family: fonts.$font-headline;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        line-height: 1.3;
+    }
+}

@@ -1,0 +1,12 @@
+@use '../../styles/settings/gutters';
+
+.lastBooks {
+    display: flex;
+    margin-left: -(gutters.$gutter);
+    margin-right: -(gutters.$gutter);
+
+    > * {
+        margin-left: gutters.$gutter;
+        margin-right: gutters.$gutter;
+    }
+}
