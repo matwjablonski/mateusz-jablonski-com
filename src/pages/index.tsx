@@ -6,7 +6,7 @@ import {GetServerSideProps, GetStaticProps} from "next";
 import {fetchEntries} from '../contentful'
 import Grid from '../components/Grid';
 import MainLayout from '../layouts/index'
-import TitleBarWithCounter from '../components/TitleBarWithCounter';
+import TitleBarWithComponent from '../components/TitleBarWithComponent';
 import LastArticles from '../components/LastArticles';
 import HomeNewsletter from '../components/HomeNewletter';
 import { Podcast } from '../types/common/Podcast.types';
@@ -14,10 +14,12 @@ import { Article } from '../types/common/Article.types';
 import LastPodcasts from '../components/LastPodcasts';
 import { Book } from '../types/common/Book.types';
 import PageTitle from '../components/Title';
+import Counter from '../components/Counter'
 
 interface HomeData {
   lastArticlesDescription: string;
   lastPodcastsDescription: string;
+  lastBooksDescription: string;
 }
 
 interface HomeProps {
@@ -28,33 +30,38 @@ interface HomeProps {
 }
 
 const Home = ({articles, podcasts, books, data}: HomeProps) => {
-  const { lastArticlesDescription, lastPodcastsDescription } = data; 
-  console.log(podcasts);
+  const { lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
+
   return (
       <MainLayout>
         <Grid>
           <section>
-            <TitleBarWithCounter 
+            <TitleBarWithComponent 
               title={<>Ostatnie <strong>artykuły</strong></>}
               text={lastArticlesDescription}
-              nextItemName="artykuł"
-              days={14}
-            />
+            >
+              <Counter nextItemName="artykuł" days={14} />
+            </TitleBarWithComponent>
             <LastArticles articles={articles} />
           </section>
           <section>
-            <TitleBarWithCounter 
+            <TitleBarWithComponent 
               title={<>Ostatnie <strong>podcasty</strong></>}
               text={lastPodcastsDescription}
-              nextItemName="podcast"
-              days={1}
-            />
+            >
+              <Counter nextItemName="podcast" days={1} />
+            </TitleBarWithComponent>
             <LastPodcasts podcasts={podcasts} />
           </section>
         </Grid>
           <section className={styles.booksSection}>
             <Grid>
-              <PageTitle>Polecane <strong>książki</strong></PageTitle>
+              <TitleBarWithComponent 
+                title={<>Polecane <strong>książki</strong></>} 
+                text={lastBooksDescription}  
+              >
+                <div>test</div>
+              </TitleBarWithComponent>
             </Grid>
           </section>
         <Grid>

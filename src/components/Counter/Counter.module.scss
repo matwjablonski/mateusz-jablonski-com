@@ -2,25 +2,8 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
 
-.bar {
+.counter {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: gutters.$gutter-small * 7;
-
-    .text {
-        color: colors.$color-text;
-        font-family: fonts.$font-content;
-        font-size: 18px;
-        font-weight: 400;
-        max-width: 660px;
-        line-height: 1.4;
-        letter-spacing: -0.01em;
-    }
-
-    .counter {
-        display: flex;
-    }
 
     .counterText {
         display: flex;
@@ -29,7 +12,7 @@
         align-items: flex-end;
         padding-right: gutters.$gutter-medium;
     }
-
+    
     .icon {
         display: flex;
         align-items: center;
@@ -40,7 +23,7 @@
         box-shadow: 0px 4px 8px rgba(20, 165, 255, 0.24);
         border-radius: 4px;
     }
-
+    
     .nextTitle {
         font-family: fonts.$font-headline;
         font-weight: 400;
@@ -52,7 +35,7 @@
         margin-bottom: gutters.$gutter-small;
         white-space: nowrap;
     }
-
+    
     .remainingDays {
         font-family: fonts.$font-headline;
         font-weight: 400;
