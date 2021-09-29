@@ -27,6 +27,12 @@
     }
   }
 
+  &.secondary {
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: colors.$color-white;
+  }
+
   &.clean {
     background: transparent;
     font-size: 14px;

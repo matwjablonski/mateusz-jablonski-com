@@ -15,6 +15,9 @@ import LastPodcasts from '../components/LastPodcasts';
 import { Book } from '../types/common/Book.types';
 import PageTitle from '../components/Title';
 import Counter from '../components/Counter'
+import { TitleBarType } from '../components/TitleBarWithComponent/TitleBarWithComponent.types';
+import Button from '../components/Button';
+import { ButtonType } from '../components/Button/Button.types';
 
 interface HomeData {
   lastArticlesDescription: string;
@@ -58,9 +61,10 @@ const Home = ({articles, podcasts, books, data}: HomeProps) => {
             <Grid>
               <TitleBarWithComponent 
                 title={<>Polecane <strong>książki</strong></>} 
-                text={lastBooksDescription}  
+                text={lastBooksDescription}
+                type={TitleBarType.REVERT}
               >
-                <div>test</div>
+                <Button.L label="Więcej książek" pattern={ButtonType.PRIMARY} href="/books" />
               </TitleBarWithComponent>
             </Grid>
           </section>

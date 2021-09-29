@@ -1,15 +1,16 @@
 import React, { FunctionComponent } from 'react';
+import cx from 'classnames';
 import PageTitle from '../Title';
 import styles from './TitleBarWithComponent.module.scss';
 import { TitleBarWithComponentProps } from './TitleBarWithComponent.types';
 
 
-const TitleBarWithComponent: FunctionComponent<TitleBarWithComponentProps> = ({ title, text, children }) => {
+const TitleBarWithComponent: FunctionComponent<TitleBarWithComponentProps> = ({ title, text, type, children }) => {
     return (
         <div className={styles.bar}>
             <div>
-                <PageTitle>{title}</PageTitle>
-                <p className={styles.text}>{text}</p>
+                <PageTitle classes={type && styles[type]}>{title}</PageTitle>
+                <p className={cx(styles.text, styles[type])}>{text}</p>
             </div>
             {children}
         </div>
