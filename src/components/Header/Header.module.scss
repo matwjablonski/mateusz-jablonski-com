@@ -1,0 +1,7 @@
+@use '../../styles/settings/gutters';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: gutters.$gutter-medium 0;
+}

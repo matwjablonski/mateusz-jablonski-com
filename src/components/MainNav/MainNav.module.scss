@@ -1,0 +1,60 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+
+.nav {
+    .list {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .item {
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        color: colors.$color-primary;
+        font-family: fonts.$font-headline;
+
+        &:not(:last-child) {
+            a {
+                display: block;
+                line-height: gutters.$gutter-big;
+                padding: 0 gutters.$gutter;
+                transition: 300ms;
+            }
+        }
+
+        &:last-child {
+            margin: 0 0 0 gutters.$gutter;
+        }
+
+        &:hover {
+            a {
+                position: relative;
+                border-radius: 4px;
+                transition: 300ms;
+                color: rgb(43, 116, 243);
+                background: -webkit-linear-gradient(180deg, colors.$color-primary-500, #1f62f2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+                &::after {
+                    display: block;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: colors.$color-primary-100;
+                    z-index: -1;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "items": [
+        {
+            "id": "vd23iblwdxp1b110",
+            "title": "Home",
+            "url": "/",
+            "type": "link"
+        },
+        {
+            "id": "lky2u5r60x2pvme3",
+            "title": "Blog",
+            "url": "/blog",
+            "type": "link"
+        },
+        {
+            "id": "tkfcf34gsrg2lt9h",
+            "title": "O mnie",
+            "url": "/",
+            "type": "link"
+        },
+        {
+            "id": "bg50181tp4nila73",
+            "title": "Kursy",
+            "url": "/",
+            "type": "link"
+        },
+        {
+            "id": "bg50181tp4nila73",
+            "title": "Podcast",
+            "url": "/",
+            "type": "link"
+        },
+        {
+            "id": "bg50181tp4nila73",
+            "title": "Kontakt",
+            "url": "/kontakt",
+            "type": "link"
+        },
+        {
+            "id": "vflckmujbxza6puo",
+            "title": "Strefa kursanta",
+            "url": "/dashboard",
+            "type": "button"
+        }
+    ]
+}
