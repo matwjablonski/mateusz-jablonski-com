@@ -45,6 +45,26 @@
     text-shadow: 0 4px 9px rgba(0, 23, 115, 0.2);
   }
 
+  &.red {
+    color: colors.$color-white;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: fonts.$font-buttons;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: linear-gradient(90.1deg, rgba(234, 53, 53, 0.83) 0.08%, rgba(234, 67, 53, 0.8) 99.21%);
+    box-shadow: 0px 4px 8px rgba(234, 67, 53, 0.24);
+    border-radius: 4px;
+    text-shadow: 0px 4px 9px rgba(109, 23, 16, 0.5);
+    padding: gutters.$gutter;
+
+    &:hover {
+      background: linear-gradient(90.1deg, rgba(234, 53, 53, 0.83) 0.08%, #EA4335 54.81%, #EA7635 99.21%);
+      box-shadow: 0px 8px 16px rgba(234, 67, 53, 0.24);
+    }
+  }
+
   .arrow {
     margin-left: gutters.$gutter-small;
   }

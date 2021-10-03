@@ -21,7 +21,7 @@ const MainNav: FunctionComponent = () => {
               }
               {
                 item.type === 'button' && (
-                  <Button.L pattern={ButtonType.SECONDARY} label={item.title} href={item.url}/>
+                  <Button.L pattern={ButtonType.RED} label={item.title} href={item.url}/>
                 )
               }
             </li>)}

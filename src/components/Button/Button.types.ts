@@ -3,6 +3,7 @@ import { AnchorHTMLAttributes } from 'react';
 export enum ButtonType {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
+  RED = 'red',
   CLEAN = 'clean',
 }
 
