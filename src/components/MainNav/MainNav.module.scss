@@ -26,35 +26,35 @@
                 padding: 0 gutters.$gutter;
                 transition: 300ms;
             }
+
+            &:hover {
+                a {
+                    position: relative;
+                    border-radius: 4px;
+                    transition: 300ms;
+                    color: rgb(43, 116, 243);
+                    background: -webkit-linear-gradient(180deg, colors.$color-primary-500, #1f62f2);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+    
+                    &::after {
+                        display: block;
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background: colors.$color-primary-100;
+                        z-index: -1;
+                        border-radius: 4px;
+                    }
+                }
+            }
         }
 
         &:last-child {
             margin: 0 0 0 gutters.$gutter;
-        }
-
-        &:hover {
-            a {
-                position: relative;
-                border-radius: 4px;
-                transition: 300ms;
-                color: rgb(43, 116, 243);
-                background: -webkit-linear-gradient(180deg, colors.$color-primary-500, #1f62f2);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-
-                &::after {
-                    display: block;
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    background: colors.$color-primary-100;
-                    z-index: -1;
-                    border-radius: 4px;
-                }
-            }
         }
     }
 }
