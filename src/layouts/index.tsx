@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { HeadInterface } from '../types/common/Head.types';
+import favicon from '../public/favicon.ico';
 
 const mainTitle = "Mateusz Jabłoński - blog, podcast, kursy o programowaniu i rozwoju";
 const mainDescription = "Blog, podcast oraz kursy o programowaniu i rozwoju. Oferuję aktualną wiedzę oraz wsparcie mentorskie w nauce programowania.";
@@ -13,7 +14,7 @@ const MainLayout: FunctionComponent<{ head: HeadInterface }> = ({children, head}
       <Head>
         <title>{head?.title ? `${head.title} :: ${mainTitle}` : mainTitle}</title>
         <meta name="description" content={head?.description ? head.description : mainDescription} />
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href={favicon} />
       </Head>
       <Header />
       <main>
