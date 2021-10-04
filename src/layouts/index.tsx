@@ -4,8 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { HeadInterface } from '../types/common/Head.types';
 
-const mainTitle = "Mateusz Jabłoński - blog, podcast, programowanie, rozwój";
-const mainDescription = "Blog, podcast oraz kursy o programowaniu i rozwoju. Oferuję darmową wiedzę oraz wsparcie w nauce programowania.";
+const mainTitle = "Mateusz Jabłoński - blog, podcast, kursy o programowaniu i rozwoju";
+const mainDescription = "Blog, podcast oraz kursy o programowaniu i rozwoju. Oferuję aktualną wiedzę oraz wsparcie mentorskie w nauce programowania.";
 
 const MainLayout: FunctionComponent<{ head: HeadInterface }> = ({children, head}) => {
   return (
