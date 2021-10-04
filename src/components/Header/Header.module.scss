@@ -2,6 +2,7 @@
 
 .header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin: gutters.$gutter-medium 0 (gutters.$gutter-big + gutters.$gutter-small);
 }

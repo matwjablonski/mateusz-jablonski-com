@@ -19,8 +19,15 @@ import { TitleBarType } from '../components/TitleBarWithComponent/TitleBarWithCo
 import Button from '../components/Button';
 import { ButtonType } from '../components/Button/Button.types';
 import LastBooks from '../components/LastBooks';
+import Hero from '../components/Hero';
 
 interface HomeData {
+  title: string;
+  description: string;
+  mainCtaText: string;
+  mainCtaLink: string;
+  secondCtaText: string;
+  secondCtaLink: string;
   lastArticlesDescription: string;
   lastPodcastsDescription: string;
   lastBooksDescription: string;
@@ -34,11 +41,12 @@ interface HomeProps {
 }
 
 const Home = ({articles, podcasts, books, data}: HomeProps) => {
-  const { lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
+  const { title, description, lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
 
   return (
       <MainLayout>
         <Grid>
+          <Hero title={title} description={description} />
           <section>
             <TitleBarWithComponent 
               title={<>Ostatnie <strong>artykuły</strong></>}
