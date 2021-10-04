@@ -2,10 +2,40 @@
 @use '../../styles/settings/gutters';
 
 .hero {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: gutters.$gutter-biggest + gutters.$gutter;
+
+    .contentWrapper {
+        flex: 0 1 auto;
+        padding-right: gutters.$gutter * 2;
+    }
+
+    .imageWrapper {
+        flex: 1 0 430px;
+    }
+
     .title {
         text-transform: initial;
         margin-top: gutters.$gutter-big;
         margin-bottom: gutters.$gutter;
-        max-width: 55%;
+    }
+
+    .text {
+        color: colors.$color-primary-700;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: gutters.$gutter-big;
+    }
+
+    .buttons {
+        display: flex;
+    }
+
+    .secondButton {
+        padding: gutters.$gutter;
+        margin-left: gutters.$gutter;
     }
 }

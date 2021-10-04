@@ -20,10 +20,12 @@ import Button from '../components/Button';
 import { ButtonType } from '../components/Button/Button.types';
 import LastBooks from '../components/LastBooks';
 import Hero from '../components/Hero';
+import { Asset } from 'contentful';
 
 interface HomeData {
   title: string;
   description: string;
+  welcomeImage: Asset;
   mainCtaText: string;
   mainCtaLink: string;
   secondCtaText: string;
@@ -41,12 +43,12 @@ interface HomeProps {
 }
 
 const Home = ({articles, podcasts, books, data}: HomeProps) => {
-  const { title, description, lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
+  const { title, description, welcomeImage, lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
 
   return (
       <MainLayout head={{}}>
         <Grid>
-          <Hero title={title} description={description} />
+          <Hero title={title} description={description} image={welcomeImage} />
           <section>
             <TitleBarWithComponent 
               title={<>Ostatnie <strong>artykuły</strong></>}

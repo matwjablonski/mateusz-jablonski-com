@@ -7,10 +7,10 @@ import arrow from '../../public/icons/arrow.svg';
 import arrowWhite from '../../public/icons/arrow-white.svg';
 import cx from 'classnames';
 
-const L: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pattern, href, label = '', children, ...rest}) => {
+const L: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pattern, href, label = '', className, children, ...rest}) => {
   return (
     <Link href={href}>
-      <a {...rest} className={cx(styles.button, styles[pattern])}>
+      <a {...rest} className={cx(styles.button, styles[pattern], className)}>
         {label}
         {pattern === ButtonType.CLEAN && (
           <div className={styles.arrow}>
