@@ -44,7 +44,7 @@ const Home = ({articles, podcasts, books, data}: HomeProps) => {
   const { title, description, lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
 
   return (
-      <MainLayout>
+      <MainLayout head={{}}>
         <Grid>
           <Hero title={title} description={description} />
           <section>
