@@ -13,14 +13,15 @@ import { Podcast } from '../types/common/Podcast.types';
 import { Article } from '../types/common/Article.types';
 import LastPodcasts from '../components/LastPodcasts';
 import { Book } from '../types/common/Book.types';
-import PageTitle from '../components/Title';
 import Counter from '../components/Counter'
 import { TitleBarType } from '../components/TitleBarWithComponent/TitleBarWithComponent.types';
 import Button from '../components/Button';
 import { ButtonType } from '../components/Button/Button.types';
 import LastBooks from '../components/LastBooks';
 import Hero from '../components/Hero';
-import { Asset } from 'contentful';
+import { Asset, Entry } from 'contentful';
+import NextCourseCounter from '../components/NextCourseCounter';
+import { Course } from '../types/common/Course.types';
 
 interface HomeData {
   title: string;
@@ -32,6 +33,8 @@ interface HomeData {
   secondCtaLink: string;
   lastArticlesDescription: string;
   lastPodcastsDescription: string;
+  lastCoursesDescription: string;
+  featuredCourses: Entry<Course>;
   lastBooksDescription: string;
 }
 
@@ -39,11 +42,21 @@ interface HomeProps {
   podcasts: Podcast[],
   articles: Article[],
   books: Book[],
+  nextCourse: Course;
   data: HomeData;
 }
 
-const Home = ({articles, podcasts, books, data}: HomeProps) => {
-  const { title, description, welcomeImage, lastArticlesDescription, lastPodcastsDescription, lastBooksDescription } = data; 
+const Home = ({articles, podcasts, books, nextCourse, data}: HomeProps) => {
+  const {
+    title,
+    description,
+    welcomeImage,
+    lastArticlesDescription,
+    lastPodcastsDescription,
+    lastCoursesDescription,
+    featuredCourses,
+    lastBooksDescription,
+  } = data;
 
   return (
       <MainLayout head={{}}>
@@ -68,6 +81,17 @@ const Home = ({articles, podcasts, books, data}: HomeProps) => {
             <LastPodcasts podcasts={podcasts} />
           </section>
         </Grid>
+          <section className={styles.coursesSection}>
+            <Grid>
+            <TitleBarWithComponent 
+                title={<>Najnowsze dostępne <br/><strong>kursy</strong></>} 
+                text={lastCoursesDescription}
+                type={TitleBarType.REVERT}
+              >
+                {nextCourse && <NextCourseCounter title={nextCourse.title} startDate={nextCourse.startDate} endDate={nextCourse.publishDate} />}
+              </TitleBarWithComponent>
+            </Grid>
+          </section>
           <section className={styles.booksSection}>
             <Grid>
               <TitleBarWithComponent 
@@ -114,6 +138,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
     limit: 4,
   });
 
+  const coursesRes = await fetchEntries({
+    content_type: 'course',
+    include: 2,
+    order: 'fields.publishDate',
+    'fields.publishDate[gt]': new Date(),
+    limit: 1,
+  });
+
   const homeDetails = await homeRes.map(p => p.fields).shift();
 
   const articles = await artilesRes.map(p => ({
@@ -127,6 +159,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
     createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
   }));
 
+  const nextCourse = await coursesRes.length ? coursesRes.map(p => ({
+    title: p.fields.title,
+    startDate: new Date(p.fields?.startDate).getTime() || new Date().getTime(),
+    publishDate: new Date(p.fields?.publishDate).getTime() || new Date().getTime(),
+  })).shift() : null;
+
   const books = await booksRes.map(p => ({
     ...p.fields,
     createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
@@ -137,6 +175,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       data: homeDetails,
       articles,
       podcasts,
+      nextCourse,
       books,
     }
   }

@@ -1,0 +1,73 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+
+.counter {
+    background: #00125B;
+    border-radius: 9px;
+    padding: gutters.$gutter-medium gutters.$gutter gutters.$gutter-medium gutters.$gutter-medium;
+
+    .content {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .subtitle {
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary-300;
+        line-height: 1.15;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin: 0 0 gutters.$gutter-small;
+        text-align: right;
+    }
+
+    .title {
+        color: colors.$color-white;
+        margin: 0;
+        text-transform: uppercase;
+        text-align: right;
+        font-family: fonts.$font-headline;
+        font-size: 26px;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 290px;
+        overflow: hidden;
+    }
+
+    .calendarIcon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: gutters.$gutter;
+        background: linear-gradient(90.1deg, rgba(20, 166, 255, 0.14) 0.08%, rgba(20, 165, 255, 0.2) 99.21%);
+        box-shadow: 0px 4px 8px rgba(20, 165, 255, 0.24);
+        border-radius: 4px;
+    }
+
+    .progressBar {
+        min-width: 350px;
+        background: colors.$color-primary-700;
+        height: 7px;
+        border-radius: 4px;
+        position: relative;
+    }
+    
+    .progressBarFill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: linear-gradient(90.1deg, colors.$color-primary-500 0.08%, colors.$color-primary-300 99.21%);
+        box-shadow: 0px 4px 8px rgba(20, 165, 255, 0.24);
+        border-radius: 4px;
+    }
+}
+

@@ -18,6 +18,13 @@
   align-items: center;
 }
 
+.coursesSection {
+  background: url("../public/courses-bg.svg") no-repeat;
+  background-position: top center;
+  padding-top: gutters.$gutter-medium * 7;
+  padding-bottom: gutters.$gutter-bigger;
+}
+
 .booksSection {
   background: url("../public/books-bg.svg") no-repeat;
   background-position: top center;
