@@ -6,8 +6,11 @@ import calendar from '../../public/icons/calendar.svg';
 
 const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
     const prepareDaysLabel = () => {
+        if (days === null) {
+            return 'nie wiem';
+        }
         if (days === 1) {
-            return `${days} dzień`
+            return 'jutro';
         }
         return `${days} dni`
     }

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import { format } from 'date-fns';
+import { format, differenceInDays } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import {GetServerSideProps, GetStaticProps} from "next";
 import {fetchEntries} from '../contentful'
@@ -41,12 +41,13 @@ interface HomeData {
 interface HomeProps {
   podcasts: Podcast[],
   articles: Article[],
+  nextArticleInDays: number;
   books: Book[],
   nextCourse: Course;
   data: HomeData;
 }
 
-const Home = ({articles, podcasts, books, nextCourse, data}: HomeProps) => {
+const Home = ({articles, nextArticleInDays, podcasts, books, nextCourse, data}: HomeProps) => {
   const {
     title,
     description,
@@ -67,7 +68,7 @@ const Home = ({articles, podcasts, books, nextCourse, data}: HomeProps) => {
               title={<>Ostatnie <strong>artykuły</strong></>}
               text={lastArticlesDescription}
             >
-              <Counter nextItemName="artykuł" days={14} />
+              <Counter nextItemName="artykuł" days={nextArticleInDays} />
             </TitleBarWithComponent>
             <LastArticles articles={articles} />
           </section>
@@ -122,6 +123,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
     content_type: 'article',
     include: 2,
     order: '-fields.createdDate',
+    'fields.createdDate[lte]': new Date(),
+  });
+
+  const nextArticlesRes = await fetchEntries({
+    content_type: 'article',
+    include: 2,
+    order: 'fields.createdDate',
+    'fields.createdDate[gt]': new Date(),
   });
 
   const podcastsRes = await fetchEntries({
@@ -154,6 +163,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     featuredImage: p.fields?.featuredImage?.fields || null,
   }));
 
+  const nextArticle = await nextArticlesRes.shift();
+
+  const nextArticleInDays = nextArticle ? differenceInDays(new Date(nextArticle.fields.createdDate) , new Date()) + 1 : null;
+
   const podcasts = await podcastsRes.map(p => ({
     ...p.fields,
     createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
@@ -174,6 +187,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       data: homeDetails,
       articles,
+      nextArticleInDays,
       podcasts,
       nextCourse,
       books,
