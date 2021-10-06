@@ -42,12 +42,13 @@ interface HomeProps {
   podcasts: Podcast[],
   articles: Article[],
   nextArticleInDays: number;
+  nextPodcastInDays: number;
   books: Book[],
   nextCourse: Course;
   data: HomeData;
 }
 
-const Home = ({articles, nextArticleInDays, podcasts, books, nextCourse, data}: HomeProps) => {
+const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, nextCourse, data}: HomeProps) => {
   const {
     title,
     description,
@@ -77,7 +78,7 @@ const Home = ({articles, nextArticleInDays, podcasts, books, nextCourse, data}: 
               title={<>Ostatnie <strong>podcasty</strong></>}
               text={lastPodcastsDescription}
             >
-              <Counter nextItemName="podcast" days={1} />
+              <Counter nextItemName="podcast" days={nextPodcastInDays} />
             </TitleBarWithComponent>
             <LastPodcasts podcasts={podcasts} />
           </section>
@@ -140,6 +141,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
     limit: 5,
   });
 
+  const nextPodcastsRes = await fetchEntries({
+    content_type: 'podcast',
+    include: 2,
+    order: 'fields.createdDate',
+    'fields.createdDate[gt]': new Date(),
+  });
+
   const booksRes = await fetchEntries({
     content_type: 'book',
     include: 2,
@@ -172,6 +180,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
   }));
 
+  const nextPodcast = await nextPodcastsRes.shift();
+
+  const nextPodcastInDays = nextPodcast ? differenceInDays(new Date(nextPodcast.fields.createdDate) , new Date()) + 1 : null;
+
   const nextCourse = await coursesRes.length ? coursesRes.map(p => ({
     title: p.fields.title,
     startDate: new Date(p.fields?.startDate).getTime() || new Date().getTime(),
@@ -189,6 +201,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       articles,
       nextArticleInDays,
       podcasts,
+      nextPodcastInDays,
       nextCourse,
       books,
     }
