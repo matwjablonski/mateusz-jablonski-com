@@ -10,7 +10,7 @@ import FooterSocialMedia from '../FooterSocialMedia';
 
 const Footer: FunctionComponent = memo(() => {
   const date: string = useMemo(
-    () => new Date().getFullYear().toString() === '2021' ? '2021' : `2021 - ${new Date().getFullYear()}`,
+    () => new Date().getFullYear().toString() === '2019' ? '2019' : `2019 - ${new Date().getFullYear()}`,
     [],
   );
   return (
