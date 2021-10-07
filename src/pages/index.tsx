@@ -22,6 +22,7 @@ import Hero from '../components/Hero';
 import { Asset, Entry } from 'contentful';
 import NextCourseCounter from '../components/NextCourseCounter';
 import { Course } from '../types/common/Course.types';
+import ListenNow from '../components/ListenNow';
 
 interface HomeData {
   title: string;
@@ -73,7 +74,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
             </TitleBarWithComponent>
             <LastArticles articles={articles} />
           </section>
-          <section>
+          <section className={styles.podcastSection}>
             <TitleBarWithComponent 
               title={<>Ostatnie <strong>podcasty</strong></>}
               text={lastPodcastsDescription}
@@ -81,6 +82,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
               <Counter nextItemName="podcast" days={nextPodcastInDays} />
             </TitleBarWithComponent>
             <LastPodcasts podcasts={podcasts} />
+            <ListenNow className={styles.listenNow} />
           </section>
         </Grid>
           <section className={styles.coursesSection}>

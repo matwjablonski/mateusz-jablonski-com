@@ -18,6 +18,15 @@
   align-items: center;
 }
 
+.podcastSection {
+  position: relative;
+
+  .listenNow {
+    position: absolute;
+    top: calc(100% + 70px);
+  }
+}
+
 .coursesSection {
   background: url("../public/courses-bg.svg") no-repeat;
   background-position: top center;
