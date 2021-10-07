@@ -23,7 +23,7 @@ const LastArticles = ({articles}) => {
             </div>
             <div className={styles.btnsLine}>
                 <Button.L href="/blog" pattern={ButtonType.CLEAN} label="Wszystkie moje artykuły"/>
-                <div className={styles.slidesNav}>
+                <div className={styles.sliderBtns}>
                     <Button.L pattern={ButtonType.SECONDARY} label=""/>
                     <Button.L pattern={ButtonType.SECONDARY} label=""/>
                 </div>
