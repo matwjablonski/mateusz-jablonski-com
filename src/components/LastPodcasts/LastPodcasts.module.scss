@@ -1,7 +1,20 @@
 @use '../../styles/settings/gutters';
 
-.wrapper {
+.section {
     margin-bottom: 185px;
+
+    .btnsLine {
+        display: flex;
+        align-items: center;
+
+        a {
+            margin-right: gutters.$gutter-big;
+        }
+    }
+}
+
+.wrapper {
+    margin-bottom: gutters.$gutter * 2;
     display: flex;
 
     .main {

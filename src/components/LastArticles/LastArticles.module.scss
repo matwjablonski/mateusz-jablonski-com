@@ -25,6 +25,20 @@
     display: flex;
     margin-left: -(gutters.$gutter);
     margin-right: -(gutters.$gutter);
-    width: 1536px;
     padding-bottom: gutters.$gutter-medium + gutters.$gutter;
+}
+
+.btnsLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.sliderBtns {
+    display: flex;
+
+    .slidesNav {
+        display: flex;
+    }
 }

@@ -8,23 +8,26 @@ import arrowWhite from '../../public/icons/arrow-white.svg';
 import cx from 'classnames';
 
 const L: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pattern, href, label = '', className, children, ...rest}) => {
-  return (
-    <Link href={href}>
-      <a {...rest} className={cx(styles.button, styles[pattern], className)}>
-        {label}
-        {pattern === ButtonType.CLEAN && (
-          <div className={styles.arrow}>
-            <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
-          </div>
-        )}
-        {pattern === ButtonType.PRIMARY && (
-          <div className={styles.arrow}>
-            <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6}/>
-          </div>
-        )}
-      </a>
-    </Link>
+  const linkContent = (
+    <a {...rest} className={cx(styles.button, styles[pattern], className)}>
+      {label}
+      {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
+        <div className={styles.arrow}>
+          <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
+        </div>
+      )}
+      {pattern === ButtonType.PRIMARY && (
+        <div className={styles.arrow}>
+          <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6}/>
+        </div>
+      )}
+    </a>
   )
+  
+  return href ? (
+    <Link href={href}>
+      {linkContent}
+    </Link>) : <>{linkContent}</>
 });
 
 const B: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {

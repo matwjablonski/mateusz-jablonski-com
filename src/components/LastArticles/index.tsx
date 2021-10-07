@@ -8,7 +8,7 @@ const LastArticles = ({articles}) => {
     return (
         <div className={styles.lastArticlesWrapper}>
             <div className={styles.lastArticlesSection}>
-                <div className={styles.lastArticles}>
+                <div className={styles.lastArticles} style={{ width: `${384 * articles.length}px` }}>
                     {
                         articles.map(article => <ArticlePreview 
                             key={`article${Math.random()}`}
@@ -21,7 +21,13 @@ const LastArticles = ({articles}) => {
                     }
                 </div>
             </div>
-            <Button.L href="/blog" pattern={ButtonType.CLEAN} label="Wszystkie moje artykuły"/>
+            <div className={styles.btnsLine}>
+                <Button.L href="/blog" pattern={ButtonType.CLEAN} label="Wszystkie moje artykuły"/>
+                <div className={styles.slidesNav}>
+                    <Button.L pattern={ButtonType.SECONDARY} label=""/>
+                    <Button.L pattern={ButtonType.SECONDARY} label=""/>
+                </div>
+            </div>
         </div>
     )
 }
