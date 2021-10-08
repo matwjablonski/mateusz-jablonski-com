@@ -23,6 +23,7 @@ import { Asset, Entry } from 'contentful';
 import NextCourseCounter from '../components/NextCourseCounter';
 import { Course } from '../types/common/Course.types';
 import ListenNow from '../components/ListenNow';
+import FeaturedCourses from '../components/FeaturedCourses';
 
 interface HomeData {
   title: string;
@@ -35,7 +36,7 @@ interface HomeData {
   lastArticlesDescription: string;
   lastPodcastsDescription: string;
   lastCoursesDescription: string;
-  featuredCourses: Entry<Course>;
+  featuredCourses: Entry<Course>[];
   lastBooksDescription: string;
 }
 
@@ -94,6 +95,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
               >
                 {nextCourse && <NextCourseCounter title={nextCourse.title} startDate={nextCourse.startDate} endDate={nextCourse.publishDate} />}
               </TitleBarWithComponent>
+              <FeaturedCourses featuredCourses={featuredCourses} />
             </Grid>
           </section>
           <section className={styles.booksSection}>
@@ -157,7 +159,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     limit: 4,
   });
 
-  const coursesRes = await fetchEntries({
+  const nextCourseRes = await fetchEntries({
     content_type: 'course',
     include: 2,
     order: 'fields.publishDate',
@@ -186,7 +188,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const nextPodcastInDays = nextPodcast ? differenceInDays(new Date(nextPodcast.fields.createdDate) , new Date()) + 1 : null;
 
-  const nextCourse = await coursesRes.length ? coursesRes.map(p => ({
+  const nextCourse = await nextCourseRes.length ? nextCourseRes.map(p => ({
     title: p.fields.title,
     startDate: new Date(p.fields?.startDate).getTime() || new Date().getTime(),
     publishDate: new Date(p.fields?.publishDate).getTime() || new Date().getTime(),

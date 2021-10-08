@@ -3,4 +3,5 @@ export interface Course {
     slug: string;
     startDate: Date;
     publishDate: Date;
+    description: string;
 }
