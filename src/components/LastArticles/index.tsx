@@ -9,7 +9,7 @@ const ITEM_WIDTH = 384;
 const ITEMS_ON_SCREEN = 3;
 
 const LastArticles = ({articles}) => {
-    const [currentIndex, setCurrentIndex] = useState(1);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleOnNext = () => {
         setCurrentIndex((prev) => prev + 1)
