@@ -3,6 +3,7 @@
 
 .lastArticlesWrapper {
     margin-bottom: gutters.$gutter * 8;
+    position: relative;
 }
 
 .lastArticlesSection {
@@ -26,6 +27,8 @@
     margin-left: -(gutters.$gutter);
     margin-right: -(gutters.$gutter);
     padding-bottom: gutters.$gutter-medium + gutters.$gutter;
+    position: relative;
+    transition: 700ms;
 }
 
 .btnsLine {
@@ -37,4 +40,27 @@
 
 .sliderBtns {
     display: flex;
+}
+
+.previous {
+    transform: scaleX(-1);
+    margin-right: gutters.$gutter-small;
+}
+
+.inactive {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.inactivePreview {
+    animation: hide 700ms 300ms forwards;
 }

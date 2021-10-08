@@ -8,4 +8,5 @@ export interface ArticlePreviewProps {
     featuredImage: {
         image: Asset;
     };
+    className?: string;
 }

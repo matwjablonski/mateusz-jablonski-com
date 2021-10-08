@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    transition: 700ms;
 
     .imageBox {
         margin-bottom: gutters.$gutter-medium;

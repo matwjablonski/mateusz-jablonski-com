@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArticlePreviewProps } from './ArticlePreview.types';
@@ -9,9 +10,9 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 
-const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({title, createdDate, featuredImage, excerpt, slug}) => {
+const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({title, createdDate, featuredImage, excerpt, slug, className}) => {
     return (
-        <article className={styles.articlePreview}>
+        <article className={cx(styles.articlePreview, className)}>
             <div>
                 <Link href={`/blog/${slug}`}>
                     <a>
