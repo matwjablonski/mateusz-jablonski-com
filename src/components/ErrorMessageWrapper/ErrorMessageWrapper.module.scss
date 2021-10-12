@@ -1,5 +1,11 @@
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
 
 .errorWrapper {
-    color: red;
+    color: colors.$color-error;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    position: absolute;
+    bottom: -20px;
 }

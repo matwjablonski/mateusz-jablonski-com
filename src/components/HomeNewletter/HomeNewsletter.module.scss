@@ -43,6 +43,10 @@
         z-index: 4;
     }
 
+    .form {
+        display: inline-block;
+    }
+
     .title {
         color: colors.$color-white;
         font-size: 40px;
@@ -69,7 +73,7 @@
         margin: 0 0 gutters.$gutter-medium;
     }
 
-    .input {
+    .inputWrapper {
         margin-bottom: gutters.$gutter;
     }
 }
