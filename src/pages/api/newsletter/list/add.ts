@@ -13,9 +13,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const { email } = JSON.parse(req.body);
         const response = await mailchimp.lists.addListMember(env.MAILCHIMP_LIST_ID, { email_address: email, status: 'subscribed' });
 
-        res.send({ status: response.status, message: 'Success' }); 
+        res.send({ status: response.status, message: 'Udało się! Twój adres email został zapisany poprawnie.' }); 
     } catch(e) {
         const text = JSON.parse(e.response.text);
-        res.send(text);
+        res.status(text.status);
+        
+        res.send({ status: text.status, message: 'Podany email jest błędny lub wcześniej został już zapisany w naszej bazie danych.'});
     }    
 }

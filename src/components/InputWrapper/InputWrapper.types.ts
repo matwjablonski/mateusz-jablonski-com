@@ -8,4 +8,5 @@ export interface InputWrapperProps {
     className?: string;   
     icon?: InputPlaceholderTypes;
     error?: boolean;
+    success?: boolean;
 }
