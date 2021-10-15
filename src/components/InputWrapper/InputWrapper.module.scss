@@ -1,7 +1,9 @@
 @use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
 
 .inputWrapper {
     position: relative;
+    margin-bottom: gutters.$gutter;
 
     &.newsletter {
         &::before {

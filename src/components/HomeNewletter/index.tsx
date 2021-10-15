@@ -38,7 +38,7 @@ const HomeNewsletter = () => {
                 <h2 className={styles.title}>Dołącz do newslettera i bądź na bieżąco <strong>za darmo!</strong></h2>
                 <p className={styles.text}>Dołącz bezpłatnie do mojego newslettera. Będziesz otrzymywać informacje o nowych artykułach, ciekawostki ze świata programowania i dużo praktycznych porad na temat własnego rozwoju.</p>
                 <div className={styles.form}>
-                    <InputWrapper icon={InputPlaceholderTypes.NEWSLETTER} className={styles.inputWrapper} error={!_.isEmpty(errors)} success={!!successMessage}>
+                    <InputWrapper icon={InputPlaceholderTypes.NEWSLETTER} error={!_.isEmpty(errors)} success={!!successMessage}>
                         <input 
                             {...register('email', { required: 'Pole email jest wymagane' })}
                             placeholder="Podaj adres e-mail"   
