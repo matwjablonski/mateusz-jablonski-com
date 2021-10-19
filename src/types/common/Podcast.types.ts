@@ -1,4 +1,5 @@
-import { Asset } from "contentful";
+import { Asset, Entry } from "contentful";
+import { HeadInterface } from "./Head.types";
 
 export interface Podcast {
     title: string;
@@ -7,4 +8,5 @@ export interface Podcast {
     excerpt: string;
     episode: number;
     featuredImage: Asset;
+    head?: Entry<HeadInterface>
 }

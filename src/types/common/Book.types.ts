@@ -1,4 +1,5 @@
-import { Asset } from "contentful";
+import { Asset, Entry } from "contentful";
+import { HeadInterface } from "./Head.types";
 
 export interface Book {
     title: string;
@@ -7,4 +8,5 @@ export interface Book {
     cover: Asset;
     author: string;
     affiliateLink: string;
+    head?: Entry<HeadInterface>
 }

@@ -1,15 +1,17 @@
 import React from 'react';
 import Post from '../../components/Post';
+import MainLayout from '../../layouts'
 import {GetServerSideProps, GetServerSidePropsContext} from "next";
 import {fetchEntries} from "../../contentful";
 import {ParsedUrlQuery} from "querystring";
 
 const BlogPost = ({body}) => {
   console.log('BlogPost', body);
+  const { head } = body;
   return body ? (
-    <>
+    <MainLayout head={head ? head.fields : {}}>
       <Post post={body}/>
-    </>
+    </MainLayout>
   ) : null;
 };
 

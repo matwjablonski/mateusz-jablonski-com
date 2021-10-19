@@ -24,6 +24,7 @@ import NextCourseCounter from '../components/NextCourseCounter';
 import { Course } from '../types/common/Course.types';
 import ListenNow from '../components/ListenNow';
 import FeaturedCourses from '../components/FeaturedCourses';
+import { HeadInterface } from '../types/common/Head.types';
 
 interface HomeData {
   title: string;
@@ -38,6 +39,7 @@ interface HomeData {
   lastCoursesDescription: string;
   featuredCourses: Entry<Course>[];
   lastBooksDescription: string;
+  head?: Entry<HeadInterface>;
 }
 
 interface HomeProps {
@@ -60,10 +62,11 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
     lastCoursesDescription,
     featuredCourses,
     lastBooksDescription,
+    head,
   } = data;
 
   return (
-      <MainLayout head={{}}>
+      <MainLayout head={head ? head.fields : {}}>
         <Grid>
           <Hero title={title} description={description} image={welcomeImage} />
           <section>
