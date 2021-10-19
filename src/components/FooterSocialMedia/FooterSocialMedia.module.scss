@@ -1,11 +1,17 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .footerSocialMedia {
   display: flex;
   margin-bottom: gutters.$gutter-big;
   justify-content: space-between;
+  flex-direction: column;
+
+  @include media.bp(lg) {
+    flex-direction: row;
+  }
 
   .title {
     color: colors.$color-primary;
@@ -14,8 +20,13 @@
     font-weight: 400;
     line-height: 1.2;
     margin-right: gutters.$gutter;
-    max-width: 350px;
+    max-width: 450px;
+    
     flex: 1 0 auto;
+
+    @include media.bp(lg) {
+      max-width: 350px;
+    }
 
     span {
       color: colors.$color-primary-500;
@@ -28,6 +39,10 @@
   .socialMediaTiles {
     display: flex;
     width: 100%;
-    margin-right: -(gutters.$gutter);
+    flex-wrap: wrap;
+
+    @include media.bp(lg) {
+      margin-right: -(gutters.$gutter);
+    }
   }
 }

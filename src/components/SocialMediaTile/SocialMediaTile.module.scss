@@ -1,11 +1,41 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .socialMediaLink {
-    flex: 1;
-    max-width: 160px;
-    margin: 0 gutters.$gutter;
+    flex: 0 1 100%;
+    margin: 0 0 gutters.$gutter;
+
+    @include media.bp(xs) {
+        flex: 0 1 calc(50% - #{gutters.$gutter * 2});
+        margin: 0 gutters.$gutter gutters.$gutter-medium;
+    }
+
+    @include media.bp(md) {
+        flex: 1;
+        margin-bottom: 0;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    @include media.bp(lg) {
+        max-width: 160px;
+
+        &:first-child {
+            margin-left: gutters.$gutter;
+        }
+
+        &:last-child {
+            margin-right: gutters.$gutter;
+        }
+    }
 }
 
 .socialTile {

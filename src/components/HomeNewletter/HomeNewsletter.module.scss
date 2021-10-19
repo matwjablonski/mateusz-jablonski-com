@@ -1,6 +1,7 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .newsletterHome {
     background: colors.$color-primary;
@@ -11,7 +12,7 @@
     position: relative;
 
     &::before {
-        content: '';
+        content: none;
         display: block;
         background: url('../../public/newsletter.webp') no-repeat;
         background-size: cover;
@@ -21,6 +22,11 @@
         bottom: 0;
         right: 0;
         z-index: 3;
+
+        @include media.bp(lg) {
+            content: '';
+        }
+
     }
 
     &::after {
@@ -44,32 +50,50 @@
     }
 
     .form {
-        display: inline-block;
+        display: block;
+        max-width: 710px;
+
+        @include media.bp(lg) {
+            display: inline-block;
+        }
     }
 
     .title {
         color: colors.$color-white;
-        font-size: 40px;
+        font-size: 30px;
         font-weight: 400;
         font-family: fonts.$font-headline;
-        max-width: 710px;
         line-height: 1.2;
         margin: 0 0 gutters.$gutter-medium;
 
+        @include media.bp(sm) {
+            font-size: 40px;
+        }
+
+        @include media.bp(lg) {
+            max-width: 710px;
+        }
+
         strong {
-            display: block;
             color: colors.$color-primary-300;
+
+            @include media.bp(lg) {
+                display: block;
+            }
         }
     }
 
     .text {
         color: colors.$color-primary-100;
-        max-width: 710px;
         font-size: 18px;
         font-family: fonts.$font-content;
         font-weight: 400;
         line-height: 1.4;
         letter-spacing: -0.01em;
         margin: 0 0 gutters.$gutter-medium;
+
+        @include media.bp(lg) {
+            max-width: 710px;
+        }
     }
 }
