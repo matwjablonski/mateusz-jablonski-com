@@ -5,6 +5,7 @@ export enum ButtonType {
   SECONDARY = 'secondary',
   RED = 'red',
   CLEAN = 'clean',
+  WHITE = 'white',
 }
 
 export interface ButtonProps {

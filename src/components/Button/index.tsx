@@ -16,7 +16,7 @@ const L: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps
           <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
         </div>
       )}
-      {pattern === ButtonType.PRIMARY && (
+      {(pattern === ButtonType.PRIMARY || pattern === ButtonType.WHITE) && (
         <div className={styles.arrow}>
           <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6}/>
         </div>

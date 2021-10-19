@@ -30,16 +30,29 @@
 .coursesSection {
   background: url("../public/courses-bg.svg") no-repeat;
   background-position: top center;
+  background-size: cover;
   padding-top: gutters.$gutter-medium * 7;
   padding-bottom: gutters.$gutter-bigger;
 }
 
 .booksSection {
-  background: url("../public/books-bg.svg") no-repeat;
-  background-position: top center;
   margin-bottom: 90px;
   min-height: 700px;
   padding-top: gutters.$gutter-big + gutters.$gutter-small;
+  position: relative;
+
+  &::before {
+    background: url("../public/books-bg.svg") no-repeat;
+    background-position: top center;
+    background-size: cover;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 525px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
 }
 
 .code {

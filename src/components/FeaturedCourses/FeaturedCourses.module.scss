@@ -1,0 +1,13 @@
+@use '../../styles/settings/gutters';
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wrapper {
+    display: flex;
+    margin: 0 -(gutters.$gutter);
+    margin-bottom: gutters.$gutter-big;
+}
