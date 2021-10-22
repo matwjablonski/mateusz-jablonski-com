@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .course {
     flex: 0 1 50%;
@@ -8,6 +9,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: gutters.$gutter-medium;
+
+    @include media.bp(sm) {
+        margin-bottom: 0;
+    }
 
     .imageBox {
         background: colors.$color-white;
@@ -16,6 +22,11 @@
         border-radius: 4px;
         overflow: hidden;
         margin-bottom: gutters.$gutter-medium;
+        width: 100%;
+
+        > div {
+            width: 100%;
+        }
     }
 
     .image {

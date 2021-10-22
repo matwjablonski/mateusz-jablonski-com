@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .listenNow {
     background: linear-gradient(90.1deg, colors.$color-primary-500 0.08%, colors.$color-primary-300 99.21%);
@@ -20,14 +21,29 @@
 
     .podcasts {
         display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         justify-content: space-between;
         margin: 0 (-(gutters.$gutter));
+
+        @include media.bp(sm) {
+            flex-direction: row;
+        }
+
+        @include media.bp(lg) {
+            flex-wrap: nowrap;
+        }
     }
 
     .podcastLink {
         display: flex;
-        flex: 1 1 calc(25% - 16px);
-        margin: 0 gutters.$gutter;
+        margin: gutters.$gutter;
+        flex: 1 1 calc(50% - 32px);
+
+        @include media.bp(lg) {
+            flex: 1 1 calc(25% - 16px);
+            margin: 0 gutters.$gutter;
+        }
     }
 
     .podcast {

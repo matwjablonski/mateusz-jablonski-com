@@ -1,6 +1,7 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .counter {
     background: #00125B;
@@ -31,13 +32,17 @@
         text-transform: uppercase;
         text-align: right;
         font-family: fonts.$font-headline;
-        font-size: 26px;
+        font-size: 23px;
         letter-spacing: 0.04em;
         line-height: 1;
-        white-space: nowrap;
         text-overflow: ellipsis;
         max-width: 290px;
         overflow: hidden;
+
+        @include media.bp(sm) {
+            font-size: 26px;
+            white-space: nowrap;
+        }
     }
 
     .calendarIcon {
@@ -53,11 +58,16 @@
     }
 
     .progressBar {
-        min-width: 350px;
+        width: 100%;
         background: colors.$color-primary-700;
         height: 7px;
         border-radius: 4px;
         position: relative;
+
+        @include media.bp(sm) {
+            min-width: 350px;
+            width: auto;
+        }
     }
     
     .progressBarFill {

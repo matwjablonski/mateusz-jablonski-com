@@ -1,14 +1,31 @@
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .lastBooks {
     display: flex;
     margin-left: -(gutters.$gutter);
     margin-right: -(gutters.$gutter);
+    flex-direction: column;
+
+    @include media.bp(sm) {
+        flex-direction: row;
+        align-items: initial;
+    }
 
     > * {
         margin-left: gutters.$gutter;
         margin-right: gutters.$gutter;
-        flex: 1;
-        max-width: calc(25% - 32px);
+        margin-bottom: gutters.$gutter;
+        max-width: calc(100% - 32px);
+
+        @include media.bp(sm) {
+            max-width: calc(50% - 32px);
+            flex: 1 1 0;
+        }
+
+        @include media.bp(md) {
+            margin-bottom: 0;
+            max-width: calc(25% - 32px);
+        }
     }
 }

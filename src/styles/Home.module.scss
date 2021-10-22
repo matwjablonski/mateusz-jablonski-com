@@ -1,4 +1,5 @@
 @use '../styles/settings/gutters';
+@use '../styles/settings/media';
 
 .container {
   min-height: 100vh;
@@ -22,8 +23,10 @@
   position: relative;
 
   .listenNow {
-    position: absolute;
-    top: calc(100% + 70px);
+    @include media.bp(lg) {
+      position: absolute;
+      top: calc(100% + 70px);
+    }
   }
 }
 
@@ -31,8 +34,12 @@
   background: url("../public/courses-bg.svg") no-repeat;
   background-position: top center;
   background-size: cover;
-  padding-top: gutters.$gutter-medium * 7;
+  padding-top: gutters.$gutter-bigger;
   padding-bottom: gutters.$gutter-bigger;
+
+  @include media.bp(lg) {
+    padding-top: gutters.$gutter-medium * 7;
+  }
 }
 
 .booksSection {

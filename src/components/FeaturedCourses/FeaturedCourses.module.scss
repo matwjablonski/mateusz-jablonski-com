@@ -1,4 +1,5 @@
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .section {
     display: flex;
@@ -9,5 +10,10 @@
 .wrapper {
     display: flex;
     margin: 0 -(gutters.$gutter);
+    flex-direction: column;
     margin-bottom: gutters.$gutter-big;
+
+    @include media.bp(sm) {
+        flex-direction: row;
+    }
 }

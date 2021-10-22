@@ -1,21 +1,31 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .bar {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: gutters.$gutter-small * 7;
+    flex-direction: column;
+
+    @include media.bp(md) {
+        flex-direction: row;
+    }
 
     .text {
         color: colors.$color-text;
         font-family: fonts.$font-content;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
         max-width: 660px;
         line-height: 1.4;
         letter-spacing: -0.01em;
+
+        @include media.bp(sm) {
+            font-size: 18px;
+        }
     }
 
     .revert {

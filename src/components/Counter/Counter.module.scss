@@ -1,9 +1,14 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .counter {
-    display: flex;
+    display: none;
+
+    @include media.bp(md) {
+        display: flex;
+    }
 
     .counterText {
         display: flex;

@@ -2,16 +2,21 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .wrapper {
   h2 {
-    font-size: 40px;
+    font-size: 30px; 
     color: colors.$color-primary;
     font-weight: 700;
     font-family: fonts.$font-headline;
     text-transform: capitalize;
     margin: 0 0 gutters.$gutter;
     line-height: 1.2;
+
+    @include media.bp(sm) {
+      font-size: 40px;
+    }
 
     strong {
       color: rgb(43, 116, 243);
