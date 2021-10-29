@@ -10,9 +10,12 @@
     color: colors.$color-primary;
     font-weight: 700;
     font-family: fonts.$font-headline;
-    text-transform: capitalize;
     margin: 0 0 gutters.$gutter;
     line-height: 1.2;
+
+    &.capitalize {
+      text-transform: capitalize;
+    }
 
     @include media.bp(sm) {
       font-size: 40px;

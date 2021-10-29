@@ -9,7 +9,7 @@ const TitleBarWithComponent: FunctionComponent<TitleBarWithComponentProps> = ({ 
     return (
         <div className={styles.bar}>
             <div>
-                <PageTitle classes={type && styles[type]}>{title}</PageTitle>
+                <PageTitle classes={type && styles[type]} capitalize>{title}</PageTitle>
                 <p className={cx(styles.text, styles[type])}>{text}</p>
             </div>
             {children}

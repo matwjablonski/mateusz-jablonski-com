@@ -13,7 +13,7 @@ const Hero: FunctionComponent<HeroProps> = ({ title, description, image }) => {
         const titleWithoutClosingStrong = title.replace('</strong>', '');
         const titleArr = titleWithoutClosingStrong.split('<strong>');
     
-        return <PageTitle classes={styles.title}>{titleArr[0]}<strong>{titleArr[1]}</strong></PageTitle>
+        return <PageTitle classes={styles.title} capitalize>{titleArr[0]}<strong>{titleArr[1]}</strong></PageTitle>
     }
 
     return (

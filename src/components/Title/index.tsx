@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
+import cx from 'classnames';
 import styles from './Title.module.scss'
 import { TitleProps } from './Title.types';
 
-const PageTitle: FunctionComponent<TitleProps> = ({classes, children}) => (
+const PageTitle: FunctionComponent<TitleProps> = ({classes, children, capitalize}) => (
   <div className={styles.wrapper}>
-    <h2 className={classes}>{children}</h2>
+    <h2 className={cx(classes, capitalize && styles.capitalize)}>{children}</h2>
   </div>
 )
 
