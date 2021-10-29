@@ -1,6 +1,8 @@
 import React from 'react';
 import Post from '../../components/Post';
 import MainLayout from '../../layouts'
+import Grid from '../../components/Grid';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import {GetServerSideProps, GetServerSidePropsContext} from "next";
 import {fetchEntries} from "../../contentful";
 import {ParsedUrlQuery} from "querystring";
@@ -10,7 +12,10 @@ const BlogPost = ({body}) => {
   const { head } = body;
   return body ? (
     <MainLayout head={head ? head.fields : {}}>
-      <Post post={body}/>
+      <Grid>
+        <Breadcrumbs />
+        <Post post={body}/>
+      </Grid>
     </MainLayout>
   ) : null;
 };
