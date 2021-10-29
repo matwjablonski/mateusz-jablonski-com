@@ -20,8 +20,8 @@ const Post: FunctionComponent<{ post: Article }> = ({post}) => {
       <div className={styles.excerpt}>
         {documentToReactComponents(post.excerpt, {})}
       </div>
-      {/* <PostCover coverImage={post.coverImage} daysFromToday={0}/>
-      <div className={styles.content}>
+      {<PostCover coverImage={post.featuredImage.fields}/>}
+      {/* <div className={styles.content}>
         <Content content={post.content}/>
       </div> */}
       {/*<PostNewsletterBox>*/}
