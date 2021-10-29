@@ -32,10 +32,29 @@
 .wrapper {
     margin-bottom: gutters.$gutter * 2;
     display: flex;
+    flex-direction: column;
+
+    @include media.bp(md) {
+        flex-direction: row;
+    }
 
     .main {
-        flex: 0 1 736px;
-        margin-right: gutters.$gutter * 2;
+        flex: 0 1 100%;
+        margin-bottom: gutters.$gutter;
+
+        @include media.bp(sm) {
+            flex: 0 1 50%;
+        }
+
+        @include media.bp(md) {
+            margin-right: gutters.$gutter;
+            margin-bottom: 0;
+        }
+
+        @include media.bp(lg) {
+            margin-right: gutters.$gutter * 2;
+            flex: 0 1 736px;
+        }
     }
 
     .column {

@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .lastPodcastPreview {
     position: relative;
@@ -35,6 +36,27 @@
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
+
+        > div {
+            width: 100%;
+
+            img {
+                object-fit: cover;
+            }
+        }
+
+        @include media.bp(lg) {
+            width: auto;
+
+            > div {
+                width: auto;
+    
+                img {
+                    object-fit: initial;
+                }
+            }
+        }
     }
 
     .image {
@@ -54,9 +76,21 @@
         border-radius: 4px;
         position: absolute;
         bottom: gutters.$gutter-medium;
-        left: gutters.$gutter-medium;
+        left: 0;
         padding: (gutters.$gutter-medium + gutters.$gutter-small) (gutters.$gutter-bigger) (gutters.$gutter-medium + gutters.$gutter-small) (gutters.$gutter-medium + gutters.$gutter-small);
         max-width: 545px;
+
+        @include media.bp(sm) {
+            left: gutters.$gutter-medium;
+        }
+
+        @include media.bp(md) {
+            left: 0;
+        }
+
+        @include media.bp(lg) {
+            left: gutters.$gutter-medium;
+        }
     }
 
     .date {
