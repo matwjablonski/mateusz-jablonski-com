@@ -11,6 +11,7 @@
   }
 
   .excerpt {
+    margin-bottom: gutters.$gutter-big;
 
     p {
       color: colors.$color-primary;
@@ -19,6 +20,10 @@
       letter-spacing: -0.01em;
       max-width: 930px;
       font-weight: 400;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

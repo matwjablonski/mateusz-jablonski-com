@@ -11,7 +11,7 @@ const PostCover: FunctionComponent<PostCoverProps> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <figure className={cx(styles.InputWrapper)}>
+    <figure className={cx(styles.wrapper)}>
       <Image 
         src={prepareImageUrl(image.fields.file.url)}
         width={1147}
