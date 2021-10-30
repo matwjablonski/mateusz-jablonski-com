@@ -1,6 +1,7 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 import { HeadInterface } from "./Head.types";
+import { Author } from "./Author.types";
 
 export interface ArticleFeaturedImage {
     image: Asset;
@@ -13,7 +14,11 @@ export interface ArticleFeaturedImage {
 
 export interface Article {
     head?: Entry<HeadInterface>;
+    createdDate: Date;
     title: string;
-    excerpt: Document;
-    featuredImage: Entry<ArticleFeaturedImage>
+    excerpt?: Document;
+    slug: string;
+    content?: Document;
+    featuredImage?: Entry<ArticleFeaturedImage>;
+    author?: Entry<Author>[];
 }

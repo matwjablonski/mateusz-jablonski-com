@@ -12,7 +12,7 @@ const Breadcrumbs = () => {
     return (
         <ul className={styles.breadcrumbs}>
             {
-                breadcrumbsItems.map((breadcrumb, i) => <li className={styles.item}>
+                breadcrumbsItems.map((breadcrumb, i) => <li className={styles.item} key={`breadcrumb-${breadcrumb}`}>
                         <Link href={`/${breadcrumb}`}>
                             <a>
                                 { breadcrumb ? breadcrumb : 'Jablonski' }
