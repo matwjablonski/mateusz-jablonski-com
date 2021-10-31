@@ -31,7 +31,7 @@ const Content = ({content, className}: ContentProps) => {
   }
 
   return (
-    <div className={style}>
+    <div className={styles.content}>
       {documentToReactComponents(content, options)}
     </div>
   )
