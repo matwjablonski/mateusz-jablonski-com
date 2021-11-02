@@ -19,10 +19,6 @@ const Post: FunctionComponent<{ post: Article }> = ({post}) => {
       </div>
       {<PostCover coverImage={post.featuredImage.fields}/>}
       <div className={styles.content}>
-        <button onClick={() => {
-          console.log('aaaa');
-          fetch('/api/comments/add', { method: 'POST', body: JSON.stringify({ id: post.id }) })
-        }} >action</button>
         <PostSidebar author={post.author[0].fields} />
         <Content content={post.content}/>
       </div>

@@ -1,9 +1,7 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import { format, differenceInDays } from 'date-fns';
-import { pl } from 'date-fns/locale';
-import {GetServerSideProps, GetStaticProps} from "next";
-import {fetchEntries} from '../contentful'
+import { differenceInDays } from 'date-fns';
+import { GetServerSideProps } from "next";
+import { fetchEntries } from '../contentful'
 import Grid from '../components/Grid';
 import MainLayout from '../layouts/index'
 import TitleBarWithComponent from '../components/TitleBarWithComponent';
@@ -25,6 +23,7 @@ import { Course } from '../types/common/Course.types';
 import ListenNow from '../components/ListenNow';
 import FeaturedCourses from '../components/FeaturedCourses';
 import { HeadInterface } from '../types/common/Head.types';
+import { formatDate } from '../utils/formatDate';
 
 interface HomeData {
   title: string;
@@ -174,7 +173,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const articles = await artilesRes.map(p => ({
     ...p.fields,
-    createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
+    createdDate: formatDate({
+      dateObject: p.fields?.createdDate,
+      formatString: 'dd MMMM yyyy'
+    }),
     featuredImage: p.fields?.featuredImage?.fields || null,
   }));
 
@@ -184,7 +186,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const podcasts = await podcastsRes.map(p => ({
     ...p.fields,
-    createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
+    createdDate: formatDate({
+      dateObject: p.fields?.createdDate,
+      formatString: 'dd MMMM yyyy'
+    }),
   }));
 
   const nextPodcast = await nextPodcastsRes.shift();
@@ -199,7 +204,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const books = await booksRes.map(p => ({
     ...p.fields,
-    createdDate: format(new Date(p.fields?.createdDate) || new Date(), 'dd MMMM yyyy', { locale: pl }),
+    createdDate: formatDate({
+      dateObject: p.fields?.createdDate,
+      formatString: 'dd MMMM yyyy'
+    }),
   }));
 
   return {

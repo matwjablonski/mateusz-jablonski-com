@@ -4,11 +4,13 @@ import Post from '../../components/Post';
 import MainLayout from '../../layouts'
 import Grid from '../../components/Grid';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import {GetServerSideProps, GetServerSidePropsContext, NextApiResponse} from "next";
-import {fetchEntries} from "../../contentful";
-import {ParsedUrlQuery} from "querystring";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { fetchEntries } from "../../contentful";
+import { ParsedUrlQuery } from "querystring";
 import { Article } from '../../types/common/Article.types';
 import { Comment } from '../../types/common/Comment.type';
+import { formatDateAndTimeWithSeparator } from '../../utils/formatDate';
+import CommentsList from '../../components/CommentsList';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
   const { head } = body;
@@ -20,6 +22,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
       <Grid>
         <Breadcrumbs />
         <Post post={body}/>
+        { comments.length && <CommentsList comments={comments} postId={body.id} />}
       </Grid>
     </MainLayout>
   ) : null;
@@ -45,7 +48,15 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   });
 
   const comments = await commentsRes
-    .map(({ fields: { message }}) => ({ message }));
+    .map(({ fields: { message }, sys: { createdAt }}) => ({ 
+      message,
+      createdDate: formatDateAndTimeWithSeparator({
+        dateObject: createdAt,
+        dateFormatString: 'dd MMMM yyyy',
+        timeFormatString: 'HH:mm',
+        separator: 'o'
+      })
+    }));
 
   return {
     props: {
