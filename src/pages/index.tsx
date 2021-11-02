@@ -66,7 +66,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
   } = data;
 
   return (
-      <MainLayout head={head ? head.fields : {}}>
+      <MainLayout head={head ? head.fields : {}} hideOverflow>
         <Grid>
           <Hero title={title} description={description} image={welcomeImage} />
           <section>

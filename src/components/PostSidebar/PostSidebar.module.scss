@@ -1,3 +1,29 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
 .sidebar {
     width: 18.5%;
+    position: sticky;
+    top: 0;
+    padding-right: gutters.$gutter-big;
+    padding-top: gutters.$gutter-small;
+
+    .name {
+        margin: 0 0 gutters.$gutter-small;
+        color: colors.$color-primary-700;
+        font-family: fonts.$font-headline;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 1.3;
+        letter-spacing: 0.04em;
+    }
+
+    p {
+        color: colors.$color-primary-700;
+        font-size: 13px;
+        line-height: 1.4;
+        font-weight: 400;
+        margin: 0;
+    }
 }

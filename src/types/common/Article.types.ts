@@ -14,6 +14,7 @@ export interface ArticleFeaturedImage {
 
 export interface Article {
     head?: Entry<HeadInterface>;
+    id: string;
     createdDate: Date;
     title: string;
     excerpt?: Document;
