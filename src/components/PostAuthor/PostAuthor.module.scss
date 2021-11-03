@@ -1,0 +1,48 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.authorWrapper {
+    // background: linear-gradient(90.1deg, #0136F8 0.08%, #14A5FF 99.21%);
+    background: url("../../public/author-bg.svg") no-repeat;
+    background-position: top center;
+    background-size: cover;
+    border-radius: 8px;
+    width: 82.85%;
+    margin-left: calc(18.5% - 96px);
+    padding: (gutters.$gutter * 2);
+    display: flex;
+
+    .authorImage {
+        margin-right: (gutters.$gutter * 2);
+    }
+
+    .sectionTitle {
+        color: colors.$color-primary-100;
+        font-family: fonts.$font-headline;
+        font-size: 16px;
+        margin: 0 0 gutters.$gutter;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+    }
+
+    .authorName {
+        color: colors.$color-white;
+        font-size: 32px;
+        font-family: fonts.$font-headline;
+        line-height: 1.2;
+        margin-bottom: (gutters.$gutter-small / 2);
+    }
+
+    .authorBio {
+        max-width: 544px;
+
+        p {
+            color: colors.$color-primary-100;
+            font-size: 14px;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+            margin-bottom: gutters.$gutter-small * 2;
+        }
+    }
+}

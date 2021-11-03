@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactHTMLElement, useRef } from 'react';
+import React, { FunctionComponent, useRef } from 'react';
 import { Entry } from 'contentful';
 import Post from '../../components/Post';
 import MainLayout from '../../layouts'
@@ -11,9 +11,10 @@ import { Article } from '../../types/common/Article.types';
 import { Comment } from '../../types/common/Comment.type';
 import { formatDateAndTimeWithSeparator } from '../../utils/formatDate';
 import CommentsList from '../../components/CommentsList';
+import PostAuthor from '../../components/PostAuthor';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
-  const { head } = body;
+  const { head, author } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
   console.log(comments);
@@ -23,6 +24,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
       <Grid>
         <Breadcrumbs />
         <Post post={body} numberOfComments={comments.length} commentsBlockRef={commentsRef}/>
+        {author[0] && <PostAuthor author={author[0].fields}/>}
         <div ref={commentsRef}>
           <CommentsList comments={comments} postId={body.id} />
         </div>
