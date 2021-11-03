@@ -1,13 +1,15 @@
 import React from 'react'
 import cx from 'classnames'
+import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
-import {BLOCKS, INLINES} from '@contentful/rich-text-types'
+import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types'
 
 import styles from './Content.module.scss';
 import Entry from "../Entry";
+import prepareImageUrl from '../../utils/prepareImageUrl';
 
 interface ContentProps {
-  content: any;
+  content: Document;
   className?: string;
 }
 
@@ -20,8 +22,17 @@ const Content = ({content, className}: ContentProps) => {
       [BLOCKS.HEADING_2]: (node, children) => <h2>{children}</h2>,
       [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
       [BLOCKS.HEADING_4]: (node, children) => <h4>{children}</h4>,
+      [BLOCKS.QUOTE]: (node, children) => <div className={styles.wideAsset}>
+        <blockquote>
+          {children}
+        </blockquote>
+      </div>, 
       [BLOCKS.EMBEDDED_ENTRY]: (node) => <Entry node={node}/>,
-      [BLOCKS.EMBEDDED_ASSET]: (node, children) => <p>abc</p>,
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        return <div className={styles.wideAsset}>
+          <Image src={prepareImageUrl(node.data.target.fields.file.url)} width={1200} height={400} />
+        </div>
+      },
       [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri}>{children}</a>,
     }
   }
