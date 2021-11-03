@@ -3,18 +3,22 @@
 @use '../../styles/settings/fonts';
 
 .authorWrapper {
-    // background: linear-gradient(90.1deg, #0136F8 0.08%, #14A5FF 99.21%);
-    background: url("../../public/author-bg.svg") no-repeat;
+    background: url("../../public/author-bg.webp") no-repeat;
     background-position: top center;
     background-size: cover;
     border-radius: 8px;
     width: 82.85%;
     margin-left: calc(18.5% - 96px);
-    padding: (gutters.$gutter * 2);
+    padding: (gutters.$gutter * 2) (gutters.$gutter * 2) (gutters.$gutter-small);
     display: flex;
+    margin-bottom: gutters.$gutter-bigger;
 
     .authorImage {
         margin-right: (gutters.$gutter * 2);
+    }
+
+    .image {
+        border-radius: 4px;
     }
 
     .sectionTitle {
@@ -36,13 +40,54 @@
 
     .authorBio {
         max-width: 544px;
+        margin-bottom: (gutters.$gutter * 2);
 
         p {
             color: colors.$color-primary-100;
             font-size: 14px;
             line-height: 1.4;
             letter-spacing: -0.01em;
-            margin-bottom: gutters.$gutter-small * 2;
+            margin: 0;
         }
+    }
+
+    .socialTitle {
+        color: colors.$color-primary-100;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.03em;
+        font-family: fonts.$font-headline;
+        line-height: 1.25;
+        margin: 0 0 gutters.$gutter;
+    }
+
+    .socials {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 540px;
+    }
+
+    .socialItem {
+        margin-right: gutters.$gutter-medium;
+        margin-bottom: gutters.$gutter-medium;
+    }
+
+    .socialLink {
+        display: flex;
+        align-items: center;
+        color: colors.$color-white;
+        font-family: fonts.$font-headline;
+        font-size: 14px;
+        line-height: 1.15;
+        letter-spacing: 0.04em;
+        text-shadow: 0px 4px 9px rgba(0, 23, 115, 0.5);
+        text-transform: uppercase;
+    }
+
+    .icon {
+        margin-right: gutters.$gutter-small;
     }
 }

@@ -10,7 +10,8 @@ export interface Author {
     website?: string;
     email?: string;
     github?: string;
-    linkedin?: string;
+    linkedIn?: string;
     twitter?: string;
+    instagram?: string;
     facebook?: string;
 }

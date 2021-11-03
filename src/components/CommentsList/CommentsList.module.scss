@@ -11,6 +11,10 @@
         font-family: fonts.$font-headline;
         font-size: 32px;
         line-height: 1.25;
+
+        strong {
+            color: colors.$color-primary-700;
+        }
     }
 
     .meta {

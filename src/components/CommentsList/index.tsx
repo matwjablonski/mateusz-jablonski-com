@@ -12,7 +12,7 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }
 
     return (
         <section className={styles.commentsWrapper}>
-            <h3 className={styles.title}>Komentarze ({comments.length})</h3>
+            <h3 className={styles.title}>Komentarze <strong>({comments.length})</strong></h3>
             <ul className={styles.list}>
                 {
                     comments.length > 0 ?
