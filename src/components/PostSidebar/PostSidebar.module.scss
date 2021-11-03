@@ -19,11 +19,29 @@
         letter-spacing: 0.04em;
     }
 
+    .description {
+        margin-bottom: gutters.$gutter-medium;
+    }
+
     p {
         color: colors.$color-primary-700;
         font-size: 13px;
         line-height: 1.4;
         font-weight: 400;
         margin: 0;
+    }
+
+    .comments {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary-700;
+        cursor: pointer;
+    }
+
+    .commentsIcon {
+        margin-right: gutters.$gutter-small;
+        height: 24px;
     }
 }

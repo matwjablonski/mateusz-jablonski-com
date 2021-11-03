@@ -15,19 +15,21 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }
             <h3 className={styles.title}>Komentarze ({comments.length})</h3>
             <ul className={styles.list}>
                 {
-                    comments.map(comment => (
-                        <li key={comment.createdDate.toString()} className={styles.comment}>
-                            <div className={styles.meta}>
-                                {console.log(comment)}
-                                <UserAvatar email={comment?.email} />
-                                <div>
-                                    <h4 className={styles.author}>{comment.author || 'Anonimowy autor'}</h4>
-                                    <span className={styles.date}>{comment.createdDate}</span>
+                    comments.length > 0 ?
+                        comments.map(comment => (
+                            <li key={comment.createdDate.toString()} className={styles.comment}>
+                                <div className={styles.meta}>
+                                    {console.log(comment)}
+                                    <UserAvatar email={comment?.email} />
+                                    <div>
+                                        <h4 className={styles.author}>{comment.author || 'Anonimowy autor'}</h4>
+                                        <span className={styles.date}>{comment.createdDate}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <p className={styles.text}>{comment.message}</p>
-                        </li>
-                    ))
+                                <p className={styles.text}>{comment.message}</p>
+                            </li>
+                        )) :
+                        'Chwilowo brak komentarzy'
                 }
             </ul>
         </section>

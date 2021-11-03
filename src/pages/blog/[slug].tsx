@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactHTMLElement, useRef } from 'react';
 import { Entry } from 'contentful';
 import Post from '../../components/Post';
 import MainLayout from '../../layouts'
@@ -14,6 +14,7 @@ import CommentsList from '../../components/CommentsList';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
   const { head } = body;
+  const commentsRef = useRef<HTMLDivElement>(null);
 
   console.log(comments);
 
@@ -21,8 +22,10 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
     <MainLayout head={head ? head.fields : {}}>
       <Grid>
         <Breadcrumbs />
-        <Post post={body}/>
-        { comments.length > 0 && <CommentsList comments={comments} postId={body.id} />}
+        <Post post={body} numberOfComments={comments.length} commentsBlockRef={commentsRef}/>
+        <div ref={commentsRef}>
+          <CommentsList comments={comments} postId={body.id} />
+        </div>
       </Grid>
     </MainLayout>
   ) : null;

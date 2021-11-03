@@ -5,10 +5,10 @@ import PostCover from '../PostCover';
 import styles from './Post.module.scss'
 import Content from '../Content';
 import PostSidebar from '../PostSidebar';
-import { Article } from '../../types/common/Article.types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { PostProps } from './Post.types';
 
-const Post: FunctionComponent<{ post: Article }> = ({post}) => {
+const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlockRef}) => {
   const {t} = useTranslation();
 
   return (
@@ -19,7 +19,7 @@ const Post: FunctionComponent<{ post: Article }> = ({post}) => {
       </div>
       {<PostCover coverImage={post.featuredImage.fields}/>}
       <div className={styles.content}>
-        <PostSidebar author={post.author[0].fields} />
+        <PostSidebar author={post.author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <Content content={post.content}/>
       </div>
       {/*<PostNewsletterBox>*/}
