@@ -22,7 +22,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
       <Grid>
         <Breadcrumbs />
         <Post post={body}/>
-        { comments.length && <CommentsList comments={comments} postId={body.id} />}
+        { comments.length > 0 && <CommentsList comments={comments} postId={body.id} />}
       </Grid>
     </MainLayout>
   ) : null;
