@@ -1,0 +1,16 @@
+@use '../../styles/settings/gutters';
+
+.userAvatar {
+    margin-right: gutters.$gutter-medium;
+
+    .avatar {
+        border-radius: 4px;
+    }
+
+    .avatarPlaceholder {
+        border-radius: 4px;
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(101.38deg, rgba(1, 54, 248, 0.13) 8.99%, rgba(1, 54, 248, 0.14) 76.22%);
+    }
+}
