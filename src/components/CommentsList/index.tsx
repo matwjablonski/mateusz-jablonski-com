@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { CommentsListProps } from './CommentsList.types';
 import styles from './CommentsList.module.scss';
+import UserAvatar from '../UserAvatar';
 
 const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }) => {
 
@@ -16,8 +17,14 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }
                 {
                     comments.map(comment => (
                         <li key={comment.createdDate.toString()} className={styles.comment}>
-                            <h4 className={styles.author}>{comment.author || 'Anonimowy autor'}</h4>
-                            <span className={styles.date}>{comment.createdDate}</span>
+                            <div className={styles.meta}>
+                                {console.log(comment)}
+                                <UserAvatar email={comment?.email} />
+                                <div>
+                                    <h4 className={styles.author}>{comment.author || 'Anonimowy autor'}</h4>
+                                    <span className={styles.date}>{comment.createdDate}</span>
+                                </div>
+                            </div>
                             <p className={styles.text}>{comment.message}</p>
                         </li>
                     ))

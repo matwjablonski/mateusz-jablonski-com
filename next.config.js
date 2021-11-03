@@ -16,6 +16,6 @@ module.exports = withPlugins([
     localeDetection: false,
   },
   images: {
-    domains: ['images.ctfassets.net'],
+    domains: ['images.ctfassets.net', 'gravatar.com'],
   },
 })
