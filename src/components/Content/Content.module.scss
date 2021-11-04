@@ -1,10 +1,19 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .content {
-    width: 66%;
+    width: 100%;
     padding-bottom: gutters.$gutter-bigger;
+
+    @include media.bp(md) {
+        width: 80%;
+    }
+
+    @include media.bp(lg) {
+        width: 66%;
+    }
 
     .dots {
         position: relative;
@@ -83,8 +92,12 @@
     }
 
     .wideAsset {
-        margin-left: -206px;
-        margin-right: -206px;
+        margin: 0;
+
+        @include media.bp(lg) {
+            margin-left: -206px;
+            margin-right: -206px;
+        }
     }
 
     .wideImage {

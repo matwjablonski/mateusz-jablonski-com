@@ -1,15 +1,25 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .sidebar {
-    width: 18.5%;
+    display: none;
     position: sticky;
     top: 0;
     padding-right: gutters.$gutter-big;
     padding-top: gutters.$gutter-small;
     transition: opacity 700ms;
     padding-bottom: gutters.$gutter;
+
+    @include media.bp(md) {
+        display: block;
+        width: 20%;
+    }
+
+    @include media.bp(lg) {
+        width: 18.5%;
+    }
 
     .name {
         margin: 0 0 gutters.$gutter-small;
