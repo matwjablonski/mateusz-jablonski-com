@@ -22,7 +22,7 @@ const Content = ({content, className}: ContentProps) => {
       [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
       [BLOCKS.HEADING_4]: (node, children) => <h4>{children}</h4>,
       [BLOCKS.QUOTE]: (node, children) => <div className={styles.wideAsset}>
-        <blockquote>
+        <blockquote className={styles.blockquote}>
           {children}
         </blockquote>
       </div>, 
@@ -48,6 +48,7 @@ const Content = ({content, className}: ContentProps) => {
   return (
     <div className={styles.content}>
       {documentToReactComponents(content, options)}
+      <div className={styles.dots}></div>
     </div>
   )
 }

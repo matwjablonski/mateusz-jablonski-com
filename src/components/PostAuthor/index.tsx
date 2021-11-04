@@ -12,7 +12,6 @@ import GithubIcon from '../../public/icons/github-bold.svg';
 import InstagramIcon from '../../public/icons/instagram-bold.svg';
 
 const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
-    console.log(author);
     return (
         <div className={styles.authorWrapper}>
             <div className={styles.authorImage}>

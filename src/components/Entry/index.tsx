@@ -2,7 +2,6 @@ import React from 'react';
 import Gist from 'react-gist';
 
 const Entry = ({node: {data: {target: {fields, sys}}}}) => {
-  console.log(fields, sys);
   switch (sys.contentType.sys.id) {
     case 'code':
       return (

@@ -7,6 +7,7 @@ import Content from '../Content';
 import PostSidebar from '../PostSidebar';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { PostProps } from './Post.types';
+import PostShare from '../PostShare';
 
 const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlockRef}) => {
   const {t} = useTranslation();
@@ -22,11 +23,7 @@ const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlo
         <PostSidebar author={post.author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <Content content={post.content}/>
       </div>
-      {/*<PostNewsletterBox>*/}
-      {/*  <MediumTitle>{t('GENERAL.NEWSLETTER.SUBSCRIBE')}</MediumTitle>*/}
-      {/*  <SmallText>{t('GENERAL.NEWSLETTER.DESCRIPTION')}</SmallText>*/}
-      {/*  <Newsletter/>*/}
-      {/*</PostNewsletterBox>*/}
+      <PostShare />
     </article>
   );
 };

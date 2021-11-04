@@ -1,0 +1,24 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
+
+.shareWrapper {
+    display: flex;
+    align-items: center;
+    margin-left: calc(18.5% - 96px);
+    margin-bottom: gutters.$gutter-medium;
+    width: 82.85%;
+
+    .title {
+        color: colors.$color-primary-700;
+        font-family: fonts.$font-headline;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+        margin: 0 gutters.$gutter 0 0;
+    }
+
+    .button {
+        margin: 0 10px;
+    }
+}

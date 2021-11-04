@@ -45,6 +45,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         res.send({ status: 'saved', message: 'Udało się! Twój komentarz został zapisany poprawnie. Oczekuje na akceptację.' }); 
     } catch(e) {
-        console.log(e)
+        res.status(400);
+
+        res.send({ status: 'notsaved', message: 'Ups. Nie udało się zapisać Twojego komentarza. Spróbuj ponownie później.'})
     }
 }

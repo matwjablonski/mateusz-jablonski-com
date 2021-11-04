@@ -6,7 +6,6 @@ import UserAvatar from '../UserAvatar';
 const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }) => {
 
     const actionBtn = <button onClick={() => {
-        console.log('aaaa');
         fetch('/api/comments/add', { method: 'POST', body: JSON.stringify({ id: postId }) })
         }} >action</button>;
 
@@ -19,7 +18,6 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }
                         comments.map(comment => (
                             <li key={comment.createdDate.toString()} className={styles.comment}>
                                 <div className={styles.meta}>
-                                    {console.log(comment)}
                                     <UserAvatar email={comment?.email} />
                                     <div>
                                         <h4 className={styles.author}>{comment.author || 'Anonimowy autor'}</h4>

@@ -9,6 +9,7 @@
     padding-right: gutters.$gutter-big;
     padding-top: gutters.$gutter-small;
     transition: opacity 700ms;
+    padding-bottom: gutters.$gutter;
 
     .name {
         margin: 0 0 gutters.$gutter-small;
@@ -39,10 +40,20 @@
         font-family: fonts.$font-headline;
         color: colors.$color-primary-700;
         cursor: pointer;
+        margin-bottom: (gutters.$gutter * 2);
     }
 
     .commentsIcon {
         margin-right: gutters.$gutter-small;
         height: 24px;
+    }
+
+    .quickContact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .socialLink {
+        margin-bottom: gutters.$gutter;
     }
 }

@@ -1,9 +1,14 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './PostSidebar.module.scss';
 import { PostSidebarProps } from './PostSidebar.types';
 import commentsIcon from '../../public/icons/comments.svg';
+import TwitterIcon from '../../public/icons/twitter-bold.svg';
+import FacebookIcon from '../../public/icons/facebook-bold-color.svg';
+import LiIcon from '../../public/icons/li-bold-color.svg';
+import MailIcon from '../../public/icons/mail.svg';
 
 const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComments, commentsBlockRef}) => {
     const sidebar = useRef<HTMLDivElement>(null);
@@ -75,6 +80,42 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
                     <Image src={commentsIcon} width={24} height={24}/>
                 </div>
                 {numberOfComments}
+            </div>
+            <div className={styles.quickContact}>
+                { 
+                    author.twitter && (
+                        <Link href={author.twitter}>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
+                                <Image src={TwitterIcon} width={24} height={19} />
+                            </a>
+                        </Link>
+                    )
+                }
+                { 
+                    author.facebook && (
+                        <Link href={author.facebook}>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
+                                <Image src={FacebookIcon} width={16} height={26} />
+                            </a>
+                        </Link>
+                    )
+                }
+                { 
+                    author.linkedIn && (
+                        <Link href={author.linkedIn}>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
+                                <Image src={LiIcon} width={24} height={24} />
+                            </a>
+                        </Link>
+                    )
+                }
+                { 
+                    author.email && (
+                        <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={`mailto:${author.email}`}>
+                            <Image src={MailIcon} width={24} height={24} />
+                        </a>
+                    )
+                }
             </div>
         </div>
     )
