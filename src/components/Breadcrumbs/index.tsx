@@ -15,7 +15,7 @@ const Breadcrumbs = () => {
                 breadcrumbsItems.map((breadcrumb, i) => <li className={styles.item} key={`breadcrumb-${breadcrumb}`}>
                         <Link href={`/${breadcrumb}`}>
                             <a>
-                                { breadcrumb ? breadcrumb : 'Jablonski' }
+                                { breadcrumb ? breadcrumb : 'Jabłoński' }
                             </a>
                         </Link>
                         { i !== breadcrumbsItems.length - 1 && <span className={styles.separator}>/</span>}
