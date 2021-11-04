@@ -29,6 +29,8 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
             return (Math.abs(curr[0] - (window.scrollY - changeYFactor)) < Math.abs(prev[0] - (window.scrollY - changeYFactor)) ? curr : prev);
         });
 
+        console.log('closest', closest);
+
         if (sidebarPosition > closest[0] && window.scrollY < closest[1]) {
             sidebar.current.style.opacity === '1' ? sidebar.current.style.opacity = '0' : null;
         } else {
@@ -43,13 +45,10 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
     }
 
     useEffect(() => {
-        if (sidebar) {
-            setSidebarHeight(sidebar.current.getBoundingClientRect().height)
-        }
-
         const getWideAssetsPosition = async () => {
             setTimeout(() => {
                 const wideItems = document.querySelectorAll('[class*="wideAsset"]') as NodeListOf<HTMLElement>;
+                console.log('wideItems', wideItems);
                 const arr = Array.from(wideItems).map(item => {
                     const itemHeight = item.getBoundingClientRect().height;
                     return [item.offsetTop, item.offsetTop + itemHeight];
@@ -58,12 +57,14 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
                 if (!wideAssetsPositions.length && arr.length) {
                     setWideAssetsPositions(arr);
                 }
-
             }, 0);
         }
 
-        getWideAssetsPosition();
-        scrollAction();
+        if (sidebar) {
+            setSidebarHeight(sidebar.current.getBoundingClientRect().height)
+            getWideAssetsPosition();
+            scrollAction();
+        }
 
         return typeof window !== undefined && window.removeEventListener('scroll', calculateVisibilityOfSidebar);
     }, [wideAssetsPositions, setWideAssetsPositions])
