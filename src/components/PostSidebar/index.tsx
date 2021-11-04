@@ -17,6 +17,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
     }
 
     const calculateVisibilityOfSidebar = () => {
+        console.log('scroll is working');
         const changeYFactor = 100;
         const heightFactor = 50;
         const sidebarPosition = window.scrollY + sidebarHeight + heightFactor;
@@ -40,7 +41,6 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
 
     const scrollAction = () => {
         if (typeof window !== undefined && sidebar) {
-            console.log(window);
             window.addEventListener('scroll', calculateVisibilityOfSidebar);
         }
     }
