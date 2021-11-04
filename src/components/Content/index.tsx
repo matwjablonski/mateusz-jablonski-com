@@ -1,9 +1,8 @@
-import React from 'react'
-import cx from 'classnames'
+import React from 'react';
+import cx from 'classnames';
 import Image from 'next/image';
-import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
-import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types'
-
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types';
 import styles from './Content.module.scss';
 import Entry from "../Entry";
 import prepareImageUrl from '../../utils/prepareImageUrl';
@@ -29,9 +28,14 @@ const Content = ({content, className}: ContentProps) => {
       </div>, 
       [BLOCKS.EMBEDDED_ENTRY]: (node) => <Entry node={node}/>,
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        return <div className={styles.wideAsset}>
-          <Image src={prepareImageUrl(node.data.target.fields.file.url)} width={1200} height={400} />
-        </div>
+        return <figure className={cx(styles.wideAsset, styles.wideImage)}>
+          <Image src={prepareImageUrl(node.data.target.fields.file.url)} width={1120} height={387} />
+          {
+            node.data.target.fields.description && (
+              <figcaption className={styles.caption}>{node.data.target.fields.description}</figcaption>
+            )
+          }
+        </figure>
       },
       [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri}>{children}</a>,
     }
