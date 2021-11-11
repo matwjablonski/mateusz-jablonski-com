@@ -6,10 +6,7 @@ import { Author } from "./Author.types";
 export interface ArticleFeaturedImage {
     image: Asset;
     title: string;
-    imageUrl: string;
     author: string;
-    authorUrl: string;
-    source: string;
 }
 
 export interface Article {
@@ -17,6 +14,7 @@ export interface Article {
     id: string;
     createdDate: Date;
     title: string;
+    summary?: Document,
     excerpt?: Document;
     slug: string;
     content?: Document;

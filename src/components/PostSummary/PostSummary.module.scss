@@ -1,0 +1,56 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+
+.summary {
+    background: colors.$color-primary-100;
+    border-radius: 8px;
+    margin-bottom: gutters.$gutter-big;
+    padding: gutters.$gutter-medium;
+
+    .title {
+        font-size: 16px;
+        font-family: fonts.$font-headline;
+        letter-spacing: -0.01em;
+        margin: 0 0 gutters.$gutter-medium;
+        line-height: 1.25;
+        color: colors.$color-primary;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        margin: 0 0 gutters.$gutter-small;
+        padding: 0;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        color: colors.$color-primary;
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "";
+            background: url("../../public/icons/summary-arrow.svg");
+            width: 38px;
+            height: 6px;
+            display: block;
+            margin-right: gutters.$gutter;
+        }
+
+        p {
+            display: initial;
+            margin: 0;
+            font-size: inherit;
+            line-height: inherit;
+        }
+    }
+
+    p {
+        display: none;
+    }
+}

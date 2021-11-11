@@ -6,13 +6,15 @@ import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types';
 import styles from './Content.module.scss';
 import Entry from "../Entry";
 import prepareImageUrl from '../../utils/prepareImageUrl';
+import PostSummary from '../PostSummary';
 
 interface ContentProps {
+  summary?: Document;
   content: Document;
   className?: string;
 }
 
-const Content = ({content, className}: ContentProps) => {
+const Content = ({content, summary, className}: ContentProps) => {
   const style = cx(styles.wrapper, className)
 
   const options = {
@@ -47,6 +49,7 @@ const Content = ({content, className}: ContentProps) => {
 
   return (
     <div className={styles.content}>
+      <PostSummary summary={summary} />
       {documentToReactComponents(content, options)}
       <div className={styles.dots}></div>
     </div>

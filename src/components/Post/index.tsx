@@ -21,7 +21,7 @@ const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlo
       {<PostCover coverImage={post.featuredImage.fields}/>}
       <div className={styles.content}>
         <PostSidebar author={post.author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
-        <Content content={post.content}/>
+        <Content content={post.content} summary={post?.summary} />
       </div>
       <PostShare />
     </article>
