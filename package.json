@@ -23,7 +23,7 @@
     "jest": "^27.0.6",
     "jest-transform-stub": "^2.0.0",
     "md5": "^2.3.0",
-    "next": "^12.0.1",
+    "next": "10.0.6",
     "next-compose-plugins": "^2.2.1",
     "next-images": "^1.7.0",
     "next-videos": "^1.4.0",

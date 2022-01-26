@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: { Component: FC, pageProps: any }) {
   return <Component {...pageProps} />
 }
 
