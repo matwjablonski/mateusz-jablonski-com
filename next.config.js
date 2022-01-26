@@ -17,5 +17,6 @@ module.exports = withPlugins([
   },
   images: {
     domains: ['images.ctfassets.net', 'gravatar.com'],
+    disableStaticImages: true
   },
 })

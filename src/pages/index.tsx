@@ -42,11 +42,11 @@ interface HomeData {
 }
 
 interface HomeProps {
-  podcasts: Podcast[],
-  articles: Article[],
+  podcasts: Podcast[];
+  articles: Article[];
   nextArticleInDays: number;
   nextPodcastInDays: number;
-  books: Book[],
+  books: Book[];
   nextCourse: Course;
   data: HomeData;
 }

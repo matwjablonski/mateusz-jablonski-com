@@ -1,0 +1,41 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+
+.sources {
+    margin-top: gutters.$gutter-big;
+    margin-right: -(gutters.$gutter * 2);
+    margin-left: -(gutters.$gutter * 2);
+    padding: (gutters.$gutter * 2);
+    border: 1px solid colors.$color-primary-300;
+    border-radius: 8px;
+    width: calc(100% + gutters.$gutter-bigger);
+
+    h3 {
+        margin: 0 0 gutters.$gutter-small;
+        font-size: 24px;
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    li {
+        font-size: 22px;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+    
+        &::marker {
+            font-size: 16px;
+        }
+
+        &:last-child {
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    > p {
+        display: none;
+    }
+}

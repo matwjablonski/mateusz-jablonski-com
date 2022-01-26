@@ -7,14 +7,16 @@ import styles from './Content.module.scss';
 import Entry from "../Entry";
 import prepareImageUrl from '../../utils/prepareImageUrl';
 import PostSummary from '../PostSummary';
+import PostSources from '../PostSources';
 
 interface ContentProps {
   summary?: Document;
   content: Document;
+  sources?: Document;
   className?: string;
 }
 
-const Content = ({content, summary, className}: ContentProps) => {
+const Content = ({content, summary, sources, className}: ContentProps) => {
   const style = cx(styles.wrapper, className)
 
   const options = {
@@ -52,6 +54,7 @@ const Content = ({content, summary, className}: ContentProps) => {
       <PostSummary summary={summary} />
       {documentToReactComponents(content, options)}
       <div className={styles.dots}></div>
+      {sources && <PostSources sources={sources}/>}
     </div>
   )
 }
