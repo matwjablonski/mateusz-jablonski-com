@@ -7,7 +7,7 @@ import { PostCoverProps } from './PostCover.types';
 import prepareImageUrl from '../../utils/prepareImageUrl';
 
 const PostCover: FunctionComponent<PostCoverProps> = ({
-  coverImage: { title, author, authorUrl, source, image },
+  coverImage: { title, author,  image },
 }) => {
   const { t } = useTranslation();
   return (
