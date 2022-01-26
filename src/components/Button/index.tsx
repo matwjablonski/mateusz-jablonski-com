@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FunctionComponent, memo } from 'react';
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ButtonProps, ButtonType } from './Button.types';
@@ -7,7 +7,7 @@ import arrow from '../../public/icons/arrow.svg';
 import arrowWhite from '../../public/icons/arrow-white.svg';
 import cx from 'classnames';
 
-const L: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pattern, href, label = '', className, children, ...rest}) => {
+const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pattern, href, label = '', className, children, ...rest }) => {
   const linkContent = (
     <a {...rest} className={cx(styles.button, styles[pattern], className)}>
       {label}
@@ -30,7 +30,7 @@ const L: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps
     </Link>) : <>{linkContent}</>
 });
 
-const B: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {
+const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {
   return (
       <button className={cx(styles.button, styles[pattern])} onClick={action} {...rest}>
         {label}
