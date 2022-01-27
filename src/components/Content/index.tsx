@@ -32,8 +32,12 @@ const Content = ({content, summary, sources, className}: ContentProps) => {
       </div>, 
       [BLOCKS.EMBEDDED_ENTRY]: (node) => <Entry node={node}/>,
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        return <figure className={cx(styles.wideAsset, styles.wideImage)}>
-          <Image src={prepareImageUrl(node.data.target.fields.file.url)} width={1120} height={387} />
+        const { width, height } = node.data.target.fields.file.details.image;
+        const proportion = width / height;
+        const isImageWide = proportion > 1.4;
+
+        return <figure className={cx(isImageWide && styles.wideAsset, isImageWide && styles.wideImage)}>
+          <Image src={prepareImageUrl(node.data.target.fields.file.url)} width={isImageWide ? 1120 : width} height={isImageWide ? 387 : width} />
           {
             node.data.target.fields.description && (
               <figcaption className={styles.caption}>{node.data.target.fields.description}</figcaption>

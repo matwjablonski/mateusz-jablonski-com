@@ -23,7 +23,7 @@ const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlo
         <PostSidebar author={post.author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <Content content={post.content} summary={post?.summary} sources={post?.sources} />
       </div>
-      <PostShare />s
+      <PostShare />
     </article>
   );
 };
