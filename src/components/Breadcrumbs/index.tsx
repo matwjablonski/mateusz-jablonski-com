@@ -7,7 +7,7 @@ const Breadcrumbs = () => {
     const { pathname } = useRouter();
 
     const pathsArray = pathname.split('/');
-    const breadcrumbsItems = pathsArray.splice(0, pathsArray.length - 1);
+    const breadcrumbsItems = pathsArray.length > 2 ? pathsArray.splice(0, pathsArray.length - 1) : pathsArray;
 
     return (
         <ul className={styles.breadcrumbs}>

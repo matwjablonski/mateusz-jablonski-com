@@ -1,0 +1,14 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+
+.pageTitle {
+    .p {
+        color: colors.$color-primary-700;
+        font-size: 18px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        max-width: 640px;
+        font-weight: 400;
+        margin: 0 0 gutters.$gutter-bigger;
+    }
+}

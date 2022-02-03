@@ -12,7 +12,7 @@
         font-size: 16px;
         font-family: fonts.$font-headline;
         letter-spacing: -0.01em;
-        margin: 0 0 gutters.$gutter-medium;
+        margin: 0 0 gutters.$gutter-medium !important;
         line-height: 1.25;
         color: colors.$color-primary;
     }

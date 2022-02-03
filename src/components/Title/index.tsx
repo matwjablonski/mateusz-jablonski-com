@@ -3,10 +3,10 @@ import cx from 'classnames';
 import styles from './Title.module.scss'
 import { TitleProps } from './Title.types';
 
-const PageTitle: FunctionComponent<TitleProps> = ({classes, children, capitalize}) => (
+const Title: FunctionComponent<TitleProps> = ({classes, children, capitalize}) => (
   <div className={styles.wrapper}>
     <h2 className={cx(classes, capitalize && styles.capitalize)}>{children}</h2>
   </div>
 )
 
-export default PageTitle
+export default Title
