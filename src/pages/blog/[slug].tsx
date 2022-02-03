@@ -34,23 +34,23 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext<ParsedUrlQuery>) => {
   const {slug} = context.params
 
-  const res: Entry<Article>[] = await fetchEntries({
+  const res = await fetchEntries({
     content_type: 'article',
     'fields.slug': slug,
     include: 2,
   })
 
-  const body = await res
+  const body = await res.data
     .map(p => ({ ...p.fields, id: p.sys.id }))
     .shift();
 
-  const commentsRes: Entry<Comment>[] = await fetchEntries({
+  const commentsRes = await fetchEntries({
     content_type: 'comment',
     include: 2,
     'fields.article.sys.id': body.id,
   });
 
-  const comments = await commentsRes
+  const comments = await commentsRes.data
     .map(({ fields: { message, email }, sys: { createdAt }}) => ({ 
       message,
       email: email || '',

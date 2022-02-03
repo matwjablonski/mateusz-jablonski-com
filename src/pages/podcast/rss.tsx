@@ -51,7 +51,7 @@ export default class Rss extends React.Component {
             limit: 5,
         });
 
-        const content = getRssXml(podcastsRes.map(p => p.fields));
+        const content = getRssXml(podcastsRes.data.map(p => p.fields));
         res.setHeader("Content-Type", "text/xml");
         res.write(content);
         res.end();

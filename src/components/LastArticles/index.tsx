@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import cx from 'classnames';
 import ArticlePreview from "../ArticlePreview"
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import styles from './LastArticles.module.scss';
+import { Article } from '../../types/common/Article.types';
 
 const ITEM_WIDTH = 384;
 const ITEMS_ON_SCREEN = 3;
 
-const LastArticles = ({articles}) => {
+const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleOnNext = () => {

@@ -169,22 +169,21 @@ export const getServerSideProps: GetServerSideProps = async () => {
     limit: 1,
   });
 
-  const homeDetails = await homeRes.map(p => p.fields).shift();
+  const homeDetails = await homeRes.data.map(p => p.fields).shift();
 
-  const articles = await artilesRes.map(p => ({
+  const articles = await artilesRes.data.map(p => ({
     ...p.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
       formatString: 'dd MMMM yyyy'
     }),
-    featuredImage: p.fields?.featuredImage?.fields || null,
   }));
 
-  const nextArticle = await nextArticlesRes.shift();
+  const nextArticle = await nextArticlesRes.data.shift();
 
   const nextArticleInDays = nextArticle ? differenceInDays(new Date(nextArticle.fields.createdDate) , new Date()) + 1 : null;
 
-  const podcasts = await podcastsRes.map(p => ({
+  const podcasts = await podcastsRes.data.map(p => ({
     ...p.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
@@ -192,17 +191,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }),
   }));
 
-  const nextPodcast = await nextPodcastsRes.shift();
+  const nextPodcast = await nextPodcastsRes.data.shift();
 
   const nextPodcastInDays = nextPodcast ? differenceInDays(new Date(nextPodcast.fields.createdDate) , new Date()) + 1 : null;
 
-  const nextCourse = await nextCourseRes.length ? nextCourseRes.map(p => ({
+  const nextCourse = await nextCourseRes.data.length ? nextCourseRes.data.map(p => ({
     title: p.fields.title,
     startDate: new Date(p.fields?.startDate).getTime() || new Date().getTime(),
     publishDate: new Date(p.fields?.publishDate).getTime() || new Date().getTime(),
   })).shift() : null;
 
-  const books = await booksRes.map(p => ({
+  const books = await booksRes.data.map(p => ({
     ...p.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,

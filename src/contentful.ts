@@ -9,11 +9,14 @@ const client = createClient({
   accessToken,
 })
 
-async function fetchEntries(context): Promise<Items> {
+async function fetchEntries(context): Promise<{ data: Items, total: number }> {
   const entries: EntryCollection<Items> = await client.getEntries(context)
 
   if (entries.items) {
-    return entries.items
+    return {
+      data: entries.items,
+      total: entries.total
+    }
   }
 
   return null

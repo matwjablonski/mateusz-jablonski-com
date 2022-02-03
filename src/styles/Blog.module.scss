@@ -1,0 +1,12 @@
+@use './settings/gutters';
+
+.blogList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -(gutters.$gutter);
+    margin-right: -(gutters.$gutter);
+    
+    > article {
+        margin-bottom: gutters.$gutter-big;
+    }
+}

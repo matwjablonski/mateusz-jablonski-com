@@ -17,10 +17,10 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({title, createdD
                 <Link href={`/blog/${slug}`}>
                     <a>
                         {
-                            featuredImage?.image ? 
+                            featuredImage?.fields?.image ? 
                                 (
                                     <div className={styles.imageBox}>
-                                        <Image src={prepareImageUrl(featuredImage?.image?.fields?.file.url)} width={352} height={216} className={styles.image}/>
+                                        <Image src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)} width={352} height={216} className={styles.image}/>
                                     </div>
                                 ) :
                                 <ImagePlaceholder width="352px" height="216px" />
