@@ -5,6 +5,7 @@ import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import styles from './LastArticles.module.scss';
 import { Article } from '../../types/common/Article.types';
+import { Preview } from '../ArticlePreview/ArticlePreview.types';
 
 const ITEM_WIDTH = 384;
 const ITEMS_ON_SCREEN = 3;
@@ -39,6 +40,7 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
                             createdDate={article.createdDate}
                             featuredImage={article.featuredImage}
                             className={cx(!checkIsIndexVisible(index) && styles.inactivePreview)}
+                            preview={Preview.VERTICAL}
                         />)
                     }
                 </div>

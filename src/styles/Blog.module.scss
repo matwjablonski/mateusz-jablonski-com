@@ -10,3 +10,9 @@
         margin-bottom: gutters.$gutter-big;
     }
 }
+
+.lastArticle {
+    margin-left: -(gutters.$gutter);
+    margin-right: -(gutters.$gutter);
+    margin-bottom: gutters.$gutter-medium;
+}

@@ -12,6 +12,7 @@ import { formatDate } from '../../utils/formatDate';
 import { Article } from '../../types/common/Article.types';
 import ArticlePreview from '../../components/ArticlePreview';
 import styles from '../../styles/Blog.module.scss';
+import { Preview } from '../../components/ArticlePreview/ArticlePreview.types';
 
 interface BlogPageProps {
     head?: Entry<HeadInterface>;
@@ -29,8 +30,16 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description} />
-                {lastArticle.title}
-                {totalArticles}
+                <section className={styles.lastArticle}>
+                    <ArticlePreview 
+                        title={lastArticle.title}
+                        slug={lastArticle.slug}
+                        excerpt={lastArticle.excerpt}
+                        createdDate={lastArticle.createdDate}
+                        featuredImage={lastArticle.featuredImage}
+                        preview={Preview.HORIZONTAL}
+                    />
+                </section>
                 <section className={styles.blogList}>
                     {restArticles.map((article) => <ArticlePreview 
                         key={`article${Math.random()}`}
@@ -39,6 +48,7 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
                         excerpt={article.excerpt}
                         createdDate={article.createdDate}
                         featuredImage={article.featuredImage}
+                        preview={Preview.VERTICAL}
                     />)}
                 </section>
             </Grid>

@@ -45,4 +45,32 @@
         color: colors.$color-text;
         margin: 0 0 gutters.$gutter-medium;
     }
+
+    .horizontal {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: gutters.$gutter-medium;
+
+        > a {
+            flex: 1 0 auto;
+        }
+
+        .imageBox {
+            margin-bottom: 0;
+            font-size: 0;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: (gutters.$gutter * 2);
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 24px;
+        }
+
+    }
 }
