@@ -39,6 +39,11 @@ const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pat
             <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
           </div>
         )}
+        {pattern === ButtonType.SECONDARY && (
+          <div className={styles.arrow}>
+            <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
+          </div>
+        )}
         {pattern === ButtonType.PRIMARY && (
           <div className={styles.arrow}>
             <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6}/>

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import MainLayout from '../../layouts/index'
 import Grid from '../../components/Grid';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -13,6 +13,9 @@ import { Article } from '../../types/common/Article.types';
 import ArticlePreview from '../../components/ArticlePreview';
 import styles from '../../styles/Blog.module.scss';
 import { Preview } from '../../components/ArticlePreview/ArticlePreview.types';
+import HomeNewsletter from '../../components/HomeNewletter';
+import Button from '../../components/Button';
+import { ButtonType } from '../../components/Button/Button.types';
 
 interface BlogPageProps {
     head?: Entry<HeadInterface>;
@@ -22,9 +25,23 @@ interface BlogPageProps {
 }
 
 const PAGE_SIZE = 9;
+const FIRST_PAGE_SIZE = PAGE_SIZE + 1;
 
 const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, articles, totalArticles }) => {
     const [lastArticle, ...restArticles] = articles;
+    const [amountOfLoadedArticles, setAmountOfLoadedArticles] = useState(FIRST_PAGE_SIZE);
+    const [articlesToShow, setArticlesToShow] = useState(restArticles);
+
+    const shouldShowLoadMoreBtn = amountOfLoadedArticles < totalArticles;
+
+    const fetchArticles = async () => {
+        const response = await fetch(`/api/blog/load?limit=${PAGE_SIZE}&skip=${amountOfLoadedArticles}`);
+        const data = await response.json();
+
+        setArticlesToShow([...articlesToShow, ...data]);
+        setAmountOfLoadedArticles(amountOfLoadedArticles + data.length)
+    }
+
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -41,8 +58,8 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
                     />
                 </section>
                 <section className={styles.blogList}>
-                    {restArticles.map((article) => <ArticlePreview 
-                        key={`article${Math.random()}`}
+                    {articlesToShow.map((article) => <ArticlePreview 
+                        key={`article${article.slug}`}
                         title={article.title}
                         slug={article.slug}
                         excerpt={article.excerpt}
@@ -50,6 +67,10 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
                         featuredImage={article.featuredImage}
                         preview={Preview.VERTICAL}
                     />)}
+                    {shouldShowLoadMoreBtn && <Button.B label="Wczytaj więcej treści" pattern={ButtonType.SECONDARY} action={fetchArticles}/>}
+                </section>
+                <section>
+                    <HomeNewsletter />
                 </section>
             </Grid>
         </MainLayout>
@@ -66,7 +87,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const articlesRes = await fetchEntries({
         content_type: 'article',
         include: 2,
-        limit: PAGE_SIZE + 1,
+        skip: 0,
+        limit: FIRST_PAGE_SIZE,
         order: '-fields.createdDate',
         'fields.createdDate[lte]': new Date(),
     });
