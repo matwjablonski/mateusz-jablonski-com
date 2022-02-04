@@ -129,6 +129,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const artilesRes = await fetchEntries({
     content_type: 'article',
     include: 2,
+    limit: 5,
     order: '-fields.createdDate',
     'fields.createdDate[lte]': new Date(),
   });
