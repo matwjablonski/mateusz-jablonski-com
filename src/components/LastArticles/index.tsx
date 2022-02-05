@@ -30,7 +30,7 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
     return (
         <div className={styles.lastArticlesWrapper}>
             <div className={styles.lastArticlesSection}>
-                <div className={styles.lastArticles} style={{ width: `${ITEM_WIDTH * articles.length}px`, left: `${currentIndex * ITEM_WIDTH * -1}px` }}>
+                <div className={styles.lastArticles} style={{ width: `${ITEM_WIDTH * (articles.length + 1)}px`, left: `${currentIndex * ITEM_WIDTH * -1}px` }}>
                     {
                         articles.map((article, index) => <ArticlePreview 
                             key={`article${Math.random()}`}
@@ -43,6 +43,12 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
                             preview={Preview.VERTICAL}
                         />)
                     }
+                    <div className={cx(styles.lastBox, !checkIsIndexVisible(articles.length) && styles.inactivePreview)}>
+                        <span className={styles.lastIco}>✍</span>
+                        <h3 className={styles.lastTitle}>A to tylko ostatnie artykuły!</h3>
+                        <p className={styles.lastMsg}>Większą dawkę wiedzy znajdziesz na stronie bloga. Zapraszam serdecznie!</p>
+                        <Button.L pattern={ButtonType.PRIMARY} label="Wszystkie" href="/blog"/>
+                    </div>
                 </div>
             </div>
             <div className={styles.btnsLine}>
@@ -55,7 +61,7 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
                     />
                     <Button.L
                         pattern={ButtonType.SECONDARY}
-                        className={cx(currentIndex === articles.length - ITEMS_ON_SCREEN && styles.inactive)}
+                        className={cx(currentIndex === (articles.length + 1) - ITEMS_ON_SCREEN && styles.inactive)}
                         onClick={handleOnNext}
                     />
                 </div>

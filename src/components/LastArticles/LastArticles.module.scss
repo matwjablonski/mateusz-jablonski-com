@@ -1,5 +1,6 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
 
 .lastArticlesWrapper {
     margin-bottom: gutters.$gutter * 8;
@@ -29,6 +30,44 @@
     padding-bottom: gutters.$gutter-medium + gutters.$gutter;
     position: relative;
     transition: 700ms;
+}
+
+.lastBox {
+    flex: 0 1 352px;
+    margin: 0 gutters.$gutter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 700ms;
+    text-align: center;
+    background: radial-gradient(77.73% 1243.75% at 50% 50%, rgba(222, 243, 255, 0.85) 0%, rgba(222, 243, 255, 0) 100%);
+    filter: drop-shadow(0px 4px 8px rgba(20, 165, 255, 0.24));
+    border-radius: 8px;
+    border: 1px solid rgba(colors.$color-primary-300, 40%);
+    padding: gutters.$gutter;
+}
+
+.lastIco {
+    margin: 0 0 gutters.$gutter-medium;
+    font-size: 90px;
+}
+
+.lastTitle {
+    color: colors.$color-primary;
+    font-family: fonts.$font-headline;
+    font-size: 32px;
+    line-height: 1.25;
+    margin: 0 0 gutters.$gutter;
+    letter-spacing: -0.01em;
+}
+
+.lastMsg {
+    color: colors.$color-primary-700;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0 0 gutters.$gutter-medium;
+    letter-spacing: -0.01em
 }
 
 .btnsLine {
