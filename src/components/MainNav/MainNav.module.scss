@@ -92,7 +92,6 @@
     }
 
     &.isMenuOpen {
-        position: relative;
         z-index: 1;
         display: block;
         position: fixed;
@@ -104,9 +103,24 @@
         top: 0;
         left: 0;
         padding-top: 80px;
+
+        @include media.bp(md) {
+            z-index: initial;
+            position: initial;
+            background: none;
+            width: auto;
+            height: auto;
+            top: initial;
+            left: initial;
+            padding-top: 0;
+        }
         
         .list {
             flex-direction: column;
+
+            @include media.bp(md) {
+                flex-direction: row;
+            }
         }
     }
 }
