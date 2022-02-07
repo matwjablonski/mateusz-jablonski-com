@@ -16,30 +16,34 @@
             "id": "tkfcf34gsrg2lt9h",
             "title": "O mnie",
             "url": "/",
+            "disabled": true,
             "type": "link"
         },
         {
             "id": "bg50181tp4nila73",
             "title": "Kursy",
             "url": "/",
+            "disabled": true,
             "type": "link"
         },
         {
             "id": "bg501a1tp4nala73",
             "title": "Podcast",
             "url": "/",
+            "disabled": true,
             "type": "link"
         },
         {
             "id": "bg50151tp4nela73",
             "title": "Kontakt",
-            "url": "/kontakt",
+            "url": "/contact",
             "type": "link"
         },
         {
             "id": "vflckmujbxza6puo",
             "title": "Strefa kursanta",
             "url": "/dashboard",
+            "disabled": true,
             "type": "button"
         }
     ]

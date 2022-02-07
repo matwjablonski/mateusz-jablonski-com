@@ -31,15 +31,18 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
     const [lastArticle, ...restArticles] = articles;
     const [amountOfLoadedArticles, setAmountOfLoadedArticles] = useState(FIRST_PAGE_SIZE);
     const [articlesToShow, setArticlesToShow] = useState(restArticles);
+    const [disabledFetch, setDisabledFetch] = useState(false);
 
     const shouldShowLoadMoreBtn = amountOfLoadedArticles < totalArticles;
 
     const fetchArticles = async () => {
+        setDisabledFetch(true);
         const response = await fetch(`/api/blog/load?limit=${PAGE_SIZE}&skip=${amountOfLoadedArticles}`);
         const data = await response.json();
 
         setArticlesToShow([...articlesToShow, ...data]);
-        setAmountOfLoadedArticles(amountOfLoadedArticles + data.length)
+        setAmountOfLoadedArticles(amountOfLoadedArticles + data.length);
+        setDisabledFetch(false);
     }
 
     return (
@@ -67,7 +70,12 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
                         featuredImage={article.featuredImage}
                         preview={Preview.VERTICAL}
                     />)}
-                    {shouldShowLoadMoreBtn && <Button.B label="Wczytaj więcej treści" pattern={ButtonType.SECONDARY} action={fetchArticles}/>}
+                    {shouldShowLoadMoreBtn && <Button.B 
+                        label="Wczytaj więcej treści"
+                        pattern={ButtonType.SECONDARY}
+                        action={fetchArticles}
+                        disabled={disabledFetch}
+                    />}
                 </section>
                 <section>
                     <HomeNewsletter />

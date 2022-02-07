@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import Title from '../Title'
-import {useTranslation} from 'react-i18next';
 import PostCover from '../PostCover';
 import styles from './Post.module.scss'
 import Content from '../Content';
@@ -10,7 +9,6 @@ import { PostProps } from './Post.types';
 import PostShare from '../PostShare';
 
 const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlockRef}) => {
-  const {t} = useTranslation();
 
   return (
     <article className={styles.wrapper}>
