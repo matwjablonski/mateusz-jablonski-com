@@ -15,22 +15,19 @@
         {
             "id": "tkfcf34gsrg2lt9h",
             "title": "O mnie",
-            "url": "/",
-            "disabled": true,
+            "url": "/about",
             "type": "link"
         },
         {
             "id": "bg50181tp4nila73",
             "title": "Kursy",
-            "url": "/",
-            "disabled": true,
+            "url": "/course",
             "type": "link"
         },
         {
             "id": "bg501a1tp4nala73",
             "title": "Podcast",
-            "url": "/",
-            "disabled": true,
+            "url": "/podcast",
             "type": "link"
         },
         {

@@ -13,6 +13,10 @@ const Breadcrumbs = () => {
         switch (name) {
             case 'contact':
                 return 'Kontakt';
+            case 'about':
+                return 'O mnie';
+            case 'course':
+                return 'Kursy';
             default:
                 return name;
         }
