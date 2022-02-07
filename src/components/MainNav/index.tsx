@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from 'react';
+import cx from 'classnames';
 import Link from 'next/link';
 import menuData from '../../data/main-menu.json';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import styles from './MainNav.module.scss';
 
-const MainNav: FunctionComponent = () => {
+const MainNav: FunctionComponent<{ isMobileOpen: boolean }> = ({ isMobileOpen }) => {
     return (
-        <nav className={styles.nav}>
+        <nav className={cx(styles.nav, isMobileOpen && styles.isMenuOpen)}>
           <ul className={styles.list}>
             {menuData.items.map(item => <li key={item.id} className={styles.item}>
               { 

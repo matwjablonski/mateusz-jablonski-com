@@ -1,8 +1,39 @@
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
+@use '../../styles/settings/colors';
+
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: gutters.$gutter-medium 0 (gutters.$gutter-big + gutters.$gutter-small);
+}
+
+.mainLogo {
+    &.isMenuOpen {
+        position: relative;
+        filter: brightness(100);
+        z-index: 2;
+    }
+}
+
+.menuToggler {
+    appearance: none;
+    background-color: colors.$color-primary;
+    -webkit-mask-image: url('../../public/icons/menu.svg');
+    mask-image: url('../../public/icons/menu.svg');
+    height: 14px;
+    border: 0;
+    width: 26px;
+
+    &.isOpen {
+        background-color: colors.$color-primary-100;
+        z-index: 2;
+        position: relative;
+    }
+
+    @include media.bp(md) {
+        display: none;
+    }
 }
