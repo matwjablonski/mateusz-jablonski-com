@@ -22,8 +22,8 @@ const Hero: FunctionComponent<HeroProps> = ({ title, description, image }) => {
                 {prepareTitle()}
                 <p className={styles.text}>{description}</p>
                 <div className={styles.buttons}>
-                    <Button.L href="/" pattern={ButtonType.PRIMARY} label="Zobacz bezpłatne materiały" />
-                    <Button.L href="/" className={styles.secondButton} pattern={ButtonType.CLEAN} label="Moja idea" />
+                    <Button.L href="/blog" pattern={ButtonType.PRIMARY} label="Zobacz bezpłatne materiały" />
+                    <Button.L href="/about" className={styles.secondButton} pattern={ButtonType.CLEAN} label="Moja idea" />
                 </div>
             </div>
             <div className={styles.imageWrapper}>
