@@ -9,13 +9,22 @@ const Breadcrumbs = () => {
     const pathsArray = pathname.split('/');
     const breadcrumbsItems = pathsArray.length > 2 ? pathsArray.splice(0, pathsArray.length - 1) : pathsArray;
 
+    const mapBreadcrumbs = (name: string) => {
+        switch (name) {
+            case 'contact':
+                return 'Kontakt';
+            default:
+                return name;
+        }
+    }
+
     return (
         <ul className={styles.breadcrumbs}>
             {
                 breadcrumbsItems.map((breadcrumb, i) => <li className={styles.item} key={`breadcrumb-${breadcrumb}`}>
                         <Link href={`/${breadcrumb}`}>
                             <a>
-                                { breadcrumb ? breadcrumb : 'Jabłoński' }
+                                { breadcrumb ? mapBreadcrumbs(breadcrumb) : 'Jabłoński' }
                             </a>
                         </Link>
                         { i !== breadcrumbsItems.length - 1 && <span className={styles.separator}>/</span>}

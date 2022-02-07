@@ -11,4 +11,13 @@
         font-weight: 400;
         margin: 0 0 gutters.$gutter-bigger;
     }
+
+    &.center {
+        text-align: center;
+
+        .p {
+            text-align: center;
+            margin: 0 auto gutters.$gutter-bigger;
+        }
+    }
 }
