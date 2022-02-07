@@ -17,7 +17,7 @@ const PodcastPage: FC<PodcastPageProps> = ({ head }) => {
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                <PageTitle title="Podcast" description="W przygotowaniu" center/>
+                <PageTitle title="Podcast" description="W przygotowaniu"/>
             </Grid>
         </MainLayout>
     )

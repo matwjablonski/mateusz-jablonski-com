@@ -17,7 +17,7 @@ const AboutPage: FC<AboutPageProps> = ({ head }) => {
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                <PageTitle title="O mnie" description="W przygotowaniu"/>
+                <PageTitle title="Kursy" description="W przygotowaniu"/>
             </Grid>
         </MainLayout>
     )
