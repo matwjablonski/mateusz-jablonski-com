@@ -14,16 +14,16 @@ const PostShare: FunctionComponent = () => {
     return <div className={styles.shareWrapper}>
         <h3 className={styles.title}>Udostępnij ten artykuł:</h3>
         <TwitterShareButton url={`https://mateuszjablonski.com${asPath}`} className={styles.button}>
-            <Image src={TwitterIcon} width={24} height={19} />
+            <Image src={TwitterIcon} width={24} height={19} alt=""/>
         </TwitterShareButton>
         <FacebookShareButton url={`https://mateuszjablonski.com${asPath}`} className={styles.button}>
-            <Image src={FacebookIcon} width={16} height={26} />
+            <Image src={FacebookIcon} width={16} height={26} alt=""/>
         </FacebookShareButton>
         <LinkedinShareButton url={`https://mateuszjablonski.com${asPath}`} className={styles.button}>
-            <Image src={LiIcon} width={24} height={24} />
+            <Image src={LiIcon} width={24} height={24} alt=""/>
         </LinkedinShareButton>
         <EmailShareButton url={`https://mateuszjablonski.com${asPath}`} className={styles.button}>
-            <Image src={MailIcon} width={24} height={24} />
+            <Image src={MailIcon} width={24} height={24} alt=""/>
         </EmailShareButton>
     </div>
 }

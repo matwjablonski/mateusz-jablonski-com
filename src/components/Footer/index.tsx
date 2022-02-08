@@ -46,4 +46,6 @@ const Footer: FunctionComponent = memo(() => {
   );
 });
 
+Footer.displayName = 'Footer';
+
 export default Footer;

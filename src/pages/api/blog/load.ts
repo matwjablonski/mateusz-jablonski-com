@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { fetchEntries } from "../../../contentful";
 import { formatDate } from "../../../utils/formatDate";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const load = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const { limit, skip } = req.query;
 
@@ -31,3 +31,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         res.send({ status: 'notfetched', message: 'Ups. Nie udało się pobrać więcej artykułów.'})
     }
 }
+
+export default load;

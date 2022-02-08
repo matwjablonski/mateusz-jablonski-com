@@ -1,4 +1,4 @@
-import React, { FunctionComponent, memo, useEffect, useState } from 'react';
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SocialMediaTileProps } from './SocialMediaTile.types';
@@ -14,7 +14,7 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
   const [name, setName] = useState<string>(null);
   const [className, setClassName] = useState<string>(null);
 
-  const prepareData = () => {
+  const prepareData = useCallback(() => {
     switch (socialMediaType) {
       case SocialMediaType.TWITTER:
         setName('Twitter');
@@ -37,26 +37,26 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
         setClassName('github');
         break;
     }
-  }
+  }, [socialMediaType])
 
   const prepareIcon = () => {
     switch(socialMediaType) {
       case SocialMediaType.TWITTER:
-        return <Image src={twitter || `/icons/twitter.svg`} width={60} height={48}/>;
+        return <Image src={twitter || `/icons/twitter.svg`} width={60} height={48} alt=""/>;
       case SocialMediaType.FACEBOOK:
-        return <Image src={facebook || `/icons/facebook.svg`} width={33} height={54}/>;
+        return <Image src={facebook || `/icons/facebook.svg`} width={33} height={54} alt=""/>;
       case SocialMediaType.INSTAGRAM:
-        return <Image src={instagram || `/icons/instagram.svg`} width={72} height={72}/>;
+        return <Image src={instagram || `/icons/instagram.svg`} width={72} height={72} alt=""/>;
       case SocialMediaType.LINKEDIN:
-        return <Image src={li || `/icons/li.svg`} width={72} height={72}/>;
+        return <Image src={li || `/icons/li.svg`} width={72} height={72} alt=""/>;
       case SocialMediaType.GITHUB:
-        return <Image src={twitter || `/icons/twitter.svg`} width={49} height={6}/>;
+        return <Image src={twitter || `/icons/twitter.svg`} width={49} height={6} alt=""/>;
     }    
   }
 
   useEffect(() => {
     prepareData();
-  }, [socialMediaType]);
+  }, [prepareData]);
 
   return (
     <Link href={href}>
@@ -72,6 +72,8 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
       </a>
     </Link>
   )
-})
+});
+
+SocialMediaTile.displayName = 'SocialMediaTile';
 
 export default SocialMediaTile;

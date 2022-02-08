@@ -6,10 +6,10 @@ import calendar from '../../public/icons/calendar-white.svg';
 import styles from './NextCourseCounter.module.scss';
 
 const NextCourseCounter: FunctionComponent<NextCourseCounterProps> = ({ title, startDate, endDate }) => {
-    const allDays = useMemo(() => differenceInDays(endDate, startDate), []);
-    const allDaysLeft = useMemo(() => differenceInDays(endDate, new Date()), []);
+    const allDays = useMemo(() => differenceInDays(endDate, startDate), [endDate, startDate]);
+    const allDaysLeft = useMemo(() => differenceInDays(endDate, new Date()), [endDate]);
 
-    const spendTimeInPercentage = useMemo(() => `${Math.floor((allDays - allDaysLeft) / allDays * 100)}%`, []);
+    const spendTimeInPercentage = useMemo(() => `${Math.floor((allDays - allDaysLeft) / allDays * 100)}%`, [allDays, allDaysLeft]);
     
     return (
         <div className={styles.counter}>

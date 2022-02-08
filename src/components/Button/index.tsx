@@ -13,12 +13,12 @@ const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pat
       {label}
       {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
         <div className={styles.arrow}>
-          <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
+          <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
         </div>
       )}
       {(pattern === ButtonType.PRIMARY || pattern === ButtonType.WHITE) && (
         <div className={styles.arrow}>
-          <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6}/>
+          <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
         </div>
       )}
     </a>
@@ -36,21 +36,26 @@ const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pat
         {label}
         {pattern === ButtonType.CLEAN && (
           <div className={styles.arrow}>
-            <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
+            <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
           </div>
         )}
         {pattern === ButtonType.SECONDARY && (
           <div className={styles.arrow}>
-            <Image src={arrow || '/icons/arrow.svg'} width={49} height={6}/>
+            <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
           </div>
         )}
         {pattern === ButtonType.PRIMARY && (
           <div className={styles.arrow}>
-            <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6}/>
+            <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
           </div>
         )}
       </button>
   )
 });
 
-export default { L, B };
+L.displayName = 'L';
+B.displayName = 'B';
+
+const buttons = { L, B };
+
+export default buttons;

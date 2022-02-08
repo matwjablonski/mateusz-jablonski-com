@@ -20,4 +20,6 @@ const FooterSocialMedia: FunctionComponent = memo(() => {
   )
 });
 
+FooterSocialMedia.displayName = 'FooterSocialMedia';
+
 export default FooterSocialMedia;

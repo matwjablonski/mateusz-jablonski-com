@@ -37,7 +37,12 @@ const Content = ({content, summary, sources, className}: ContentProps) => {
         const isImageWide = proportion > 1.4;
 
         return <figure className={cx(isImageWide && styles.wideAsset, isImageWide && styles.wideImage)}>
-          <Image src={prepareImageUrl(node.data.target.fields.file.url)} width={isImageWide ? 1120 : width} height={isImageWide ? 387 : width} />
+          <Image
+            src={prepareImageUrl(node.data.target.fields.file.url)}
+            width={isImageWide ? 1120 : width}
+            height={isImageWide ? 387 : width}
+            alt={node.data.target.fields.file.fileName}
+          />
           {
             node.data.target.fields.description && (
               <figcaption className={styles.caption}>{node.data.target.fields.description}</figcaption>

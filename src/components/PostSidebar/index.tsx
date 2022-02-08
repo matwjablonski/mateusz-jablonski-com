@@ -1,5 +1,5 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './PostSidebar.module.scss';
@@ -21,7 +21,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
         }
     }
 
-    const calculateVisibilityOfSidebar = () => {
+    const calculateVisibilityOfSidebar = useCallback(() => {
         const changeYFactor = 100;
         const heightFactor = 50;
         const sidebarPosition = window.scrollY + sidebarHeight + heightFactor;
@@ -39,13 +39,13 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
         } else {
             sidebar.current.style.opacity = '1';
         }
-    }
+    }, [sidebarHeight, wideAssetsPositions]);
 
-    const scrollAction = () => {
+    const scrollAction = useCallback(() => {
         if (typeof window !== undefined && sidebar) {
             window.onscroll = calculateVisibilityOfSidebar;
         }
-    }
+    }, [calculateVisibilityOfSidebar]);
 
     useEffect(() => {
         const getWideAssetsPosition = async () => {
@@ -67,7 +67,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
             getWideAssetsPosition();
             scrollAction();
         }
-    }, [wideAssetsPositions, setWideAssetsPositions])
+    }, [wideAssetsPositions, setWideAssetsPositions, scrollAction])
 
     return (
         <div className={styles.sidebar} ref={sidebar}>
@@ -77,7 +77,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
             </div>
             <div onClick={handleGoToCommentsBlock} className={styles.comments}>
                 <div className={styles.commentsIcon}>
-                    <Image src={commentsIcon} width={24} height={24}/>
+                    <Image src={commentsIcon} width={24} height={24} alt=""/>
                 </div>
                 {numberOfComments}
             </div>
@@ -86,7 +86,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
                     author.twitter && (
                         <Link href={author.twitter}>
                             <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                <Image src={TwitterIcon} width={24} height={19} />
+                                <Image src={TwitterIcon} width={24} height={19} alt=""/>
                             </a>
                         </Link>
                     )
@@ -95,7 +95,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
                     author.facebook && (
                         <Link href={author.facebook}>
                             <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                <Image src={FacebookIcon} width={16} height={26} />
+                                <Image src={FacebookIcon} width={16} height={26} alt="" />
                             </a>
                         </Link>
                     )
@@ -104,7 +104,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
                     author.linkedIn && (
                         <Link href={author.linkedIn}>
                             <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                <Image src={LiIcon} width={24} height={24} />
+                                <Image src={LiIcon} width={24} height={24} alt="" />
                             </a>
                         </Link>
                     )
@@ -112,7 +112,7 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
                 { 
                     author.email && (
                         <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={`mailto:${author.email}`}>
-                            <Image src={MailIcon} width={24} height={24} />
+                            <Image src={MailIcon} width={24} height={24} alt="" />
                         </a>
                     )
                 }

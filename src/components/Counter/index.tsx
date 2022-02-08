@@ -22,7 +22,7 @@ const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
                 <span className={styles.remainingDays}>{prepareDaysLabel()}</span>
             </div>
             <div className={styles.icon}>
-                <Image src={calendar || `/icons/calendar.svg`} width={24} height={24}/>
+                <Image src={calendar || `/icons/calendar.svg`} width={24} height={24} alt=""/>
             </div>
         </div>
     )

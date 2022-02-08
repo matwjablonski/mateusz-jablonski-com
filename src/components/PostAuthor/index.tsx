@@ -17,7 +17,7 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
             <div className={styles.authorImage}>
                 {
                     author.image ? 
-                        <Image src={prepareImageUrl(author.image.fields.file.url)} width={197} height={197} className={styles.image} /> :
+                        <Image src={prepareImageUrl(author.image.fields.file.url)} width={197} height={197} className={styles.image} alt={author.name} /> :
                         <div />
                 }
             </div>
@@ -34,7 +34,7 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                             <Link href={author.twitter}>
                                 <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
                                     <div className={styles.icon}>
-                                        <Image src={TwitterIcon} width={20} height={16} />
+                                        <Image src={TwitterIcon} width={20} height={16} alt=""/>
                                     </div> 
                                     Twitter
                                 </a>
@@ -47,7 +47,7 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                             <Link href={author.linkedIn}>
                                 <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
                                     <div className={styles.icon}>
-                                        <Image src={LiIcon} width={16} height={16} />
+                                        <Image src={LiIcon} width={16} height={16} alt=""/>
                                     </div> 
                                     LinkedIn
                                 </a>
@@ -60,7 +60,7 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                             <Link href={author.facebook}>
                                 <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
                                     <div className={styles.icon}>
-                                        <Image src={FacebookIcon} width={11} height={18} />
+                                        <Image src={FacebookIcon} width={11} height={18} alt=""/>
                                     </div> 
                                     Facebook
                                 </a>
@@ -73,7 +73,7 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                             <Link href={author.github}>
                                 <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
                                     <div className={styles.icon}>
-                                        <Image src={GithubIcon} width={17} height={18} />
+                                        <Image src={GithubIcon} width={17} height={18} alt=""/>
                                     </div> 
                                     GitHub
                                 </a>
@@ -86,7 +86,7 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                             <Link href={author.instagram}>
                                 <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
                                     <div className={styles.icon}>
-                                        <Image src={InstagramIcon} width={16} height={16} />
+                                        <Image src={InstagramIcon} width={16} height={16} alt=""/>
                                     </div> 
                                     Instagram
                                 </a>

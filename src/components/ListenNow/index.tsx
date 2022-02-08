@@ -13,26 +13,28 @@ const ListenNow: FunctionComponent<{ className?: string; }> = memo(({ className 
         <div className={styles.podcasts}>
             <a className={styles.podcastLink} rel="noopener noreferrer nofollow" href="" target="_blank">
                 <div className={styles.podcast}>
-                    <Image src={spotify || `/icons/spotify.png`} width={145} height={40}/>
+                    <Image src={spotify || `/icons/spotify.png`} width={145} height={40} alt=""/>
                 </div>
             </a>
             <a className={styles.podcastLink} rel="noopener noreferrer nofollow" href="" target="_blank">
                 <div className={styles.podcast}>
-                    <Image src={applePodcast || `/icons/applepodcast.svg`} width={196} height={35}/>
+                    <Image src={applePodcast || `/icons/applepodcast.svg`} width={196} height={35} alt=""/>
                 </div>
             </a>
             <a className={styles.podcastLink} rel="noopener noreferrer nofollow" href="" target="_blank">
                 <div className={styles.podcast}>
-                    <Image src={googlePodcast || `/icons/googlepodcast.png`} width={205} height={41}/>
+                    <Image src={googlePodcast || `/icons/googlepodcast.png`} width={205} height={41} alt=""/>
                 </div>
             </a>
             <a className={styles.podcastLink} rel="noopener noreferrer nofollow" href="" target="_blank">
                 <div className={styles.podcast}>
-                    <Image src={youtube || `/icons/youtube.png`} width={138} height={40}/>
+                    <Image src={youtube || `/icons/youtube.png`} width={138} height={40} alt=""/>
                 </div>
             </a>
         </div>
     </div>
-})
+});
+
+ListenNow.displayName = 'ListenNow';
 
 export default ListenNow;

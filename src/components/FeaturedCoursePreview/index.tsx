@@ -14,7 +14,13 @@ const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ c
 
     return <div className={styles.course}>
         <div className={styles.imageBox}>
-            <Image src={featuredImage ? prepareImageUrl(featuredImage.fields.file.url) : placeholder} width={544} height={256} className={styles.image}/>
+            <Image
+                src={featuredImage ? prepareImageUrl(featuredImage.fields.file.url) : placeholder}
+                width={544}
+                height={256}
+                className={styles.image}
+                alt={featuredImage.fields.title}
+            />
         </div>
         <Link href={`course/${slug}`}>
             <a title={title}>

@@ -17,7 +17,7 @@ const client = createClient(
     }
 )
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const addComment = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const { id } = JSON.parse(req.body);
 
@@ -50,3 +50,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         res.send({ status: 'notsaved', message: 'Ups. Nie udało się zapisać Twojego komentarza. Spróbuj ponownie później.'})
     }
 }
+
+export default addComment;

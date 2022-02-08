@@ -8,7 +8,7 @@ mailchimp.setConfig({
     server: env.MAILCHIMP_DATA_CENTER,
 });
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const add = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const { email } = JSON.parse(req.body);
         const response = await mailchimp.lists.addListMember(env.MAILCHIMP_LIST_ID, { email_address: email, status: 'subscribed' });
@@ -20,4 +20,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         
         res.send({ status: text.status, message: 'Podany email jest błędny lub wcześniej został już zapisany w naszej bazie danych.'});
     }    
-}
+};
+
+export default add;

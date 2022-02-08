@@ -22,9 +22,11 @@ const FundsInfo: FunctionComponent = memo(() => (
       />
     </div>
     <div className={styles.img}>
-      <Image src={foundationLogo || '/foundation-logo.png'} width={343} height={68}/>
+      <Image src={foundationLogo || '/foundation-logo.png'} width={343} height={68} alt="Logo Fundacji Radość z Uśmiechu"/>
     </div>
   </section>
 ));
+
+FundsInfo.displayName = 'FundsInfo';
 
 export default FundsInfo;

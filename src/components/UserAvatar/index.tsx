@@ -7,7 +7,7 @@ import styles from './UserAvatar.module.scss';
 const UserAvatar: FunctionComponent<UserAvatarProps> = ({ email }) => (
     <div className={styles.userAvatar}>
         { email ? 
-            <Image src={`https://gravatar.com/avatar/${md5(email)}`} width={64} height={64} className={styles.avatar} /> :
+            <Image src={`https://gravatar.com/avatar/${md5(email)}`} width={64} height={64} className={styles.avatar} alt="" /> :
             <div className={styles.avatarPlaceholder} />
         }
     </div>

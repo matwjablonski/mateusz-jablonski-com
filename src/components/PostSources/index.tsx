@@ -6,7 +6,7 @@ import { INLINES } from '@contentful/rich-text-types';
 
 const options = {
     renderNode: {
-      [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri} target="_blank">{children}</a>,
+      [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri} target="_blank" rel="noopener noreferrer nofollow">{children}</a>,
     }
   }
 
@@ -16,5 +16,7 @@ const PostSources: FC<PostSourcesProps> = ({ sources }) => {
         {documentToReactComponents(sources, options)}
     </div>
 }
+
+PostSources.displayName = 'PostSources';
 
 export default PostSources;

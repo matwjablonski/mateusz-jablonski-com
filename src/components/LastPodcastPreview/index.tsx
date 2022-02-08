@@ -21,14 +21,26 @@ const LastPodcastPreview: FunctionComponent<LastPodcastPreviewProps> = ({
                         { 
                             previewSize === LastPodcastPreviewSize.BIG && (
                                 featuredImage ? 
-                                    <Image width={736} height={605} src={prepareImageUrl(featuredImage.fields.file.url)} className={styles.image}/> : 
+                                    <Image 
+                                        width={736}
+                                        height={605}
+                                        src={prepareImageUrl(featuredImage.fields.file.url)}
+                                        className={styles.image}
+                                        alt=""
+                                    /> : 
                                     <ImagePlaceholder width={736} height={605}/>
                             )
                         }
                         {
                             previewSize === LastPodcastPreviewSize.SMALL && (
                                 featuredImage ? 
-                                    <Image width={353} height={191} src={prepareImageUrl(featuredImage.fields.file.url)} className={styles.image}/> : 
+                                    <Image
+                                        width={353}
+                                        height={191}
+                                        src={prepareImageUrl(featuredImage.fields.file.url)}
+                                        className={styles.image}
+                                        alt=""
+                                    /> : 
                                     <ImagePlaceholder width={353} height={191}/>
                             )
                         }
