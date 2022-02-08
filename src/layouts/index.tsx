@@ -32,6 +32,36 @@ const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolea
         <meta property="og:description" content={head.description || mainDescription} />
         {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url)} />}
         <link rel="icon" href={favicon} />
+        <link
+          rel="preload"
+          href="/fonts/PPMonumentExtended-Regular.eot"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/PPMonumentExtended-Regular.otf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/PPMonumentExtended-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/PPMonumentExtended-Regular.woff"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/PPMonumentExtended-Regular.woff2"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       <Header />
       <main className={cx(hideOverflow && styles.hiddenOverflow)}>
