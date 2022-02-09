@@ -8,18 +8,23 @@ import { FC } from "react";
 import { Entry } from "contentful";
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
+import { Testimonials } from "../../types/common/Testimonials.types";
+import TestimonialsList from "../../components/Testimonials";
 
 interface ContactPageProps {
     head?: Entry<HeadInterface>;
     body: Page,
+    testimonials?: Testimonials[];
 }
 
-const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description} }) => {
+const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, testimonials }) => {
+    console.log('testimonials', testimonials)
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description} center/>
+                {testimonials.length && <TestimonialsList testimonials={testimonials}/>}
             </Grid>
         </MainLayout>
     )
@@ -32,9 +37,16 @@ export const getStaticProps: GetStaticProps = async () => {
         include: 2,
     });
 
+    const testimonialsRes = await fetchEntries({
+        content_type: 'testimonials'
+    });
+
     const body = await res.data
         .map(p => ({ ...p.fields }))
         .shift();
+
+    const testimonials = await testimonialsRes.data
+        .map(t => ({ ...t.fields }));
 
     if (!body) {
         return {
@@ -45,6 +57,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             body,
+            testimonials,
         }
     }
 }

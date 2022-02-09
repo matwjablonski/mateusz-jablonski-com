@@ -1,0 +1,45 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.testimonialBox {
+    padding: gutters.$gutter-medium;
+    background-color: colors.$color-primary-100;
+    background-image: url('../../public/comment.svg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    flex: 0 1 33.3333%;
+    border-radius: 8px;
+    margin: 0 gutters.$gutter;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 107px;
+        height: 69px;
+        background-image: url('../../public/comment-small.svg');
+    }
+
+    .name {
+        margin: 0 0 gutters.$gutter-small;
+        font-size: 16px;
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        position: relative;
+    }
+
+    .content {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        color: colors.$color-text;
+        position: relative;
+    }
+}

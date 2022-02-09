@@ -1,0 +1,33 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+
+.testimonials {
+    margin-bottom: gutters.$gutter-biggest;
+
+    .testimonialsTitle {
+        color: colors.$color-primary;
+        font-family: fonts.$font-headline;
+        font-size: 24px;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        text-align: center;
+        margin: 0 0 gutters.$gutter;
+    }
+
+    .testimonialsText {
+        text-align: center;
+        max-width: 730px;
+        margin: 0 auto (gutters.$gutter * 2);
+        font-size: 18px;
+        color: colors.$color-text;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+    }
+
+    .testimonialsList {
+        display: flex;
+        margin-left: -(gutters.$gutter);
+        margin-right: -(gutters.$gutter);
+    }
+}
