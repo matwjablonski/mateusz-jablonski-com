@@ -12,6 +12,7 @@ import fontOtf from '../public/fonts/PPMonumentExtended-Regular.otf';
 import fontTtf from '../public/fonts/PPMonumentExtended-Regular.ttf';
 import fontWoff from '../public/fonts/PPMonumentExtended-Regular.woff';
 import fontWoff2 from '../public/fonts/PPMonumentExtended-Regular.woff2';
+import favico from '../public/favicon.ico';
 
 const mainTitle = "Mateusz Jabłoński - blog, podcast, kursy o programowaniu i rozwoju";
 const mainDescription = "Blog, podcast oraz kursy o programowaniu i rozwoju. Oferuję aktualną wiedzę oraz wsparcie mentorskie w nauce programowania.";
@@ -35,7 +36,7 @@ const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolea
         <meta property="og:url" content={`https://mateuszjablonski.com${asPath}`} />
         <meta property="og:description" content={head.description || mainDescription} />
         {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url)} />}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={favico} />
         <link
           rel="preload"
           href={fontEot}
