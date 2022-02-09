@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .testimonialBox {
     padding: gutters.$gutter-medium;
@@ -8,11 +9,19 @@
     background-image: url('../../public/comment.svg');
     background-repeat: no-repeat;
     background-position: right top;
-    flex: 0 1 33.3333%;
+    flex: 0 1 100%;
     border-radius: 8px;
     margin: 0 gutters.$gutter;
     position: relative;
     overflow: hidden;
+
+    @include media.bp(md) {
+        flex: 0 1 50%;
+    }
+
+    @include media.bp(lg) {
+        flex: 0 1 33.3333%;
+    }
 
     &::before {
         content: '';
