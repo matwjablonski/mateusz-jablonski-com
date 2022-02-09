@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .testimonials {
     margin-bottom: gutters.$gutter-biggest;
@@ -26,9 +27,17 @@
     }
 
     .testimonialsList {
-        display: flex;
+        columns: 1;
         margin-left: -(gutters.$gutter);
         margin-right: -(gutters.$gutter);
-        align-items: flex-start;
+        
+        @include media.bp(md) {
+            columns: 2;
+            column-gap: (gutters.$gutter * 2);
+        }
+
+        @include media.bp(lg) {
+            columns: 3;
+        }
     }
 }
