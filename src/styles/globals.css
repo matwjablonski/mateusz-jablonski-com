@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
-@font-face {
-  font-family: 'Monument Extended';
-  font-weight: 400;
-  font-style: normal;
-  src: url('/fonts/PPMonumentExtended-Regular.eot') format('eot'),
-       url('/fonts/PPMonumentExtended-Regular.otf') format('opentype'),
-       url('/fonts/PPMonumentExtended-Regular.ttf') format('truetype'),
-       url('/fonts/PPMonumentExtended-Regular.woff') format('woff'),
-       url('/fonts/PPMonumentExtended-Regular.woff2') format('woff2');
-}
-
 html,
 body {
   padding: 0;

@@ -5,9 +5,13 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { HeadInterface } from '../types/common/Head.types';
-import favicon from '../public/favicon.ico';
 import prepareImageUrl from '../utils/prepareImageUrl';
 import styles from '../styles/Layout.module.scss';
+import fontEot from '../public/fonts/PPMonumentExtended-Regular.eot';
+import fontOtf from '../public/fonts/PPMonumentExtended-Regular.otf';
+import fontTtf from '../public/fonts/PPMonumentExtended-Regular.ttf';
+import fontWoff from '../public/fonts/PPMonumentExtended-Regular.woff';
+import fontWoff2 from '../public/fonts/PPMonumentExtended-Regular.woff2';
 
 const mainTitle = "Mateusz Jabłoński - blog, podcast, kursy o programowaniu i rozwoju";
 const mainDescription = "Blog, podcast oraz kursy o programowaniu i rozwoju. Oferuję aktualną wiedzę oraz wsparcie mentorskie w nauce programowania.";
@@ -31,38 +35,50 @@ const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolea
         <meta property="og:url" content={`https://mateuszjablonski.com${asPath}`} />
         <meta property="og:description" content={head.description || mainDescription} />
         {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url)} />}
-        <link rel="icon" href={favicon} />
+        <link rel="icon" href="/favicon.ico" />
         <link
           rel="preload"
-          href="/fonts/PPMonumentExtended-Regular.eot"
+          href={fontEot}
           as="font"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/fonts/PPMonumentExtended-Regular.otf"
+          href={fontOtf}
           as="font"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/fonts/PPMonumentExtended-Regular.ttf"
+          href={fontTtf}
           as="font"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/fonts/PPMonumentExtended-Regular.woff"
+          href={fontWoff}
           as="font"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/fonts/PPMonumentExtended-Regular.woff2"
+          href={fontWoff2}
           as="font"
           crossOrigin=""
         />
       </Head>
+      <style jsx>{`
+          @font-face {
+            font-family: 'Monument Extended';
+            font-weight: 400;
+            font-style: normal;
+            src: url('${fontEot}') format('eot'),
+                url('${fontOtf}') format('opentype'),
+                url('${fontTtf}') format('truetype'),
+                url('${fontWoff}') format('woff'),
+                url('${fontWoff2}') format('woff2');
+          }
+      `}</style>
       <Header />
       <main className={cx(hideOverflow && styles.hiddenOverflow)}>
         {children}
