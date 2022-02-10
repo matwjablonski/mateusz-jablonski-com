@@ -8,7 +8,7 @@
     background-image: url('../../public/comment.svg');
     background-repeat: no-repeat;
     background-position: right top;
-    width: calc(100% - (gutters.$gutter * 2));
+    width: 100%;
     border-radius: 8px;
     margin: 0 gutters.$gutter gutters.$gutter-medium;
     position: relative;
