@@ -8,18 +8,18 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { PostProps } from './Post.types';
 import PostShare from '../PostShare';
 
-const Post: FunctionComponent<PostProps> = ({post, numberOfComments, commentsBlockRef}) => {
+const Post: FunctionComponent<PostProps> = ({content, title, excerpt, featuredImage, numberOfComments, summary, sources, author, commentsBlockRef}) => {
 
   return (
     <article className={styles.wrapper}>
-      <Title classes={styles.title}>{post.title}</Title>
+      <Title classes={styles.title}>{title}</Title>
       <div className={styles.excerpt}>
-        {documentToReactComponents(post.excerpt, {})}
+        {documentToReactComponents(excerpt, {})}
       </div>
-      {<PostCover coverImage={post.featuredImage.fields}/>}
+      {featuredImage && <PostCover coverImage={featuredImage.fields}/>}
       <div className={styles.content}>
-        <PostSidebar author={post.author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
-        <Content content={post.content} summary={post?.summary} sources={post?.sources} />
+        <PostSidebar author={author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
+        <Content content={content} summary={summary} sources={sources} />
       </div>
       <PostShare />
     </article>

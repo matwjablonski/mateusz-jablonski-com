@@ -14,14 +14,24 @@ import CommentsList from '../../components/CommentsList';
 import PostAuthor from '../../components/PostAuthor';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
-  const { head, author } = body;
+  const { head, author, content, title, sources, summary, excerpt, featuredImage } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
   return body ? (
     <MainLayout head={head ? head.fields : {}}>
       <Grid>
         <Breadcrumbs />
-        <Post post={body} numberOfComments={comments.length} commentsBlockRef={commentsRef}/>
+        <Post
+          content={content}
+          title={title}
+          sources={sources}
+          author={author}
+          summary={summary}
+          excerpt={excerpt}
+          featuredImage={featuredImage}
+          numberOfComments={comments.length}
+          commentsBlockRef={commentsRef}
+        />
         {author[0] && <PostAuthor author={author[0].fields}/>}
         <div ref={commentsRef}>
           <CommentsList comments={comments} postId={body.id} />

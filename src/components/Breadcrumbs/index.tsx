@@ -17,6 +17,8 @@ const Breadcrumbs = () => {
                 return 'O mnie';
             case 'course':
                 return 'Kursy';
+            case 'book':
+                return 'Książki';
             default:
                 return name;
         }
