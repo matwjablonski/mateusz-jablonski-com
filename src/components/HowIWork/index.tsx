@@ -43,4 +43,6 @@ const HowIWork = memo(() => {
     )
 });
 
+HowIWork.displayName = 'HowIWork';
+
 export default HowIWork;
