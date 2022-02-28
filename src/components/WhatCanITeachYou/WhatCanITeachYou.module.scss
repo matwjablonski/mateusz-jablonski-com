@@ -1,0 +1,80 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+
+.whatCanITeachYou {
+    color: colors.$color-white;
+    background: colors.$color-primary;
+    margin: 0 auto 120px;
+    max-width: 58rem;
+    border-radius: 1rem;
+    padding: 82px gutters.$gutter-biggest gutters.$gutter-biggest;
+
+    .title {
+        font-family: fonts.$font-headline;
+        margin: 0 0 gutters.$gutter-bigger;
+        font-size: 56px;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 32px;
+        font-family: fonts.$font-headline;
+        line-height: 1.2;
+        margin: 0 0 gutters.$gutter-medium;
+    }
+
+    .listTitle {
+        font-size: 24px;
+        line-height: 1.25;
+        margin: 0 0 gutters.$gutter-medium;
+        font-family: fonts.$font-headline;
+        letter-spacing: -0.01em;
+    }
+
+    .list {
+        margin: 0 0 gutters.$gutter-big;
+        padding: 0;
+        list-style: none;
+    }
+
+    .listItem {
+        font-family: fonts.$font-headline;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+        margin: 0 0 gutters.$gutter;
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 44px;
+            height: 5px;
+            background-image: url('../../public/icons/arrow-blue.svg');
+            background-size: cover;
+            margin-right: gutters.$gutter-medium;
+        }
+    }
+
+    .text {
+        color: colors.$color-primary-100;
+        font-size: 22px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        margin: 0 0 gutters.$gutter-big;
+
+        a {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        &.isLast {
+            margin-bottom: 0;
+        }
+    }
+}

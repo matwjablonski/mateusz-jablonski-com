@@ -1,0 +1,82 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
+
+.howIWork {
+    margin-bottom: 160px;
+ 
+    .title {
+        color: colors.$color-primary;
+        font-size: 56px;
+        line-height: 1.2;
+        font-family: fonts.$font-headline;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &::after {
+            content: '??????????????????';
+            color: colors.$color-primary-100;
+        }
+    }
+
+    .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .step {
+        display: flex;
+        margin-bottom: gutters.$gutter-bigger;
+    }
+
+    .stepNo {
+        font-size: 100px;
+        height: 110px;
+        width: gutters.$gutter-big * 5;
+        line-height: 1.2;
+        font-family: fonts.$font-headline;
+        color: colors.$color-white;
+        background: -webkit-linear-gradient(0, colors.$color-primary-500 0%, colors.$color-primary-300 50%);
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 4px transparent;
+        padding-right: gutters.$gutter-bigger;
+        display: flex;
+        align-items: center;
+    }
+
+    .stepContent {
+        padding-left: gutters.$gutter-bigger;
+        border-left: 2px solid colors.$color-primary-300;
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 0; 
+            height: 0; 
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 14px solid colors.$color-primary-300;
+            position: absolute;
+            top: gutters.$gutter-small;
+            left: 0;
+        }
+    }
+
+    .stepTitle {
+        font-size: 32px;
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary;
+        margin: 0 0 gutters.$gutter;
+        line-height: 1.2;
+    }
+
+    .stepDesc {
+        color: colors.$color-text;
+        font-size: 24px;
+        line-height: 1.48;
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+}

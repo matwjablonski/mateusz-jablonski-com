@@ -24,7 +24,14 @@ const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, 
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description} center/>
-                {testimonials.length && <TestimonialsList testimonials={testimonials}/>}
+                {testimonials.length && (
+                    <TestimonialsList
+                        title="Co mówią o mojej pracy?"
+                        description="Największą wartością dla mnie jest zadowolenie moich odbiorców: czytelników, słuchaczy, widzów i osób, których pomagam realizować ich cele. Poniżej znajdziesz kilka wybranych opinii na temat mojej pracy."
+                        contentAlign="center"
+                        testimonials={testimonials}
+                    />
+                )}
             </Grid>
         </MainLayout>
     )

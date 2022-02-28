@@ -7,12 +7,12 @@ import { Entry } from "contentful";
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 
-interface AboutPageProps {
+interface CoursePageProps {
     head?: Entry<HeadInterface>;
     body: Page,
 }
 
-const AboutPage: FC<AboutPageProps> = ({ head }) => {
+const CoursePage: FC<CoursePageProps> = ({ head }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -23,4 +23,4 @@ const AboutPage: FC<AboutPageProps> = ({ head }) => {
     )
 }
 
-export default AboutPage;
+export default CoursePage;
