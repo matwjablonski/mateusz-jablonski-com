@@ -36,9 +36,9 @@ const getRssXml = (articles: Article[]) => {
                 <link>https://mateuszjablonski.com</link>
                 <description>Artykuły, które tworzę dotyczą programowania oraz rozwoju. W większości opisuję świat frontendu, ale nie tylko. Zapraszam do czytania.</description>
                 <language>pl</language>
+                <atom:link href="https://mateuszjablonski.com/blog/rss" rel="self" type="application/rss+xml" />
                 <lastBuildDate>${latestArticleDate}</lastBuildDate>
                 ${rssItemsXml}
-                <atom:link href="https://mateuszjablonski.com/blog/rss" rel="self" type="application/rss+xml" />
             </channel>
         </rss>
     `;
