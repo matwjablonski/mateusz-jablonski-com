@@ -13,16 +13,17 @@ const getBlogRssXml = (articles: Article[]) => {
             <item>
                 <title>${post.title}</title>
                 <link>https://mateuszjablonski.com/blog/${post.slug}</link>
-                <pubDate>${post.createdDate}</pubDate>
+                <guid>https://mateuszjablonski.com/blog/${post.slug}</guid>
+                <pubDate>${new Date(post.createdDate).toUTCString()}</pubDate>
                 <description>
-                <![CDATA[${excerpt[0].props.children[0]}]]>
+                    <![CDATA[${excerpt[0].props.children[0]}]]>
                 </description>
             </item>`;
     });
 
     return {
       rssItemsXml,
-      latestArticleDate: articles[0].createdDate,
+      latestArticleDate: new Date(articles[0].createdDate).toUTCString(),
     };
 };
   
