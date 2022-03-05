@@ -30,14 +30,15 @@ const getBlogRssXml = (articles: Article[]) => {
 const getRssXml = (articles: Article[]) => {
     const { rssItemsXml, latestArticleDate } = getBlogRssXml(articles);
     return `<?xml version="1.0" ?>
-        <rss version="2.0">
+        <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
             <channel>
                 <title>Mateusz Jabłoński</title>
                 <link>https://mateuszjablonski.com</link>
-                <description>test</description>
+                <description>Artykuły, które tworzę dotyczą programowania oraz rozwoju. W większości opisuję świat frontendu, ale nie tylko. Zapraszam do czytania.</description>
                 <language>pl</language>
                 <lastBuildDate>${latestArticleDate}</lastBuildDate>
                 ${rssItemsXml}
+                <atom:link href="https://mateuszjablonski.com/blog/rss" rel="self" type="application/rss+xml" />
             </channel>
         </rss>
     `;
