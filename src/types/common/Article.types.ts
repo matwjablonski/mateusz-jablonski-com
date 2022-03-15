@@ -23,4 +23,6 @@ export interface Article {
     author?: Entry<Author>[];
     recommendedBook?: Entry<Book>;
     sources?: Document;
+    categoryName?: string;
+    level?: string;
 }

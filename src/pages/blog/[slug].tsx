@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef } from 'react';
-import { Entry } from 'contentful';
 import Post from '../../components/Post';
 import MainLayout from '../../layouts'
 import Grid from '../../components/Grid';
@@ -9,13 +8,15 @@ import { fetchEntries } from "../../contentful";
 import { ParsedUrlQuery } from "querystring";
 import { Article } from '../../types/common/Article.types';
 import { Comment } from '../../types/common/Comment.type';
-import { formatDateAndTimeWithSeparator } from '../../utils/formatDate';
+import { formatDateAndTimeWithSeparator, formatDate } from '../../utils/formatDate';
 import CommentsList from '../../components/CommentsList';
 import PostAuthor from '../../components/PostAuthor';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
-  const { head, author, content, title, sources, summary, excerpt, featuredImage } = body;
+  const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
+
+  console.log(createdDate);
 
   return body ? (
     <MainLayout head={head ? head.fields : {}}>
@@ -31,6 +32,9 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
           featuredImage={featuredImage}
           numberOfComments={comments.length}
           commentsBlockRef={commentsRef}
+          createdDate={createdDate}
+          categoryName={categoryName}
+          level={level}
         />
         {author[0] && <PostAuthor author={author[0].fields}/>}
         <div ref={commentsRef}>
@@ -51,7 +55,14 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   })
 
   const body = await res.data
-    .map(p => ({ ...p.fields, id: p.sys.id }))
+    .map(p => ({ 
+      ...p.fields,
+      id: p.sys.id,
+      createdDate: formatDate({
+        dateObject: p.createdDate,
+        formatString: 'dd MMMM yyyy',
+      })
+    }))
     .shift();
 
   const commentsRes = await fetchEntries({

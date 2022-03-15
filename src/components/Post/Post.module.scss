@@ -31,4 +31,9 @@
     display: flex;
     align-items: flex-start;
   }
+
+  .metabar {
+    display: flex;
+    margin-bottom: gutters.$gutter-bigger;
+  }
 }

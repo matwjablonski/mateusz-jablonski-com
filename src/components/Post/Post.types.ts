@@ -14,4 +14,7 @@ export interface PostProps {
     summary?: Document,
     sources?: Document;
     author?: Entry<Author>[];
+    createdDate: Date;
+    categoryName?: string;
+    level?: string;
 }

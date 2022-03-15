@@ -1,0 +1,26 @@
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+    margin-right: gutters.$gutter-bigger;
+
+    .metaTitle {
+        margin: 0 0 gutters.$gutter-small;
+        font-family: fonts.$font-headline;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: colors.$color-primary-300;
+        letter-spacing: 0.04em;
+    }
+
+    .metaValue {
+        letter-spacing: 0.04em;
+        font-size: 18px;
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary;
+        text-transform: uppercase;
+    }
+}
