@@ -16,8 +16,6 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
   const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
-  console.log(createdDate);
-
   return body ? (
     <MainLayout head={head ? head.fields : {}}>
       <Grid>

@@ -32,7 +32,7 @@ const Post: FunctionComponent<PostProps> = ({
       </div>
       <div className={styles.metabar}>
         {categoryName && <MetaItem title="Kategoria" value={categoryName} />}
-        <MetaItem title="Data publikacji" value={createdDate} />
+        {createdDate && <MetaItem title="Data publikacji" value={createdDate} />}
         {level && <MetaItem title="Poziom" value={level} />}
       </div>
       {featuredImage && <PostCover coverImage={featuredImage.fields}/>}
