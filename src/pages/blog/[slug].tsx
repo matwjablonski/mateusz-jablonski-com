@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       ...p.fields,
       id: p.sys.id,
       createdDate: formatDate({
-        dateObject: p.createdDate,
+        dateObject: p.fields.createdDate,
         formatString: 'dd MMMM yyyy',
       })
     }))
