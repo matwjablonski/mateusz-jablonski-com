@@ -19,7 +19,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, created
             <div className={styles[preview]}>
                 {
                     externalSource ? (
-                        <a href={externalSource} target="_blank">
+                        <a href={externalSource} target="_blank" rel="noopener noreferrer">
                             {
                                 featuredImage?.fields?.image ?
                                     (
@@ -64,7 +64,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, created
                         <div className={styles.date}>{createdDate}</div>
                         {
                             externalSource ? (
-                                <a href={externalSource} target="_blank">
+                                <a href={externalSource} target="_blank" rel="noopener noreferrer">
                                     <h3 className={styles.title}>{title}</h3>
                                 </a>
                             ) : (

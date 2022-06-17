@@ -9,7 +9,7 @@ import cx from 'classnames';
 
 const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ pattern, href, label = '', className, children, passHref, isExternal, ...rest }) => {
   const createLinkContent = (href?: string, target?: string) => (
-    <a {...rest} className={cx(styles.button, styles[pattern], className)} href={href} target={target}>
+    <a {...rest} className={cx(styles.button, styles[pattern], className)} href={href} target={target} rel="noopener noreferrer">
       {label}
       {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
         <div className={styles.arrow}>
