@@ -18,7 +18,6 @@ interface ContactPageProps {
 }
 
 const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, testimonials }) => {
-    console.log('testimonials', testimonials)
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>

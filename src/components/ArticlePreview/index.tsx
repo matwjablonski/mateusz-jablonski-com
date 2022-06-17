@@ -10,46 +10,97 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 
-const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, createdDate, featuredImage, excerpt, slug, className, preview }) => {
+const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, createdDate, featuredImage, excerpt, slug, className, preview, externalSource }) => {
     const imageWidth = preview === Preview.VERTICAL ? 352 : 544;
     const imageHeight = preview === Preview.VERTICAL ? 216 : 289;
     
     return (
         <article className={cx(styles.articlePreview, className)}>
             <div className={styles[preview]}>
-                <Link href={`/blog/${slug}`}>
-                    <a>
-                        {
-                            featuredImage?.fields?.image ?
-                                (
-                                    <div className={styles.imageBox}>
-                                        <Image
-                                            src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
-                                            width={imageWidth}
-                                            height={imageHeight}
-                                            className={styles.image}
-                                            alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
-                                        />
-                                    </div>
-                                ) :
-                                <ImagePlaceholder width="352px" height="216px" />
-                        }
-                    </a>
-                </Link>
+                {
+                    externalSource ? (
+                        <a href={externalSource} target="_blank">
+                            {
+                                featuredImage?.fields?.image ?
+                                    (
+                                        <div className={styles.imageBox}>
+                                            <Image
+                                                src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
+                                                width={imageWidth}
+                                                height={imageHeight}
+                                                className={styles.image}
+                                                alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
+                                            />
+                                        </div>
+                                    ) :
+                                    <ImagePlaceholder width="352px" height="216px" />
+                            }
+                        </a>
+                    ) : (
+                        <Link href={`/blog/${slug}`}>
+                            <a>
+                                {
+                                    featuredImage?.fields?.image ?
+                                        (
+                                            <div className={styles.imageBox}>
+                                                <Image
+                                                    src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
+                                                    width={imageWidth}
+                                                    height={imageHeight}
+                                                    className={styles.image}
+                                                    alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
+                                                />
+                                            </div>
+                                        ) :
+                                        <ImagePlaceholder width="352px" height="216px" />
+                                }
+                            </a>
+                        </Link>
+                    )
+                }
+                
                 <div className={styles.content}>
                     <div>
                         <div className={styles.date}>{createdDate}</div>
-                        <Link href={`/blog/${slug}`}>
-                            <a>
-                                <   h3 className={styles.title}>{title}</h3>
-                            </a>
-                        </Link>
+                        {
+                            externalSource ? (
+                                <a href={externalSource} target="_blank">
+                                    <h3 className={styles.title}>{title}</h3>
+                                </a>
+                            ) : (
+                                <Link href={externalSource || `/blog/${slug}`} passHref={!!externalSource}>
+                                    <a>
+                                        <h3 className={styles.title}>{title}</h3>
+                                    </a>
+                                </Link>
+                            )
+                        }
                         {documentToReactComponents(excerpt, {})}
                         </div>
-                    {preview === Preview.HORIZONTAL && <Button.L href={`/blog/${slug}`} pattern={ButtonType.PRIMARY} label="Czytaj więcej" />}
+                    {
+                        preview === Preview.HORIZONTAL && (
+                            <Button.L
+                                isExternal={!!externalSource}
+                                href={externalSource || `/blog/${slug}`}
+                                passHref={!!externalSource}
+                                pattern={ButtonType.PRIMARY}
+                                label="Czytaj więcej"
+                            />
+                        )
+                    }
                 </div>
             </div>
-            {preview === Preview.VERTICAL && <Button.L href={`/blog/${slug}`} pattern={ButtonType.PRIMARY} label="Czytaj więcej" />}
+            {
+                preview === Preview.VERTICAL && (
+                    <Button.L 
+                        isExternal={!!externalSource}
+                        href={externalSource || `/blog/${slug}`}
+                        passHref={!!externalSource}
+                        pattern={ButtonType.PRIMARY}
+                        label="Czytaj więcej"
+                    />
+                )
+            }
         </article>
     )
 }

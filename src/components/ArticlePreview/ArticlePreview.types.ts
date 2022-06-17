@@ -14,4 +14,5 @@ export interface ArticlePreviewProps {
     featuredImage: Entry<ArticleFeaturedImage>;
     className?: string;
     preview: Preview;
+    externalSource?: string;
 }

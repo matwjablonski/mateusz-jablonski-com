@@ -25,4 +25,5 @@ export interface Article {
     sources?: Document;
     categoryName?: string;
     level?: string;
+    externalSource?: string;
 }

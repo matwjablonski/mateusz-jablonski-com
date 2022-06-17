@@ -58,6 +58,7 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
                         createdDate={lastArticle.createdDate}
                         featuredImage={lastArticle.featuredImage}
                         preview={Preview.HORIZONTAL}
+                        externalSource={lastArticle.externalSource}
                     />
                 </section>
                 <section className={styles.blogList}>
@@ -69,6 +70,7 @@ const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, artic
                         createdDate={article.createdDate}
                         featuredImage={article.featuredImage}
                         preview={Preview.VERTICAL}
+                        externalSource={article.externalSource}
                     />)}
                     {shouldShowLoadMoreBtn && <Button.B 
                         label="Wczytaj więcej treści"

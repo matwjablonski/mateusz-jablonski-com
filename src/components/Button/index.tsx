@@ -1,15 +1,15 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ButtonProps, ButtonType } from './Button.types';
+import { ButtonProps, ButtonType, LinkProps } from './Button.types';
 import styles from './Button.module.scss';
 import arrow from '../../public/icons/arrow.svg';
 import arrowWhite from '../../public/icons/arrow-white.svg';
 import cx from 'classnames';
 
-const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pattern, href, label = '', className, children, ...rest }) => {
-  const linkContent = (
-    <a {...rest} className={cx(styles.button, styles[pattern], className)}>
+const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ pattern, href, label = '', className, children, passHref, isExternal, ...rest }) => {
+  const createLinkContent = (href?: string, target?: string) => (
+    <a {...rest} className={cx(styles.button, styles[pattern], className)} href={href} target={target}>
       {label}
       {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
         <div className={styles.arrow}>
@@ -23,11 +23,17 @@ const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonProps> = memo(({ pat
       )}
     </a>
   )
+
+  if (isExternal) {
+    return <>
+      {createLinkContent(href, '_blank')}
+    </>
+  }
   
   return href ? (
-    <Link href={href}>
-      {linkContent}
-    </Link>) : <>{linkContent}</>
+    <Link href={href} passHref={passHref}>
+      {createLinkContent()}
+    </Link>) : <>{createLinkContent()}</>
 });
 
 const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {

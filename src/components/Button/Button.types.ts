@@ -14,3 +14,8 @@ export interface ButtonProps {
   label?: string;
   action?: () => void;
 }
+
+export interface LinkProps extends ButtonProps {
+  passHref?: boolean;
+  isExternal?: boolean;
+}

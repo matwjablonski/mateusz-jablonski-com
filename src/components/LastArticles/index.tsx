@@ -41,6 +41,7 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
                             featuredImage={article.featuredImage}
                             className={cx(!checkIsIndexVisible(index) && styles.inactivePreview)}
                             preview={Preview.VERTICAL}
+                            externalSource={article.externalSource}
                         />)
                     }
                     <div className={cx(styles.lastBox, !checkIsIndexVisible(articles.length) && styles.inactivePreview)}>
