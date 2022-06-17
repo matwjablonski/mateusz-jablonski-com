@@ -31,6 +31,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, created
                                                 className={styles.image}
                                                 alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
                                             />
+                                            {externalSource &&  <div className={styles.external}>External</div>}
                                         </div>
                                     ) :
                                     <ImagePlaceholder width="352px" height="216px" />
@@ -50,6 +51,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, created
                                                     className={styles.image}
                                                     alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
                                                 />
+                                                {externalSource && <div className={styles.external}>External</div>}
                                             </div>
                                         ) :
                                         <ImagePlaceholder width="352px" height="216px" />
