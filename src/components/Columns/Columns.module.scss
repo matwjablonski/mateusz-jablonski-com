@@ -1,0 +1,12 @@
+@use '../../styles/settings/gutters';
+
+.columns {
+    display: flex;
+    margin-left: -(gutters.$gutter);
+    margin-right: -(gutters.$gutter);
+
+    > * {
+        flex: 1 0 auto;
+        padding: 0 gutters.$gutter;
+    }
+}

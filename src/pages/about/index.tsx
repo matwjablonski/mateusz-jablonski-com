@@ -12,19 +12,30 @@ import HowIWork from "../../components/HowIWork";
 import { Testimonials } from "../../types/common/Testimonials.types";
 import TestimonialsList from "../../components/Testimonials";
 import WhatCanITeachYou from "../../components/WhatCanITeachYou";
+import Columns from "../../components/Columns";
+import ShortBox from "../../components/ShortBox";
+import CurrentRead from "../../components/CurrentRead";
+import { Book } from "../../types/common/Book.types";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
     body: Page,
+    book: Book,
     testimonials?: Testimonials[];
 }
 
-const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body }) => {
+const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={body.title} description={body.description}/>
+                <Columns>
+                    <ShortBox title="Aktualnie czytam">
+                        <CurrentRead title={book.title} author={book.author} imageUrl="" affiliateLink="" />
+                    </ShortBox>
+                    <ShortBox title="Aktualnie słucham">brak danych</ShortBox>
+                </Columns>
                 <WhatCanITeachYou />
                 <HowIWork />
                 {testimonials.length && (
@@ -51,6 +62,17 @@ export const getStaticProps: GetStaticProps = async () => {
         content_type: 'testimonials'
     });
 
+    const booksRes = await fetchEntries({
+        content_type: 'book',
+        include: 2,
+        'fields.currentRead': true,
+        limit: 4,
+    });
+
+    const book = await booksRes.data.map(p => ({
+        ...p.fields,
+      })).shift();
+
     const body = await res.data
         .map(p => ({ ...p.fields }))
         .shift();
@@ -67,6 +89,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             body,
+            book,
             testimonials,
         }
     }

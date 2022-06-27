@@ -11,7 +11,7 @@ const FeaturedCourses: FunctionComponent<{ featuredCourses: Entry<Course>[]}> = 
         <div className={styles.wrapper}>
             { featuredCourses.map((course) => <FeaturedCoursePreview key={course.sys.id} course={course}/>)}
         </div>
-        <Button.L label="Wszystkie kursy" pattern={ButtonType.WHITE} href="/courses"/>
+        <Button.L label="Wszystkie kursy" pattern={ButtonType.WHITE} href="/course"/>
     </div>
 )
 
