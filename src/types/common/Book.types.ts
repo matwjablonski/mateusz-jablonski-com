@@ -17,10 +17,13 @@ export interface Book {
     cover: Asset;
     author: string;
     affiliateLink: string;
+    excerpt: Document;
     review: Document;
     currentRead: boolean;
+    rate?: number;
     seller?: Entry<BookSeller>;
     head?: Entry<HeadInterface>
     reviewAuthor?: Entry<Author>[];
     bookType?: BookType;
+    categoryName?: string;
 }

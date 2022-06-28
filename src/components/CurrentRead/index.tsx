@@ -27,7 +27,7 @@ const CurrentRead: FC<CurrentReadProps> = ({ title, author, imageUrl, affiliateL
         }
 
         return 'Kup';
-    }, [bookType])
+    }, [bookType]);
 
     return <div className={styles.currentRead}>
         <div className={styles.image}>

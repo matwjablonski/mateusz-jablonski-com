@@ -1,0 +1,86 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
+
+.wrapper {
+  .title {
+    margin-bottom: gutters.$gutter-medium;
+    font-size: 32px;
+    margin-bottom: gutters.$gutter-medium;
+  }
+
+  .excerpt {
+    margin-bottom: gutters.$gutter-big;
+
+    p {
+      color: colors.$color-primary-700;
+      font-size: 24px;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      max-width: 930px;
+      font-weight: 400;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .sideCover {
+    margin-right: gutters.$gutter;
+    position: relative;
+    min-height: 270px;
+    margin-bottom: gutters.$gutter-big;
+
+    @include media.bp(md) {
+      display: block;
+      width: calc(20% - gutters.$gutter-medium);
+    }
+
+    @include media.bp(lg) {
+      width: calc(18.5% - gutters.$gutter-medium);
+    }
+  }
+
+  .metabar {
+    display: flex;
+    margin-bottom: gutters.$gutter-bigger;
+  }
+
+  .buyBookSection {
+    margin: 0 0 gutters.$gutter-bigger;
+    padding: gutters.$gutter-medium;
+    border: 3px solid colors.$color-primary-100;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .buyInfo {
+    max-width: 50%;
+
+    h2 {
+      margin: 0 0 gutters.$gutter;
+      font-family: fonts.$font-headline;
+      color: colors.$color-primary;
+      font-size: 22px;
+    }
+
+    p {
+      color: colors.$color-text;
+      margin: 0;
+    }
+
+    .fundation {
+      color: colors.$color-foundation;
+      font-weight: 700;
+    }
+  }
+}

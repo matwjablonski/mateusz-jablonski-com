@@ -6,9 +6,9 @@ import styles from './RecommendedBook.module.scss';
 import prepareImageUrl from "../../utils/prepareImageUrl";
 import Button from '../Button'
 import { ButtonType } from "../Button/Button.types";
+import BuyBook from "../BuyBook";
 
 const RecommendedBook: FC<{book: Book}> = ({ book: { title, cover, author, affiliateLink, slug, review, seller }}) => {
-    console.log(seller);
     return <div className={styles.recommendedBook}>
         <div className={styles.content}>
             <h3 className={styles.sectionTitle}>Warto przeczytać w tym temacie</h3>
@@ -31,29 +31,7 @@ const RecommendedBook: FC<{book: Book}> = ({ book: { title, cover, author, affil
                             </Link> : 
                             <h4 className={styles.title}>{title}</h4>
                     }
-                    {
-                        affiliateLink && (
-                            <div className={styles.affiliateBox}>
-                                <Button.L href={affiliateLink} label="Kup" pattern={ButtonType.PRIMARY} isExternal/>
-                                {
-                                    seller && (
-                                        <div className={styles.seller}>
-                                            <p>poprzez</p> 
-                                            <div className={styles.sellerLogo}>
-                                                <Image 
-                                                    src={prepareImageUrl(seller.fields.logo.fields.file.url)}
-                                                    objectFit="contain"
-                                                    width={75}
-                                                    height={25}
-                                                    alt={seller.fields.name}
-                                                />
-                                            </div>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        )
-                    }
+                    <BuyBook affiliateLink={affiliateLink} seller={seller.fields} />
                 </div>
             </div>
         </div>

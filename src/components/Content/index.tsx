@@ -14,9 +14,10 @@ interface ContentProps {
   content: Document;
   sources?: Document;
   className?: string;
+  disableSummary?: boolean;
 }
 
-const Content = ({content, summary, sources, className}: ContentProps) => {
+const Content = ({content, summary, sources, disableSummary}: ContentProps) => {
 
   const options = {
     renderNode: {
@@ -59,7 +60,7 @@ const Content = ({content, summary, sources, className}: ContentProps) => {
 
   return (
     <div className={styles.content}>
-      <PostSummary summary={summary} />
+      {!disableSummary && <PostSummary summary={summary} />}
       {documentToReactComponents(content, options)}
       <div className={styles.dots}></div>
       {sources && <PostSources sources={sources}/>}
