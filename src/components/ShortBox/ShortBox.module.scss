@@ -1,9 +1,14 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .shortBox {
-    padding-bottom: gutters.$gutter-bigger;
+    padding-bottom: gutters.$gutter-big;
+
+    @include media.bp(sm) {
+        padding-bottom: gutters.$gutter-bigger;
+    }
 
     .title {
         color: colors.$color-primary;

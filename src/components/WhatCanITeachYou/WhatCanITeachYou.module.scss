@@ -1,6 +1,7 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .whatCanITeachYou {
     color: colors.$color-white;
@@ -8,20 +9,34 @@
     margin: 0 auto 120px;
     max-width: 58rem;
     border-radius: 1rem;
-    padding: 82px gutters.$gutter-biggest gutters.$gutter-biggest;
+    padding: gutters.$gutter-big;
+
+    @include media.bp(md) {
+        padding: 82px gutters.$gutter-biggest gutters.$gutter-biggest;
+    }
 
     .title {
         font-family: fonts.$font-headline;
-        margin: 0 0 gutters.$gutter-bigger;
-        font-size: 56px;
+        margin: 0 0 gutters.$gutter-big;
+        font-size: 36px;
         line-height: 1.2;
+
+        @include media.bp(md) {
+            font-size: 56px;
+            margin-bottom: gutters.$gutter-bigger;
+        }
     }
 
     .subtitle {
-        font-size: 32px;
+        font-size: 26px;
         font-family: fonts.$font-headline;
         line-height: 1.2;
-        margin: 0 0 gutters.$gutter-medium;
+        margin: 0 0 gutters.$gutter;
+
+        @include media.bp(md) {
+            font-size: 32px;
+            margin-bottom: gutters.$gutter-medium;
+        }
     }
 
     .listTitle {

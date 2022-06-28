@@ -1,9 +1,15 @@
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .columns {
     display: flex;
+    flex-direction: column;
     margin-left: -(gutters.$gutter);
     margin-right: -(gutters.$gutter);
+
+    @include media.bp(sm) {
+        flex-direction: row;
+    }
 
     > * {
         flex: 1 0 auto;
