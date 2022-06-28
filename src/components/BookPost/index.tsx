@@ -59,12 +59,12 @@ const BookPost: FunctionComponent<BlogPostProps> = ({
           </div>
         </div>
       </div>
-      {buyBookSection}
+      {affiliateLink && buyBookSection}
       <div className={styles.content}>
         <PostSidebar author={author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <Content content={content} summary={summary} sources={sources} disableSummary/>
       </div>
-      {buyBookSection}
+      {affiliateLink && buyBookSection}
       <PostShare />
     </article>
   );
