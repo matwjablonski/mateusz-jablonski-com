@@ -31,9 +31,15 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
                 <Breadcrumbs />
                 <PageTitle title={body.title} description={body.description}/>
                 <Columns>
-                    <ShortBox title="Aktualnie czytam">
-                        <CurrentRead title={book.title} author={book.author} imageUrl="" affiliateLink="" />
-                    </ShortBox>
+                    {book && <ShortBox title="Aktualnie czytam">
+                        <CurrentRead
+                            title={book.title}
+                            author={book.author}
+                            imageUrl={book.cover.fields.file.url}
+                            affiliateLink={book.affiliateLink}
+                            bookType={book.bookType}
+                        />
+                    </ShortBox>}
                     <ShortBox title="Aktualnie słucham">brak danych</ShortBox>
                 </Columns>
                 <WhatCanITeachYou />
