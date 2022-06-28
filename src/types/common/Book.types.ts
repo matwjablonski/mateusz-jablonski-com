@@ -5,6 +5,11 @@ import { Author } from "./Author.types";
 
 export type BookType = 'ebook' | 'audiobook' | 'paper';
 
+export interface BookSeller {
+    name: string;
+    logo: Asset;
+}
+
 export interface Book {
     title: string;
     createdDate: Date;
@@ -14,6 +19,7 @@ export interface Book {
     affiliateLink: string;
     review: Document;
     currentRead: boolean;
+    seller?: Entry<BookSeller>;
     head?: Entry<HeadInterface>
     reviewAuthor?: Entry<Author>[];
     bookType?: BookType;

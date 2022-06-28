@@ -21,7 +21,7 @@ const Post: FunctionComponent<PostProps> = ({
   commentsBlockRef,
   createdDate,
   categoryName,
-  level
+  level,
 }) => {
 
   return (
@@ -38,7 +38,7 @@ const Post: FunctionComponent<PostProps> = ({
       {featuredImage && <PostCover coverImage={featuredImage.fields}/>}
       <div className={styles.content}>
         <PostSidebar author={author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
-        <Content content={content} summary={summary} sources={sources} />
+        <Content content={content} summary={summary} sources={sources}/>
       </div>
       <PostShare />
     </article>

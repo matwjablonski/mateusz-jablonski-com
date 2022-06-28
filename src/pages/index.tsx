@@ -159,7 +159,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     content_type: 'book',
     include: 2,
     order: '-fields.createdDate',
-    'fields.currentRead': false,
+    'fields.review[exists]': true,
     limit: 4,
   });
 

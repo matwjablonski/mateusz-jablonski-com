@@ -38,6 +38,8 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
                             imageUrl={book.cover.fields.file.url}
                             affiliateLink={book.affiliateLink}
                             bookType={book.bookType}
+                            slug={book.slug}
+                            hasReview={!!book.review}
                         />
                     </ShortBox>}
                     <ShortBox title="Aktualnie słucham">brak danych</ShortBox>

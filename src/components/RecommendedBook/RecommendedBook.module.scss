@@ -1,0 +1,102 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+
+.recommendedBook {
+    border: 3px solid colors.$color-primary-100;
+    border-radius: 8px;
+    position: relative;
+
+    &::before {
+        content: '';
+        background: linear-gradient(-172deg, rgb(16, 86, 193) 0% 60%, rgb(0, 27, 133) 60%);
+        position: absolute;
+        height: calc(100% + 6px);
+        top: -3px;
+        left: -3px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        width: 96px;
+    }
+
+    &::after {
+        content: '';
+        background-image: url("../../public/icons/info.svg");
+        width: 48px;
+        height: 48px;
+        display: block;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 22px;
+    }
+
+    .content {
+        padding: gutters.$gutter-medium gutters.$gutter-medium gutters.$gutter-medium(gutters.$gutter-medium + gutters.$gutter-biggest);
+    }
+
+    .sectionTitle {
+        font-family: fonts.$font-headline;
+        line-height: 1.25;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+        color: colors.$color-text;
+        margin: 0 0 gutters.$gutter;
+    }
+
+    .bookWrapper {
+        display: flex;
+    }
+
+    .bookInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: (gutters.$gutter * 2);
+        flex: auto;
+    }
+
+    .author {
+        color: colors.$color-primary-500;
+        font-family: fonts.$font-headline;
+        font-size: 12px;
+        line-height: 1.3;
+        margin: 0 0 gutters.$gutter-small;
+    }
+
+    .title {
+        font-family: fonts.$font-headline;
+        font-size: 18px;
+        margin: 0 0 gutters.$gutter;
+        line-height: 1.2;
+        letter-spacing: 0.04em;
+        color: colors.$color-primary;
+    }
+
+    .affiliateBox {
+        display: flex;
+    }
+
+    .seller {
+        display: flex;
+        align-items: center;
+        margin-left: gutters.$gutter-medium;
+
+        p {
+            font-size: 14px;
+            color: colors.$color-primary;
+            margin: 0 gutters.$gutter-small 0 0;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+        }
+    }
+
+    .sellerLogo {
+        position: relative;
+        flex: auto;
+        height: 25px;
+    }
+}

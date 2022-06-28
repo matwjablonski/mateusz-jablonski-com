@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types';
 import styles from './Content.module.scss';
-import Entry from "../Entry";
+import { default as EntryBlock} from "../Entry";
 import prepareImageUrl from '../../utils/prepareImageUrl';
 import PostSummary from '../PostSummary';
 import PostSources from '../PostSources';
@@ -17,7 +17,6 @@ interface ContentProps {
 }
 
 const Content = ({content, summary, sources, className}: ContentProps) => {
-  const style = cx(styles.wrapper, className)
 
   const options = {
     renderNode: {
@@ -30,7 +29,7 @@ const Content = ({content, summary, sources, className}: ContentProps) => {
           {children}
         </blockquote>
       </div>, 
-      [BLOCKS.EMBEDDED_ENTRY]: (node) => <Entry node={node}/>,
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => <EntryBlock node={node}/>,
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const { width, height } = node.data.target.fields.file.details.image;
         const proportion = width / height;
