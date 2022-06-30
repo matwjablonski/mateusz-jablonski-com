@@ -50,6 +50,10 @@
         display: flex;
     }
 
+    .bookImageWrapper {
+        min-width: 106px;
+    }
+
     .bookInfo {
         display: flex;
         flex-direction: column;

@@ -13,7 +13,7 @@ const RecommendedBook: FC<{book: Book}> = ({ book: { title, cover, author, affil
         <div className={styles.content}>
             <h3 className={styles.sectionTitle}>Warto przeczytać w tym temacie</h3>
             <div className={styles.bookWrapper}>
-                <div>
+                <div className={styles.bookImageWrapper}>
                     <Image
                         src={prepareImageUrl(cover.fields.file.url)}
                         alt={cover.fields.title}
