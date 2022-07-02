@@ -1,11 +1,17 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .metaItem {
     display: flex;
     flex-direction: column;
     margin-right: gutters.$gutter-bigger;
+    margin-bottom: gutters.$gutter;
+
+    @include media.bp(sm) {
+        margin-bottom: 0;
+    }
 
     .metaTitle {
         margin: 0 0 gutters.$gutter-small;

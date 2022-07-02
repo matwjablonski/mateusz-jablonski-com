@@ -34,6 +34,11 @@
 
   .metabar {
     display: flex;
+    flex-direction: column;
     margin-bottom: gutters.$gutter-bigger;
+
+    @include media.bp(sm) {
+      flex-direction: row;
+    }
   }
 }
