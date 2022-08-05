@@ -1,3 +1,5 @@
+import React from "react";
+
 export enum InputPlaceholderTypes {
     NEWSLETTER = 'newsletter',
 }
@@ -9,4 +11,5 @@ export interface InputWrapperProps {
     icon?: InputPlaceholderTypes;
     error?: boolean;
     success?: boolean;
+    children: React.ReactNode;
 }

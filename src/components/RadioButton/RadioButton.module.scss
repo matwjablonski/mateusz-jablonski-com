@@ -1,0 +1,32 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use "sass:math";
+
+.radioButton {
+    margin-right: gutters.$gutter-small;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+ 
+    .label {
+        cursor: pointer;
+        padding: math.div(gutters.$gutter-medium, 2) (gutters.$gutter);
+        display: inline-flex;
+        border-radius: 4px;
+        border: 1px solid colors.$color-text;
+        font-weight: 600;
+        color: colors.$color-text;
+        white-space: nowrap;
+    }
+
+    .input {
+        display: none;
+
+        &:checked + label {
+            box-shadow: inset 0px 2px 3px rgba(20, 165, 255, 0.6);
+            background-color: colors.$color-primary-100;
+            border-color: colors.$color-primary-100;
+        }
+    }
+}

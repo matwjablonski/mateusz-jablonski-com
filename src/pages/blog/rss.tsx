@@ -16,7 +16,7 @@ const getBlogRssXml = (articles: Article[]) => {
                 <guid>https://mateuszjablonski.com/blog/${post.slug}</guid>
                 <pubDate>${new Date(post.createdDate).toUTCString()}</pubDate>
                 <description>
-                    <![CDATA[${excerpt[0].props.children[0]}]]>
+                    <![CDATA[${excerpt && excerpt[0].props.children[0]}]]>
                 </description>
             </item>`;
     });

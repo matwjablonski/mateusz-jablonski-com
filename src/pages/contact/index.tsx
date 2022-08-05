@@ -10,6 +10,7 @@ import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 import { Testimonials } from "../../types/common/Testimonials.types";
 import TestimonialsList from "../../components/Testimonials";
+import ContactForm from "../../components/ContactForm";
 
 interface ContactPageProps {
     head?: Entry<HeadInterface>;
@@ -17,12 +18,15 @@ interface ContactPageProps {
     testimonials?: Testimonials[];
 }
 
+const showContactForm = false;
+
 const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, testimonials }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description} center/>
+                {showContactForm && <ContactForm />}
                 {testimonials.length && (
                     <TestimonialsList
                         title="Co mówią o mojej pracy?"
