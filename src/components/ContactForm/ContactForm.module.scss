@@ -12,7 +12,6 @@
 
     .formTitle {
         font-family: fonts.$font-headline;
-        font-weight: 400;
         text-align: center;
         font-size: 24px;
         line-height: 1.25;
@@ -34,16 +33,48 @@
         display: flex;
 
         label {
-            flex: 0 0 30%;
+            flex: 0 0 35%;
             text-align: right;
             padding-right: gutters.$gutter-medium;
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            font-size: 16px;
+            color: colors.$color-primary;
+            line-height: 1.25;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
     }
 
     button {
-        margin-left: 30%;
+        margin-left: 35%;
+    }
+
+    .successContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .successTitle {
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary;
+        font-size: 40px;
+        text-align: center;
+        margin: gutters.$gutter-big 0 gutters.$gutter;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
+
+    .successText {
+        text-align: center;
+        margin: 0 auto gutters.$gutter-big;
+        max-width: 730px;
+        color: colors.$color-primary;
+        line-height: 1.4;
+        font-size: 16px;
+        letter-spacing: -0.01em;
     }
 }
