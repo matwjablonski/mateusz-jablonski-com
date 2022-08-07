@@ -9,6 +9,8 @@ import { ButtonType } from '../Button/Button.types';
 import RadioButton from '../RadioButton';
 import RadioButtonsGroup from '../RadioButtonsGroup';
 import styles from './ContactForm.module.scss';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useCallback } from 'react';
 
 const schema = yup.object({
     name: yup.string().required(),
@@ -51,11 +53,22 @@ const ContactForm = () => {
     const { register, handleSubmit, setError, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
-    const onSubmit = (data) => {
-        console.log('handle sumit', data)
-        fetch('/api/email/send', { method: 'POST', body: JSON.stringify({ ...data }) })
-    }
+    const onSubmit = useCallback((data) => {
+        console.log('handle sumit', data);
+        console.log('executeRecaptcha', executeRecaptcha);
+        if (!executeRecaptcha) {
+            console.log("Execute recaptcha not yet available");
+            return;
+        }
+
+        executeRecaptcha("enquiryFormSubmit")
+            .then((gReCaptchaToken) => {
+                console.log(gReCaptchaToken);
+                fetch('/api/email/send', { method: 'POST', body: JSON.stringify({ ...data, gReCaptchaToken }) })
+            });
+    }, [executeRecaptcha])
 
     return (
         <div className={styles.contactForm}>

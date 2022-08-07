@@ -26,7 +26,7 @@ const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, 
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description} center/>
-                {showContactForm && <ContactForm />}
+                <ContactForm />
                 {testimonials.length && (
                     <TestimonialsList
                         title="Co mówią o mojej pracy?"

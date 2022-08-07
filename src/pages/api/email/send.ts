@@ -1,45 +1,54 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Base64 } from 'js-base64';
+import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { env } from 'process';
+
+sgMail.setApiKey(env.SENDGRID_API_KEY)
+
+const selectTopic = (topic: string) => {
+    switch (topic) {
+        case 'course': 
+            return 'Zapytanie o kurs';
+        case 'training':
+            return 'Zapytanie o szkolenie';
+        case 'project':
+            return 'Zapytanie o projekt';
+        case 'job':
+            return 'Oferta pracy';
+        default: 
+            return 'Inny temat';
+    }
+};
 
 const send = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const values = JSON.parse(req.body);
-        console.log(values);
-        const url = `${env.EMAIL_LABS_API_URL}/new_sendmail`;
 
-        const data = {
+        const data: MailDataRequired = {
+            to: 'mail@mateuszjablonski.com',
             from: 'mail@mateuszjablonski.com',
-            subject: 'Wiadomość',
-            smtp_account: '1.mateuszjablonski.smtp',
-            to: {
-                'mail@mateuszjablonski.com': {
-                    message_id: 'aada'
-                }
-            },
-            text: "<h1>Hello $$name$$</h1><p>Here your key: $$custom_key$$</p>"
+            subject: 'Wiadomość ze strony www',
+            html: `
+                <h2>Wiadomość ze strony od ${values.name}</h2>
+                <ul>
+                    <li>Nadawca: ${values.name} (${values.email})</li>
+                    <li>Temat: ${selectTopic(values.topic)}</li>
+                    <li>Forma kontaktu: ${values.prefferedForm}</li>
+                </ul>
+            `
+        };
+
+        await sgMail.send(data);
+
+        res.json('Wiadomość wysłana.');
+    } catch (error) {
+        console.error(error);
+
+        if (error.response) {
+            console.error(error.response.body)
+
+            res.status(500);
+            res.send(error.response.body)
         }
-
-        const authKey = Base64.btoa(`${env.EMAIL_LABS_APP_KEY}:${env.EMAIL_LABS_SECRET_KEY}`)
-
-        fetch(
-            url, 
-            {
-                method: 'POST',
-                headers: { 'Authorization': `Basic ${authKey}` },
-                body: JSON.stringify(data),
-            }
-        )
-        .then(response => response.json())
-        .then(response => {
-            console.log('restes', response)
-            res.json(response)
-        });
-
-        console.log('after fetch');
-        // console.log(res);
-    } catch (e) {
-
     }
 }
 
