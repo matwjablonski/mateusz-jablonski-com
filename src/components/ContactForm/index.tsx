@@ -10,7 +10,7 @@ import RadioButton from '../RadioButton';
 import RadioButtonsGroup from '../RadioButtonsGroup';
 import styles from './ContactForm.module.scss';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 const schema = yup.object({
     name: yup.string().required(),
@@ -54,24 +54,28 @@ const ContactForm = () => {
         resolver: yupResolver(schema),
     });
     const { executeRecaptcha } = useGoogleReCaptcha();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const onSubmit = useCallback((data) => {
-        console.log('handle sumit', data);
-        console.log('executeRecaptcha', executeRecaptcha);
+        setIsSubmitting(true);
+
         if (!executeRecaptcha) {
-            console.log("Execute recaptcha not yet available");
             return;
         }
 
         executeRecaptcha("enquiryFormSubmit")
             .then((gReCaptchaToken) => {
-                console.log(gReCaptchaToken);
                 fetch('/api/email/send', { method: 'POST', body: JSON.stringify({ ...data, gReCaptchaToken }) })
+                    .finally(() => {
+                        setIsSubmitting(false);
+                    })
             });
     }, [executeRecaptcha])
 
     return (
         <div className={styles.contactForm}>
+            <h2 className={styles.formTitle}>Formularz kontaktowy</h2>
+            <p className={styles.formText}>Dla twojej wygody formularz skrócony jest do jak najmniejszej liczby punktów, tak abym jak najszybciej i jak najsprawniej skontaktował się z Tobą.</p>
             <form onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
                 <InputWrapper label="Wybierz temat:">
                     <RadioButtonsGroup>
@@ -125,7 +129,7 @@ const ContactForm = () => {
                         <ErrorMessage errors={errors} name={'prefferedForm'} />
                     </MessageWrapper>
                 </InputWrapper>
-                <Button.B type="submit" label="Napisz do mnie" pattern={ButtonType.PRIMARY}/>
+                <Button.B type="submit" label="Napisz do mnie" pattern={ButtonType.PRIMARY} disabled={isSubmitting}/>
             </form>
         </div>
     )
