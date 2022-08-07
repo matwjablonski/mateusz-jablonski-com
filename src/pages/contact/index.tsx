@@ -11,6 +11,7 @@ import { Page } from "../../types/common/Page.types";
 import { Testimonials } from "../../types/common/Testimonials.types";
 import TestimonialsList from "../../components/Testimonials";
 import ContactForm from "../../components/ContactForm";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 interface ContactPageProps {
     head?: Entry<HeadInterface>;
@@ -18,25 +19,33 @@ interface ContactPageProps {
     testimonials?: Testimonials[];
 }
 
-const showContactForm = false;
-
 const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, testimonials }) => {
     return (
-        <MainLayout head={head ? head.fields : {}} hideOverflow>
-            <Grid>
-                <Breadcrumbs />
-                <PageTitle title={title} description={description} center/>
-                <ContactForm />
-                {testimonials.length && (
-                    <TestimonialsList
-                        title="Co mówią o mojej pracy?"
-                        description="Największą wartością dla mnie jest zadowolenie moich odbiorców: czytelników, słuchaczy, widzów i osób, których pomagam realizować ich cele. Poniżej znajdziesz kilka wybranych opinii na temat mojej pracy."
-                        contentAlign="center"
-                        testimonials={testimonials}
-                    />
-                )}
-            </Grid>
-        </MainLayout>
+        <GoogleReCaptchaProvider
+            reCaptchaKey="6LdvY1YhAAAAAOpn2TQ36DH94hTnsFGVQzlHQgx9"
+            scriptProps={{
+                async: false,
+                defer: false,
+                appendTo: "head",
+                nonce: undefined,
+            }}
+        > 
+            <MainLayout head={head ? head.fields : {}} hideOverflow>
+                <Grid>
+                    <Breadcrumbs />
+                    <PageTitle title={title} description={description} center/>
+                    <ContactForm />
+                    {testimonials.length && (
+                        <TestimonialsList
+                            title="Co mówią o mojej pracy?"
+                            description="Największą wartością dla mnie jest zadowolenie moich odbiorców: czytelników, słuchaczy, widzów i osób, których pomagam realizować ich cele. Poniżej znajdziesz kilka wybranych opinii na temat mojej pracy."
+                            contentAlign="center"
+                            testimonials={testimonials}
+                        />
+                    )}
+                </Grid>
+            </MainLayout>
+        </GoogleReCaptchaProvider>
     )
 }
 

@@ -3,7 +3,6 @@ import '../styles/globals.css';
 import { useRouter } from 'next/router'
 import Script from 'next/script';
 import * as gtag from '../lib/gtag'
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -40,17 +39,7 @@ const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) =>
           `,
         }}
       />
-      <GoogleReCaptchaProvider
-        reCaptchaKey="6LdvY1YhAAAAAOpn2TQ36DH94hTnsFGVQzlHQgx9"
-        scriptProps={{
-          async: false,
-          defer: false,
-          appendTo: "head",
-          nonce: undefined,
-        }}
-      >
-        <Component {...pageProps} />
-      </GoogleReCaptchaProvider>
+      <Component {...pageProps} />
     </>
   )
   
