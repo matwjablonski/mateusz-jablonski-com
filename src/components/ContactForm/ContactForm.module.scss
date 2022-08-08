@@ -32,6 +32,14 @@
     [class*="InputWrapper"] {
         display: flex;
 
+        &::before {
+            left: calc(35% + 12px);
+        }
+
+        input {
+            max-width: 400px;
+        }
+
         label {
             flex: 0 0 35%;
             text-align: right;

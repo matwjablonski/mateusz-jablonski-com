@@ -11,6 +11,7 @@ import RadioButtonsGroup from '../RadioButtonsGroup';
 import styles from './ContactForm.module.scss';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useCallback, useState } from 'react';
+import { InputPlaceholderTypes } from '../InputWrapper/InputWrapper.types';
 
 const schema = yup.object({
     name: yup.string().required('Imię jest wymagane.'),
@@ -105,7 +106,7 @@ const ContactForm = () => {
                                     <ErrorMessage errors={errors} name={'topic'} />
                                 </MessageWrapper>
                             </InputWrapper>
-                            <InputWrapper label="Imię:" error={!!errors['name']}>
+                            <InputWrapper label="Imię:" error={!!errors['name']} icon={InputPlaceholderTypes.USER}>
                                 <input
                                     {...register('name')}
                                     type="text"
@@ -115,7 +116,7 @@ const ContactForm = () => {
                                     <ErrorMessage errors={errors} name={'name'} />
                                 </MessageWrapper>
                             </InputWrapper>
-                            <InputWrapper label="Adres e-mail:" error={!!errors['email']}>
+                            <InputWrapper label="Adres e-mail:" error={!!errors['email']} icon={InputPlaceholderTypes.NEWSLETTER}>
                                 <input
                                     {...register('email')}
                                     type="email"
