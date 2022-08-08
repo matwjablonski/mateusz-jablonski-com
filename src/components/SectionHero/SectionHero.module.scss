@@ -1,0 +1,32 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use "sass:math";
+
+.sectionHero {
+    .title {
+        color: colors.$color-primary;
+        font-family: fonts.$font-headline;
+        font-size: 56px;
+        text-align: center;
+        line-height: 1.2;
+        letter-spacing: 0.2em;
+        margin: 0 0 gutters.$gutter-big;
+
+        em {
+            color: colors.$color-primary-100;
+        }
+
+        small {
+            display: block;
+            letter-spacing: -0.01em;
+        }
+    }
+
+    .image {
+        position: relative;
+        width: 100%;
+        height: 305px;
+        margin-bottom: gutters.$gutter-bigger;
+    }
+}

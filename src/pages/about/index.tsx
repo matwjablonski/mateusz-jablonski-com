@@ -16,6 +16,7 @@ import Columns from "../../components/Columns";
 import ShortBox from "../../components/ShortBox";
 import CurrentRead from "../../components/CurrentRead";
 import { Book } from "../../types/common/Book.types";
+import SectionHero from "../../components/SectionHero";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -30,6 +31,15 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={body.title} description={body.description}/>
+            </Grid>
+            <SectionHero
+                title={
+                    <>
+                        Przestrzeń <small>pomiędzy znakami</small>
+                    </>
+                }
+            />
+            <Grid>
                 <Columns>
                     {book && <ShortBox title="Aktualnie czytam">
                         <CurrentRead
