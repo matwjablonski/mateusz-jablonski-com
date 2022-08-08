@@ -45,6 +45,10 @@
             font-weight: 400;
             letter-spacing: -0.01em;
         }
+
+        [class*="MessageWrapper"] {
+            margin-left: 35%;
+        }
     }
 
     button {

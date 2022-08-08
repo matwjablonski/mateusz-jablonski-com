@@ -13,10 +13,16 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useCallback, useState } from 'react';
 
 const schema = yup.object({
-    name: yup.string().required(),
-    email: yup.string().email().required(),
-    topic: yup.string().required(),
-    prefferedForm: yup.string().required(),
+    name: yup.string().required('Imię jest wymagane.'),
+    email: yup.string().email('Podany email nie jest prawidłowy.').required('Adres email jest wymagany.'),
+    topic: yup.string().required('Wybór tematu jest wymagany.').nullable(),
+    prefferedForm: yup.string().required('Wybierz preferowaną formę kontaktu.').nullable(),
+    phone: yup.string().notRequired().when('prefferedForm', {
+        is: 'phone',
+        then: yup.string()
+            .required('Podanie numeru telefonu jest wymagane.')
+            .matches(/[\+\(\)\ 0-9]{9,19}/, 'Numer telefonu powinien zawierać tylko liczby lub znaki: + ( ) oraz spację.'),
+    }).nullable(),
 }).required();
 
 const possibleTopics = [
@@ -50,7 +56,7 @@ const prefferedForms = [
 ];
 
 const ContactForm = () => {
-    const { register, handleSubmit, setError, reset, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors }, getValues, watch } = useForm({
         resolver: yupResolver(schema),
     });
     const { executeRecaptcha } = useGoogleReCaptcha();
@@ -73,7 +79,7 @@ const ContactForm = () => {
                         setIsSubmitted(true);
                     })
             });
-    }, [executeRecaptcha])
+    }, [executeRecaptcha]);
 
     return (
         <div className={styles.contactForm}>
@@ -83,7 +89,7 @@ const ContactForm = () => {
                         <h2 className={styles.formTitle}>Formularz kontaktowy</h2>
                         <p className={styles.formText}>Dla twojej wygody formularz skrócony jest do jak najmniejszej liczby punktów, tak abym jak najszybciej i jak najsprawniej skontaktował się z Tobą.</p>
                         <form onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
-                            <InputWrapper label="Wybierz temat:">
+                            <InputWrapper label="Wybierz temat:" error={!!errors['topic']}>
                                 <RadioButtonsGroup>
                                     {possibleTopics.map(({ value, label }) => (
                                         <RadioButton
@@ -99,7 +105,7 @@ const ContactForm = () => {
                                     <ErrorMessage errors={errors} name={'topic'} />
                                 </MessageWrapper>
                             </InputWrapper>
-                            <InputWrapper label="Imię:">
+                            <InputWrapper label="Imię:" error={!!errors['name']}>
                                 <input
                                     {...register('name')}
                                     type="text"
@@ -109,17 +115,17 @@ const ContactForm = () => {
                                     <ErrorMessage errors={errors} name={'name'} />
                                 </MessageWrapper>
                             </InputWrapper>
-                            <InputWrapper label="Adres e-mail:">
+                            <InputWrapper label="Adres e-mail:" error={!!errors['email']}>
                                 <input
                                     {...register('email')}
                                     type="email"
-                                    placeholder="Podaj adres e-mail" 
+                                    placeholder="Podaj adres e-mail"
                                 />
                                 <MessageWrapper messageType={MessageType.ERROR}>
                                     <ErrorMessage errors={errors} name={'email'} />
                                 </MessageWrapper>
                             </InputWrapper>
-                            <InputWrapper label="Preferowany kontakt:">
+                            <InputWrapper label="Preferowany kontakt:" error={!!errors['prefferedForm']}>
                                 <RadioButtonsGroup>
                                     {prefferedForms.map(({ value, label }) => (
                                         <RadioButton 
@@ -135,6 +141,20 @@ const ContactForm = () => {
                                     <ErrorMessage errors={errors} name={'prefferedForm'} />
                                 </MessageWrapper>
                             </InputWrapper>
+                            {
+                                watch('prefferedForm') === 'phone' && (
+                                    <InputWrapper label="Numer telefonu:" error={!!errors['phone']}>
+                                        <input
+                                            {...register('phone')}
+                                            type="string"
+                                            placeholder="Podaj numer telefonu"
+                                        />
+                                        <MessageWrapper messageType={MessageType.ERROR}>
+                                            <ErrorMessage errors={errors} name={'phone'} />
+                                        </MessageWrapper>
+                                    </InputWrapper>
+                                )
+                            }
                             <Button.B type="submit" label="Napisz do mnie" pattern={ButtonType.PRIMARY} disabled={isSubmitting}/>
                         </form>
                     </>

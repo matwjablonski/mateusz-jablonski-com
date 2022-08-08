@@ -30,7 +30,7 @@ const send = async (req: NextApiRequest, res: NextApiResponse) => {
             html: `
                 <h2>Wiadomość ze strony od ${values.name}</h2>
                 <ul>
-                    <li>Nadawca: ${values.name} (${values.email})</li>
+                    <li>Nadawca: ${values.name} (${values.email} ${values.phone})</li>
                     <li>Temat: ${selectTopic(values.topic)}</li>
                     <li>Forma kontaktu: ${values.prefferedForm}</li>
                 </ul>
