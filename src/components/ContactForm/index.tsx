@@ -144,7 +144,7 @@ const ContactForm = () => {
                             </InputWrapper>
                             {
                                 watch('prefferedForm') === 'phone' && (
-                                    <InputWrapper label="Numer telefonu:" error={!!errors['phone']}>
+                                    <InputWrapper label="Numer telefonu:" error={!!errors['phone']} icon={InputPlaceholderTypes.PHONE}>
                                         <input
                                             {...register('phone')}
                                             type="string"
