@@ -2,13 +2,14 @@ import Image from 'next/image';
 import { ReactElement, ReactNode, useMemo } from 'react';
 import Grid from '../Grid';
 import styles from './SectionHero.module.scss';
+import heroImage from '../../public/books.webp';
 
 interface SectionHeroProps {
     title: ReactElement;
+    text: string;
 }
 
-
-const SectionHero = ({ title }: SectionHeroProps) => {
+const SectionHero = ({ title, text }: SectionHeroProps) => {
     const [ firstElement, ...restElements ] = title.props.children;
     const firstWordAsArray = useMemo(() => firstElement.split('').filter(letter => letter !== ' '), [title]);
 
@@ -27,8 +28,11 @@ const SectionHero = ({ title }: SectionHeroProps) => {
                 </h2>
             </Grid>
             <div className={styles.image}>
-                <Image src="/public/books.webp" layout="fill" />
+                <Image src={heroImage} layout="fill" />
             </div>
+            <Grid>
+                <p className={styles.text}>{text}</p>
+            </Grid>
         </section>
     )
 }

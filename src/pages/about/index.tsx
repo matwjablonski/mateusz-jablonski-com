@@ -38,6 +38,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
                         Przestrzeń <small>pomiędzy znakami</small>
                     </>
                 }
+                text="Najpiękniejsze w byciu człowiekiem jest to, że mogę się nieustannie rozwijać. Rozwój to dla mnie najważniejszy i największy motywator do codziennego wstawania. Dlatego właśnie, tak ważne są dla mnie książki - są symbolem wiedzy i rozwoju, kreatywności i szukania własnej drogi."
             />
             <Grid>
                 <Columns>
