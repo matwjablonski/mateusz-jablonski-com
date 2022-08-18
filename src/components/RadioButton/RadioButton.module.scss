@@ -20,6 +20,13 @@
         white-space: nowrap;
     }
 
+    .labelIcon {
+        display: flex;
+        margin-right: math.div(gutters.$gutter-small, 2);
+        height: 20px;
+        position: relative;
+    }
+
     .input {
         display: none;
 

@@ -33,7 +33,7 @@
         display: flex;
 
         &::before {
-            left: calc(35% + 12px);
+            left: calc(30% + 12px);
         }
 
         input {
@@ -41,7 +41,7 @@
         }
 
         label {
-            flex: 0 0 35%;
+            flex: 0 0 30%;
             text-align: right;
             padding-right: gutters.$gutter-medium;
             display: flex;
@@ -55,12 +55,12 @@
         }
 
         [class*="MessageWrapper"] {
-            margin-left: 35%;
+            margin-left: 30%;
         }
     }
 
     button {
-        margin-left: 35%;
+        margin-left: 30%;
     }
 
     .successContent {

@@ -14,6 +14,11 @@ import { useCallback, useState } from 'react';
 import { InputPlaceholderTypes } from '../InputWrapper/InputWrapper.types';
 import ButtonBox from '../ButtonBox';
 import IconMail from '../../public/icons/mail-closed.svg';
+import CourseIcon from '../../public/icons/course.svg';
+import TrainingIcon from '../../public/icons/training.svg';
+import CodeIcon from '../../public/icons/code.svg';
+import PhoneIcon from '../../public/icons/phone-option.svg';
+import MailIcon from '../../public/icons/mail-option.svg';
 
 const schema = yup.object({
     name: yup.string().required('Imię jest wymagane.'),
@@ -32,14 +37,20 @@ const possibleTopics = [
     {
         value: 'course',
         label: 'Kurs',
+        icon: CourseIcon,
+        iconWidth: 24,
     },
     {
         value: 'training',
         label: 'Szkolenie',
+        icon: TrainingIcon,
+        iconWidth: 24,
     },
     {
         value: 'project',
         label: 'Zapytanie o projekt',
+        icon: CodeIcon,
+        iconWidth: 24,
     },
     {
         value: 'job',
@@ -51,10 +62,14 @@ const prefferedForms = [
     {
         value: 'phone',
         label: 'Telefon',
+        icon: PhoneIcon,
+        iconWidth: 24,
     },
     {
         value: 'email',
         label: 'Email',
+        icon: MailIcon,
+        iconWidth: 24,
     },
 ];
 
@@ -94,13 +109,15 @@ const ContactForm = () => {
                         <form onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
                             <InputWrapper label="Wybierz temat:" error={!!errors['topic']}>
                                 <RadioButtonsGroup>
-                                    {possibleTopics.map(({ value, label }) => (
+                                    {possibleTopics.map(({ value, label, icon, iconWidth }) => (
                                         <RadioButton
                                             register={register}
                                             name="topic"
                                             key={value}
                                             value={value}
                                             label={label}
+                                            icon={icon}
+                                            iconWidth={iconWidth}
                                         />
                                     ))}
                                 </RadioButtonsGroup>
@@ -130,13 +147,15 @@ const ContactForm = () => {
                             </InputWrapper>
                             <InputWrapper label="Preferowany kontakt:" error={!!errors['prefferedForm']}>
                                 <RadioButtonsGroup>
-                                    {prefferedForms.map(({ value, label }) => (
+                                    {prefferedForms.map(({ value, label, icon, iconWidth }) => (
                                         <RadioButton 
                                             value={value}
                                             key={value}
                                             name="prefferedForm"
                                             register={register}
                                             label={label}
+                                            icon={icon}
+                                            iconWidth={iconWidth}
                                         />
                                     ))}
                                 </RadioButtonsGroup>
