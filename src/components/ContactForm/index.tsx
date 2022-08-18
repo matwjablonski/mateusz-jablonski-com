@@ -12,6 +12,8 @@ import styles from './ContactForm.module.scss';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useCallback, useState } from 'react';
 import { InputPlaceholderTypes } from '../InputWrapper/InputWrapper.types';
+import ButtonBox from '../ButtonBox';
+import IconMail from '../../public/icons/mail-closed.svg';
 
 const schema = yup.object({
     name: yup.string().required('Imię jest wymagane.'),
@@ -158,6 +160,18 @@ const ContactForm = () => {
                             }
                             <Button.B type="submit" label="Napisz do mnie" pattern={ButtonType.PRIMARY} disabled={isSubmitting}/>
                         </form>
+                        <div className={styles.mailToSection}>
+                            <h2>Chcesz przesłać więcej infomacji?</h2>
+                            <p>Najszybciej odpowiadam na wiadomości wysłane za pomocą powyższego formularza. Czas oczekiwania na odpowiedź na zwykły mail może być delikatnie dłuższy. Ale obiecuję - nie będzie to zbyt długo. :)</p>
+                            <ButtonBox
+                                text="mail@mateuszjablonski.com"
+                                icon={IconMail}
+                                iconWidth={40}
+                                iconHeight={28}
+                            >
+                                <Button.L label="Napisz do mnie" pattern={ButtonType.LIGTHENED} href="mailto:mail@mateuszjablonski.com" isExternal/>
+                            </ButtonBox>
+                        </div>
                     </>
                 ) : (
                     <div className={styles.successContent}>

@@ -1,0 +1,31 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.buttonBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    background: colors.$color-primary-100;
+    padding: gutters.$gutter-medium (gutters.$gutter * 2);
+    
+    .messageBox {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon {
+        margin-right: gutters.$gutter;
+    }
+
+    .text {
+        margin: 0;
+        font-size: 27px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        color: colors.$color-primary;
+        user-select: none;
+    }
+}

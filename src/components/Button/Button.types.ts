@@ -1,6 +1,7 @@
 export enum ButtonType {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
+  LIGTHENED = 'lightened',
   RED = 'red',
   CLEAN = 'clean',
   WHITE = 'white',

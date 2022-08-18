@@ -16,7 +16,7 @@ const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ patte
           <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
         </div>
       )}
-      {(pattern === ButtonType.PRIMARY || pattern === ButtonType.WHITE) && (
+      {(pattern === ButtonType.PRIMARY || pattern === ButtonType.WHITE || pattern === ButtonType.LIGTHENED) && (
         <div className={styles.arrow}>
           <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
         </div>
@@ -50,7 +50,7 @@ const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pat
             <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
           </div>
         )}
-        {pattern === ButtonType.PRIMARY && (
+        {(pattern === ButtonType.PRIMARY || pattern === ButtonType.LIGTHENED) && (
           <div className={styles.arrow}>
             <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
           </div>
