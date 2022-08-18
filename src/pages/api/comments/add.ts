@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from 'contentful-management'
+import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { env } from 'process';
+
+sgMail.setApiKey(env.SENDGRID_API_KEY)
 
 const defaultLanguageCode = 'pl-PL';
 
@@ -48,6 +51,21 @@ const addComment = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             }
         );
+
+        const data: MailDataRequired = {
+            to: 'mail@mateuszjablonski.com',
+            from: 'mail@mateuszjablonski.com',
+            subject: 'Nowy komentarz do artykułu',
+            html: `
+                <h2>Dodano nowy komentarz od ${author}</h2>
+                <ul>
+                    <li>Autor: ${author} (${email})</li>
+                    <li>Treść: ${message}</li>
+                </ul>
+            `
+        };
+
+        await sgMail.send(data);
 
         res.send({ status: 'saved', message: 'Udało się! Twój komentarz został zapisany poprawnie. Oczekuje na akceptację.' }); 
     } catch(e) {
