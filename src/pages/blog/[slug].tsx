@@ -12,36 +12,39 @@ import { formatDateAndTimeWithSeparator, formatDate } from '../../utils/formatDa
 import CommentsList from '../../components/CommentsList';
 import PostAuthor from '../../components/PostAuthor';
 import PageNewsletter from '../../components/Newsletter/PageNewsletter';
+import CaptchaProvider from '../../providers/CaptchaProvider';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
   const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
   return body ? (
-    <MainLayout head={head ? head.fields : {}}>
-      <Grid>
-        <Breadcrumbs />
-        <Post
-          content={content}
-          title={title}
-          sources={sources}
-          author={author}
-          summary={summary}
-          excerpt={excerpt}
-          featuredImage={featuredImage}
-          numberOfComments={comments.length}
-          commentsBlockRef={commentsRef}
-          createdDate={createdDate}
-          categoryName={categoryName}
-          level={level}
-        />
-        {author[0] && <PostAuthor author={author[0].fields}/>}
-        <div ref={commentsRef}>
-          <CommentsList comments={comments} postId={body.id} />
-        </div>
-        <PageNewsletter />
-      </Grid>
-    </MainLayout>
+    <CaptchaProvider>
+      <MainLayout head={head ? head.fields : {}}>
+        <Grid>
+          <Breadcrumbs />
+          <Post
+            content={content}
+            title={title}
+            sources={sources}
+            author={author}
+            summary={summary}
+            excerpt={excerpt}
+            featuredImage={featuredImage}
+            numberOfComments={comments.length}
+            commentsBlockRef={commentsRef}
+            createdDate={createdDate}
+            categoryName={categoryName}
+            level={level}
+          />
+          {author[0] && <PostAuthor author={author[0].fields}/>}
+          <div ref={commentsRef}>
+            <CommentsList comments={comments} postId={body.id} />
+          </div>
+          <PageNewsletter />
+        </Grid>
+      </MainLayout>
+    </CaptchaProvider>
   ) : null;
 };
 

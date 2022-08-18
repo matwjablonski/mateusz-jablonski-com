@@ -5,7 +5,13 @@
 .commentsWrapper {
     width: 66%;
     margin-left: 18.5%;
-    margin-bottom: gutters.$gutter-bigger   ;
+    margin-bottom: gutters.$gutter-bigger;
+
+    .commentsHead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     .title {
         color: colors.$color-primary;

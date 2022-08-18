@@ -11,8 +11,8 @@ import { Page } from "../../types/common/Page.types";
 import { Testimonials } from "../../types/common/Testimonials.types";
 import TestimonialsList from "../../components/Testimonials";
 import ContactForm from "../../components/ContactForm";
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
+import CaptchaProvider from "../../providers/CaptchaProvider";
 
 interface ContactPageProps {
     head?: Entry<HeadInterface>;
@@ -22,15 +22,7 @@ interface ContactPageProps {
 
 const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, testimonials }) => {
     return (
-        <GoogleReCaptchaProvider
-            reCaptchaKey="6LdvY1YhAAAAAOpn2TQ36DH94hTnsFGVQzlHQgx9"
-            scriptProps={{
-                async: false,
-                defer: false,
-                appendTo: "head",
-                nonce: undefined,
-            }}
-        > 
+        <CaptchaProvider>
             <MainLayout head={head ? head.fields : {}} hideOverflow>
                 <Grid>
                     <Breadcrumbs />
@@ -47,7 +39,7 @@ const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, 
                     <PageNewsletter />
                 </Grid>
             </MainLayout>
-        </GoogleReCaptchaProvider>
+        </CaptchaProvider>
     )
 }
 

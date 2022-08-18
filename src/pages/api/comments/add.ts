@@ -19,9 +19,9 @@ const client = createClient(
 
 const addComment = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const { id } = JSON.parse(req.body);
+        const { id, author, message, email } = JSON.parse(req.body);
 
-        const a = await client.entry.create(
+        await client.entry.create(
             {
                 contentTypeId: 'comment'
             },
@@ -37,8 +37,14 @@ const addComment = async (req: NextApiRequest, res: NextApiResponse) => {
                         }
                     },
                     message: {
-                        [defaultLanguageCode]: 'tests'
-                    }
+                        [defaultLanguageCode]: message,
+                    },
+                    author: {
+                        [defaultLanguageCode]: author,
+                    },
+                    email: {
+                        [defaultLanguageCode]: email,
+                    },
                 }
             }
         );
