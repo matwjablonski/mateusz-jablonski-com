@@ -13,7 +13,7 @@ import { Article } from '../../types/common/Article.types';
 import ArticlePreview from '../../components/ArticlePreview';
 import styles from '../../styles/Blog.module.scss';
 import { Preview } from '../../components/ArticlePreview/ArticlePreview.types';
-import HomeNewsletter from '../../components/HomeNewletter';
+import HomeNewsletter from '../../components/Newsletter/HomeNewsletter';
 import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types';
 

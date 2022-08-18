@@ -12,6 +12,7 @@ import { Testimonials } from "../../types/common/Testimonials.types";
 import TestimonialsList from "../../components/Testimonials";
 import ContactForm from "../../components/ContactForm";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 
 interface ContactPageProps {
     head?: Entry<HeadInterface>;
@@ -43,6 +44,7 @@ const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, 
                             testimonials={testimonials}
                         />
                     )}
+                    <PageNewsletter />
                 </Grid>
             </MainLayout>
         </GoogleReCaptchaProvider>

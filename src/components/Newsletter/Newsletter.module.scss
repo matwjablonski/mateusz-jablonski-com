@@ -1,0 +1,10 @@
+@use '../../styles/settings/media';
+
+.newsletterForm {
+    display: block;
+    max-width: 710px;
+
+    @include media.bp(lg) {
+        display: inline-block;
+    }
+}

@@ -1,7 +1,7 @@
-@use '../../styles/settings/colors';
-@use '../../styles/settings/gutters';
-@use '../../styles/settings/fonts';
-@use '../../styles/settings/media';
+@use '../../../styles/settings/colors';
+@use '../../../styles/settings/gutters';
+@use '../../../styles/settings/fonts';
+@use '../../../styles/settings/media';
 
 .newsletterHome {
     background: colors.$color-primary;
@@ -11,28 +11,10 @@
     margin-right: -(gutters.$gutter-big);
     position: relative;
 
-    &::before {
-        content: none;
-        display: block;
-        background: url('../../public/newsletter.webp') no-repeat;
-        background-size: cover;
-        width: 688px;
-        height: 516px;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 3;
-
-        @include media.bp(lg) {
-            content: '';
-        }
-
-    }
-
     &::after {
         content: '';
         display: block;
-        background: url('../../public/newsletter.svg') no-repeat;
+        background: url('../../../public/newsletter.svg') no-repeat;
         background-size: cover;
         position: absolute;
         width: 100%;
@@ -49,15 +31,6 @@
         z-index: 4;
     }
 
-    .form {
-        display: block;
-        max-width: 710px;
-
-        @include media.bp(lg) {
-            display: inline-block;
-        }
-    }
-
     .title {
         color: colors.$color-white;
         font-size: 30px;
@@ -68,10 +41,6 @@
 
         @include media.bp(sm) {
             font-size: 40px;
-        }
-
-        @include media.bp(lg) {
-            max-width: 710px;
         }
 
         strong {
@@ -91,9 +60,20 @@
         line-height: 1.4;
         letter-spacing: -0.01em;
         margin: 0 0 gutters.$gutter-medium;
+    }
 
-        @include media.bp(lg) {
-            max-width: 710px;
+    .smallForm {
+        display: flex;
+        max-width: 100%;
+
+        [class*="InputWrapper"] {
+            margin-bottom: 0;
+            margin-right: gutters.$gutter;
+
+            input {
+                padding-top: 14px;
+                padding-bottom: 14px;
+            }
         }
     }
 }

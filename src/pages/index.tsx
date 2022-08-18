@@ -6,7 +6,7 @@ import Grid from '../components/Grid';
 import MainLayout from '../layouts/index'
 import TitleBarWithComponent from '../components/TitleBarWithComponent';
 import LastArticles from '../components/LastArticles';
-import HomeNewsletter from '../components/HomeNewletter';
+import HomeNewsletter from '../components/Newsletter/HomeNewsletter';
 import { Podcast } from '../types/common/Podcast.types';
 import { Article } from '../types/common/Article.types';
 import LastPodcasts from '../components/LastPodcasts';

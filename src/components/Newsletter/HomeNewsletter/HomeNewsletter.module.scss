@@ -1,0 +1,90 @@
+@use '../../../styles/settings/colors';
+@use '../../../styles/settings/gutters';
+@use '../../../styles/settings/fonts';
+@use '../../../styles/settings/media';
+
+.newsletterHome {
+    background: colors.$color-primary;
+    border-radius: 8px;
+    padding: gutters.$gutter-big;
+    margin-left: -(gutters.$gutter-big);
+    margin-right: -(gutters.$gutter-big);
+    position: relative;
+
+    &::before {
+        content: none;
+        display: block;
+        background: url('../../../public/newsletter.webp') no-repeat;
+        background-size: cover;
+        width: 688px;
+        height: 516px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+
+        @include media.bp(lg) {
+            content: '';
+        }
+
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        background: url('../../../public/newsletter.svg') no-repeat;
+        background-size: cover;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: 0;
+        top: 0;
+        z-index: 2;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .data {
+        position: relative;
+        z-index: 4;
+    }
+
+    .title {
+        color: colors.$color-white;
+        font-size: 30px;
+        font-weight: 400;
+        font-family: fonts.$font-headline;
+        line-height: 1.2;
+        margin: 0 0 gutters.$gutter-medium;
+
+        @include media.bp(sm) {
+            font-size: 40px;
+        }
+
+        @include media.bp(lg) {
+            max-width: 710px;
+        }
+
+        strong {
+            color: colors.$color-primary-300;
+
+            @include media.bp(lg) {
+                display: block;
+            }
+        }
+    }
+
+    .text {
+        color: colors.$color-primary-100;
+        font-size: 18px;
+        font-family: fonts.$font-content;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        margin: 0 0 gutters.$gutter-medium;
+
+        @include media.bp(lg) {
+            max-width: 710px;
+        }
+    }
+}
