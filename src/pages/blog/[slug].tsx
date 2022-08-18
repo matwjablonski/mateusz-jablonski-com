@@ -75,9 +75,10 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   });
 
   const comments = await commentsRes.data
-    .map(({ fields: { message, email }, sys: { createdAt }}) => ({ 
+    .map(({ fields: { message, email, author }, sys: { createdAt }}) => ({ 
       message,
       email: email || '',
+      author,
       createdDate: formatDateAndTimeWithSeparator({
         dateObject: createdAt,
         dateFormatString: 'dd MMMM yyyy',
