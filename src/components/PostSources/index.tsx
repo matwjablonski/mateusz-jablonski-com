@@ -12,7 +12,7 @@ const options = {
 
 const PostSources: FC<PostSourcesProps> = ({ sources }) => {
     return <div className={styles.sources}>
-        <h3>Źródła</h3>
+        <h3 className={styles.title}>Źródła</h3>
         {documentToReactComponents(sources, options)}
     </div>
 }
