@@ -11,6 +11,7 @@ import { Comment } from '../../types/common/Comment.type';
 import { formatDateAndTimeWithSeparator, formatDate } from '../../utils/formatDate';
 import CommentsList from '../../components/CommentsList';
 import PostAuthor from '../../components/PostAuthor';
+import PageNewsletter from '../../components/Newsletter/PageNewsletter';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
   const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
@@ -38,6 +39,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
         <div ref={commentsRef}>
           <CommentsList comments={comments} postId={body.id} />
         </div>
+        <PageNewsletter />
       </Grid>
     </MainLayout>
   ) : null;
