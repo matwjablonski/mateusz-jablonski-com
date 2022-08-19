@@ -2,23 +2,63 @@
     "podcasts": [
         {
             "name": "Po Prostu JS - JavaScript Podcast",
-            "image": "poprostujs.jpeg",
+            "image": "poprostujs.jpg",
             "source": "https://poprostujs.pl/"
         },
         {
             "name": "Piątki po deployu",
             "image": "piatkipodeployu.jpg",
-            "source": "https://piatkipodeployu.pl"
+            "source": "https://piatkipodeployu.pl/"
         },
         {
             "name": "Na Podsłuchu — podcast redaktorów Niebezpiecznik.pl",
-            "image": "napodsluchu.jpeg",
+            "image": "napodsluchu.jpg",
             "source": "https://niebezpiecznik.pl/podcast/"
         },
         {
             "name": "Porozmawiajmy o IT",
             "image": "poit.png",
             "source": "https://porozmawiajmyoit.pl/"
+        },
+        {
+            "name": "DevTalkpl - programistyczny głos w Twoim domu",
+            "image": "devtalk.jpg",
+            "source": "https://devtalk.pl/"
+        },
+        {
+            "name": "Better Software Design",
+            "image": "bsd.jpeg",
+            "source": "https://bettersoftwaredesign.pl/"
+        },
+        {
+            "name": "Nowoczesna Sprzedaż i Marketing",
+            "image": "nsm.jpg",
+            "source": "http://www.sellwise.pl/nsm/"
+        },
+        {
+            "name": "Kwadrans na angielski",
+            "image": "kwadrans.jpg",
+            "source": "https://kwadransnaangielski.pl/"
+        },
+        {
+            "name": "Przeprogramowani",
+            "image": "przeprogramowani.jpg",
+            "source": "https://przeprogramowani.pl/podcast/"
+        },
+        {
+            "name": "Toolsday",
+            "image": "toolsday.jpg",
+            "source": "https://spec.fm/podcasts/toolsday"
+        },
+        {
+            "name": "Podcast Stacja IT",
+            "image": "stacja.jpeg",
+            "source": "https://stacja.it/podcast/"
+        },
+        {
+            "name": "Za Rubieżą. Historia i polityka",
+            "image": "zarubieza.jpg",
+            "source": "https://anchor.fm/miosz-szymaski2/"
         }
     ],
     "vlogs": [

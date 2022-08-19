@@ -1,11 +1,9 @@
 // next.config.js
 require('dotenv').config();
 const withPlugins = require('next-compose-plugins');
-const withImages = require('next-images');
 const withFonts = require('next-fonts');
 
 module.exports = withPlugins([
-  [withImages],
   [withFonts],
 ], {
   i18n: {
@@ -15,7 +13,6 @@ module.exports = withPlugins([
   },
   images: {
     domains: ['images.ctfassets.net', 'gravatar.com'],
-    disableStaticImages: true
   },
   webpack(config, options) {
     return config;

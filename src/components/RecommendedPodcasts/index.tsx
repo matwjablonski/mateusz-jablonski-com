@@ -1,17 +1,27 @@
-import { useMemo } from 'react';
-import recommended from '../../data/recommended.json';
+import { ElementType } from 'react';
 import { generateRandomNumbers } from '../../lib/random';
-import RecommendedPodcastTile from '../RecommendedPodcastTile';
+import styles from './RecommendedThree.module.scss';
 
-const RecommendedPodcasts = () => {
-    const podcastIndexesToDisplay = generateRandomNumbers(0, recommended.podcasts.length - 1, 3);
+interface RecommendedThreeProps {
+    title: string;
+    data: { name: string; image: string; source: string; }[];
+    Component: ElementType;
+}
 
-    return <section>
-        {
-            podcastIndexesToDisplay
-                .map(index => <RecommendedPodcastTile {...recommended.podcasts[index]} key={recommended.podcasts[index].name} />)
-        }
+const RecommendedThree = ({ title, data, Component }: RecommendedThreeProps) => {
+    const indexesToDisplay = generateRandomNumbers(0, data.length, 3);
+
+    return <section className={styles.recommendedThree}>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.row}>
+            {
+                indexesToDisplay
+                    .map(index => (
+                        <Component {...data[index]} key={data[index].name} />
+                    ))
+            }
+        </div>
     </section>;
 };
 
-export default RecommendedPodcasts;
+export default RecommendedThree;
