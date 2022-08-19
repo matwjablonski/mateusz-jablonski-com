@@ -1,0 +1,27 @@
+{
+    "podcasts": [
+        {
+            "name": "Po Prostu JS - JavaScript Podcast",
+            "image": "poprostujs.jpeg",
+            "source": "https://poprostujs.pl/"
+        },
+        {
+            "name": "Piątki po deployu",
+            "image": "piatkipodeployu.jpg",
+            "source": "https://piatkipodeployu.pl"
+        },
+        {
+            "name": "Na Podsłuchu — podcast redaktorów Niebezpiecznik.pl",
+            "image": "napodsluchu.jpeg",
+            "source": "https://niebezpiecznik.pl/podcast/"
+        },
+        {
+            "name": "Porozmawiajmy o IT",
+            "image": "poit.png",
+            "source": "https://porozmawiajmyoit.pl/"
+        }
+    ],
+    "vlogs": [
+
+    ]
+}

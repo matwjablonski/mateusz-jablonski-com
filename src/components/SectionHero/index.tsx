@@ -18,10 +18,10 @@ const SectionHero = ({ title, text }: SectionHeroProps) => {
             <Grid>
                 <h2 className={styles.title}>
                     {
-                        firstWordAsArray.map((letter, index) => index < firstWordAsArray.length - 1 ? <>
+                        firstWordAsArray.map((letter, index) => index < firstWordAsArray.length - 1 ? <span key={`${letter}${index}`}>
                                 {letter}
                                 <em>•</em>
-                            </> : <>{letter}</>
+                            </span> : <span key={`${letter}${index}`}>{letter}</span>
                         )
                     }
                     {restElements}

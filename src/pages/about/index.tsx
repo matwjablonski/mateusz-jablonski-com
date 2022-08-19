@@ -18,6 +18,7 @@ import CurrentRead from "../../components/CurrentRead";
 import { Book } from "../../types/common/Book.types";
 import SectionHero from "../../components/SectionHero";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
+import RecommendedPodcasts from "../../components/RecommendedPodcasts";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -56,6 +57,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
                     </ShortBox>}
                     <ShortBox title="Aktualnie słucham">brak danych</ShortBox>
                 </Columns>
+                <RecommendedPodcasts />
                 <WhatCanITeachYou />
                 <HowIWork />
                 {testimonials.length && (
