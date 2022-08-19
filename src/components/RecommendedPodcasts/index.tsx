@@ -6,7 +6,12 @@ import RecommendedPodcastTile from '../RecommendedPodcastTile';
 const RecommendedPodcasts = () => {
     const podcastIndexesToDisplay = generateRandomNumbers(0, recommended.podcasts.length - 1, 3);
 
-    return podcastIndexesToDisplay.map(index => <RecommendedPodcastTile {...recommended.podcasts[index]} key={recommended.podcasts[index].name} />);
+    return <section>
+        {
+            podcastIndexesToDisplay
+                .map(index => <RecommendedPodcastTile {...recommended.podcasts[index]} key={recommended.podcasts[index].name} />)
+        }
+    </section>;
 };
 
 export default RecommendedPodcasts;
