@@ -5,11 +5,17 @@ import { ButtonProps, ButtonType, LinkProps } from './Button.types';
 import styles from './Button.module.scss';
 import arrow from '../../public/icons/arrow.svg';
 import arrowWhite from '../../public/icons/arrow-white.svg';
+import backIcon from '../../public/icons/back.svg';
 import cx from 'classnames';
 
 const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ pattern, href, label = '', className, children, passHref, isExternal, ...rest }) => {
   const createLinkContent = (href?: string, target?: string) => (
     <a {...rest} className={cx(styles.button, styles[pattern], className)} href={href} target={target} rel="noopener noreferrer">
+      {pattern === ButtonType.BACK && (
+        <div className={styles.arrowBack}>
+          <Image src={backIcon || '/icons/back.svg'} width={24} height={24} alt=""/>
+        </div>
+      )}
       {label}
       {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
         <div className={styles.arrow}>
@@ -39,6 +45,11 @@ const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ patte
 const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {
   return (
       <button className={cx(styles.button, styles[pattern])} onClick={action} {...rest}>
+        {pattern === ButtonType.BACK && (
+          <div className={styles.arrowBack}>
+            <Image src={backIcon || '/icons/back.svg'} width={24} height={24} alt=""/>
+          </div>
+        )}
         {label}
         {pattern === ButtonType.CLEAN && (
           <div className={styles.arrow}>

@@ -39,7 +39,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
           />
           {author[0] && <PostAuthor author={author[0].fields}/>}
           <div ref={commentsRef}>
-            <CommentsList comments={comments} postId={body.id} />
+            <CommentsList comments={comments} postId={body.id} title={title} />
           </div>
           <PageNewsletter />
         </Grid>

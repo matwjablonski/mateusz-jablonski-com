@@ -34,6 +34,10 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
             return (Math.abs(curr[0] - (window.scrollY - changeYFactor)) < Math.abs(prev[0] - (window.scrollY - changeYFactor)) ? curr : prev);
         });
 
+        if (!sidebar.current) {
+            return;
+        }
+
         if (sidebarPosition > closest[0] && window.scrollY < closest[1]) {
             sidebar.current.style.opacity = '0';
         } else {

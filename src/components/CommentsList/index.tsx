@@ -8,7 +8,7 @@ import ModalsPortal from '../Modal/ModalsPortal';
 import Modal from '../Modal/Modal';
 import CommentAddForm from '../CommentAddForm';
 
-const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }) => {
+const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId, title }) => {
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
 
     return (
@@ -32,11 +32,16 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId }
                                 <p className={styles.text}>{comment.message}</p>
                             </li>
                         )) :
-                        'Chwilowo brak komentarzy'
+                        'Jeszcze nikt nic nie napisał, ale to znaczy że... możesz być pierwszy/pierwsza.'
                 }
             </ul>
             <ModalsPortal>
-                <Modal isOpen={isCommentsModalOpen} onClose={() => setIsCommentsModalOpen(false)}>
+                <Modal 
+                    isOpen={isCommentsModalOpen}
+                    onClose={() => setIsCommentsModalOpen(false)}
+                    subtitle="Komentujesz artykuł"
+                    title={title}
+                >
                     <CommentAddForm postId={postId} onClose={() => setIsCommentsModalOpen(false)}/>
                 </Modal>
             </ModalsPortal>

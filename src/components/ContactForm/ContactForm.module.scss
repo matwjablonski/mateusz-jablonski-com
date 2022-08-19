@@ -63,6 +63,12 @@
         margin-left: 30%;
     }
 
+    .successIcon {
+        font-size: 90px;
+        line-height: 1;
+        margin-top: gutters.$gutter-medium;
+    }
+
     .successContent {
         display: flex;
         flex-direction: column;

@@ -19,6 +19,7 @@ import TrainingIcon from '../../public/icons/training.svg';
 import CodeIcon from '../../public/icons/code.svg';
 import PhoneIcon from '../../public/icons/phone-option.svg';
 import MailIcon from '../../public/icons/mail-option.svg';
+import Image from 'next/image';
 
 const schema = yup.object({
     name: yup.string().required('Imię jest wymagane.'),
@@ -194,6 +195,7 @@ const ContactForm = () => {
                     </>
                 ) : (
                     <div className={styles.successContent}>
+                        <span className={styles.successIcon}>📨</span>
                         <h2 className={styles.successTitle}>Wiadomość została wysłana.</h2>
                         <p className={styles.successText}>Teraz Twoja wiadomość dociera do mnie na skrzynkę, gdy tylko otrzymam powiadomienie postaram się odpowiedzieć jak najszybciej. Ale dla pewności daj mi maksymalnie 24 godziny.</p>
                         <Button.L label="Super, zabierz mnie na stronę główną" pattern={ButtonType.PRIMARY} href="/"/>
