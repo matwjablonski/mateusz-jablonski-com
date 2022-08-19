@@ -36,7 +36,7 @@ const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolea
         <meta property="og:url" content={`https://mateuszjablonski.com${asPath}`} />
         <meta property="og:description" content={head.description || mainDescription} />
         {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url)} />}
-        <link rel="icon" href={favico} />
+        <link rel="icon" href={favico.src} />
         <link
           rel="preload"
           href={fontEot}
