@@ -1,0 +1,31 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.lastContent {
+    margin-top: gutters.$gutter-biggest;
+    margin-bottom: gutters.$gutter-big;
+
+    .title {
+        font-family: fonts.$font-headline;
+        font-size: 40px;
+        line-height: 1.2;
+        margin: 0 0 gutters.$gutter-medium;
+        color: colors.$color-primary;
+    }
+
+    .text {
+        margin: 0 0 (gutters.$gutter * 2);
+        font-size: 18px;
+        color: colors.$color-primary-700;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        max-width: 740px;
+    }
+    
+    .dataRow {
+        display: flex;
+        margin-right: -(gutters.$gutter);
+        margin-left: -(gutters.$gutter);
+    }
+}

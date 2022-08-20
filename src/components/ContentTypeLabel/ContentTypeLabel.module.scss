@@ -1,0 +1,36 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.contentTypeLabel {
+    display: flex;
+    align-items: center;
+    font-family: fonts.$font-headline;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    color: colors.$color-primary-500;
+    text-transform: uppercase;
+    margin-bottom: gutters.$gutter-medium;
+
+    &::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        display: block;
+        background-position: center;
+        margin-right: gutters.$gutter-small;
+    }
+
+    &.article {
+        &::before {  
+            background: url('../../public/icons/article.svg') no-repeat; 
+        }
+    }
+
+    &.book {
+        &::before {            
+            background: url('../../public/icons/book.svg') no-repeat;
+        }
+    }
+}
