@@ -5,7 +5,7 @@ import MainLayout from "../../layouts";
 import { FC } from "react";
 import { Entry } from "contentful";
 import { GetStaticProps } from 'next';
-import { fetchEntries } from "../../contentful";
+import { fetchEntries, fetchMultipleContentTypesEntries } from "../../contentful";
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 import HowIWork from "../../components/HowIWork";
@@ -18,18 +18,27 @@ import CurrentRead from "../../components/CurrentRead";
 import { Book } from "../../types/common/Book.types";
 import SectionHero from "../../components/SectionHero";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
-import RecommendedThree from "../../components/RecommendedPodcasts";
 import recommended from '../../data/recommended.json';
 import RecommendedPodcastTile from "../../components/RecommendedPodcastTile";
+import { Article } from "../../types/common/Article.types";
+import { Podcast } from "../../types/common/Podcast.types";
+import dynamic from "next/dynamic";
+import LastContent, { ContentType } from "../../components/LastContent";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
     body: Page,
     book: Book,
     testimonials?: Testimonials[];
+    lastContent: ContentType[];
 }
 
-const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
+const DynamicRecommendedThree = dynamic(
+    () => import('../../components/RecommendedThree'),
+    { ssr: false },
+)
+
+const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -59,7 +68,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
                     </ShortBox>}
                     <ShortBox title="Aktualnie słucham">brak danych</ShortBox>
                 </Columns>
-                <RecommendedThree
+                <DynamicRecommendedThree
                     data={recommended.podcasts}
                     Component={RecommendedPodcastTile}
                     title="Polecane podcasty"
@@ -75,12 +84,15 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book }) => {
                     />
                 )}
                 <PageNewsletter />
+                <LastContent content={lastContent} />
             </Grid>
         </MainLayout>
     )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+    const lastContentRes = await fetchMultipleContentTypesEntries(['article','book','podcast'], 3);
+
     const res = await fetchEntries({
         content_type: 'page',
         'fields.slug': 'about',
@@ -97,6 +109,11 @@ export const getStaticProps: GetStaticProps = async () => {
         'fields.currentRead': true,
         limit: 4,
     });
+
+    const lastContent = await lastContentRes.data.map(p => ({
+        type: p.sys.contentType.sys.id,
+        ...p.fields,
+    }));
 
     const book = await booksRes.data.map(p => ({
         ...p.fields,
@@ -120,6 +137,7 @@ export const getStaticProps: GetStaticProps = async () => {
             body,
             book,
             testimonials,
+            lastContent,
         }
     }
 }

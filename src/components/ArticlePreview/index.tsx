@@ -9,8 +9,11 @@ import ImagePlaceholder from '../ImagePlaceholder';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
+import ContentTypeLabel, { ContentTypeEnum } from '../ContentTypeLabel';
 
-const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, createdDate, featuredImage, excerpt, slug, className, preview, externalSource }) => {
+const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
+    title, createdDate, featuredImage, excerpt, slug, className, preview, externalSource, showContentType,
+}) => {
     const imageWidth = preview === Preview.VERTICAL ? 352 : 544;
     const imageHeight = preview === Preview.VERTICAL ? 216 : 289;
     
@@ -63,6 +66,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({ title, created
                 
                 <div className={styles.content}>
                     <div>
+                        {showContentType && <ContentTypeLabel contentType={ContentTypeEnum.ARTICLE} />}
                         <div className={styles.date}>{createdDate}</div>
                         {
                             externalSource ? (

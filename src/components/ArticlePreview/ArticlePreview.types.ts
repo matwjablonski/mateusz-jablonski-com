@@ -15,4 +15,5 @@ export interface ArticlePreviewProps {
     className?: string;
     preview: Preview;
     externalSource?: string;
+    showContentType?: boolean;
 }
