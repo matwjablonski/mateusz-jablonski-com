@@ -1,0 +1,75 @@
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
+
+.myStory {
+    margin-bottom: gutters.$gutter-biggest;
+
+    .row {
+        margin-bottom: gutters.$gutter-bigger;
+    }
+
+    .lastRow {
+        margin-bottom: (gutters.$gutter-bigger * 2);
+    }
+
+    .episode {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    h2 {
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary;
+        margin: 0 0 (gutters.$gutter * 2);
+        font-size: 56px;
+        line-height: 1.2;
+    }
+
+    p {
+        margin: 0 0 (gutters.$gutter * 2);
+        font-size: 22px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        color: colors.$color-text;
+        font-weight: 400;
+    }
+
+    .blockquote {
+        border-left: 5px solid colors.$color-primary-300;
+        padding-left: (gutters.$gutter * 2);
+        margin: 0;
+        
+        p {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+    }
+
+    .image {
+        filter: drop-shadow(0px 16px 48px rgba(20, 165, 255, 0.24));
+        border-radius: 8px;
+        position: relative;
+
+        figcaption {
+            position: absolute;
+            bottom: gutters.$gutter-medium;
+            left: gutters.$gutter;
+            background: linear-gradient(180deg, rgba(222, 243, 255, 0.85) 0%, rgba(255, 255, 255, 0.68) 100%);
+            backdrop-filter: blur(39px);
+            border-radius: 4px;
+            padding: 12px gutters.$gutter;
+            font-size: 14px;
+            letter-spacing: -0.01em;
+            line-height: 1.4;
+            min-width: 270px;
+            max-width: calc(100% - (gutters.$gutter * 2));
+            color: colors.$color-dark-gray;
+        }
+    }
+}

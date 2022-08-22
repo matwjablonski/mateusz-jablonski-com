@@ -24,6 +24,7 @@ import dynamic from "next/dynamic";
 import LastContent, { ContentType } from "../../components/LastContent";
 import { getRecommendedChannels, Vlog } from "../../lib/google/youtube/getRecommendedChannels";
 import RecommendedVlogTile from "../../components/RecommendedVlogTile";
+import MyStory from "../../components/MyStory";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -44,7 +45,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                <PageTitle title={body.title} description={body.description}/>
+                <MyStory />
             </Grid>
             <SectionHero
                 title={
