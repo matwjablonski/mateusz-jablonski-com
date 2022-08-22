@@ -4,7 +4,7 @@ import styles from './RecommendedThree.module.scss';
 
 interface RecommendedThreeProps {
     title: string;
-    data: { name: string; image: string; source: string; }[];
+    data: { name: string; image?: string; source: string; }[];
     Component: ElementType;
 }
 

@@ -3,7 +3,7 @@ const { YT_API_KEY, YT_CHANNEL_SECTION_ID } = process.env;
 export interface Vlog {
     name: string;
     source: string;
-    image: string;
+    image?: string;
 }
 
 const prepareYTUrl = (ending: string, params: { [key: string]: string | string[]; }) => {
@@ -45,7 +45,7 @@ export const getRecommendedChannels = async () => {
 
     const recommendedChannelsData = await recommendedChannels[0].items.map(channelData => ({
         name: channelData.snippet.title,
-        image: channelData.brandingSettings.image.bannerExternalUrl,
+        image: channelData.brandingSettings.image?.bannerExternalUrl || '',
         source: `https://youtube.com/${channelData.snippet.customUrl}`
     }));
 
