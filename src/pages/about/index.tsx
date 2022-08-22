@@ -20,10 +20,10 @@ import SectionHero from "../../components/SectionHero";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import recommended from '../../data/recommended.json';
 import RecommendedPodcastTile from "../../components/RecommendedPodcastTile";
-import { Article } from "../../types/common/Article.types";
-import { Podcast } from "../../types/common/Podcast.types";
 import dynamic from "next/dynamic";
 import LastContent, { ContentType } from "../../components/LastContent";
+import { getRecommendedChannels, Vlog } from "../../lib/google/youtube/getRecommendedChannels";
+import RecommendedVlogTile from "../../components/RecommendedVlogTile";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -31,6 +31,7 @@ interface AboutPageProps {
     book: Book,
     testimonials?: Testimonials[];
     lastContent: ContentType[];
+    vlogs: Vlog[];
 }
 
 const DynamicRecommendedThree = dynamic(
@@ -38,7 +39,7 @@ const DynamicRecommendedThree = dynamic(
     { ssr: false },
 )
 
-const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent }) => {
+const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent, vlogs }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -68,11 +69,24 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                     </ShortBox>}
                     <ShortBox title="Aktualnie słucham">brak danych</ShortBox>
                 </Columns>
-                <DynamicRecommendedThree
-                    data={recommended.podcasts}
-                    Component={RecommendedPodcastTile}
-                    title="Polecane podcasty"
-                />
+                {
+                    recommended.podcasts.length >= 3 && (
+                        <DynamicRecommendedThree
+                            data={recommended.podcasts}
+                            Component={RecommendedPodcastTile}
+                            title="Polecane podcasty"
+                        />
+                    )
+                }
+                {
+                    vlogs.length >= 3 && (
+                        <DynamicRecommendedThree
+                            data={vlogs}
+                            Component={RecommendedVlogTile}
+                            title="Polecane vlogi"
+                        />
+                    )
+                }
                 <WhatCanITeachYou />
                 <HowIWork />
                 {testimonials.length && (
@@ -126,6 +140,8 @@ export const getStaticProps: GetStaticProps = async () => {
     const testimonials = await testimonialsRes.data
         .map(t => ({ ...t.fields }));
 
+    const vlogs = await getRecommendedChannels();
+
     if (!body) {
         return {
             notFound: true
@@ -138,6 +154,7 @@ export const getStaticProps: GetStaticProps = async () => {
             book,
             testimonials,
             lastContent,
+            vlogs,
         }
     }
 }

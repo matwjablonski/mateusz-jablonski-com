@@ -23,7 +23,7 @@ const LastContent = ({ content }: LastContentProps) => {
                         if (item.type === 'article') {
                             return (
                                 <ArticlePreview
-                                    key={`article${Math.random()}`}
+                                    key={`article${item.title}`}
                                     title={item.title}
                                     slug={item.slug}
                                     excerpt={item.excerpt}
@@ -39,6 +39,7 @@ const LastContent = ({ content }: LastContentProps) => {
                         if (item.type === 'book') {
                             return (
                                 <BookBigPreview
+                                    key={`book-${item.title}`}
                                     title={item.title}
                                     slug={item.slug}
                                     author={(item as Book).author}
@@ -49,7 +50,6 @@ const LastContent = ({ content }: LastContentProps) => {
                                 />
                             );
                         }
-
                     })
                 }
             </div>

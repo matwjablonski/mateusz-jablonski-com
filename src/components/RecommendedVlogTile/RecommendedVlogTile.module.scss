@@ -1,0 +1,24 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+
+.recommendedVlogTile {
+    margin: 0 gutters.$gutter;
+    flex: 1;
+
+    .image {
+        border-radius: 8px;
+        margin-bottom: gutters.$gutter-medium;
+        overflow: hidden;
+        font-size: 0;
+    }
+
+    .title {
+        font-family: fonts.$font-headline;
+        letter-spacing: 0.04em;
+        margin: 0 0 (gutters.$gutter * 2);
+        font-size: 18px;
+        line-height: 1.2;
+        color: colors.$color-primary;
+    }
+}

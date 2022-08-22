@@ -12,7 +12,11 @@ interface RecommendedPodcastTileProps {
 const RecommendedPodcastTile = ({ name, source, image }: RecommendedPodcastTileProps) => (
     <div className={styles.recommendedPodcastTile}>
         <div className={styles.image}>
-            <Image src={require(`../../public/images/podcasts/${image}`)} width={352} height={352} />
+            {
+                image.includes('http')
+                    ? <Image src={image} width={352} height={352} />
+                    : <Image src={require(`../../public/images/podcasts/${image}`)} width={352} height={352} />
+            }
         </div>
         <h3 className={styles.title}>{name}</h3>
         <Button.L href={source} pattern={ButtonType.CLEAN} label="Posłuchaj" isExternal/>

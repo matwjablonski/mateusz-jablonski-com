@@ -2,6 +2,8 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
 
+$left-col-width: 25%;
+
 .contactForm {
     background: colors.$color-white;
     box-shadow: 0px 8px 48px rgba(20, 165, 255, 0.11);
@@ -33,7 +35,7 @@
         display: flex;
 
         &::before {
-            left: calc(30% + 12px);
+            left: calc($left-col-width + 12px);
         }
 
         input {
@@ -41,7 +43,7 @@
         }
 
         label {
-            flex: 0 0 30%;
+            flex: 0 0 $left-col-width;
             text-align: right;
             padding-right: gutters.$gutter-medium;
             display: flex;
@@ -55,12 +57,12 @@
         }
 
         [class*="MessageWrapper"] {
-            margin-left: 30%;
+            margin-left: $left-col-width;
         }
     }
 
     button {
-        margin-left: 30%;
+        margin-left: $left-col-width;
     }
 
     .successIcon {

@@ -19,7 +19,7 @@ import TrainingIcon from '../../public/icons/training.svg';
 import CodeIcon from '../../public/icons/code.svg';
 import PhoneIcon from '../../public/icons/phone-option.svg';
 import MailIcon from '../../public/icons/mail-option.svg';
-import Image from 'next/image';
+import WorkIcon from '../../public/icons/work.svg';
 
 const schema = yup.object({
     name: yup.string().required('Imię jest wymagane.'),
@@ -56,6 +56,8 @@ const possibleTopics = [
     {
         value: 'job',
         label: 'Oferta pracy',
+        icon: WorkIcon,
+        iconWidth: 24,
     },
 ];
 
