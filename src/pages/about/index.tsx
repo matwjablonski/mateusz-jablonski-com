@@ -25,6 +25,7 @@ import LastContent, { ContentType } from "../../components/LastContent";
 import { getRecommendedChannels, Vlog } from "../../lib/google/youtube/getRecommendedChannels";
 import RecommendedVlogTile from "../../components/RecommendedVlogTile";
 import MyStory from "../../components/MyStory";
+import Motivator from "../../components/Motivator";
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -46,6 +47,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
             <Grid>
                 <Breadcrumbs />
                 <MyStory />
+                <Motivator />
             </Grid>
             <SectionHero
                 title={

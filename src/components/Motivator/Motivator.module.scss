@@ -1,0 +1,34 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.motivator {
+    margin-bottom: (gutters.$gutter-bigger * 2);
+    padding: 120px 90px;
+    background: url('../../public/bg-about.webp') no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 16px;
+
+    h2 {
+        margin: 0;
+        color: colors.$color-white;
+        font-family: fonts.$font-headline;
+        font-size: 56px;
+        line-height: 1.2;
+        margin: 0 0 gutters.$gutter;
+
+        strong {
+            color: colors.$color-text-highlight;
+        }
+    }
+
+    p {
+        margin: 0;
+        color: colors.$color-white;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        font-weight: 400;
+        font-size: 36px;
+    }
+}
