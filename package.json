@@ -19,6 +19,7 @@
     "@sendgrid/mail": "^7.7.0",
     "@svgr/webpack": "^6.2.1",
     "@types/jest": "^26.0.23",
+    "@types/wavesurfer.js": "^6.0.3",
     "classnames": "^2.2.6",
     "contentful": "^8.1.7",
     "contentful-management": "^7.45.0",
