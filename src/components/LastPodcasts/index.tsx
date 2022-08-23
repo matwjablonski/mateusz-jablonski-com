@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { LastPodcastsProps } from './LastPodcasts.types';
 import styles from './LastPodcasts.module.scss';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import LastPodcastPreview from '../LastPodcastPreview';
 import { LastPodcastPreviewSize } from '../LastPodcastPreview/LastPodcastPreview.types';
 import Button from '../Button';

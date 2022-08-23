@@ -5,7 +5,7 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types';
 import styles from './Content.module.scss';
 import { default as EntryBlock} from "../Entry";
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import PostSummary from '../PostSummary';
 import PostSources from '../PostSources';
 

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from './BuyBook.module.scss';
 import Button from '../Button';
 import { ButtonType } from "../Button/Button.types";
-import prepareImageUrl from "../../utils/prepareImageUrl";
+import prepareImageUrl from "../../utils/prepareAssetUrl";
 
 const BuyBook: FC<{ affiliateLink: string, seller: BookSeller, bookType?: BookType }> = ({ affiliateLink, seller, bookType }) => {
     const generateLabel = useCallback(() => {

@@ -8,5 +8,6 @@ export interface Podcast {
     excerpt: string;
     episode: number;
     featuredImage: Asset;
+    file: Asset;
     head?: Entry<HeadInterface>
 }

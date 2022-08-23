@@ -38,7 +38,7 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
 
   const items = res.items
     .map((item) => {
-      if (item.fields.featuredImage) {
+      if (item.sys.contentType.sys.id === 'article') {
         const id = item.fields.featuredImage.sys.id;;
         item.fields.featuredImage.fields = res.includes.Entry.find(entry => entry.sys.id === id)?.fields;
 

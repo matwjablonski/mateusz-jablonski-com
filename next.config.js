@@ -2,9 +2,11 @@
 require('dotenv').config();
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
+const withTM = require('next-transpile-modules')(['wavesurfer-react']);
 
 module.exports = withPlugins([
   [withFonts],
+  [withTM],
 ], {
   i18n: {
     locales: ['pl-PL', 'en-US'],

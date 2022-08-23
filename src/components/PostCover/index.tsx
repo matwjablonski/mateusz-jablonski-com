@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {useTranslation} from "react-i18next";
 import styles from './PostCover.module.scss';
 import { PostCoverProps } from './PostCover.types';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 
 const PostCover: FunctionComponent<PostCoverProps> = ({
   coverImage: { title, author,  image },

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BookBigPreviewProps } from './BookBigPreview.types';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import styles from './BookBigPreview.module.scss';
 import ImagePlaceholder from '../ImagePlaceholder';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { HeroProps } from './Hero.types';
 import styles from './Hero.module.scss';
 import PageTitle from '../Title';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 

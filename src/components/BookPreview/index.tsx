@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Book } from '../../types/common/Book.types';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import styles from './BookPreview.module.scss';
 
 const BookPreview: FunctionComponent<Book> = ({ title, slug, cover, author}) => {

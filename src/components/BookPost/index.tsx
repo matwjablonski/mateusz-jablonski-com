@@ -8,7 +8,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BlogPostProps } from './BlogPost.types';
 import PostShare from '../PostShare';
 import MetaItem from '../MetaItem';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import { ButtonType } from '../Button/Button.types';
 import Buttons from '../Button';
 import BuyBook from '../BuyBook';

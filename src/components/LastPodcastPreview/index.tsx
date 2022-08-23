@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import ImagePlaceholder from '../ImagePlaceholder';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import { Podcast } from '../../types/common/Podcast.types';
 import styles from './LastPodcastPreview.module.scss'
 import EpisodeNumber from '../EpisodeNumber';

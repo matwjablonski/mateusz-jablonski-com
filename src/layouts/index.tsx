@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { HeadInterface } from '../types/common/Head.types';
-import prepareImageUrl from '../utils/prepareImageUrl';
+import prepareImageUrl from '../utils/prepareAssetUrl';
 import styles from '../styles/Layout.module.scss';
 import fontEot from '../public/fonts/PPMonumentExtended-Regular.eot';
 import fontOtf from '../public/fonts/PPMonumentExtended-Regular.otf';

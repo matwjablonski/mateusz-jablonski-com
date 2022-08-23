@@ -7,7 +7,7 @@ import styles from './FeaturedCoursePreview.module.scss';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import placeholder from '../../public/placeholder.png';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 
 const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ course }) => {
     const { title, slug, description, featuredImage} = course.fields;

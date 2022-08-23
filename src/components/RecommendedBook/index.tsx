@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Book } from "../../types/common/Book.types";
 import styles from './RecommendedBook.module.scss';
-import prepareImageUrl from "../../utils/prepareImageUrl";
+import prepareImageUrl from "../../utils/prepareAssetUrl";
 import Button from '../Button'
 import { ButtonType } from "../Button/Button.types";
 import BuyBook from "../BuyBook";

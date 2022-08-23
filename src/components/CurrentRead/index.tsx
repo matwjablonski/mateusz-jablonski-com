@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../Button';
 import { ButtonType } from "../Button/Button.types";
-import prepareImageUrl from "../../utils/prepareImageUrl";
+import prepareImageUrl from "../../utils/prepareAssetUrl";
 import styles from './CurrentRead.module.scss';
 
 interface CurrentReadProps {

@@ -1,0 +1,62 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+
+.player {
+    position: relative;
+    
+    .loadingAudio {
+        font-family: fonts.$font-headline;
+        color: colors.$color-primary-500;
+        position: absolute;
+        left: 0;
+        top: 30px;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+    .wave {
+        height: 65px;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(180deg, rgba(20, 165, 255, 0) 0%, #14A5FF 100%);
+        background-repeat: no-repeat;
+        background-position-y: 20px;
+        background-position-x: -400px;
+
+        &.waveIsReady {
+            &::before {
+                display: block;
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: colors.$color-primary-300;
+                height: 2px;
+            }
+    
+            .bottomProgressBar {
+                background: colors.$color-primary-500;
+                width: 20%;
+                z-index: 2;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                display: block;
+    
+                &::before {
+                    position: absolute;
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 5px;
+                    bottom: 0;
+                    
+                    opacity: 0.26;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}

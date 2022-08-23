@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PostAuthorProps } from './PostAuthor.types';
 import styles from './PostAuthor.module.scss';
-import prepareImageUrl from '../../utils/prepareImageUrl';
+import prepareImageUrl from '../../utils/prepareAssetUrl';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import TwitterIcon from '../../public/icons/twitter-bold-white.svg';
 import LiIcon from '../../public/icons/li-bold.svg';
