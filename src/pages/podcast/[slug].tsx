@@ -16,6 +16,7 @@ import PostAuthor from "../../components/PostAuthor";
 import CommentsList from "../../components/CommentsList";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import { Comment } from "../../types/common/Comment.type";
+import CaptchaProvider from "../../providers/CaptchaProvider";
 
 interface SinglePodcastPageProps {
     head?: Entry<HeadInterface>;
@@ -33,29 +34,31 @@ const SinglePodcastPage = ({ body, head, comments }: SinglePodcastPageProps) => 
   console.log(body);
 
   return body ? (
-    <MainLayout head={head ? head.fields : {}}>
-      <Grid>
-        <Breadcrumbs />
-        <PodcastComponent
-          content={body.content}
-          title={body.title}
-          excerpt={body.excerpt}
-          numberOfComments={0}
-          featuredImage={body.featuredImage}
-          commentsBlockRef={commentsRef}
-          author={body.author}
-          file={body.file}
-          createdDate={body.createdDate}
-          podcastExcerpt={body.podcastExcerpt}
-          podcastCover={body.podcastCover}
-        />
-        {body.author[0] && <PostAuthor author={body.author[0].fields}/>}
-          <div ref={commentsRef}>
-            <CommentsList comments={comments} postId={body.id} title={body.title} />
-          </div>
-          <PageNewsletter />
-      </Grid>
-    </MainLayout>
+    <CaptchaProvider>
+      <MainLayout head={head ? head.fields : {}}>
+        <Grid>
+          <Breadcrumbs />
+          <PodcastComponent
+            content={body.content}
+            title={body.title}
+            excerpt={body.excerpt}
+            numberOfComments={0}
+            featuredImage={body.featuredImage}
+            commentsBlockRef={commentsRef}
+            author={body.author}
+            file={body.file}
+            createdDate={body.createdDate}
+            podcastExcerpt={body.podcastExcerpt}
+            podcastCover={body.podcastCover}
+          />
+          {body.author[0] && <PostAuthor author={body.author[0].fields}/>}
+            <div ref={commentsRef}>
+              <CommentsList comments={comments} postId={body.id} title={body.title} />
+            </div>
+            <PageNewsletter />
+        </Grid>
+      </MainLayout>
+    </CaptchaProvider>
   ) : null;
 };
 
