@@ -4,6 +4,36 @@
 
 .player {
     position: relative;
+    display: flex;
+
+    .cover {
+        flex: 0 0 200px;
+        margin-right: gutters.$gutter-medium;
+
+        img {
+            border-radius: 4px;
+        }
+    }
+
+    .title {
+        font-size: 24px;
+        font-family: fonts.$font-headline;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+        margin: 0 0 gutters.$gutter;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        color: colors.$color-text;
+        margin: 0 0 gutters.$gutter-medium;
+    }
+
+    .innerPlayer {
+        position: relative;
+    }
     
     .loadingAudio {
         font-family: fonts.$font-headline;

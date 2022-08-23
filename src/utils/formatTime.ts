@@ -4,8 +4,6 @@ export const formatTime = (seconds: number) => {
     const restSeconds = Math.floor(seconds % 60);
 
     return `
-        ${hours > 0 ? `${hours}:` : ''}
-        ${minutes > 0 ? `${minutes.toString().padStart(2, '0')}:` : '00:'}
-        ${restSeconds.toString().padStart(2, '0')}
+        ${hours > 0 ? `${hours}:` : ''}${minutes > 0 ? `${minutes.toString().padStart(2, '0')}:` : '00:'}${restSeconds.toString().padStart(2, '0')}
     `;
 } 

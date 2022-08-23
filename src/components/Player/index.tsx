@@ -3,8 +3,18 @@ import {WaveForm, WaveSurfer} from 'wavesurfer-react';
 import styles from './Player.module.scss';
 import cx from 'classnames';
 import { formatTime } from "../../utils/formatTime";
+import { Asset } from "contentful";
+import Image from "next/image";
+import prepareAssetUrl from "../../utils/prepareAssetUrl";
 
- const Player = (file) => {
+interface PlayerProps {
+    file: string;
+    title: string;
+    description: string;
+    cover: Asset;
+}
+
+ const Player = ({ file, title, description, cover }: PlayerProps) => {
     const wavesurferRef = useRef<any>();
     const [backgroundPosiiton, setBackgroundPosition] = useState(0);
     const [progress, setProgress] = useState(0);
@@ -30,8 +40,7 @@ import { formatTime } from "../../utils/formatTime";
         wavesurferRef.current = waveSurfer;
 
         if (wavesurferRef.current) {
-            console.log(file);
-            wavesurferRef.current.load(file.file)
+            wavesurferRef.current.load(file)
             wavesurferRef.current.on('ready', () => {
                 setIsPlayerReady(true);
                 setAudioDuration(wavesurferRef.current.getDuration());
@@ -70,30 +79,41 @@ import { formatTime } from "../../utils/formatTime";
 
     return (
         <div className={styles.player}>
-            {!isPlayerReady && <div className={styles.loadingAudio}>Trwa ładowanie pliku audio ({loadingProgress}%)</div>}
-            <div className={cx(styles.wave, isPlayerReady && styles.waveIsReady)} ref={player} style={{ backgroundPositionX: `${backgroundPosiiton}px`}}>
-                <WaveSurfer 
-                    plugins={plugins}
-                    onMount={handleWSMount}
-                >                
-                    <WaveForm
-                        id="waveform"
-                        cursorColor="transparent"
-                        barGap={4}
-                        barWidth={2}
-                        progressColor="#0136F8"
-                        waveColor="#14A5FF"
-                        autoCenter={false}
-                    />
-                    
-                </WaveSurfer>
-                <div className={styles.bottomProgressBar} style={{ width: `${progress}%`}}/>
+            <div className={styles.cover}>
+                {
+                    cover && <Image src={prepareAssetUrl(cover.fields.file.url)} width={200} height={200} />
+                }
             </div>
-            <div className={styles.times}>
-                <div className={cx(styles.time, styles.currentTime)}>{formatTime(currentTime)}</div>
-                <div className={cx(styles.time)}>{formatTime(audioDuration)}</div>
+            <div>
+                <h3 className={styles.title}>{title}</h3>
+                <p className={styles.description}>{description}</p>
+                <button onClick={play}>Play / Pause</button>
+                <div className={styles.innerPlayer}>
+                    {!isPlayerReady && <div className={styles.loadingAudio}>Trwa ładowanie pliku audio ({loadingProgress}%)</div>}
+                    <div className={cx(styles.wave, isPlayerReady && styles.waveIsReady)} ref={player} style={{ backgroundPositionX: `${backgroundPosiiton}px`}}>
+                        <WaveSurfer 
+                            plugins={plugins}
+                            onMount={handleWSMount}
+                        >                
+                            <WaveForm
+                                id="waveform"
+                                cursorColor="transparent"
+                                barGap={4}
+                                barWidth={2}
+                                progressColor="#0136F8"
+                                waveColor="#14A5FF"
+                                autoCenter={false}
+                            />
+                            
+                        </WaveSurfer>
+                        <div className={styles.bottomProgressBar} style={{ width: `${progress}%`}}/>
+                    </div>
+                </div>
+                <div className={styles.times}>
+                    <div className={cx(styles.time, styles.currentTime)}>{formatTime(currentTime)}</div>
+                    <div className={cx(styles.time)}>{formatTime(audioDuration)}</div>
+                </div>
             </div>
-            <button onClick={play}>Play / Pause</button>
         </div>
     )
 }
