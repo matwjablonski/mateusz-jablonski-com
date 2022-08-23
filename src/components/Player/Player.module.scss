@@ -1,5 +1,6 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
 
 .player {
     position: relative;
@@ -14,14 +15,30 @@
         font-size: 18px;
     }
 
+    .times {
+        display: flex;
+        justify-content: space-between;
+        margin: gutters.$gutter 0;
+    }
+
+    .time {
+        font-family: fonts.$font-headline;
+        font-size: 12px;
+        line-height: 1.25;
+        color: colors.$color-primary-300;
+    }
+
+    .currentTime {
+        color: colors.$color-primary-500;
+    }
+
     .wave {
         height: 65px;
         overflow: hidden;
         position: relative;
         background: linear-gradient(180deg, rgba(20, 165, 255, 0) 0%, #14A5FF 100%);
         background-repeat: no-repeat;
-        background-position-y: 20px;
-        background-position-x: -400px;
+        background-position-y: 30px;
 
         &.waveIsReady {
             &::before {

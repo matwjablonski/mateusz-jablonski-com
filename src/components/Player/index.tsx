@@ -1,25 +1,30 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {WaveForm, WaveSurfer} from 'wavesurfer-react';
-import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min";
 import styles from './Player.module.scss';
 import cx from 'classnames';
+import { formatTime } from "../../utils/formatTime";
 
  const Player = (file) => {
     const wavesurferRef = useRef<any>();
-    const [timelineVis, setTimelineVis] = useState(true);
+    const [backgroundPosiiton, setBackgroundPosition] = useState(0);
     const [progress, setProgress] = useState(0);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [isPlayerReady, setIsPlayerReady] = useState(false);
+    const [audioDuration, setAudioDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
+    const player = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (player && player.current) {
+            setBackgroundPosition(-player.current.getBoundingClientRect().width)
+        }
+    }, []);
 
     const plugins = useMemo(() => {
         return [
-            timelineVis && {
-                plugin: TimelinePlugin,
-                options: {
-                  container: "#timeline"
-                }
-              },
-        ].filter(Boolean)}, [timelineVis]);
+            
+        ].filter(Boolean)
+    }, []);
 
     const handleWSMount = useCallback((waveSurfer) => {
         wavesurferRef.current = waveSurfer;
@@ -29,6 +34,7 @@ import cx from 'classnames';
             wavesurferRef.current.load(file.file)
             wavesurferRef.current.on('ready', () => {
                 setIsPlayerReady(true);
+                setAudioDuration(wavesurferRef.current.getDuration());
             });
 
             wavesurferRef.current.on('loading', (loadingValue: number) => {
@@ -36,11 +42,20 @@ import cx from 'classnames';
             });
             
             wavesurferRef.current.on('audioprocess', (time: number) => {
-                setProgress(time / wavesurferRef.current.getDuration() * 100);
+                const value = time / wavesurferRef.current.getDuration();
+                setProgress(value * 100);
+                setCurrentTime(time);
+                setBackgroundPosition(
+                    -(player.current.getBoundingClientRect().width - (value * player.current.getBoundingClientRect().width))
+                )
             })
 
             wavesurferRef.current.on('seek', (progressValue: number) => {
                 setProgress(progressValue * 100);
+                setCurrentTime(progressValue * wavesurferRef.current.getDuration());
+                setBackgroundPosition(
+                    -(player.current.getBoundingClientRect().width - (progressValue * player.current.getBoundingClientRect().width))
+                )
             })
     
             if (window) {
@@ -56,11 +71,10 @@ import cx from 'classnames';
     return (
         <div className={styles.player}>
             {!isPlayerReady && <div className={styles.loadingAudio}>Trwa ładowanie pliku audio ({loadingProgress}%)</div>}
-            <div className={cx(styles.wave, isPlayerReady && styles.waveIsReady)} >
+            <div className={cx(styles.wave, isPlayerReady && styles.waveIsReady)} ref={player} style={{ backgroundPositionX: `${backgroundPosiiton}px`}}>
                 <WaveSurfer 
                     plugins={plugins}
                     onMount={handleWSMount}
-                    
                 >                
                     <WaveForm
                         id="waveform"
@@ -75,8 +89,10 @@ import cx from 'classnames';
                 </WaveSurfer>
                 <div className={styles.bottomProgressBar} style={{ width: `${progress}%`}}/>
             </div>
-
-            <div id="timeline"></div>
+            <div className={styles.times}>
+                <div className={cx(styles.time, styles.currentTime)}>{formatTime(currentTime)}</div>
+                <div className={cx(styles.time)}>{formatTime(audioDuration)}</div>
+            </div>
             <button onClick={play}>Play / Pause</button>
         </div>
     )
