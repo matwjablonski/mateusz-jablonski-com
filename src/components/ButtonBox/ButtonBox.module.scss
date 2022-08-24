@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .buttonBox {
     display: flex;
@@ -12,8 +13,12 @@
     padding: gutters.$gutter-medium (gutters.$gutter * 2);
     
     .messageBox {
-        display: flex;
-        align-items: center;
+        display: none;
+
+        @include media.bp(md) {
+            display: flex;
+            align-items: center;
+        }
     }
 
     .icon {
@@ -28,4 +33,14 @@
         color: colors.$color-primary;
         user-select: none;
     }
+
+    [class*="Button_button"] {
+        margin: auto;
+        width: 100%;
+
+        @include media.bp(md) {
+            margin: 0;
+            width: auto;
+        }
+    } 
 }

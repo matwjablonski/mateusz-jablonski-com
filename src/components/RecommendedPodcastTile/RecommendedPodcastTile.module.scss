@@ -1,10 +1,20 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .recommendedPodcastTile {
     margin: 0 gutters.$gutter;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: gutters.$gutter-big;
+
+    @include media.bp(md) {
+        align-items: flex-start;
+        margin-bottom: 0;
+    }
 
     .image {
         border-radius: 8px;

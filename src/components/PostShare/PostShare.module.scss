@@ -1,13 +1,17 @@
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
 
 .shareWrapper {
     display: flex;
     align-items: center;
-    margin-left: calc(18.5% - 96px);
     margin-bottom: gutters.$gutter-medium;
-    width: 82.85%;
+
+    @include media.bp(sm) {
+        width: 82.85%;
+        margin-left: calc(18.5% - 96px);
+    }
 
     .title {
         color: colors.$color-primary-700;

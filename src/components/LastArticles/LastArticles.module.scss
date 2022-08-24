@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .lastArticlesWrapper {
     margin-bottom: gutters.$gutter * 8;
@@ -72,13 +73,24 @@
 
 .btnsLine {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    
+    flex-direction: column-reverse;
+
+    @include media.bp(sm) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 
 .sliderBtns {
     display: flex;
+    margin-bottom: gutters.$gutter-big;
+
+    @include media.bp(sm) {
+        margin-bottom: 0;
+    }
 }
 
 .previous {

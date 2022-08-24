@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 $left-col-width: 25%;
 
@@ -8,9 +9,13 @@ $left-col-width: 25%;
     background: colors.$color-white;
     box-shadow: 0px 8px 48px rgba(20, 165, 255, 0.11);
     border-radius: 8px;
-    padding: gutters.$gutter-big;
+    padding: gutters.$gutter-medium gutters.$gutter;
     max-width: 920px;
     margin: 0 auto gutters.$gutter-bigger;
+
+    @include media.bp(sm) {
+        padding: gutters.$gutter-big;
+    }
 
     .formTitle {
         font-family: fonts.$font-headline;
@@ -33,36 +38,64 @@ $left-col-width: 25%;
 
     [class*="InputWrapper"] {
         display: flex;
+        flex-direction: column;
+
+        @include media.bp(lg) {
+            flex-direction: row;
+        }
 
         &::before {
-            left: calc($left-col-width + 12px);
+            left: 12px;
+            top: 34px;
+
+            @include media.bp(lg) {
+                left: calc($left-col-width + 12px);
+                top: 0;
+            }
         }
 
         input {
-            max-width: 400px;
+            max-width: 100%;
+
+            @include media.bp(lg) {
+                max-width: 400px;
+            }
         }
 
         label {
             flex: 0 0 $left-col-width;
-            text-align: right;
             padding-right: gutters.$gutter-medium;
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
             font-size: 16px;
             color: colors.$color-primary;
             line-height: 1.25;
             font-weight: 400;
             letter-spacing: -0.01em;
+            margin-bottom: gutters.$gutter;
+
+            @include media.bp(lg) {
+                align-items: center;
+                justify-content: flex-end;
+                text-align: right;
+                margin-bottom: 0;
+            }
         }
 
         [class*="MessageWrapper"] {
-            margin-left: $left-col-width;
+            margin-left: 0;
+
+            @include media.bp(lg) {
+                margin-left: $left-col-width;
+            }
         }
     }
 
     button {
-        margin-left: $left-col-width;
+        margin-left: 0;
+
+        @include media.bp(lg) {
+            margin-left: $left-col-width;
+        }
     }
 
     .successIcon {

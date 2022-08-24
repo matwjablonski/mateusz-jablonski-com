@@ -1,20 +1,34 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .authorWrapper {
     background: url("../../public/author-bg.webp") no-repeat;
     background-position: top center;
     background-size: cover;
     border-radius: 8px;
-    width: 82.85%;
-    margin-left: calc(18.5% - 96px);
     padding: (gutters.$gutter * 2) (gutters.$gutter * 2) (gutters.$gutter-small);
     display: flex;
+    flex-direction: column;
     margin-bottom: gutters.$gutter-bigger;
+
+    @include media.bp(sm) {
+        flex-direction: row;
+    }
+
+    @include media.bp(md) {
+        width: 82.85%;
+        margin-left: calc(18.5% - 96px);
+    }
 
     .authorImage {
         margin-right: (gutters.$gutter * 2);
+        margin-bottom: gutters.$gutter;
+        
+        @include media.bp(sm) {
+            margin-bottom: 0;
+        }
     }
 
     .image {

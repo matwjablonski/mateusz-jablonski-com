@@ -31,7 +31,6 @@ const DynamicPlayer = dynamic(
 
 const SinglePodcastPage = ({ body, head, comments }: SinglePodcastPageProps) => {
   const commentsRef = useRef<HTMLDivElement>(null);
-  console.log(body);
 
   return body ? (
     <CaptchaProvider>

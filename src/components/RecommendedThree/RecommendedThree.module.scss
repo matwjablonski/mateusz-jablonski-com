@@ -1,6 +1,7 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .recommendedThree {
     margin-bottom: gutters.$gutter-biggest;
@@ -16,7 +17,12 @@
 
     .row {
         display: flex;
+        flex-direction: column;
         margin-left: -(gutters.$gutter);
         margin-right: -(gutters.$gutter);
+
+        @include media.bp(md) {
+            flex-direction: row;
+        }
     }
 }

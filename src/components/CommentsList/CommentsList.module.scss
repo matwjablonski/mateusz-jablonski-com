@@ -1,23 +1,40 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .commentsWrapper {
-    width: 66%;
-    margin-left: 18.5%;
     margin-bottom: gutters.$gutter-bigger;
+
+    @include media.bp(md) {
+        width: 66%;
+        margin-left: 18.5%;
+    }
 
     .commentsHead {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-bottom: gutters.$gutter;
+
+        @include media.bp(sm) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
     }
 
     .title {
         color: colors.$color-primary;
         font-family: fonts.$font-headline;
-        font-size: 32px;
+        font-size: 22px;
         line-height: 1.25;
+
+        @include media.bp(lg) {
+            font-size: 32px;
+        }
 
         strong {
             color: colors.$color-primary-700;

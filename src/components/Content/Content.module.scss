@@ -46,41 +46,61 @@
     h2 {
         color: colors.$color-primary;
         font-family: fonts.$font-headline;
-        font-size: 32px;
+        font-size: 26px;
         line-height: 1.2;
         margin: gutters.$gutter-big 0 gutters.$gutter-medium;
+
+        @include media.bp(xs) {
+            font-size: 32px;
+        }
     }
 
     h3 {
         color: colors.$color-primary;
         font-family: fonts.$font-headline;
-        font-size: 28px;
+        font-size: 24px;
         line-height: 1.2;
         margin: gutters.$gutter-big 0 gutters.$gutter-medium;
+
+        @include media.bp(xs) {
+            font-size: 28px;
+        }
     }
 
     h4 {
         color: colors.$color-primary;
         font-family: fonts.$font-headline;
-        font-size: 26px;
+        font-size: 22px;
         line-height: 1.2;
         margin: gutters.$gutter-big 0 gutters.$gutter-medium;
+
+        @include media.bp(xs) {
+            font-size: 26px;
+        }
     }
 
     h5 {
         color: colors.$color-primary;
         font-family: fonts.$font-headline;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 1.2;
         margin: gutters.$gutter-big 0 gutters.$gutter-medium;
+
+        @include media.bp(xs) {
+            font-size: 24px;
+        }
     }
 
     p {
         color: colors.$color-primary-700;
-        font-size: 22px;
+        font-size: 20px;
         margin: 0 0 (gutters.$gutter-medium + gutters.$gutter);
         line-height: 1.5;
         letter-spacing: -0.01em;
+
+        @include media.bp(xs) {
+            font-size: 22px;
+        }
     }
 
     b, strong {
