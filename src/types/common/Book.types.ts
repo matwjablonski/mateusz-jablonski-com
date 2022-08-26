@@ -11,6 +11,7 @@ export interface BookSeller {
 }
 
 export interface Book {
+    id: string;
     title: string;
     createdDate: Date;
     slug: string;

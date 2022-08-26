@@ -7,10 +7,14 @@ import Grid from '../../components/Grid';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { Book } from '../../types/common/Book.types';
 import BookPost from "../../components/BookPost";
-import { formatDate } from "../../utils/formatDate";
+import { formatDate, formatDateAndTimeWithSeparator } from "../../utils/formatDate";
+import PostAuthor from "../../components/PostAuthor";
+import CommentsList from "../../components/CommentsList";
+import PageNewsletter from "../../components/Newsletter/PageNewsletter";
+import { Comment } from "../../types/common/Comment.type";
 
-const BookPage: FunctionComponent<{ body: Book, comments: Comment[] }> = ({ body, comments = [] }) => {
-    const { head, reviewAuthor, title, review, rate, excerpt, createdDate, categoryName, cover, affiliateLink, seller, bookType } = body;
+const BookPage: FunctionComponent<{ body: Book, comments: Comment[] }> = ({ body, comments }) => {
+    const { id, head, reviewAuthor, title, review, rate, excerpt, createdDate, categoryName, cover, affiliateLink, seller, bookType } = body;
     const commentsRef = useRef<HTMLDivElement>(null);
 
     return body ? (
@@ -31,7 +35,12 @@ const BookPage: FunctionComponent<{ body: Book, comments: Comment[] }> = ({ body
                 seller={seller}
                 bookType={bookType}
                 rate={rate}
-              />       
+              />
+              {reviewAuthor[0] && <PostAuthor author={reviewAuthor[0].fields}/>}
+              <div ref={commentsRef}>
+                <CommentsList comments={comments} postId={id} title={title} />
+              </div>
+              <PageNewsletter />
           </Grid>
         </MainLayout>
       ) : null;  
@@ -47,20 +56,39 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       });
 
     const body = await res.data
-        .map(p => ({ 
-          ...p.fields,
-          id: p.sys.id,
-          createdDate: formatDate({
-            dateObject: p.fields.createdDate,
-            formatString: 'dd MMMM yyyy',
-          })
-        }))
-        .shift();
+      .map(p => ({ 
+        ...p.fields,
+        id: p.sys.id,
+        createdDate: formatDate({
+          dateObject: p.fields.createdDate,
+          formatString: 'dd MMMM yyyy',
+        })
+      }))
+      .shift();
+
+    const commentsRes = await fetchEntries({
+      content_type: 'comment',
+      include: 2,
+      'fields.article.sys.id': body.id,
+    });
+  
+    const comments = await commentsRes.data
+      .map(({ fields: { message, email, author }, sys: { createdAt }}) => ({ 
+        message,
+        email: email || '',
+        author,
+        createdDate: formatDateAndTimeWithSeparator({
+          dateObject: createdAt,
+          dateFormatString: 'dd MMMM yyyy',
+          timeFormatString: 'HH:mm',
+          separator: 'o'
+        })
+      }));
 
     return {
         props: {
             body,
-            comments: []
+            comments,
         }
     }
 }
