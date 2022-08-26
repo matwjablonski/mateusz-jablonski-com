@@ -9,13 +9,12 @@ import { Page } from '../../types/common/Page.types';
 import { fetchEntries } from '../../contentful';
 import PageTitle from '../../components/PageTitle';
 import { formatDate } from '../../utils/formatDate';
-import ArticlePreview from '../../components/ArticlePreview';
-import styles from '../../styles/Blog.module.scss';
-import { Preview } from '../../components/ArticlePreview/ArticlePreview.types';
+import styles from '../../styles/Book.module.scss';
 import HomeNewsletter from '../../components/Newsletter/HomeNewsletter';
 import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types';
 import { Book } from '../../types/common/Book.types';
+import BookPreview from '../../components/BookPreview';
 
 interface BooksPageProps {
     head?: Entry<HeadInterface>;
@@ -49,15 +48,10 @@ const BooksPage: FC<BooksPageProps> = ({ head, body: { title, description }, boo
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description} />
-                <section className={styles.blogList}>
-                    {booksToShow.map((article) => <ArticlePreview 
-                        key={`article${article.slug}`}
-                        title={article.title}
-                        slug={article.slug}
-                        excerpt={article.excerpt}
-                        createdDate={article.createdDate}
-                        featuredImage={null}
-                        preview={Preview.VERTICAL}
+                <section className={styles.booksList}>
+                    {booksToShow.map((book) => <BookPreview 
+                        key={`article${book.slug}`}
+                        {...book}
                     />)}
                     {shouldShowLoadMoreBtn && <Button.B 
                         label="Wczytaj więcej treści"

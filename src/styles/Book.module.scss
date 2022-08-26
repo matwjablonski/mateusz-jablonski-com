@@ -1,0 +1,17 @@
+@use './settings/gutters';
+
+.booksList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -(gutters.$gutter);
+  margin-right: -(gutters.$gutter);
+  margin-bottom: gutters.$gutter-bigger;
+  flex-wrap: wrap;
+  
+  > a {
+      margin-bottom: gutters.$gutter-big;
+      margin-left: gutters.$gutter;
+      margin-right: gutters.$gutter;
+      flex: 1 0 calc(25% - (gutters.$gutter * 2));
+  }
+}
