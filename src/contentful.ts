@@ -47,7 +47,7 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
         item.fields.featuredImage.fields.image.fields = res.includes.Asset.find(asset => asset.sys.id === imageId)?.fields;
       };
 
-      if (item.fields.cover) {
+      if (item.sys.contentType.sys.id === 'book') {
         const id = item.fields.cover.sys.id;
 
         item.fields.cover.fields = res.includes.Asset.find(asset => asset.sys.id === id)?.fields;
@@ -67,7 +67,8 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
       }
 
       return 0;
-    });
+    })
+    .filter((_, i) => i < limit);
 
   if (items) {
     return {
