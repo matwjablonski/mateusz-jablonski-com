@@ -12,12 +12,14 @@ import PostAuthor from "../../components/PostAuthor";
 import CommentsList from "../../components/CommentsList";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import { Comment } from "../../types/common/Comment.type";
+import CaptchaProvider from "../../providers/CaptchaProvider";
 
 const BookPage: FunctionComponent<{ body: Book, comments: Comment[] }> = ({ body, comments }) => {
     const { id, head, reviewAuthor, title, review, rate, excerpt, createdDate, categoryName, cover, affiliateLink, seller, bookType } = body;
     const commentsRef = useRef<HTMLDivElement>(null);
 
     return body ? (
+      <CaptchaProvider>
         <MainLayout head={head ? head.fields : {}}>
           <Grid>
             <Breadcrumbs />
@@ -43,7 +45,8 @@ const BookPage: FunctionComponent<{ body: Book, comments: Comment[] }> = ({ body
               <PageNewsletter />
           </Grid>
         </MainLayout>
-      ) : null;  
+      </CaptchaProvider>
+    ) : null;  
 }
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext<ParsedUrlQuery>) => {
