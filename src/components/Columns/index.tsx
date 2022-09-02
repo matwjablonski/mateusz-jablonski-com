@@ -1,8 +1,15 @@
-import { FC } from "react";
+import cx from 'classnames';
+import { ReactNode } from 'react';
 import styles from "./Columns.module.scss";
 
-const Columns: FC = ({children}) => {
-    return <div className={styles.columns}>{children}</div>
+interface ColumnsProps {
+    children: ReactNode;
+    flexSizes?: [number, number];
+}
+
+const Columns = ({ children, flexSizes }: ColumnsProps) => {
+    console.log(flexSizes && flexSizes.join(''))
+    return <div className={cx(styles.columns, flexSizes && styles[`flexSizes${flexSizes.join('')}`])}>{children}</div>
 }
 
 export default Columns;

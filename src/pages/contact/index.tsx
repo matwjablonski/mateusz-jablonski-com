@@ -13,6 +13,8 @@ import TestimonialsList from "../../components/Testimonials";
 import ContactForm from "../../components/ContactForm";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import CaptchaProvider from "../../providers/CaptchaProvider";
+import MyNewsletter from "../../components/MyNewsletter";
+import Columns from "../../components/Columns";
 
 interface ContactPageProps {
     head?: Entry<HeadInterface>;
@@ -28,6 +30,22 @@ const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, 
                     <Breadcrumbs />
                     <PageTitle title={title} description={description} center/>
                     <ContactForm />
+                    <MyNewsletter title="Mój newsletter">
+                        <div>
+                            <p>Dołącz bezpłatnie do mojego newslettera. Raz na dwa tygodnie otrzymasz ode mnie wiadomość z informacjami o nowych materiałach, które znajdziesz na mojej stronie. Będziesz nie tylko pierwszy, ale uzyskasz dostęp do ciekawostek, interesujących ofert i nie publikowanych wcześniej materiałów.</p>
+                            <p>Newsletter, podobnie jak większość materiałów na mojej stronie, jest całkowicie bezpłatny. Obiecuję nie spamować i wysłać to, co rzeczywiście może Ci się przydać.</p>
+                        </div>
+                        <Columns>
+                            <div>
+                                <h3>Co znajdziesz w newsletterze?</h3>
+                                <p>Informacje o najnowszych artykułach, recenzjach, kursach i podcastach. Ciekawostki ze świata IT. Polecane wydarzenia i wcześniejszy dostęp do niektórych materiałów.</p>
+                            </div>
+                            <div>
+                                <h3>Jakie otrzymasz bonusy?</h3>
+                                <p>Bądź zawsze pierwszy. Dostęp do nowych materiałów otrzymasz zawsze dzień wcześniej. Dodatkowo otrzymasz rabat 10% na wszystkie moje płatne konsultacje i sesje mentoringowe.</p>
+                            </div>
+                        </Columns>
+                    </MyNewsletter>
                     {testimonials.length && (
                         <TestimonialsList
                             title="Co mówią o mojej pracy?"

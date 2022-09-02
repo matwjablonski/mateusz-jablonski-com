@@ -1,0 +1,45 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
+
+.MyNewsletter {
+  margin-bottom: gutters.$gutter-big;
+  margin-top: gutters.$gutter-medium;
+
+  .image {
+    display: flex;
+    align-items: center;
+    padding-right: gutters.$gutter-medium;
+  }
+
+  .title {
+    color: colors.$color-primary;
+    font-size: 32px;
+    font-family: fonts.$font-headline;
+    line-height: 1.2;
+    margin: 0 0 gutters.$gutter-medium;
+  }
+
+  .content {
+    div {
+      margin-bottom: gutters.$gutter-big;
+    }
+
+    h3 {
+      font-family: fonts.$font-headline;
+      letter-spacing: -0.01em;
+      color: colors.$color-primary;
+      font-size: 24px;
+      line-height: 1.25;
+      margin: 0 0 gutters.$gutter;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 0 0 gutters.$gutter;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: colors.$color-text;
+    }
+  }
+}
