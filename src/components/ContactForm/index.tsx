@@ -36,20 +36,20 @@ const schema = yup.object({
 
 const possibleTopics = [
     {
-        value: 'course',
-        label: 'Kurs',
+        value: 'workshop',
+        label: 'Warsztaty',
         icon: CourseIcon,
         iconWidth: 24,
     },
     {
-        value: 'training',
-        label: 'Szkolenie',
+        value: 'mentoring',
+        label: 'Mentoring',
         icon: TrainingIcon,
         iconWidth: 24,
     },
     {
         value: 'project',
-        label: 'Zapytanie o projekt',
+        label: 'Projekt',
         icon: CodeIcon,
         iconWidth: 24,
     },

@@ -9,4 +9,5 @@ export interface TitleBarWithComponentProps {
     title: ReactElement;
     text: string;
     type?: TitleBarType; 
+    capitalize?: boolean;
 }
