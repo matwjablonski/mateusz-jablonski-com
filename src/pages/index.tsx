@@ -91,7 +91,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <section className={styles.coursesSection}>
             <Grid>
             <TitleBarWithComponent 
-                title={<>Najnowsze dostępne <br/><strong>kursy</strong></>} 
+                title={<>Aktualnie dostępne <br/><strong>warsztaty</strong></>} 
                 text={lastCoursesDescription}
                 type={TitleBarType.REVERT}
               >

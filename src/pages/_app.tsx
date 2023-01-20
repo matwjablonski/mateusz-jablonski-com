@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import '../styles/globals.css';
 import { useRouter } from 'next/router'
 import Script from 'next/script';
@@ -6,6 +6,20 @@ import * as gtag from '../lib/gtag'
 
 const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) => {
   const router = useRouter();
+
+  const handleKeyPress = useCallback(({ ctrlKey, key}) => {
+    if (ctrlKey && (key === 's' || key === 'S')) {
+      console.log('search');
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
 
   useEffect(() => {
     const handleRouteChange = (url) => {

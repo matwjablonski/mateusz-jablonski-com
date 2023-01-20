@@ -28,7 +28,7 @@ const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ c
             </a>
         </Link>
         <p className={styles.text}>{description}</p>
-        <Button.L href={`course/${slug}`} label="Wejdź do kursu" pattern={ButtonType.PRIMARY} />
+        <Button.L href={`course/${slug}`} label="Weź udział" pattern={ButtonType.PRIMARY} />
     </div>
 }
 
