@@ -28,6 +28,28 @@
         }
     }
 
+    .content {
+        padding-top: gutters.$gutter;
+
+        p {
+            color: colors.$color-text;
+            font-family: fonts.$font-content;
+            font-size: 16px;
+            font-weight: 400;
+            max-width: 660px;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+
+            &:not(:last-child) {
+                margin-bottom: gutters.$gutter-medium;
+            }
+
+            @include media.bp(sm) {
+                font-size: 18px;
+            }
+        }
+    }
+
     .revert {
         color: colors.$color-white;
     }

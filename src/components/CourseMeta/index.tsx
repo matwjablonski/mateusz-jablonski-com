@@ -1,20 +1,26 @@
 import { FC } from 'react';
+import cx from 'classnames';
 import { CourseMetaProps } from './CourseMeta.types';
 import styles from './CourseMeta.module.scss';
 
-const VAT_TAX = 1.23;
-
 const CourseMeta: FC<CourseMetaProps> = ({
-  days,
-  costPerUser,
-  currency,
+  icon,
+  label,
+  value,
+  valueBelow,
 }) => {
 
-  const costBrutt = costPerUser * VAT_TAX;
-
   return <div className={styles.CourseMeta}>
-    <div>Czas trwania warsztatów: <strong>{days}</strong> {days > 1 ? 'dni' : 'dzień'}</div>
-    <div>Koszt dla uczestnika: <strong>{costPerUser} {currency} netto ({costBrutt} {currency} brutto)</strong></div>
+    <div className={styles.content}>
+          <div>
+              <h3 className={styles.subtitle}>{label}</h3>
+              <h2 className={cx(styles.title, valueBelow && styles.smaller)} title={value}>{value}</h2>
+              {valueBelow && <small className={styles.valueBelow}>{valueBelow}</small>}
+          </div>
+          <div className={styles.calendarIcon}>
+              {icon}
+          </div>
+      </div>
   </div>
 }
 

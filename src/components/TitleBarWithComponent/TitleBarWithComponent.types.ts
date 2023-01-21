@@ -1,3 +1,4 @@
+import { Document } from '@contentful/rich-text-types';
 import { ReactElement } from "react";
 
 export enum TitleBarType {
@@ -7,7 +8,7 @@ export enum TitleBarType {
 
 export interface TitleBarWithComponentProps {
     title: ReactElement;
-    text: string;
+    text: string | Document;
     type?: TitleBarType; 
     capitalize?: boolean;
 }

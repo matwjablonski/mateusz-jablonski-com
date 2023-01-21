@@ -1,5 +1,8 @@
+import { ReactNode } from 'react';
+
 export interface CourseMetaProps {
-  days: number;
-  costPerUser: number;
-  currency: string;
+  value: string;
+  valueBelow?: string;
+  label: string;
+  icon: ReactNode;
 }

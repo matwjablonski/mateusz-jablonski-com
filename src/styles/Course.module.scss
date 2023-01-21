@@ -1,0 +1,12 @@
+@use './settings/gutters';
+
+.MetaData {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    &:not(:last-child) {
+      margin-bottom: gutters.$gutter;
+    }
+  }
+}

@@ -8,6 +8,7 @@ export interface Course {
     startDate: Date;
     publishDate: Date;
     description: string;
+    longDescription: string;
     featuredImage: Asset;
     head?: Entry<HeadInterface>;
     program?: Document;
@@ -15,4 +16,6 @@ export interface Course {
     maxParticipants?: number;
     costPerUser?: number;
     currency?: string;
+    nextWorkshops?: Date;
+    cityOrRemote?: string;
 }

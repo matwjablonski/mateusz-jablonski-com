@@ -9,4 +9,71 @@
   border-radius: 9px;
   padding: gutters.$gutter-medium gutters.$gutter gutters.$gutter-medium gutters.$gutter-medium;
   color: colors.$color-white;
+
+  .content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .subtitle {
+      font-family: fonts.$font-headline;
+      color: colors.$color-primary-300;
+      line-height: 1.15;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 gutters.$gutter-small;
+      text-align: right;
+  }
+
+  .title {
+      color: colors.$color-white;
+      margin: 0;
+      text-transform: uppercase;
+      text-align: right;
+      font-family: fonts.$font-headline;
+      font-size: 23px;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-overflow: ellipsis;
+      max-width: 290px;
+      overflow: hidden;
+
+      @include media.bp(sm) {
+          font-size: 26px;
+          white-space: nowrap;
+      }
+
+      &.smaller {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+  }
+
+  .valueBelow {
+    display: block;
+    font-size: 12px;
+    max-width: 290px;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+    color: colors.$color-white;
+    margin: 0;
+    font-family: fonts.$font-headline;
+    letter-spacing: 0.04em;
+    opacity: 0.7;
+  }
+
+  .calendarIcon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: gutters.$gutter;
+      background: linear-gradient(90.1deg, rgba(20, 166, 255, 0.14) 0.08%, rgba(20, 165, 255, 0.2) 99.21%);
+      box-shadow: 0px 4px 8px rgba(20, 165, 255, 0.24);
+      border-radius: 4px;
+  }
 }
