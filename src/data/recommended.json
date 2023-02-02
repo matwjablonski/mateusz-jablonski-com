@@ -6,6 +6,11 @@
             "source": "https://poprostujs.pl/"
         },
         {
+            "name": "Piwnica IT",
+            "image": "piwnicait.png",
+            "source": "https://anchor.fm/piwnica-it/"
+        },
+        {
             "name": "Piątki po deployu",
             "image": "piatkipodeployu.jpg",
             "source": "https://piatkipodeployu.pl/"
