@@ -16,9 +16,13 @@ export interface PodcastProps {
     author?: Entry<Author>[];
     createdDate?: Date;
     categoryName?: string;
+    episode?: number;
     level?: string;
     recommendedBook?: Entry<Book>;
-    file: Asset;
+    file?: Asset;
+    video?: string;
+    podcastTitle?: string;
     podcastExcerpt?: Document;
     podcastCover?: Asset;
+    externalLink?: string;
 }

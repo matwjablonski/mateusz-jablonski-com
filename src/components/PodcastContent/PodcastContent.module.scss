@@ -133,4 +133,27 @@
         margin: (gutters.$gutter * 2) auto 0;
         max-width: 736px;
     }
+
+    .buttonExternal {
+        display: flex;
+        align-items: flex-start;
+        background-color: colors.$color-primary-900;
+        padding: gutters.$gutter-medium;
+        border-radius: 8px;
+
+        p {
+            font-size: 16px;
+            color: colors.$color-white;
+        }
+    }
+
+    .buttonExternalCover {
+        margin-right: gutters.$gutter-medium;
+    }
+
+    .buttonExternalContent {
+        flex-direction: column;
+        display: flex;
+        align-items: flex-start;
+    }
 }

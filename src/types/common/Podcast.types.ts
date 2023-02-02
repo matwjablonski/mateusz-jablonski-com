@@ -11,7 +11,8 @@ export interface Podcast {
     episode: number;
     content?: Document;
     featuredImage: Asset;
-    file: Asset;
+    file?: Asset;
+    video?: string;
     head?: Entry<HeadInterface>;
     author?: Entry<Author>[];
     id: string;

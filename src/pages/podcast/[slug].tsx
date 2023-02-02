@@ -46,11 +46,15 @@ const SinglePodcastPage = ({ body, head, comments }: SinglePodcastPageProps) => 
             commentsBlockRef={commentsRef}
             author={body.author}
             file={body.file}
+            episode={body.episode}
             createdDate={body.createdDate}
+            podcastTitle={body.podcastTitle}
             podcastExcerpt={body.podcastExcerpt}
             podcastCover={body.podcastCover}
+            externalLink={body.externalLink}
+            video={body.video}
           />
-          {body.author[0] && <PostAuthor author={body.author[0].fields}/>}
+          {body.author.map(a => <PostAuthor key={a.fields.name} author={a.fields}/>)}
             <div ref={commentsRef}>
               <CommentsList comments={comments} postId={body.id} title={body.title} />
             </div>

@@ -6,11 +6,12 @@ import {BLOCKS, INLINES, Document} from '@contentful/rich-text-types';
 import styles from './PodcastContent.module.scss';
 import { default as EntryBlock} from "../Entry";
 import prepareImageUrl from '../../utils/prepareAssetUrl';
-import PostSummary from '../PostSummary';
-import PostSources from '../PostSources';
 import { Asset } from 'contentful';
 import dynamic from 'next/dynamic';
 import prepareFileUrl from '../../utils/prepareAssetUrl';
+import Button from '../Button';
+import { ButtonType } from '../Button/Button.types';
+import prepareAssetUrl from '../../utils/prepareAssetUrl';
 
 interface PodcastContentProps {
   content: Document;
@@ -19,6 +20,8 @@ interface PodcastContentProps {
   file: Asset;
   title: string;
   podcastCover?: Asset;
+  externalLink?: string;
+  video?: string;
 }
 
 const DynamicPlayer = dynamic(
@@ -26,7 +29,7 @@ const DynamicPlayer = dynamic(
   { ssr: false }
 );
 
-const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover}: PodcastContentProps) => {
+const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, externalLink, video }: PodcastContentProps) => {
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
@@ -68,18 +71,29 @@ const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover}: Po
 
   return (
     <div className={styles.content}>
-      <h2>Podcast</h2>
-      {documentToReactComponents(podcastExcerpt, options)}
-      <DynamicPlayer
+      {externalLink && <>
+        <div className={styles.buttonExternal}>
+          {podcastCover && <div className={styles.buttonExternalCover}>
+            <Image src={prepareAssetUrl(podcastCover.fields.file.url)} width={200} height={200} alt="" />
+          </div>}
+          <div className={styles.buttonExternalContent}>
+            <p>Odcinek do przesłuchania dostępny jest w serwisie zewnętrznym. Aby posłuchać kliknij przycisk poniżej.</p>
+            <Button.L pattern={ButtonType.SECONDARY} href={externalLink} isExternal label="Przejdź do słuchania" />
+          </div>
+        </div>
+      </>}
+      {file && <DynamicPlayer
         cover={podcastCover}
         title={title}
         description={file.fields.description}
         file={prepareFileUrl(file.fields.file.url)}
-      />
+      />}
       <div className={styles.dots}></div>
-      <h2>Wideo</h2>
-      <div className={styles.dots}></div>
-      <h2>Wersja tekstowa</h2>
+      {video && <>
+        <h2>Wideo</h2>
+        <div className={styles.dots}></div>
+      </>}
+      <h2>Transkrypcja</h2>
       {documentToReactComponents(content, options)}
       <div className={styles.dots}></div>
     </div>

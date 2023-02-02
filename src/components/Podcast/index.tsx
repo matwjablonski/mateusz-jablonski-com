@@ -20,10 +20,11 @@ const Podcast: FunctionComponent<PodcastProps> = ({
   author,
   commentsBlockRef,
   createdDate,
-  categoryName,
-  level,
+  episode,
   file,
   podcastCover,
+  externalLink,
+  podcastTitle,
 }) => {
 
   return (
@@ -32,15 +33,22 @@ const Podcast: FunctionComponent<PodcastProps> = ({
       <div className={styles.excerpt}>
         <p>{excerpt}</p>
       </div>
-      <div className={styles.metabar}>
-        {categoryName && <MetaItem title="Kategoria" value={categoryName} />}
+      <div className={styles.metabar}>      
         {createdDate && <MetaItem title="Data publikacji" value={createdDate} />}
-        {level && <MetaItem title="Poziom" value={level} />}
+        {podcastTitle && <MetaItem title="Podcast" value={podcastTitle} />}
+        {episode !== undefined && <MetaItem title="Odcinek" value={`#${episode}`} />}
       </div>
       {featuredImage && <PodcastCover image={featuredImage}/>}
       <div className={styles.content}>
         <PostSidebar author={author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
-        <PodcastContent content={content} title={title} podcastExcerpt={podcastExcerpt} file={file} podcastCover={podcastCover}/>
+        <PodcastContent
+          content={content}
+          title={title}
+          podcastExcerpt={podcastExcerpt}
+          file={file}
+          podcastCover={podcastCover}
+          externalLink={externalLink}  
+        />
       </div>
       <PostShare />
     </article>
