@@ -11,8 +11,13 @@ import { EpisodeNumberSize } from '../EpisodeNumber/EpisodeNumber.types';
 import { LastPodcastPreviewProps, LastPodcastPreviewSize } from './LastPodcastPreview.types';
 
 const LastPodcastPreview: FunctionComponent<LastPodcastPreviewProps> = ({ 
-    title, createdDate, slug, excerpt, featuredImage, episode, previewSize
+    title, createdDate, slug, excerpt, featuredImage, episode, previewSize, podcastTitle,
 }) => {
+
+    const podcastInfo = <>
+        {podcastTitle}
+    </>
+
     return (
         <Link href={`/podcast/${slug}`}>
             <a title={title}>
@@ -51,7 +56,7 @@ const LastPodcastPreview: FunctionComponent<LastPodcastPreviewProps> = ({
                         className={styles.episode}
                     />
                     <div className={styles.content}>
-                        <div className={styles.date}>{createdDate}</div>
+                        <div className={styles.date}>{createdDate} | {podcastInfo}</div>
                         <h3 className={styles.title}>{title}</h3>
                         {previewSize === LastPodcastPreviewSize.BIG && (<p className={styles.text}>{excerpt}</p>)}
                     </div>

@@ -5,4 +5,4 @@ export enum LastPodcastPreviewSize {
     BIG = 'big'
 }
 
-export type LastPodcastPreviewProps = Pick<Podcast, 'title' | 'createdDate' | 'excerpt' | 'slug' | 'featuredImage' | 'episode'> & { previewSize: LastPodcastPreviewSize };
+export type LastPodcastPreviewProps = Pick<Podcast, 'title' | 'createdDate' | 'excerpt' | 'slug' | 'featuredImage' | 'episode' | 'podcastTitle' | 'podcastWebsite'> & { previewSize: LastPodcastPreviewSize };

@@ -17,4 +17,7 @@ export interface Podcast {
     id: string;
     podcastExcerpt: Document;
     podcastCover: Asset;
+    podcastTitle: string;
+    podcastWebsite?: string;
+    externalLink?: string;
 }

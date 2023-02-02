@@ -146,6 +146,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     include: 2,
     order: '-fields.createdDate',
     limit: 4,
+    'fields.createdDate[lte]': new Date(),
   });
 
   const nextPodcastsRes = await fetchEntries({

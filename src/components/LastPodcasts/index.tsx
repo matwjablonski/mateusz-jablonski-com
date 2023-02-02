@@ -23,10 +23,19 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         featuredImage={first.featuredImage}
                         episode={first.episode}
                         excerpt={first.excerpt}
+                        podcastTitle={first.podcastTitle}
                     />
                 </div>
                 <div className={styles.column}>
-                    {rest.map(({ title, featuredImage, episode, excerpt, createdDate, slug }) => <LastPodcastPreview 
+                    {rest.map(({ 
+                        title,
+                        featuredImage,
+                        episode,
+                        excerpt,
+                        createdDate,
+                        slug,
+                        podcastTitle,
+                    }) => <LastPodcastPreview 
                         key={slug}
                         previewSize={LastPodcastPreviewSize.SMALL}
                         createdDate={createdDate}
@@ -34,6 +43,7 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         featuredImage={featuredImage}
                         episode={episode}
                         excerpt={excerpt}
+                        podcastTitle={podcastTitle}
                     />)}
                 </div>
             </div>
