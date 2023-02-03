@@ -33,4 +33,10 @@
             background: url('../../public/icons/book.svg') no-repeat;
         }
     }
+
+    &.podcast {
+        &::before {            
+            background: url('../../public/icons/podcast.svg') no-repeat;
+        }
+    }
 }
