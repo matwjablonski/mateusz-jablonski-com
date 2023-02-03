@@ -42,7 +42,6 @@ const DynamicRecommendedThree = dynamic(
 )
 
 const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent, vlogs }) => {
-    console.log(lastContent)
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
