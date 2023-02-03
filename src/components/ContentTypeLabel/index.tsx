@@ -9,9 +9,10 @@ export enum ContentTypeEnum {
 
 interface ContentTypeLabelProps {
     contentType: ContentTypeEnum;
+    additionalName?: string;
 }
 
-const ContentTypeLabel = ({ contentType }: ContentTypeLabelProps) => {
+const ContentTypeLabel = ({ contentType, additionalName }: ContentTypeLabelProps) => {
     const prepareLabel = () => {
         switch(contentType) {
             case ContentTypeEnum.BOOK:
@@ -25,7 +26,7 @@ const ContentTypeLabel = ({ contentType }: ContentTypeLabelProps) => {
 
     return (
         <div className={cx(styles.contentTypeLabel, styles[contentType])}>
-            {prepareLabel()}
+            {prepareLabel()}{additionalName && `: ${additionalName}`}
         </div>
     )
 }

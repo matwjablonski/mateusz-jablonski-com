@@ -11,7 +11,7 @@ import prepareImageUrl from '../../utils/prepareAssetUrl';
 import styles from './PodcastPreview.module.scss';
 import { ButtonType } from '../Button/Button.types';
 
-const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, excerpt, slug, showContentType, author }) => {
+const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, excerpt, slug, showContentType, author, podcastName }) => {
   const imageHeight = 289;
 
   return (
@@ -19,7 +19,7 @@ const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, ex
       <div>
         {
           (
-            <Link href={`/book/${slug}`}>
+            <Link href={`/podcast/${slug}`}>
               <a>
                 {
                   image ?
@@ -43,11 +43,11 @@ const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, ex
         }
         <div className={styles.content}>
           <div>
-            {showContentType && <ContentTypeLabel contentType={ContentTypeEnum.PODCAST} />}
+            {showContentType && <ContentTypeLabel contentType={ContentTypeEnum.PODCAST} additionalName={podcastName} />}
             <div className={styles.date}>{createdDate}</div>
             {
               (
-                <Link href={`/blog/${slug}`}>
+                <Link href={`/podcast/${slug}`}>
                   <a>
                     <h3 className={styles.title}>{title}</h3>
                   </a>
@@ -61,7 +61,7 @@ const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, ex
       {
         (
           <Button.L 
-            href={`/blog/${slug}`}
+            href={`/podcast/${slug}`}
             pattern={ButtonType.PRIMARY}
             label="Posłuchaj"
           />

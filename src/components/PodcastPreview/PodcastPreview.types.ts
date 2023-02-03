@@ -8,4 +8,5 @@ export interface PodcastPreviewProps {
   createdDate: Date;
   image: Asset;
   showContentType?: boolean;
+  podcastName?: string;
 }

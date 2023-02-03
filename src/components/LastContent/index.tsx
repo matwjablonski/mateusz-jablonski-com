@@ -62,6 +62,7 @@ const LastContent = ({ content }: LastContentProps) => {
                                     excerpt={item.excerpt}
                                     image={(item as Podcast).featuredImage}
                                     createdDate={item.createdDate}
+                                    podcastName={(item as Podcast).podcastTitle}
                                     showContentType
                                 />
                             );
