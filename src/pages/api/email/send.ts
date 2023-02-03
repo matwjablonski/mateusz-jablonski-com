@@ -6,10 +6,10 @@ sgMail.setApiKey(env.SENDGRID_API_KEY)
 
 const selectTopic = (topic: string) => {
     switch (topic) {
-        case 'course': 
-            return 'Zapytanie o kurs';
-        case 'training':
-            return 'Zapytanie o szkolenie';
+        case 'workshop': 
+            return 'Zapytanie o warszaty';
+        case 'mentoring':
+            return 'Zapytanie o mentoring';
         case 'project':
             return 'Zapytanie o projekt';
         case 'job':
