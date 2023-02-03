@@ -14,7 +14,14 @@ module.exports = withPlugins([
     localeDetection: false,
   },
   images: {
-    domains: ['images.ctfassets.net', 'gravatar.com', 'img.youtube.com', 'lh3.googleusercontent.com', 'yt3.ggpht.com'],
+    domains: [
+      'images.ctfassets.net',
+      'gravatar.com',
+      'img.youtube.com',
+      'lh3.googleusercontent.com',
+      'yt3.ggpht.com',
+      'yt3.googleusercontent.com',
+    ],
   },
   webpack(config, options) {
     return config;

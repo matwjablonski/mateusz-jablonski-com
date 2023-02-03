@@ -27,7 +27,7 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
   const types = contentTypes.toString();
 
   const body = await fetch(
-    `${CONTENTFUL_API_URI}?access_token=${accessToken}&sys.contentType.sys.id[in]=${types}&limit=${limit + 3}&include=2`
+    `${CONTENTFUL_API_URI}?access_token=${accessToken}&sys.contentType.sys.id[in]=${types}&limit=${limit + 6}&include=2`
   );
 
   const res = await body.json();
@@ -53,10 +53,24 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
         item.fields.cover.fields = res.includes.Asset.find(asset => asset.sys.id === id)?.fields;
       }
 
+      if (item.sys.contentType.sys.id === 'podcast') {
+        if (item.fields.featuredImage) {
+          const imageId = item.fields.featuredImage.sys.id;
+          item.fields.featuredImage.fields = res.includes.Asset.find(asset => asset.sys.id === imageId)?.fields;
+        }
+      }
+
       return item;
     })
+    .map(item => (
+      {
+        ...item, 
+        fields: {
+          ...item.fields, createdDate: item.fields.createdDate.substring(0, 10)
+        }
+      }
+    ))
     .filter(item => new Date(item.fields.createdDate) < new Date())
-    .filter((_, i) => i < limit)
     .sort((a, b) => {
       if (new Date(a.fields.createdDate) > new Date(b.fields.createdDate)) {
         return -1;

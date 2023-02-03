@@ -8,7 +8,6 @@ interface ColumnsProps {
 }
 
 const Columns = ({ children, flexSizes }: ColumnsProps) => {
-    console.log(flexSizes && flexSizes.join(''))
     return <div className={cx(styles.columns, flexSizes && styles[`flexSizes${flexSizes.join('')}`])}>{children}</div>
 }
 

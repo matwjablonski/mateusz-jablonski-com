@@ -4,6 +4,7 @@ import { Podcast } from "../../types/common/Podcast.types"
 import ArticlePreview from "../ArticlePreview";
 import { Preview } from "../ArticlePreview/ArticlePreview.types";
 import BookBigPreview from "../BookBigPreview";
+import PodcastPreview from '../PodcastPreview';
 import styles from './LastContent.module.scss';
 
 export type ContentType = ((Article | Book | Podcast) & {type: string}); 
@@ -45,6 +46,21 @@ const LastContent = ({ content }: LastContentProps) => {
                                     author={(item as Book).author}
                                     excerpt={item.excerpt}
                                     image={(item as Book).cover}
+                                    createdDate={item.createdDate}
+                                    showContentType
+                                />
+                            );
+                        }
+
+                        if (item.type === 'podcast') {
+                            return (
+                                <PodcastPreview
+                                    key={`book-${item.title}`}
+                                    title={item.title}
+                                    slug={item.slug}
+                                    author={(item as Podcast).author[0].fields?.name || ''}
+                                    excerpt={item.excerpt}
+                                    image={(item as Podcast).featuredImage}
                                     createdDate={item.createdDate}
                                     showContentType
                                 />
