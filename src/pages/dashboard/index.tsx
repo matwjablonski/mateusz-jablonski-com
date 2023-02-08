@@ -8,11 +8,10 @@ import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 
 interface DashboardPageProps {
-    head?: Entry<HeadInterface>;
     body: Page,
 }
 
-const DashboardPage: FC<DashboardPageProps> = ({ head }) => {
+const DashboardPage: FC<DashboardPageProps> = ({ body: { head } }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>

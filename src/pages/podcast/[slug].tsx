@@ -19,7 +19,6 @@ import { Comment } from "../../types/common/Comment.type";
 import CaptchaProvider from "../../providers/CaptchaProvider";
 
 interface SinglePodcastPageProps {
-    head?: Entry<HeadInterface>;
     body: Podcast;
     comments: Comment[];
 }
@@ -29,7 +28,8 @@ const DynamicPlayer = dynamic(
   { ssr: false }
 );
 
-const SinglePodcastPage = ({ body, head, comments }: SinglePodcastPageProps) => {
+const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
+  const { head } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
   return body ? (

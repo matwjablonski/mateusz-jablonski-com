@@ -17,12 +17,11 @@ import MyNewsletter from "../../components/MyNewsletter";
 import Columns from "../../components/Columns";
 
 interface ContactPageProps {
-    head?: Entry<HeadInterface>;
     body: Page,
     testimonials?: Testimonials[];
 }
 
-const ContactPage: FC<ContactPageProps> = ({ head, body: { title, description}, testimonials }) => {
+const ContactPage: FC<ContactPageProps> = ({ body: { title, head, description}, testimonials }) => {
     return (
         <CaptchaProvider>
             <MainLayout head={head ? head.fields : {}} hideOverflow>

@@ -8,11 +8,10 @@ import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 
 interface PodcastPageProps {
-    head?: Entry<HeadInterface>;
     body: Page,
 }
 
-const PodcastPage: FC<PodcastPageProps> = ({ head }) => {
+const PodcastPage: FC<PodcastPageProps> = ({ body: { head } }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>

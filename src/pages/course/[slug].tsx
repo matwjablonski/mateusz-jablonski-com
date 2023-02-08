@@ -23,13 +23,13 @@ import { ButtonType } from '../../components/Button/Button.types'
 import { formatDate } from '../../utils/formatDate'
 
 interface CoursePageProps {
-    head?: Entry<HeadInterface>;
     body: Course,
 }
 
 
-const CoursePage: FC<CoursePageProps> = ({ head, body }) => {
+const CoursePage: FC<CoursePageProps> = ({ body }) => {
     const {
+        head,
         title,
         longDescription,
         days,

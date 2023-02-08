@@ -18,7 +18,6 @@ import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types';
 
 interface BlogPageProps {
-    head?: Entry<HeadInterface>;
     body: Page,
     articles: Article[];
     totalArticles: number;
@@ -27,7 +26,7 @@ interface BlogPageProps {
 const PAGE_SIZE = 9;
 const FIRST_PAGE_SIZE = PAGE_SIZE + 1;
 
-const BlogPage: FC<BlogPageProps> = ({ head, body: { title, description }, articles, totalArticles }) => {
+const BlogPage: FC<BlogPageProps> = ({ body: { title, description, head }, articles, totalArticles }) => {
     const [lastArticle, ...restArticles] = articles;
     const [amountOfLoadedArticles, setAmountOfLoadedArticles] = useState(FIRST_PAGE_SIZE);
     const [articlesToShow, setArticlesToShow] = useState(restArticles);

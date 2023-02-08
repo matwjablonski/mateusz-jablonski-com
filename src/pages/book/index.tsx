@@ -2,8 +2,6 @@ import { FC, useState } from 'react';
 import MainLayout from '../../layouts/index'
 import Grid from '../../components/Grid';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import { Entry } from 'contentful';
-import { HeadInterface } from '../../types/common/Head.types';
 import { GetServerSideProps } from 'next';
 import { Page } from '../../types/common/Page.types';
 import { fetchEntries } from '../../contentful';
@@ -17,7 +15,6 @@ import { Book } from '../../types/common/Book.types';
 import BookPreview from '../../components/BookPreview';
 
 interface BooksPageProps {
-    head?: Entry<HeadInterface>;
     body: Page,
     books: Book[];
     totalBooks: number;
@@ -26,7 +23,7 @@ interface BooksPageProps {
 const PAGE_SIZE = 9;
 const FIRST_PAGE_SIZE = PAGE_SIZE + 1;
 
-const BooksPage: FC<BooksPageProps> = ({ head, body: { title, description }, books, totalBooks }) => {
+const BooksPage: FC<BooksPageProps> = ({ body: { title, description, head }, books, totalBooks }) => {
     const [amountOfLoadedBooks, setAmountOfLoadedBooks] = useState(FIRST_PAGE_SIZE);
     const [booksToShow, setBooksToShow] = useState(books);
     const [disabledFetch, setDisabledFetch] = useState(false);

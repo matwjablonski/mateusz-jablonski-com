@@ -8,11 +8,10 @@ import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 
 interface CoursePageProps {
-    head?: Entry<HeadInterface>;
     body: Page,
 }
 
-const CoursePage: FC<CoursePageProps> = ({ head }) => {
+const CoursePage: FC<CoursePageProps> = ({ body: { head } }) => {
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
