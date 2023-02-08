@@ -11,9 +11,9 @@ interface CoursePageProps {
     body: Page,
 }
 
-const CoursePage: FC<CoursePageProps> = ({ body: { head } }) => {
+const CoursePage: FC<CoursePageProps> = () => {
     return (
-        <MainLayout head={head ? head.fields : {}} hideOverflow>
+        <MainLayout head={{}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title="Kursy" description="W przygotowaniu"/>

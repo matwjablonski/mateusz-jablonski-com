@@ -11,9 +11,9 @@ interface PodcastPageProps {
     body: Page,
 }
 
-const PodcastPage: FC<PodcastPageProps> = ({ body: { head } }) => {
+const PodcastPage: FC<PodcastPageProps> = () => {
     return (
-        <MainLayout head={head ? head.fields : {}} hideOverflow>
+        <MainLayout head={{}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title="Podcast" description="W przygotowaniu"/>
