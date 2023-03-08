@@ -36,7 +36,7 @@ const Content = ({content, summary, sources, disableSummary}: ContentProps) => {
         const proportion = width / height;
         const isImageWide = proportion > 1.4;
 
-        return <figure className={cx(isImageWide && styles.wideAsset, isImageWide && styles.wideImage)}>
+        return <figure className={cx(styles.figure, isImageWide && styles.wideAsset, isImageWide && styles.wideImage)}>
           <Image
             src={prepareImageUrl(node.data.target.fields.file.url)}
             width={isImageWide ? 1120 : width}
