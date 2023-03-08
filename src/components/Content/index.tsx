@@ -40,7 +40,7 @@ const Content = ({content, summary, sources, disableSummary}: ContentProps) => {
           <Image
             src={prepareImageUrl(node.data.target.fields.file.url)}
             width={isImageWide ? 1120 : width}
-            height={isImageWide ? 387 : width}
+            height={isImageWide ? 387 : height}
             alt={node.data.target.fields.file.fileName}
           />
           {
