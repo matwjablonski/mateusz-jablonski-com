@@ -39,6 +39,20 @@ const en = {
     NEXT_ARTICLE: 'article',
     LISTEN_PODCAST: 'Listen to my podcast:',
   },
+  ARTICLE: {
+    SUMMARY: {
+      TITLE: 'From this article you will learn:',
+    },
+    META: {
+      PUBLICATION_DATE: 'Publication date',
+      LEVEL: 'Level',
+      PODCAST: 'Podcast',
+      EPISODE: 'Episode',
+      CATEGORY: 'Category',
+      READING_DATE: 'Reading date',
+      MY_RATE: 'My rating',
+    },
+  },
 }
 
 export default en;

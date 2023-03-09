@@ -12,6 +12,7 @@ import prepareImageUrl from '../../utils/prepareAssetUrl';
 import { ButtonType } from '../Button/Button.types';
 import Buttons from '../Button';
 import BuyBook from '../BuyBook';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const BookPost: FunctionComponent<BlogPostProps> = ({
   content,
@@ -30,6 +31,7 @@ const BookPost: FunctionComponent<BlogPostProps> = ({
   seller,
   rate,
 }) => {
+  const { t } = useTranslations();
 
   const buyBookSection = (
     <div className={styles.buyBookSection}>
@@ -45,7 +47,7 @@ const BookPost: FunctionComponent<BlogPostProps> = ({
     <article className={styles.wrapper}>
       <div className={styles.content}>
         <div className={styles.sideCover}>
-          <Image src={prepareImageUrl(coverImage)} objectFit="cover" layout="fill"/>
+          <Image src={prepareImageUrl(coverImage)} objectFit="cover" layout="fill" alt=""/>
         </div>
         <div>
           <Title classes={styles.title}>{title}</Title>
@@ -53,9 +55,9 @@ const BookPost: FunctionComponent<BlogPostProps> = ({
             {documentToReactComponents(excerpt, {})}
           </div>
           <div className={styles.metabar}>
-            {categoryName && <MetaItem title="Kategoria" value={categoryName} />}
-            {createdDate && <MetaItem title="Data przeczytania" value={createdDate} />}
-            {rate && <MetaItem title="Moja ocena" value={`${rate}/10`} />}
+            {categoryName && <MetaItem title={t.ARTICLE.META.CATEGORY} value={categoryName} />}
+            {createdDate && <MetaItem title={t.ARTICLE.META.READING_DATE} value={createdDate} />}
+            {rate && <MetaItem title={t.ARTICLE.META.MY_RATE} value={`${rate}/10`} />}
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 const Header: FunctionComponent = () => {
   const [isMenuOpen, setToggleMenu] = useState(false);
   const { t } = useTranslations();
-  const { locale, pathname } = useRouter();
+  const { locale, asPath } = useRouter();
 
   const toggleMenu = () => {
     if (window !== undefined) {
@@ -35,8 +35,11 @@ const Header: FunctionComponent = () => {
         <MainNav isMobileOpen={isMenuOpen} />
       </header>
       <div className={styles.langSwitcher}>
-        <Link href={pathname} locale={nextLocale}>
-          <a title={nextLocale.toUpperCase()} className={styles.langSwitcherButton}>
+        <Link href={asPath} locale={nextLocale}>
+          <a
+            title={nextLocale === 'pl' ? nextLocale.toUpperCase() : `${nextLocale.toUpperCase()} (incomplete)`}
+            className={styles.langSwitcherButton}
+          >
             {nextLocale.toUpperCase()}
           </a>
         </Link>

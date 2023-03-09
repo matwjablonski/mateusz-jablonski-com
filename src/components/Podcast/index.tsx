@@ -9,6 +9,7 @@ import PostShare from '../PostShare';
 import MetaItem from '../MetaItem';
 import PodcastCover from '../PodcastCover';
 import PodcastContent from '../PodcastContent';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const Podcast: FunctionComponent<PodcastProps> = ({
   content,
@@ -26,6 +27,7 @@ const Podcast: FunctionComponent<PodcastProps> = ({
   externalLink,
   podcastTitle,
 }) => {
+  const { t } = useTranslations();
 
   return (
     <article className={styles.wrapper}>
@@ -34,9 +36,9 @@ const Podcast: FunctionComponent<PodcastProps> = ({
         <p>{excerpt}</p>
       </div>
       <div className={styles.metabar}>      
-        {createdDate && <MetaItem title="Data publikacji" value={createdDate} />}
-        {podcastTitle && <MetaItem title="Podcast" value={podcastTitle} />}
-        {episode !== undefined && <MetaItem title="Odcinek" value={`#${episode}`} />}
+        {createdDate && <MetaItem title={t.ARTICLE.META.PUBLICATION_DATE} value={createdDate} />}
+        {podcastTitle && <MetaItem title={t.ARTICLE.META.PODCAST} value={podcastTitle} />}
+        {episode !== undefined && <MetaItem title={t.ARTICLE.META.EPISODE} value={`#${episode}`} />}
       </div>
       {featuredImage && <PodcastCover image={featuredImage}/>}
       <div className={styles.content}>

@@ -13,6 +13,7 @@ import CommentsList from '../../components/CommentsList';
 import PostAuthor from '../../components/PostAuthor';
 import PageNewsletter from '../../components/Newsletter/PageNewsletter';
 import CaptchaProvider from '../../providers/CaptchaProvider';
+import { mapLocale } from '../../lib/locales';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
   const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
@@ -55,6 +56,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     content_type: 'article',
     'fields.slug': slug,
     include: 2,
+    locale: mapLocale(context.locale),
   })
 
   const body = await res.data

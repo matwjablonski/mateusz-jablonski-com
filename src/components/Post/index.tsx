@@ -8,6 +8,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { PostProps } from './Post.types';
 import PostShare from '../PostShare';
 import MetaItem from '../MetaItem';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const Post: FunctionComponent<PostProps> = ({
   content,
@@ -23,6 +24,7 @@ const Post: FunctionComponent<PostProps> = ({
   categoryName,
   level,
 }) => {
+  const { t } = useTranslations();
 
   return (
     <article className={styles.wrapper}>
@@ -31,9 +33,9 @@ const Post: FunctionComponent<PostProps> = ({
         {documentToReactComponents(excerpt, {})}
       </div>
       <div className={styles.metabar}>
-        {categoryName && <MetaItem title="Kategoria" value={categoryName} />}
-        {createdDate && <MetaItem title="Data publikacji" value={createdDate} />}
-        {level && <MetaItem title="Poziom" value={level} />}
+        {categoryName && <MetaItem title={t.ARTICLE.META.CATEGORY} value={categoryName} />}
+        {createdDate && <MetaItem title={t.ARTICLE.META.PUBLICATION_DATE} value={createdDate} />}
+        {level && <MetaItem title={t.ARTICLE.META.LEVEL} value={level} />}
       </div>
       {featuredImage && <PostCover coverImage={featuredImage.fields}/>}
       <div className={styles.content}>
