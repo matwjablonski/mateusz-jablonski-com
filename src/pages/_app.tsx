@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import Script from 'next/script';
 import * as gtag from '../lib/gtag'
 
+const pl = import('../data/translations/pl')
+
 const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) => {
   const router = useRouter();
 
@@ -53,7 +55,7 @@ const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) =>
           `,
         }}
       />
-      <Component {...pageProps} />
+      <Component {...pageProps} translations={'aaa'}/>
     </>
   )
   

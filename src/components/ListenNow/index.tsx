@@ -6,10 +6,12 @@ import spotify from '../../public/icons/spotify.png';
 import applePodcast from '../../public/icons/applepodcast.svg';
 import googlePodcast from '../../public/icons/googlepodcast.png'
 import youtube from '../../public/icons/youtube.png';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const ListenNow: FunctionComponent<{ className?: string; }> = memo(({ className }) => {
+    const { t: { HOME: { LISTEN_PODCAST }}} = useTranslations();
     return <div className={cx(styles.listenNow, className)}>
-        <h2 className={styles.title}>Słuchaj mojego podcastu:</h2>
+        <h2 className={styles.title}>{LISTEN_PODCAST}</h2>
         <div className={styles.podcasts}>
             <a className={styles.podcastLink} rel="noopener noreferrer nofollow" href="" target="_blank">
                 <div className={styles.podcast}>

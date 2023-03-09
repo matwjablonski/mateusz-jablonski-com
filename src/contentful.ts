@@ -22,12 +22,12 @@ async function fetchEntries(context): Promise<{ data: Items, total: number }> {
   return null
 }
 
-async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: number): Promise<{ data: Items }> {
+async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: number, locale: string): Promise<{ data: Items }> {
   const CONTENTFUL_API_URI = `https://cdn.contentful.com/spaces/${space}/entries`;
   const types = contentTypes.toString();
 
   const body = await fetch(
-    `${CONTENTFUL_API_URI}?access_token=${accessToken}&sys.contentType.sys.id[in]=${types}&limit=${limit + 6}&include=2`
+    `${CONTENTFUL_API_URI}?access_token=${accessToken}&sys.contentType.sys.id[in]=${types}&limit=${limit + 6}&include=2&locale=${locale}`
   );
 
   const res = await body.json();

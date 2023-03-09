@@ -2,43 +2,43 @@
     "items": [
         {
             "id": "vd23iblwdxp1b110",
-            "title": "Home",
+            "title": "HOME",
             "url": "/",
             "type": "link"
         },
         {
             "id": "lky2u5r60x2pvme3",
-            "title": "Blog",
+            "title": "BLOG",
             "url": "/blog",
             "type": "link"
         },
         {
             "id": "tkfcf34gsrg2lt9h",
-            "title": "O mnie",
+            "title": "ABOUT",
             "url": "/about",
             "type": "link"
         },
         {
             "id": "bg50181tp4nila73",
-            "title": "Kursy",
+            "title": "COURSES",
             "url": "/course",
             "type": "link"
         },
         {
             "id": "bg501a1tp4nala73",
-            "title": "Podcast",
+            "title": "PODCAST",
             "url": "/podcast",
             "type": "link"
         },
         {
             "id": "bg50151tp4nela73",
-            "title": "Kontakt",
+            "title": "CONTACT",
             "url": "/contact",
             "type": "link"
         },
         {
             "id": "vflckmujbxza6puo",
-            "title": "Strefa kursanta",
+            "title": "MEMBER_AREA",
             "url": "/dashboard",
             "disabled": true,
             "type": "button"

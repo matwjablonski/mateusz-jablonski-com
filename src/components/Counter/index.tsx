@@ -3,8 +3,11 @@ import Image from 'next/image';
 import styles from './Counter.module.scss';
 import { CounterProps } from './Counter.types';
 import calendar from '../../public/icons/calendar.svg';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
+    const { t } = useTranslations();
+
     const prepareDaysLabel = () => {
         if (days === null) {
             return 'nie wiem';
@@ -18,7 +21,7 @@ const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
     return (
         <div className={styles.counter}>
             <div className={styles.counterText}>
-                <span className={styles.nextTitle}>Następny {nextItemName}</span>
+                <span className={styles.nextTitle}>{t.COMMON.NEXT} {nextItemName}</span>
                 <span className={styles.remainingDays}>{prepareDaysLabel()}</span>
             </div>
             <div className={styles.icon}>

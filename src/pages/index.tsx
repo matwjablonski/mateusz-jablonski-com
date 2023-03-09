@@ -24,6 +24,8 @@ import ListenNow from '../components/ListenNow';
 import FeaturedCourses from '../components/FeaturedCourses';
 import { HeadInterface } from '../types/common/Head.types';
 import { formatDate } from '../utils/formatDate';
+import { mapLocale } from '../lib/locales';
+import { useTranslations } from '../hooks/useTranslations';
 
 interface HomeData {
   title: string;
@@ -64,25 +66,27 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
     head,
   } = data;
 
+  const { t } = useTranslations();
+
   return (
       <MainLayout head={head ? head.fields : {}} hideOverflow>
         <Grid>
           <Hero title={title} description={description} image={welcomeImage} />
           <section>
             <TitleBarWithComponent 
-              title={<>Ostatnie <strong>artykuły</strong></>}
+              title={<>{t.HOME.LAST_ARTICLES} <strong>{t.HOME.LAST_ARTICLES_STRONG}</strong></>}
               text={lastArticlesDescription}
             >
-              <Counter nextItemName="artykuł" days={nextArticleInDays} />
+              <Counter nextItemName={t.HOME.NEXT_ARTICLE} days={nextArticleInDays} />
             </TitleBarWithComponent>
             <LastArticles articles={articles} />
           </section>
           <section className={styles.podcastSection}>
             <TitleBarWithComponent 
-              title={<>Ostatnie <strong>podcasty</strong></>}
+              title={<>{t.HOME.LAST_PODCASTS} <strong>{t.HOME.LAST_PODCASTS_STRONG}</strong></>}
               text={lastPodcastsDescription}
             >
-              <Counter nextItemName="podcast" days={nextPodcastInDays} />
+              <Counter nextItemName={t.HOME.NEXT_PODCAST} days={nextPodcastInDays} />
             </TitleBarWithComponent>
             <LastPodcasts podcasts={podcasts} />
             <ListenNow className={styles.listenNow} />
@@ -91,7 +95,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <section className={styles.coursesSection}>
             <Grid>
             <TitleBarWithComponent 
-                title={<>Aktualnie dostępne <br/><strong>warsztaty</strong></>} 
+                title={<>{t.HOME.LAST_WORKSHOPS} <br/><strong>{t.HOME.LAST_WORKSHOPS_STRONG}</strong></>} 
                 text={lastCoursesDescription}
                 type={TitleBarType.REVERT}
               >
@@ -103,11 +107,11 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <section className={styles.booksSection}>
             <Grid>
               <TitleBarWithComponent 
-                title={<>Polecane <strong>książki</strong></>} 
+                title={<>{t.HOME.RECOMMENDED_BOOKS} <strong>{t.HOME.RECOMMENDED_BOOKS_STRONG}</strong></>} 
                 text={lastBooksDescription}
                 type={TitleBarType.REVERT}
               >
-                <Button.L label="Więcej książek" pattern={ButtonType.PRIMARY} href="/book" />
+                <Button.L label={t.HOME.MORE_BOOKS} pattern={ButtonType.PRIMARY} href="/book" />
               </TitleBarWithComponent>
               <LastBooks books={books} />
             </Grid>
@@ -121,9 +125,10 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const homeRes = await fetchEntries({
-    content_type: 'home'
+    content_type: 'home',
+    locale: mapLocale(locale),
   });
 
   const artilesRes = await fetchEntries({
@@ -132,6 +137,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     limit: 5,
     order: '-fields.createdDate',
     'fields.createdDate[lte]': new Date(),
+    locale: mapLocale(locale),
   });
 
   const nextArticlesRes = await fetchEntries({
@@ -139,6 +145,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     include: 2,
     order: 'fields.createdDate',
     'fields.createdDate[gt]': new Date(),
+    locale: mapLocale(locale),
   });
 
   const podcastsRes = await fetchEntries({
@@ -147,6 +154,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     order: '-fields.createdDate',
     limit: 4,
     'fields.createdDate[lte]': new Date(),
+    locale: mapLocale(locale),
   });
 
   const nextPodcastsRes = await fetchEntries({
@@ -154,6 +162,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     include: 2,
     order: 'fields.createdDate',
     'fields.createdDate[gt]': new Date(),
+    locale: mapLocale(locale),
   });
 
   const booksRes = await fetchEntries({
@@ -162,6 +171,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     order: '-fields.createdDate',
     'fields.review[exists]': true,
     limit: 4,
+    locale: mapLocale(locale),
   });
 
   const nextCourseRes = await fetchEntries({
@@ -170,6 +180,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     order: 'fields.publishDate',
     'fields.publishDate[gt]': new Date(),
     limit: 1,
+    locale: mapLocale(locale),
   });
 
   const homeDetails = await homeRes.data.map(p => p.fields).shift();

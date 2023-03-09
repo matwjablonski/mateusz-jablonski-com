@@ -86,7 +86,6 @@ const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolea
       </main>
       <Footer />
     </>
-
   );
 }
 

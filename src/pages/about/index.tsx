@@ -26,6 +26,7 @@ import { getRecommendedChannels, Vlog } from "../../lib/google/youtube/getRecomm
 import RecommendedVlogTile from "../../components/RecommendedVlogTile";
 import MyStory from "../../components/MyStory";
 import Motivator from "../../components/Motivator";
+import { mapLocale } from '../../lib/locales';
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -107,17 +108,19 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const lastContentRes = await fetchMultipleContentTypesEntries(['article','book','podcast'], 3);
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+    const lastContentRes = await fetchMultipleContentTypesEntries(['article','book','podcast'], 3, mapLocale(locale));
 
     const res = await fetchEntries({
         content_type: 'page',
         'fields.slug': 'about',
         include: 2,
+        locale: mapLocale(locale),
     });
 
     const testimonialsRes = await fetchEntries({
-        content_type: 'testimonials'
+        content_type: 'testimonials',
+        locale: mapLocale(locale),
     });
 
     const booksRes = await fetchEntries({
@@ -125,6 +128,7 @@ export const getStaticProps: GetStaticProps = async () => {
         include: 2,
         'fields.currentRead': true,
         limit: 4,
+        locale: mapLocale(locale),
     });
 
     const lastContent = await lastContentRes.data.map(p => ({

@@ -9,8 +9,8 @@ module.exports = withPlugins([
   [withTM],
 ], {
   i18n: {
-    locales: ['pl-PL', 'en-US'],
-    defaultLocale: 'pl-PL',
+    locales: ['pl', 'en'],
+    defaultLocale: 'pl',
     localeDetection: false,
   },
   images: {
