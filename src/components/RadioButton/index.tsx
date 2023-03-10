@@ -7,7 +7,7 @@ interface RadioButtonProps extends Partial<HTMLInputElement> {
     name: string;
     label: string;
     icon?: any;
-    iconWidth?: number | string;
+    iconWidth?: number | `${number}`;
 }
 
 const RadioButton = ({
@@ -30,7 +30,7 @@ const RadioButton = ({
             {
                 icon && (
                     <div style={{ width: iconWidth }} className={styles.labelIcon}>
-                        <Image src={icon} width={iconWidth || 0} layout="fill"/>
+                        <Image src={icon} alt="" fill/>
                     </div>
                 )
             }

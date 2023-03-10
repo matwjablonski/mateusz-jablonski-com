@@ -31,66 +31,56 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                 <ul className={styles.socials}>
                     { author.twitter && (
                         <li className={styles.socialItem}>
-                            <Link href={author.twitter}>
-                                <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                    <div className={styles.icon}>
-                                        <Image src={TwitterIcon} width={20} height={16} alt=""/>
-                                    </div> 
-                                    Twitter
-                                </a>
-                            </Link>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.twitter}>
+                                <div className={styles.icon}>
+                                    <Image src={TwitterIcon} width={20} height={16} alt=""/>
+                                </div> 
+                                Twitter
+                            </a>
                         </li>
                         )
                     }
                     { author.linkedIn && (
                         <li className={styles.socialItem}>
-                            <Link href={author.linkedIn}>
-                                <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                    <div className={styles.icon}>
-                                        <Image src={LiIcon} width={16} height={16} alt=""/>
-                                    </div> 
-                                    LinkedIn
-                                </a>
-                            </Link>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.linkedIn}>
+                                <div className={styles.icon}>
+                                    <Image src={LiIcon} width={16} height={16} alt=""/>
+                                </div> 
+                                LinkedIn
+                            </a>
                         </li>
                         )
                     }
                     { author.facebook && (
                         <li className={styles.socialItem}>
-                            <Link href={author.facebook}>
-                                <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                    <div className={styles.icon}>
-                                        <Image src={FacebookIcon} width={11} height={18} alt=""/>
-                                    </div> 
-                                    Facebook
-                                </a>
-                            </Link>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.facebook}>
+                                <div className={styles.icon}>
+                                    <Image src={FacebookIcon} width={11} height={18} alt=""/>
+                                </div> 
+                                Facebook
+                            </a>
                         </li>
                         )
                     }
                     { author.github && (
                         <li className={styles.socialItem}>
-                            <Link href={author.github}>
-                                <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                    <div className={styles.icon}>
-                                        <Image src={GithubIcon} width={17} height={18} alt=""/>
-                                    </div> 
-                                    GitHub
-                                </a>
-                            </Link>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.github}>
+                                <div className={styles.icon}>
+                                    <Image src={GithubIcon} width={17} height={18} alt=""/>
+                                </div> 
+                                GitHub
+                            </a>
                         </li>
                         )
                     }
                     { author.instagram && (
                         <li className={styles.socialItem}>
-                            <Link href={author.instagram}>
-                                <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                    <div className={styles.icon}>
-                                        <Image src={InstagramIcon} width={16} height={16} alt=""/>
-                                    </div> 
-                                    Instagram
-                                </a>
-                            </Link>
+                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.instagram}>
+                                <div className={styles.icon}>
+                                    <Image src={InstagramIcon} width={16} height={16} alt=""/>
+                                </div> 
+                                Instagram
+                            </a>
                         </li>
                         )
                     }

@@ -12,7 +12,8 @@ import styles from './PodcastPreview.module.scss';
 import { ButtonType } from '../Button/Button.types';
 
 const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, excerpt, slug, showContentType, author, podcastName }) => {
-  const imageHeight = 289;
+  const imageHeight = 216;
+  const imageWidth = 352;
 
   return (
     <article className={cx(styles.podcastPreview)}>
@@ -20,24 +21,21 @@ const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, ex
         {
           (
             <Link href={`/podcast/${slug}`}>
-              <a>
-                {
-                  image ?
-                    (
-                      <div className={styles.imageBox}>
-                        <Image
-                          src={prepareImageUrl(image?.fields?.file.url)}
-                          height={imageHeight}
-                          className={styles.image}
-                          alt={`${title} by ${author}`}
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      </div>
-                    ) :
-                    <ImagePlaceholder width="352px" height="216px" />
-                }
-              </a>
+              {
+                image ?
+                  (
+                    <div className={styles.imageBox}>
+                      <Image
+                        src={prepareImageUrl(image?.fields?.file.url)}
+                        height={imageHeight}
+                        width={imageWidth}
+                        className={styles.image}
+                        alt={`${title} by ${author}`}
+                      />
+                    </div>
+                  ) :
+                  <ImagePlaceholder width="352px" height="216px" />
+              }
             </Link>
           )
         }
@@ -48,9 +46,7 @@ const PodcastPreview: FC<PodcastPreviewProps> = ({ title, createdDate, image, ex
             {
               (
                 <Link href={`/podcast/${slug}`}>
-                  <a>
-                    <h3 className={styles.title}>{title}</h3>
-                  </a>
+                  <h3 className={styles.title}>{title}</h3>
                 </Link>
               )
             }

@@ -9,37 +9,41 @@ import backIcon from '../../public/icons/back.svg';
 import cx from 'classnames';
 
 const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ pattern, href, label = '', className, children, passHref, isExternal, ...rest }) => {
-  const createLinkContent = (href?: string, target?: string) => (
+  const linkContent = <>
+    {pattern === ButtonType.BACK && (
+      <div className={styles.arrowBack}>
+        <Image src={backIcon || '/icons/back.svg'} width={24} height={24} alt=""/>
+      </div>
+    )}
+    {label}
+    {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
+      <div className={styles.arrow}>
+        <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
+      </div>
+    )}
+    {(pattern === ButtonType.PRIMARY || pattern === ButtonType.WHITE || pattern === ButtonType.LIGTHENED) && (
+      <div className={styles.arrow}>
+        <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
+      </div>
+    )}
+  </>;
+  
+  const createAnchorContent = (href?: string, target?: string) => (
     <a {...rest} className={cx(styles.button, styles[pattern], className)} href={href} target={target} rel="noopener noreferrer">
-      {pattern === ButtonType.BACK && (
-        <div className={styles.arrowBack}>
-          <Image src={backIcon || '/icons/back.svg'} width={24} height={24} alt=""/>
-        </div>
-      )}
-      {label}
-      {(pattern === ButtonType.CLEAN || pattern === ButtonType.SECONDARY) && (
-        <div className={styles.arrow}>
-          <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
-        </div>
-      )}
-      {(pattern === ButtonType.PRIMARY || pattern === ButtonType.WHITE || pattern === ButtonType.LIGTHENED) && (
-        <div className={styles.arrow}>
-          <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
-        </div>
-      )}
+      {linkContent}
     </a>
   )
 
   if (isExternal) {
     return <>
-      {createLinkContent(href, '_blank')}
+      {createAnchorContent(href, '_blank')}
     </>
   }
   
   return href ? (
-    <Link href={href} passHref={passHref}>
-      {createLinkContent()}
-    </Link>) : <>{createLinkContent()}</>
+    <Link href={href} passHref={passHref} {...rest} className={cx(styles.button, styles[pattern], className)}>
+      {linkContent}
+    </Link>) : <>{createAnchorContent()}</>
 });
 
 const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {

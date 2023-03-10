@@ -47,7 +47,7 @@ const BookPost: FunctionComponent<BlogPostProps> = ({
     <article className={styles.wrapper}>
       <div className={styles.content}>
         <div className={styles.sideCover}>
-          <Image src={prepareImageUrl(coverImage)} objectFit="cover" layout="fill" alt=""/>
+          <Image src={prepareImageUrl(coverImage)} fill alt={title}/>
         </div>
         <div>
           <Title classes={styles.title}>{title}</Title>

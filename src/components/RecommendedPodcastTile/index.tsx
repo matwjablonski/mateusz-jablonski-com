@@ -14,8 +14,8 @@ const RecommendedPodcastTile = ({ name, source, image }: RecommendedPodcastTileP
         <div className={styles.image}>
             {
                 image.includes('http')
-                    ? <Image src={image} width={352} height={352} />
-                    : <Image src={require(`../../public/images/podcasts/${image}`)} width={352} height={352} />
+                    ? <Image src={image} width={352} height={352} alt={name} />
+                    : <Image src={require(`../../public/images/podcasts/${image}`)} width={352} height={352} alt={name} />
             }
         </div>
         <h3 className={styles.title}>{name}</h3>

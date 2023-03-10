@@ -13,7 +13,7 @@ const MyNewsletter = ({ title, children }: MyNewsletterProps ) => (
   <section className={styles.MyNewsletter}>
     <Columns flexSizes={[2, 3]}>
       <div className={styles.image}>
-        <Image src={MyNewsImage} />
+        <Image src={MyNewsImage} alt="" className={styles.img}/>
       </div>
       <div>
         <h2 className={styles.title}>{title}</h2>

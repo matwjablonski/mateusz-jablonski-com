@@ -2,11 +2,9 @@
 require('dotenv').config();
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
-const withTM = require('next-transpile-modules')(['wavesurfer-react']);
 
 module.exports = withPlugins([
   [withFonts],
-  [withTM],
 ], {
   i18n: {
     locales: ['pl', 'en'],
@@ -22,9 +20,6 @@ module.exports = withPlugins([
       'yt3.ggpht.com',
       'yt3.googleusercontent.com',
     ],
-  },
-  webpack(config, options) {
-    return config;
   },
   async redirects() {
     return [

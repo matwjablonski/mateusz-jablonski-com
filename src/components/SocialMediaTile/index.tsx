@@ -1,5 +1,4 @@
 import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { SocialMediaTileProps } from './SocialMediaTile.types';
 import { SocialMediaType } from '../../types/common/SocialMedia.types';
@@ -59,18 +58,16 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
   }, [prepareData]);
 
   return (
-    <Link href={href}>
-      <a target="_blank" title={name} rel="noopener noreferrer nofollow" className={styles.socialMediaLink}>
-        <div className={styles.socialTile}>
-          <div className={cx(styles.icon, styles[className])}>
-            {prepareIcon()}
-          </div>
-          <div className={styles.name}>
-            {name}
-          </div>
+    <a target="_blank" title={name} rel="noopener noreferrer nofollow" className={styles.socialMediaLink} href={href}>
+      <div className={styles.socialTile}>
+        <div className={cx(styles.icon, styles[className])}>
+          {prepareIcon()}
         </div>
-      </a>
-    </Link>
+        <div className={styles.name}>
+          {name}
+        </div>
+      </div>
+    </a>
   )
 });
 

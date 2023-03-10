@@ -13,10 +13,10 @@ const FooterSocialMedia: FunctionComponent = memo(() => {
         {translate(t.FOOTER.SOCIAL_MEDIA.TITLE, 'span')}
       </h2>
       <div className={styles.socialMediaTiles}>
-        <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER}/>
-        <SocialMediaTile href={externalSources.facebook} socialMediaType={SocialMediaType.FACEBOOK}/>
-        <SocialMediaTile href={externalSources.instagram} socialMediaType={SocialMediaType.INSTAGRAM}/>
-        <SocialMediaTile href={externalSources.linkedin} socialMediaType={SocialMediaType.LINKEDIN}/>
+        <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER} key={SocialMediaType.TWITTER}/>
+        <SocialMediaTile href={externalSources.facebook} socialMediaType={SocialMediaType.FACEBOOK} key={SocialMediaType.FACEBOOK}/>
+        <SocialMediaTile href={externalSources.instagram} socialMediaType={SocialMediaType.INSTAGRAM} key={SocialMediaType.INSTAGRAM}/>
+        <SocialMediaTile href={externalSources.linkedin} socialMediaType={SocialMediaType.LINKEDIN} key={SocialMediaType.LINKEDIN}/>
       </div>
     </section>
   )

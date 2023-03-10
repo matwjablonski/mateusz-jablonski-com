@@ -16,10 +16,8 @@ const MainNav: FunctionComponent<{ isMobileOpen: boolean }> = ({ isMobileOpen })
           {menuData.items.map(item => <li key={item.id} className={styles.item}>
             { 
               item.type === 'link' && (
-                <Link href={item.url}>
-                  <a title={t.MENU[item.title]}>
-                    {t.MENU[item.title]}
-                  </a>
+                <Link href={item.url} title={t.MENU[item.title]}>
+                  {t.MENU[item.title]}
                 </Link>
               )
             }

@@ -46,6 +46,10 @@
     @include media.bp(lg) {
       width: calc(18.5% - gutters.$gutter-medium);
     }
+
+    img {
+      object-fit: cover;
+    }
   }
 
   .metabar {

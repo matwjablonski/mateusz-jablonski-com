@@ -26,22 +26,20 @@ const Header: FunctionComponent = () => {
   return (
     <Grid>
       <header className={styles.header}>
-        <Link href="/">
-          <a className={cx(styles.mainLogo, isMenuOpen && styles.isMenuOpen)}>
-            <Image src={logo || '/logo.svg'} width={178} height={35} alt={t.HEADER.TITLE}/>
-          </a>
+        <Link href="/" className={cx(styles.mainLogo, isMenuOpen && styles.isMenuOpen)}>
+          <Image src={logo || '/logo.svg'} width={178} height={35} alt={t.HEADER.TITLE}/>
         </Link>
         <button type="button" className={cx(styles.menuToggler, isMenuOpen && styles.isOpen)} onClick={toggleMenu}/>
         <MainNav isMobileOpen={isMenuOpen} />
       </header>
       <div className={styles.langSwitcher}>
-        <Link href={asPath} locale={nextLocale}>
-          <a
-            title={nextLocale === 'pl' ? nextLocale.toUpperCase() : `${nextLocale.toUpperCase()} (incomplete)`}
-            className={styles.langSwitcherButton}
-          >
-            {nextLocale.toUpperCase()}
-          </a>
+        <Link
+          href={asPath}
+          locale={nextLocale}
+          title={nextLocale === 'pl' ? nextLocale.toUpperCase() : `${nextLocale.toUpperCase()} (incomplete)`}
+          className={styles.langSwitcherButton}
+        >
+          {nextLocale.toUpperCase()}
         </Link>
       </div>
     </Grid>

@@ -35,7 +35,7 @@ const SectionHero = ({ title, text }: SectionHeroProps) => {
                 </h2>
             </Grid>
             <div className={styles.image}>
-                <Image src={heroImage} layout="fill" alt="" />
+                <Image src={heroImage} fill alt="" />
             </div>
             <Grid>
                 <p className={styles.text}>{text}</p>

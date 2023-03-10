@@ -88,29 +88,23 @@ const PostSidebar: FunctionComponent<PostSidebarProps> = ({ author, numberOfComm
             <div className={styles.quickContact}>
                 { 
                     author.twitter && (
-                        <Link href={author.twitter}>
-                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                <Image src={TwitterIcon} width={24} height={19} alt=""/>
-                            </a>
-                        </Link>
+                        <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.twitter}>
+                            <Image src={TwitterIcon} width={24} height={19} alt=""/>
+                        </a>
                     )
                 }
                 { 
                     author.facebook && (
-                        <Link href={author.facebook}>
-                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                <Image src={FacebookIcon} width={16} height={26} alt="" />
-                            </a>
-                        </Link>
+                        <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.facebook}>
+                            <Image src={FacebookIcon} width={16} height={26} alt="" />
+                        </a>
                     )
                 }
                 { 
                     author.linkedIn && (
-                        <Link href={author.linkedIn}>
-                            <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink}>
-                                <Image src={LiIcon} width={24} height={24} alt="" />
-                            </a>
-                        </Link>
+                        <a target="_blank" rel="noopener noreferrer nofollow" className={styles.socialLink} href={author.linkedIn}>
+                            <Image src={LiIcon} width={24} height={24} alt="" />
+                        </a>
                     )
                 }
                 { 

@@ -29,7 +29,6 @@ const BuyBook: FC<{ affiliateLink: string, seller: BookSeller, bookType?: BookTy
                                 <Image 
                                     src={prepareImageUrl(seller.logo.fields.file.url)}
                                     title={seller.name}
-                                    objectFit="contain"
                                     width={75}
                                     height={25}
                                     alt={seller.name}

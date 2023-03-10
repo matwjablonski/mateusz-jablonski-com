@@ -16,7 +16,6 @@ const PodcastCover: FunctionComponent<PodcastCoverProps> = ({
         src={prepareImageUrl(image.fields.file.url)}
         width={1147}
         height={460}
-        objectFit="cover"
         alt={`${image.fields.title} ${t('PAGES.POST.COVER_THUMBNAIL.BY_WHOM')}`}
         className={styles.image}
       />

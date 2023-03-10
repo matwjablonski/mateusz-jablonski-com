@@ -16,6 +16,7 @@ const BookBigPreview: FunctionComponent<BookBigPreviewProps> = ({
     title, createdDate, image, excerpt, slug, showContentType, author,
 }) => {
     const imageHeight = 216;
+    const imageWidth = 352;
     const { t } = useTranslations();
    
     return (
@@ -24,23 +25,21 @@ const BookBigPreview: FunctionComponent<BookBigPreviewProps> = ({
                 {
                     (
                         <Link href={`/book/${slug}`}>
-                            <a>
-                                {
-                                    image ?
-                                        (
-                                            <div className={styles.imageBox}>
-                                                <Image
-                                                    src={prepareImageUrl(image?.fields?.file.url)}
-                                                    height={imageHeight}
-                                                    className={styles.image}
-                                                    alt={`${title} by ${author}`}
-                                                    layout="fill"
-                                                />
-                                            </div>
-                                        ) :
-                                        <ImagePlaceholder width="352px" height="216px" />
-                                }
-                            </a>
+                            {
+                                image ?
+                                    (
+                                        <div className={styles.imageBox}>
+                                            <Image
+                                                src={prepareImageUrl(image?.fields?.file.url)}
+                                                height={imageHeight}
+                                                width={imageWidth}
+                                                className={styles.image}
+                                                alt={`${title} by ${author}`}
+                                            />
+                                        </div>
+                                    ) :
+                                    <ImagePlaceholder width="352px" height="216px" />
+                            }
                         </Link>
                     )
                 }
@@ -52,9 +51,7 @@ const BookBigPreview: FunctionComponent<BookBigPreviewProps> = ({
                         {
                             (
                                 <Link href={`/blog/${slug}`}>
-                                    <a>
-                                        <h3 className={styles.title}>{title}</h3>
-                                    </a>
+                                    <h3 className={styles.title}>{title}</h3>
                                 </Link>
                             )
                         }

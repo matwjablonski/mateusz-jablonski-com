@@ -25,9 +25,7 @@ const Footer: FunctionComponent = memo(() => {
             <Link
               href="/"
             >
-              <a>
-                <Image src={logo || '/logo-footer.svg'} alt="" width={114} height={24}/>
-              </a>
+              <Image src={logo || '/logo-footer.svg'} alt="" width={114} height={24} />
             </Link>
             <p className={styles.info}>© {date} Woodpecker sp z o.o. All rights reserved</p>
           </div>
@@ -36,7 +34,7 @@ const Footer: FunctionComponent = memo(() => {
               menu.items.map((item) => (
                   <li key={item.id} className={styles.footerMenuItem}>
                     <Link href={item.url}>
-                      <a>{t.MENU[item.title]}</a>
+                      {t.MENU[item.title]}
                     </Link>
                   </li>
                 ),

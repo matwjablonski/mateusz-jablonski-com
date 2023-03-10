@@ -31,14 +31,14 @@ const CurrentRead: FC<CurrentReadProps> = ({ title, author, imageUrl, affiliateL
 
     return <div className={styles.currentRead}>
         <div className={styles.image}>
-            <Image src={prepareImageUrl(imageUrl)} width={106} height={160} objectFit="cover"/>
+            <Image src={prepareImageUrl(imageUrl)} width={106} height={160} alt={title}/>
         </div>
         <div className={styles.content}>
             <h3 className={styles.author}>{author}</h3>
             {
                 hasReview ? 
                     <Link href={`/book/${slug}`}>
-                        <a><h3 className={styles.title}>{title}</h3></a>
+                        <h3 className={styles.title}>{title}</h3>
                     </Link> : 
                     <h3 className={styles.title}>{title}</h3>
             }

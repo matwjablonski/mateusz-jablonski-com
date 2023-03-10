@@ -12,6 +12,10 @@
         border-radius: 4px;
         overflow: hidden;
         font-size: 0;
+
+        img {
+            object-fit: cover;
+        }
     }
 
     .content {

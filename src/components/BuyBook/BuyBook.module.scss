@@ -23,5 +23,9 @@
         position: relative;
         flex: auto;
         height: 25px;
+
+        img {
+            object-fit: contain;
+        }
     }
 }   

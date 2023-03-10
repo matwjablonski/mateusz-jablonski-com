@@ -24,10 +24,8 @@ const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ c
                 alt={featuredImage.fields.title}
             />
         </div>
-        <Link href={`course/${slug}`}>
-            <a title={title}>
-                <h3 className={styles.title}>{title}</h3>
-            </a>
+        <Link href={`course/${slug}`} title={title}>
+            <h3 className={styles.title}>{title}</h3>
         </Link>
         <p className={styles.text}>{description}</p>
         <Button.L href={`course/${slug}`} label={t.WORKSHOPS.ACTIONS.TAKE_PART} pattern={ButtonType.PRIMARY} />

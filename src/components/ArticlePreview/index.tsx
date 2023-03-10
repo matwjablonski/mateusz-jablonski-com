@@ -45,24 +45,22 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
                         </a>
                     ) : (
                         <Link href={`/blog/${slug}`}>
-                            <a>
-                                {
-                                    featuredImage?.fields?.image ?
-                                        (
-                                            <div className={styles.imageBox}>
-                                                <Image
-                                                    src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
-                                                    width={imageWidth}
-                                                    height={imageHeight}
-                                                    className={styles.image}
-                                                    alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
-                                                />
-                                                {externalSource && <div className={styles.external}>External</div>}
-                                            </div>
-                                        ) :
-                                        <ImagePlaceholder width="352px" height="216px" />
-                                }
-                            </a>
+                            {
+                                featuredImage?.fields?.image ?
+                                    (
+                                        <div className={styles.imageBox}>
+                                            <Image
+                                                src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
+                                                width={imageWidth}
+                                                height={imageHeight}
+                                                className={styles.image}
+                                                alt={`${featuredImage.fields.title} by ${featuredImage.fields.author}`}
+                                            />
+                                            {externalSource && <div className={styles.external}>External</div>}
+                                        </div>
+                                    ) :
+                                    <ImagePlaceholder width="352px" height="216px" />
+                            }
                         </Link>
                     )
                 }
@@ -78,9 +76,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
                                 </a>
                             ) : (
                                 <Link href={externalSource || `/blog/${slug}`} passHref={!!externalSource}>
-                                    <a>
-                                        <h3 className={styles.title}>{title}</h3>
-                                    </a>
+                                    <h3 className={styles.title}>{title}</h3>
                                 </Link>
                             )
                         }

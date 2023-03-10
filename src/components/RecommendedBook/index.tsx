@@ -17,7 +17,6 @@ const RecommendedBook: FC<{book: Book}> = ({ book: { title, cover, author, affil
                     <Image
                         src={prepareImageUrl(cover.fields.file.url)}
                         alt={cover.fields.title}
-                        objectFit="cover"
                         height={160}
                         width={106}
                     />
@@ -27,7 +26,7 @@ const RecommendedBook: FC<{book: Book}> = ({ book: { title, cover, author, affil
                     {
                         !!review ? 
                             <Link href={`/book/${slug}`}>
-                                <a><h4 className={styles.title}>{title}</h4></a>
+                                <h4 className={styles.title}>{title}</h4>
                             </Link> : 
                             <h4 className={styles.title}>{title}</h4>
                     }
