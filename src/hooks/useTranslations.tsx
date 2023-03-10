@@ -16,7 +16,7 @@ export const useTranslations = (): { t: typeof pl, translate(v: string, tagName:
 
     const res = valueAsArray.map((v, i) => {
       if ((i % 2) && v !== '') {
-        return createElement(tagName, {}, v);
+        return createElement(tagName, { key: i}, v);
       }
       return v;
     });

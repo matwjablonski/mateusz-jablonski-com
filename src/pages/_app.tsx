@@ -1,10 +1,23 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import '../styles/globals.css';
+import cx from 'classnames';
 import { useRouter } from 'next/router'
 import Script from 'next/script';
 import * as gtag from '../lib/gtag'
+import localFont from '@next/font/local';
+import { IBM_Plex_Sans } from '@next/font/google'
 
-const pl = import('../data/translations/pl')
+const monumentExtendedFont = localFont({
+  src: '../public/fonts/PPMonumentExtended-Regular.woff',
+  variable: '--monument-extended'
+});
+
+const ibmPlexSansFont = IBM_Plex_Sans({
+  variable: '--ibm-plex-sans',
+  weight: [ '400', '500', '600' ],
+  display: 'swap',
+  subsets: [ 'latin-ext' ],
+})
 
 const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -55,7 +68,13 @@ const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) =>
           `,
         }}
       />
-      <Component {...pageProps} translations={'aaa'}/>
+      <style jsx global>{`
+        :root {
+          --ibm-plex-sans: ${ibmPlexSansFont.style.fontFamily};
+          --monument-extended: ${monumentExtendedFont.style.fontFamily};
+        }
+      `}</style>
+      <Component {...pageProps} />
     </>
   )
   

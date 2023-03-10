@@ -1,4 +1,4 @@
-$font-headline: 'Monument Extended', sans-serif;
-$font-content: 'IBM Plex Sans', sans-serif;
+$font-headline: var(--monument-extended), sans-serif;
+$font-content: var(--ibm-plex-sans), sans-serif;
 $font-buttons: $font-headline;
 $font-social-media-titles: $font-headline;
