@@ -15,6 +15,10 @@ const en = {
       LOGO_ALT: 'Logo of Radość z Uśmiechu Foundation',
       HELP_ACTION_LABEL: 'Support the foundation',
     },
+    SOCIAL_MEDIA: {
+      TITLE: 'Check out my ',
+      SM: 'social media!',
+    },
   },
   MENU: {
     HOME: 'Home',
@@ -56,6 +60,15 @@ const en = {
       TITLE: 'Do you like my work?',
       MESSAGE: 'All materials on the site are free. If you find the materials useful, please consider supporting me by buying me a coffee. ;)',
       ACTION: 'I\'ll put the coffee!',
+    },
+    ACTIONS: {
+      READ_MORE: 'Read more',
+    },
+  },
+  WORKSHOPS: {
+    ACTIONS: {
+      TAKE_PART: 'Take part',
+      ALL: 'All workshops',
     },
   },
 }

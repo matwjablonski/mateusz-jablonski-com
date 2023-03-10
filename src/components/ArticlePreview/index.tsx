@@ -10,12 +10,15 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import ContentTypeLabel, { ContentTypeEnum } from '../ContentTypeLabel';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
     title, createdDate, featuredImage, excerpt, slug, className, preview, externalSource, showContentType,
 }) => {
     const imageWidth = preview === Preview.VERTICAL ? 352 : 544;
     const imageHeight = preview === Preview.VERTICAL ? 216 : 289;
+
+    const { t } = useTranslations();
     
     return (
         <article className={cx(styles.articlePreview, className)}>
@@ -90,7 +93,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
                                 href={externalSource || `/blog/${slug}`}
                                 passHref={!!externalSource}
                                 pattern={ButtonType.PRIMARY}
-                                label="Czytaj więcej"
+                                label={t.ARTICLE.ACTIONS.READ_MORE}
                             />
                         )
                     }
@@ -103,7 +106,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
                         href={externalSource || `/blog/${slug}`}
                         passHref={!!externalSource}
                         pattern={ButtonType.PRIMARY}
-                        label="Czytaj więcej"
+                        label={t.ARTICLE.ACTIONS.READ_MORE}
                     />
                 )
             }

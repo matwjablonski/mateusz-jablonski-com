@@ -3,12 +3,14 @@ import styles from './FooterSocialMedia.module.scss';
 import SocialMediaTile from '../SocialMediaTile';
 import { SocialMediaType } from '../../types/common/SocialMedia.types';
 import externalSources from '../../data/external-sources.json';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const FooterSocialMedia: FunctionComponent = memo(() => {
+  const { t } = useTranslations();
   return (
     <section className={styles.footerSocialMedia}>
       <h2 className={styles.title}>
-        Zajrzyj na moje <span>social media!</span>
+        {t.FOOTER.SOCIAL_MEDIA.TITLE}<span>{t.FOOTER.SOCIAL_MEDIA.SM}</span>
       </h2>
       <div className={styles.socialMediaTiles}>
         <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER}/>

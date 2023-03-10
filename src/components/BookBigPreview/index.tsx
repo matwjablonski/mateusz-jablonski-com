@@ -10,11 +10,13 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import ContentTypeLabel, { ContentTypeEnum } from '../ContentTypeLabel';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const BookBigPreview: FunctionComponent<BookBigPreviewProps> = ({
     title, createdDate, image, excerpt, slug, showContentType, author,
 }) => {
     const imageHeight = 216;
+    const { t } = useTranslations();
    
     return (
         <article className={cx(styles.articlePreview)}>
@@ -65,7 +67,7 @@ const BookBigPreview: FunctionComponent<BookBigPreviewProps> = ({
                     <Button.L 
                         href={`/blog/${slug}`}
                         pattern={ButtonType.PRIMARY}
-                        label="Czytaj więcej"
+                        label={t.ARTICLE.ACTIONS.READ_MORE}
                     />
                 )
             }

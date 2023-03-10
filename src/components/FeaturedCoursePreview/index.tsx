@@ -8,9 +8,11 @@ import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import placeholder from '../../public/placeholder.png';
 import prepareImageUrl from '../../utils/prepareAssetUrl';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ course }) => {
     const { title, slug, description, featuredImage} = course.fields;
+    const { t } = useTranslations();
 
     return <div className={styles.course}>
         <div className={styles.imageBox}>
@@ -28,7 +30,7 @@ const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ c
             </a>
         </Link>
         <p className={styles.text}>{description}</p>
-        <Button.L href={`course/${slug}`} label="Weź udział" pattern={ButtonType.PRIMARY} />
+        <Button.L href={`course/${slug}`} label={t.WORKSHOPS.ACTIONS.TAKE_PART} pattern={ButtonType.PRIMARY} />
     </div>
 }
 

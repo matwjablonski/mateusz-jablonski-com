@@ -15,6 +15,10 @@ const pl = {
       LOGO_ALT: 'Logo Fundacji Radość z Uśmiechu',
       HELP_ACTION_LABEL: 'Wspomóż fundację',
     },
+    SOCIAL_MEDIA: {
+      TITLE: 'Zajrzyj na moje ',
+      SM: 'social media!',
+    },
   },
   MENU: {
     HOME: 'Home',
@@ -56,6 +60,15 @@ const pl = {
       TITLE: 'Podoba Ci się to co robię?',
       MESSAGE: 'Wszystkie materiały na stronie są darmowe. Jeśli uznasz je za przydatne, rozważ proszę wsparcie mnie poprzez postawienie mi kawy. ;)',
       ACTION: 'Tak, stawiam Ci kawę!',
+    },
+    ACTIONS: {
+      READ_MORE: 'Czytaj więcej',
+    },
+  },
+  WORKSHOPS: {
+    ACTIONS: {
+      TAKE_PART: 'Weź udział',
+      ALL: 'Wszystkie warsztaty',
     },
   },
 }
