@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ReactElement, ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import Grid from '../Grid';
 import styles from './SectionHero.module.scss';
 import heroImage from '../../public/books.webp';
@@ -18,7 +18,7 @@ const SectionHero = ({ title, text }: SectionHeroProps) => {
         }
 
         return [firstElement];
-    }, [title]);
+    }, [firstElement]);
 
     return (
         <section className={styles.sectionHero}>
