@@ -2,7 +2,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Grid from "../../components/Grid";
 import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Entry } from "contentful";
 import { GetStaticProps } from 'next';
 import { fetchEntries, fetchMultipleContentTypesEntries } from "../../contentful";
@@ -53,7 +53,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                 <Motivator />
             </Grid>
             <SectionHero
-                title={translate({ value: t.ABOUT.DOTTED_TITLE, tagName: 'small' })}
+                title={translate({ value: t.ABOUT.DOTTED_TITLE, tagName: 'small' }) as ReactNode[]}
                 text="Najpiękniejsze w byciu człowiekiem jest to, że mogę się nieustannie rozwijać. Rozwój to dla mnie najważniejszy i największy motywator do codziennego wstawania. Dlatego właśnie, tak ważne są dla mnie książki - są symbolem wiedzy i rozwoju, kreatywności i szukania własnej drogi."
             />
             <Grid>
