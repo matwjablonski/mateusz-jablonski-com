@@ -5,9 +5,11 @@ import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import externalUrls from '../../data/external-sources.json';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const BuyCoffee = () => {
   const { t } = useTranslations();
+  const { locale } = useRouter();
   const [ isVisible, setIsVisible ] = useState(false);
   const [ isOpen, setIsOpen ] = useState(false);
 
@@ -44,15 +46,13 @@ const BuyCoffee = () => {
     }
   }, []);
 
-  console.log(isOpen)
-
   return (
     <aside className={cx(styles.BuyCoffee, isVisible && styles.IsVisible, isOpen && styles.IsOpen)}>
       <div className={styles.Content}>
         <h2 className={styles.Title}>{t.ARTICLE.BUY_COFFEE.TITLE}</h2>
         <p className={styles.Text}>{t.ARTICLE.BUY_COFFEE.MESSAGE}</p>
         <Button.L
-          href={externalUrls.buycoffee}
+          href={locale === 'pl' ? externalUrls.buycoffee : externalUrls.buycoffeeen}
           pattern={ButtonType.RED}
           label={t.ARTICLE.BUY_COFFEE.ACTION}
           isExternal
