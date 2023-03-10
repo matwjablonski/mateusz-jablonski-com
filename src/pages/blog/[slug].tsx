@@ -14,6 +14,7 @@ import PostAuthor from '../../components/PostAuthor';
 import PageNewsletter from '../../components/Newsletter/PageNewsletter';
 import CaptchaProvider from '../../providers/CaptchaProvider';
 import { mapLocale } from '../../lib/locales';
+import BuyCoffee from '../../components/BuyCoffee';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
   const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
@@ -45,6 +46,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
           <PageNewsletter />
         </Grid>
       </MainLayout>
+      <BuyCoffee />
     </CaptchaProvider>
   ) : null;
 };

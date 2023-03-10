@@ -52,6 +52,11 @@ const pl = {
       READING_DATE: 'Data przeczytania',
       MY_RATE: 'Moja ocena',
     },
+    BUY_COFFEE: {
+      TITLE: 'Podoba Ci się to co robię?',
+      MESSAGE: 'Wszystkie materiały na stronie są darmowe. Jeśli uznasz je za przydatne, rozważ proszę wsparcie mnie poprzez postawienie mi kawy. ;)',
+      ACTION: 'Tak, stawiam Ci kawę!',
+    },
   },
 }
 

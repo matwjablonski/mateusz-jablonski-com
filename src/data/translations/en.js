@@ -52,6 +52,11 @@ const en = {
       READING_DATE: 'Reading date',
       MY_RATE: 'My rating',
     },
+    BUY_COFFEE: {
+      TITLE: 'Do you like my work?',
+      MESSAGE: 'All materials on the site are free. If you find the materials useful, please consider supporting me by buying me a coffee. ;)',
+      ACTION: 'I\'ll put the coffee!',
+    },
   },
 }
 

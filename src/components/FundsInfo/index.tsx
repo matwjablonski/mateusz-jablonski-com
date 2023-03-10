@@ -22,8 +22,8 @@ const FundsInfo: FunctionComponent = memo(() => {
   return (
     <section className={styles.fundsInfo}>
       <div className={styles.fundsInfoContent}>
-        <p>{INTRO}<strong>{PERCENT_OF_PAY}</strong>{ON}<a href={externalLinks.patronite} target="_blank"
-                                           rel="nofollow noreferrer noopener">Patronite</a>{INFO}<a href={externalLinks.foundation} target="_blank" rel="nofollow noreferrer noopener">Radość
+        <p>{INTRO}<strong>{PERCENT_OF_PAY}</strong>{ON}<a href={externalLinks.buycoffee} target="_blank"
+                                           rel="nofollow noreferrer noopener">Buy Coffee</a>{INFO}<a href={externalLinks.foundation} target="_blank" rel="nofollow noreferrer noopener">Radość
             z Uśmiechu</a>. {ENCOURAGEMENT}</p>
         <Button.L
           pattern={ButtonType.CLEAN}

@@ -1,0 +1,71 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/media';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/global';
+
+.BuyCoffee {
+  display: none;
+  position: fixed;
+  left: 0;
+  z-index: 9;
+  bottom: 0;
+  border-top-right-radius: global.$border-radius;
+  background: linear-gradient(180deg, colors.$color-primary-300, colors.$color-primary-500);
+  color: colors.$color-white;
+  padding: gutters.$gutter-medium;
+  padding-right: gutters.$gutter-big;
+  transition: global.$timing-core;
+  transform: translateX(calc(-100% + gutters.$gutter-big));
+
+  @include media.bp(lg) {
+    display: block;
+    opacity: 0;
+    transition: global.$timing-core;
+
+    &.IsVisible {
+      opacity: 1;
+      transition: global.$timing-core;
+    }
+
+    &.IsOpen {
+      transform: translateX(0);
+      transition: global.$timing-core;
+      padding-left: gutters.$gutter * 2;
+    }
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-image: url('../../public/icons/coffee.svg');
+    background-size: cover;
+    width: 48px;
+    height: 48px;
+    top: -43px;
+    right: -15px;
+  }
+
+  &:hover {
+    padding-left: gutters.$gutter * 2;
+    transition: global.$timing-core;
+    transform: translateX(0);
+    opacity: .95;
+  }
+
+  .Content {
+    overflow: hidden;
+  }
+
+  .Title {
+    font-family: fonts.$font-headline;
+    font-size: 20px;
+  }
+
+  .Text {
+    max-width: 300px;
+    margin-bottom: gutters.$gutter-medium;
+    line-height: 1.5;
+  }
+}
