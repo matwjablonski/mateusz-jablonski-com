@@ -5,13 +5,20 @@ import styles from './SectionHero.module.scss';
 import heroImage from '../../public/books.webp';
 
 interface SectionHeroProps {
-    title: ReactElement;
+    title: ReactNode[];
     text: string;
 }
 
 const SectionHero = ({ title, text }: SectionHeroProps) => {
-    const [ firstElement, ...restElements ] = title.props.children;
-    const firstWordAsArray = useMemo(() => firstElement.split('').filter(letter => letter !== ' '), [title]);
+    const [ firstElement, ...restElements ] = title;
+    
+    const firstWordAsArray = useMemo(() => {
+        if (typeof firstElement === 'string') {
+            return firstElement.split('').filter(letter => letter !== ' ');
+        }
+
+        return [firstElement];
+    }, [title]);
 
     return (
         <section className={styles.sectionHero}>

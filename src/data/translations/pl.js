@@ -10,17 +10,14 @@ const pl = {
   },
   FOOTER: {
     FUNDS_INFO: {
-      INTRO: '',
-      PERCENT_OF_PAY: '5% wpłat',
-      ON: ' na ',
+      MESSAGE: '%%5% wpłat%% na ',
       INFO: ' i ze sprzedaży kursów przekazuję do fundacji ',
       ENCOURAGEMENT: 'Ciebie też zachęcam!',
       LOGO_ALT: 'Logo Fundacji Radość z Uśmiechu',
       HELP_ACTION_LABEL: 'Wspomóż fundację',
     },
     SOCIAL_MEDIA: {
-      TITLE: 'Zajrzyj na moje ',
-      SM: 'social media!',
+      TITLE: 'Zajrzyj na moje %%social media!%%',
     },
   },
   MENU: {
@@ -35,18 +32,22 @@ const pl = {
     COOKIES: 'Informacja o cookies',
   },
   HOME: {
-    LAST_ARTICLES: 'Ostatnie',
-    LAST_ARTICLES_STRONG: 'artykuły',
-    LAST_PODCASTS: 'Ostatnie',
-    LAST_PODCASTS_STRONG: 'podcasty',
-    RECOMMENDED_BOOKS: 'Polecane',
-    RECOMMENDED_BOOKS_STRONG: 'książki',
+    LAST_ARTICLES: 'Ostatnie %%artykuły%%',
+    LAST_PODCASTS: 'Ostatnie %%podcasty%%',
+    RECOMMENDED_BOOKS: 'Polecane %%książki%%',
     MORE_BOOKS: 'Więcej książek',
     LAST_WORKSHOPS: 'Aktualnie dostępne ',
     LAST_WORKSHOPS_STRONG: 'warsztaty',
     NEXT_PODCAST: 'podcast',
     NEXT_ARTICLE: 'artykuł',
     LISTEN_PODCAST: 'Słuchaj mojego podcastu:',
+  },
+  ABOUT: {
+    MOTIVATOR: {
+      TITLE: 'Chciałbym być %%bardzo dobry%% w tym, co robię',
+      MESSAGE: 'moje doświadczenie pokazuje mi jak wiele udało mi się osiągnąć, a także jak dużo nadal przede mną.',
+    },
+    DOTTED_TITLE: 'Przestrzeń %%pomiędzy znakami%%',
   },
   ARTICLE: {
     SUMMARY: {

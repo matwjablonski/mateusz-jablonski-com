@@ -27,6 +27,7 @@ import RecommendedVlogTile from "../../components/RecommendedVlogTile";
 import MyStory from "../../components/MyStory";
 import Motivator from "../../components/Motivator";
 import { mapLocale } from '../../lib/locales';
+import { useTranslations } from '../../hooks/useTranslations';
 
 interface AboutPageProps {
     head?: Entry<HeadInterface>;
@@ -43,6 +44,7 @@ const DynamicRecommendedThree = dynamic(
 )
 
 const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent, vlogs }) => {
+    const { t, translate } = useTranslations();
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -51,11 +53,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                 <Motivator />
             </Grid>
             <SectionHero
-                title={
-                    <>
-                        Przestrzeń <small>pomiędzy znakami</small>
-                    </>
-                }
+                title={translate(t.ABOUT.DOTTED_TITLE, 'small')}
                 text="Najpiękniejsze w byciu człowiekiem jest to, że mogę się nieustannie rozwijać. Rozwój to dla mnie najważniejszy i największy motywator do codziennego wstawania. Dlatego właśnie, tak ważne są dla mnie książki - są symbolem wiedzy i rozwoju, kreatywności i szukania własnej drogi."
             />
             <Grid>

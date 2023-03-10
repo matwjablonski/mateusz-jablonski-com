@@ -8,12 +8,10 @@ import foundationLogo from '../../public/foundation-logo.png'
 import { useTranslations } from '../../hooks/useTranslations';
 
 const FundsInfo: FunctionComponent = memo(() => {
-  const { t } = useTranslations();
+  const { t, translate } = useTranslations();
 
   const {
-    INTRO,
-    PERCENT_OF_PAY,
-    ON,
+    MESSAGE,
     INFO,
     ENCOURAGEMENT,
     HELP_ACTION_LABEL,
@@ -22,7 +20,7 @@ const FundsInfo: FunctionComponent = memo(() => {
   return (
     <section className={styles.fundsInfo}>
       <div className={styles.fundsInfoContent}>
-        <p>{INTRO}<strong>{PERCENT_OF_PAY}</strong>{ON}<a href={externalLinks.buycoffee} target="_blank"
+        <p>{translate(MESSAGE, 'strong')}<a href={externalLinks.buycoffee} target="_blank"
                                            rel="nofollow noreferrer noopener">Buy Coffee</a>{INFO}<a href={externalLinks.foundation} target="_blank" rel="nofollow noreferrer noopener">Radość
             z Uśmiechu</a>. {ENCOURAGEMENT}</p>
         <Button.L

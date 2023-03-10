@@ -10,17 +10,14 @@ const en = {
   },
   FOOTER: {
     FUNDS_INFO: {
-      INTRO: 'I forward ',
-      PERCENT_OF_PAY: '5% of payments',
-      ON: ' on ',
+      MESSAGE: 'I forward %%5% of payments%% on ',
       INFO: ' and from the sales of my courses to the Foundation ',
       ENCOURAGEMENT: 'Join me and support this cause!',
       LOGO_ALT: 'Logo of Radość z Uśmiechu Foundation',
       HELP_ACTION_LABEL: 'Support the foundation',
     },
     SOCIAL_MEDIA: {
-      TITLE: 'Check out my ',
-      SM: 'social media!',
+      TITLE: 'Check out my %%social media!%%',
     },
   },
   MENU: {
@@ -35,18 +32,22 @@ const en = {
     COOKIES: 'About cookies',
   },
   HOME: {
-    LAST_ARTICLES: 'Last',
-    LAST_ARTICLES_STRONG: 'articles',
-    LAST_PODCASTS: 'Last',
-    LAST_PODCASTS_STRONG: 'podcasts',
-    RECOMMENDED_BOOKS: 'Recommended',
-    RECOMMENDED_BOOKS_STRONG: 'books',
+    LAST_ARTICLES: 'Last %%articles%%',
+    LAST_PODCASTS: 'Last %%podcasts%%',
+    RECOMMENDED_BOOKS: 'Recommended %%books%%',
     MORE_BOOKS: 'More books',
     LAST_WORKSHOPS: 'Currently available ',
     LAST_WORKSHOPS_STRONG: 'workshops',
     NEXT_PODCAST: 'podcast',
     NEXT_ARTICLE: 'article',
     LISTEN_PODCAST: 'Listen to my podcast:',
+  },
+  ABOUT: {
+    MOTIVATOR: {
+      TITLE: 'I would like to be %%very good%% at what I do',
+      MESSAGE: 'my experience shows me how much I have been able to achieve, and also how much is still in front of me.',
+    },
+    DOTTED_TITLE: 'Space %%between characters%%',
   },
   ARTICLE: {
     SUMMARY: {

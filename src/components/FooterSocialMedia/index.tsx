@@ -6,11 +6,11 @@ import externalSources from '../../data/external-sources.json';
 import { useTranslations } from '../../hooks/useTranslations';
 
 const FooterSocialMedia: FunctionComponent = memo(() => {
-  const { t } = useTranslations();
+  const { t, translate } = useTranslations();
   return (
     <section className={styles.footerSocialMedia}>
       <h2 className={styles.title}>
-        {t.FOOTER.SOCIAL_MEDIA.TITLE}<span>{t.FOOTER.SOCIAL_MEDIA.SM}</span>
+        {translate(t.FOOTER.SOCIAL_MEDIA.TITLE, 'span')}
       </h2>
       <div className={styles.socialMediaTiles}>
         <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER}/>

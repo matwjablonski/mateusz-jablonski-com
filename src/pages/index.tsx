@@ -66,7 +66,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
     head,
   } = data;
 
-  const { t } = useTranslations();
+  const { t, translate } = useTranslations();
 
   return (
       <MainLayout head={head ? head.fields : {}} hideOverflow>
@@ -74,7 +74,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <Hero title={title} description={description} image={welcomeImage} />
           <section>
             <TitleBarWithComponent 
-              title={<>{t.HOME.LAST_ARTICLES} <strong>{t.HOME.LAST_ARTICLES_STRONG}</strong></>}
+              title={<>{translate(t.HOME.LAST_ARTICLES, 'strong')}</>}
               text={lastArticlesDescription}
             >
               <Counter nextItemName={t.HOME.NEXT_ARTICLE} days={nextArticleInDays} />
@@ -83,7 +83,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           </section>
           <section className={styles.podcastSection}>
             <TitleBarWithComponent 
-              title={<>{t.HOME.LAST_PODCASTS} <strong>{t.HOME.LAST_PODCASTS_STRONG}</strong></>}
+              title={<>{translate(t.HOME.LAST_PODCASTS, 'strong')}</>}
               text={lastPodcastsDescription}
             >
               <Counter nextItemName={t.HOME.NEXT_PODCAST} days={nextPodcastInDays} />
@@ -107,7 +107,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <section className={styles.booksSection}>
             <Grid>
               <TitleBarWithComponent 
-                title={<>{t.HOME.RECOMMENDED_BOOKS} <strong>{t.HOME.RECOMMENDED_BOOKS_STRONG}</strong></>} 
+                title={<>{translate(t.HOME.RECOMMENDED_BOOKS, 'strong')}</>}
                 text={lastBooksDescription}
                 type={TitleBarType.REVERT}
               >
