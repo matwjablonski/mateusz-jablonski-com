@@ -10,7 +10,7 @@ const FooterSocialMedia: FunctionComponent = memo(() => {
   return (
     <section className={styles.footerSocialMedia}>
       <h2 className={styles.title}>
-        {translate(t.FOOTER.SOCIAL_MEDIA.TITLE, 'span')}
+        {translate({ value: t.FOOTER.SOCIAL_MEDIA.TITLE, tagName: 'span' })}
       </h2>
       <div className={styles.socialMediaTiles}>
         <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER} key={SocialMediaType.TWITTER}/>

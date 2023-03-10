@@ -6,7 +6,10 @@ const Motivator = () => {
 
     return (
         <hgroup className={styles.motivator}>
-            <h2>{translate(t.ABOUT.MOTIVATOR.TITLE, 'strong')}</h2>
+            <h2>{translate({
+                value: t.ABOUT.MOTIVATOR.TITLE,
+                tagName: 'strong',
+            })}</h2>
             <p>{t.ABOUT.MOTIVATOR.MESSAGE}</p>
         </hgroup>
     );

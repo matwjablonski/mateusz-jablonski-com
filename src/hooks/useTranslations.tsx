@@ -8,11 +8,28 @@ const translations: Record<'pl' | 'en', typeof pl> = {
   en: en,
 };
 
-export const useTranslations = (): { t: typeof pl, translate(v: string, tagName: string): ReactNode[] } => {
+type translateParams = {
+  value: string, 
+  tagName?: string,
+  variables?: string[],
+}
+
+export const useTranslations = (): { t: typeof pl, translate(opt: translateParams): ReactNode[] | string } => {
   const { locale } = useRouter();
 
-  const translate = (value: string, tagName: string): ReactNode[] => {
-    const valueAsArray = value.split('%%');
+  const translate = ({ value, tagName, variables }: translateParams): ReactNode[] | string => {
+    let translatedValue = value;
+
+    if (variables && variables.length) {
+      variables.forEach((variable, index) => {
+        const searchValue = `@${index + 1}`;
+        translatedValue = translatedValue.replace(searchValue, variable);
+      })
+
+      return translatedValue;
+    };
+
+    const valueAsArray = translatedValue.split('%%');
 
     const res = valueAsArray.map((v, i) => {
       if ((i % 2) && v !== '') {

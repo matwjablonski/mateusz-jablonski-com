@@ -52,7 +52,10 @@ const pl = {
     LAST_WORKSHOPS_STRONG: 'warsztaty',
     NEXT_PODCAST: 'podcast',
     NEXT_ARTICLE: 'artykuł',
+    NEXT_ARTICLE_SLIDE: 'Następny artykuł',
+    PREV_ARTICLE_SLIDE: 'Poprzedni artykuł',
     LISTEN_PODCAST: 'Słuchaj mojego podcastu:',
+    LISTEN_PODCAST_ON: 'Słuchaj podcastu @1 na @2',
   },
   ABOUT: {
     MOTIVATOR: {

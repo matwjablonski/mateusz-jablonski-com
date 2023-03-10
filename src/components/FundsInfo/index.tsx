@@ -22,7 +22,7 @@ const FundsInfo: FunctionComponent = memo(() => {
   return (
     <section className={styles.fundsInfo}>
       <div className={styles.fundsInfoContent}>
-        <p>{translate(MESSAGE, 'strong')}<a href={locale === 'pl' ? externalLinks.buycoffee : externalLinks.buycoffeeen} target="_blank"
+        <p>{translate({ value: MESSAGE, tagName: 'strong' })}<a href={locale === 'pl' ? externalLinks.buycoffee : externalLinks.buycoffeeen} target="_blank"
                                            rel="nofollow noreferrer noopener">Buy Coffee</a>{INFO}<a href={externalLinks.foundation} target="_blank" rel="nofollow noreferrer noopener">Radość
             z Uśmiechu</a>. {ENCOURAGEMENT}</p>
         <Button.L

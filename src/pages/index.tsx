@@ -74,7 +74,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <Hero title={title} description={description} image={welcomeImage} />
           <section>
             <TitleBarWithComponent 
-              title={<>{translate(t.HOME.LAST_ARTICLES, 'strong')}</>}
+              title={<>{translate({ value: t.HOME.LAST_ARTICLES, tagName: 'strong'})}</>}
               text={lastArticlesDescription}
             >
               <Counter nextItemName={t.HOME.NEXT_ARTICLE} days={nextArticleInDays} />
@@ -83,7 +83,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           </section>
           <section className={styles.podcastSection}>
             <TitleBarWithComponent 
-              title={<>{translate(t.HOME.LAST_PODCASTS, 'strong')}</>}
+              title={<>{translate({ value: t.HOME.LAST_PODCASTS, tagName: 'strong'})}</>}
               text={lastPodcastsDescription}
             >
               <Counter nextItemName={t.HOME.NEXT_PODCAST} days={nextPodcastInDays} />
@@ -107,7 +107,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
           <section className={styles.booksSection}>
             <Grid>
               <TitleBarWithComponent 
-                title={<>{translate(t.HOME.RECOMMENDED_BOOKS, 'strong')}</>}
+                title={<>{translate({ value: t.HOME.RECOMMENDED_BOOKS, tagName: 'strong'})}</>}
                 text={lastBooksDescription}
                 type={TitleBarType.REVERT}
               >

@@ -61,11 +61,13 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
                         pattern={ButtonType.SECONDARY}
                         className={cx(styles.previous, currentIndex === 0 && styles.inactive)}
                         onClick={handleOnPrev}
+                        aria-label={t.HOME.PREV_ARTICLE_SLIDE}
                     />
                     <Button.B
                         pattern={ButtonType.SECONDARY}
                         className={cx(currentIndex === (articles.length + 1) - ITEMS_ON_SCREEN && styles.inactive)}
                         onClick={handleOnNext}
+                        aria-label={t.HOME.NEXT_ARTICLE_SLIDE}
                     />
                 </div>
             </div>

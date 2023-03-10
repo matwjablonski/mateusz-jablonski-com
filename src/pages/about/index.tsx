@@ -53,7 +53,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                 <Motivator />
             </Grid>
             <SectionHero
-                title={translate(t.ABOUT.DOTTED_TITLE, 'small')}
+                title={translate({ value: t.ABOUT.DOTTED_TITLE, tagName: 'small' })}
                 text="Najpiękniejsze w byciu człowiekiem jest to, że mogę się nieustannie rozwijać. Rozwój to dla mnie najważniejszy i największy motywator do codziennego wstawania. Dlatego właśnie, tak ważne są dla mnie książki - są symbolem wiedzy i rozwoju, kreatywności i szukania własnej drogi."
             />
             <Grid>
