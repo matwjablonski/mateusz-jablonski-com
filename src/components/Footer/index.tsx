@@ -7,8 +7,10 @@ import menu from '../../data/footer-menu.json';
 import FundsInfo from '../FundsInfo';
 import logo from '../../public/logo-footer.svg'
 import FooterSocialMedia from '../FooterSocialMedia';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const Footer: FunctionComponent = memo(() => {
+  const { t } = useTranslations();
   const date: string = useMemo(
     () => new Date().getFullYear().toString() === '2019' ? '2019' : `2019 - ${new Date().getFullYear()}`,
     [],
@@ -34,7 +36,7 @@ const Footer: FunctionComponent = memo(() => {
               menu.items.map((item) => (
                   <li key={item.id} className={styles.footerMenuItem}>
                     <Link href={item.url}>
-                      <a>{item.title}</a>
+                      <a>{t.MENU[item.title]}</a>
                     </Link>
                   </li>
                 ),

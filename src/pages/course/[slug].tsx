@@ -101,6 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       nextWorkshops: formatDate({
         dateObject: p.fields.nextWorkshops,
         formatString: 'dd.MM.yyyy',
+        locale: context.locale,
       })
     }))
     .shift();

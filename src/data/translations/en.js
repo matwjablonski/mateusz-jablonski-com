@@ -1,6 +1,9 @@
 const en = {
   COMMON: {
     NEXT: 'Next ',
+    TOMORROW: 'tomorrow',
+    DONT_KNOW: 'I don\'t know',
+    DAYS: 'days',
   },
   HEADER: {
     TITLE: 'Mateusz Jabłoński - Blog, programming, selfdevelopment',
@@ -28,6 +31,8 @@ const en = {
     PODCAST: 'Podcast',
     CONTACT: 'Contact',
     MEMBER_AREA: 'Student zone',
+    PRIVACY_POLICY: 'Privacy policy',
+    COOKIES: 'About cookies',
   },
   HOME: {
     LAST_ARTICLES: 'Last',

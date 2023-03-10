@@ -68,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       createdDate: formatDate({
         dateObject: p.fields.createdDate,
         formatString: 'dd MMMM yyyy',
+        locale: context.locale,
       })
     }))
     .shift();

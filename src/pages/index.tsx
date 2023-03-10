@@ -189,7 +189,8 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     ...p.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
-      formatString: 'dd MMMM yyyy'
+      formatString: 'dd MMMM yyyy',
+      locale,
     }),
   }));
 
@@ -201,7 +202,8 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     ...p.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
-      formatString: 'dd MMMM yyyy'
+      formatString: 'dd MMMM yyyy',
+      locale,
     }),
   }));
 
@@ -219,7 +221,8 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     ...p.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
-      formatString: 'dd MMMM yyyy'
+      formatString: 'dd MMMM yyyy',
+      locale,
     }),
   }));
 

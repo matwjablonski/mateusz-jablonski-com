@@ -10,12 +10,12 @@ const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
 
     const prepareDaysLabel = () => {
         if (days === null) {
-            return 'nie wiem';
+            return t.COMMON.DONT_KNOW;
         }
         if (days === 1) {
-            return 'jutro';
+            return t.COMMON.TOMORROW;
         }
-        return `${days} dni`
+        return `${days} ${t.COMMON.DAYS}`
     }
 
     return (
