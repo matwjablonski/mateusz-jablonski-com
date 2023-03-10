@@ -15,8 +15,8 @@ const RecommendedVlogTile = ({ name, source, image }: RecommendedVlogTileProps) 
         <div className={styles.image}>
             { image 
                 ? image.includes('http')
-                    ? <Image src={image} width={352} height={198} />
-                    : <Image src={require(`../../public/images/podcasts/${image}`)} width={352} height={198} />
+                    ? <Image src={image} width={352} height={198} alt={name} />
+                    : <Image src={require(`../../public/images/podcasts/${image}`)} width={352} height={198} alt={name} />
                 : <ImagePlaceholder width="352px" height="198px" />
             }
         </div>
