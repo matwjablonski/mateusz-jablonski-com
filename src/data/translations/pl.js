@@ -33,6 +33,12 @@ const pl = {
   },
   HOME: {
     LAST_ARTICLES: 'Ostatnie %%artykuły%%',
+    LAST_ARTICLES_END: {
+      TITLE: 'A to tylko ostatnie artykuły!',
+      MESSAGE: 'Większą dawkę wiedzy znajdziesz na stronie bloga. Zapraszam serdecznie!',
+      ACTION: 'Wszystkie',
+    },
+    ALL_ARTICLES: 'Wszystkie moje artykuły',
     LAST_PODCASTS: 'Ostatnie %%podcasty%%',
     RECOMMENDED_BOOKS: 'Polecane %%książki%%',
     MORE_BOOKS: 'Więcej książek',

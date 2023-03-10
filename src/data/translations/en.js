@@ -33,6 +33,12 @@ const en = {
   },
   HOME: {
     LAST_ARTICLES: 'Last %%articles%%',
+    LAST_ARTICLES_END: {
+      TITLE: 'And these are just the latest articles!',
+      MESSAGE: 'You can find a larger dose of knowledge on the blog page. You\'re cordially invited!',
+      ACTION: 'See all',
+    },
+    ALL_ARTICLES: 'All my articles',
     LAST_PODCASTS: 'Last %%podcasts%%',
     RECOMMENDED_BOOKS: 'Recommended %%books%%',
     MORE_BOOKS: 'More books',

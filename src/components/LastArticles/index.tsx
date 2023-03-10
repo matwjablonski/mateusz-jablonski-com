@@ -6,12 +6,14 @@ import { ButtonType } from '../Button/Button.types';
 import styles from './LastArticles.module.scss';
 import { Article } from '../../types/common/Article.types';
 import { Preview } from '../ArticlePreview/ArticlePreview.types';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const ITEM_WIDTH = 384;
 const ITEMS_ON_SCREEN = 3;
 
 const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const { t } = useTranslations();
 
     const handleOnNext = () => {
         setCurrentIndex((prev) => prev + 1)
@@ -46,14 +48,14 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
                     }
                     <div className={cx(styles.lastBox, !checkIsIndexVisible(articles.length) && styles.inactivePreview)}>
                         <span className={styles.lastIco}>✍</span>
-                        <h3 className={styles.lastTitle}>A to tylko ostatnie artykuły!</h3>
-                        <p className={styles.lastMsg}>Większą dawkę wiedzy znajdziesz na stronie bloga. Zapraszam serdecznie!</p>
-                        <Button.L pattern={ButtonType.PRIMARY} label="Wszystkie" href="/blog"/>
+                        <h3 className={styles.lastTitle}>{t.HOME.LAST_ARTICLES_END.TITLE}</h3>
+                        <p className={styles.lastMsg}>{t.HOME.LAST_ARTICLES_END.MESSAGE}</p>
+                        <Button.L pattern={ButtonType.PRIMARY} label={t.HOME.LAST_ARTICLES_END.ACTION} href="/blog"/>
                     </div>
                 </div>
             </div>
             <div className={styles.btnsLine}>
-                <Button.L href="/blog" pattern={ButtonType.CLEAN} label="Wszystkie moje artykuły"/>
+                <Button.L href="/blog" pattern={ButtonType.CLEAN} label={t.HOME.ALL_ARTICLES}/>
                 <div className={styles.sliderBtns}>
                     <Button.L 
                         pattern={ButtonType.SECONDARY}

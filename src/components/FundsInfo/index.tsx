@@ -6,9 +6,11 @@ import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import foundationLogo from '../../public/foundation-logo.png'
 import { useTranslations } from '../../hooks/useTranslations';
+import { useRouter } from 'next/router';
 
 const FundsInfo: FunctionComponent = memo(() => {
   const { t, translate } = useTranslations();
+  const { locale } = useRouter();
 
   const {
     MESSAGE,
@@ -20,7 +22,7 @@ const FundsInfo: FunctionComponent = memo(() => {
   return (
     <section className={styles.fundsInfo}>
       <div className={styles.fundsInfoContent}>
-        <p>{translate(MESSAGE, 'strong')}<a href={externalLinks.buycoffee} target="_blank"
+        <p>{translate(MESSAGE, 'strong')}<a href={locale === 'pl' ? externalLinks.buycoffee : externalLinks.buycoffeeen} target="_blank"
                                            rel="nofollow noreferrer noopener">Buy Coffee</a>{INFO}<a href={externalLinks.foundation} target="_blank" rel="nofollow noreferrer noopener">Radość
             z Uśmiechu</a>. {ENCOURAGEMENT}</p>
         <Button.L
