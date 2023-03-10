@@ -46,9 +46,9 @@ const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ patte
     </Link>) : <>{createAnchorContent()}</>
 });
 
-const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, ...rest}) => {
+const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, className, ...rest}) => {
   return (
-      <button className={cx(styles.button, styles[pattern])} onClick={action} {...rest}>
+      <button className={cx(styles.button, styles[pattern], className)} onClick={action} {...rest}>
         {pattern === ButtonType.BACK && (
           <div className={styles.arrowBack}>
             <Image src={backIcon || '/icons/back.svg'} width={24} height={24} alt=""/>

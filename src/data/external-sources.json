@@ -6,5 +6,13 @@
   "twitter": "https://twitter.com/Mateusz18911618",
   "facebook": "https://www.facebook.com/blogmateuszjablonski",
   "instagram": "https://www.instagram.com/mateusz.w.jablonski/",
-  "linkedin": "https://www.linkedin.com/in/mateusz-jablonski/"
+  "linkedin": "https://www.linkedin.com/in/mateusz-jablonski/",
+  "podcasts": {
+    "piwnicait": {
+      "spotify": "https://open.spotify.com/show/1u2XSzve8XtiiHT6035igh",
+      "applepodcast": "https://podcasts.apple.com/us/podcast/piwnica-it/id1669206986",
+      "youtube": "/",
+      "googlepodcasts": "/"
+    }
+  }
 }

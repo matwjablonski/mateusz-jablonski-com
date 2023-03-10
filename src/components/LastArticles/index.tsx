@@ -57,12 +57,12 @@ const LastArticles: FC<{ articles: Article[] }> = ({articles}) => {
             <div className={styles.btnsLine}>
                 <Button.L href="/blog" pattern={ButtonType.CLEAN} label={t.HOME.ALL_ARTICLES}/>
                 <div className={styles.sliderBtns}>
-                    <Button.L 
+                    <Button.B
                         pattern={ButtonType.SECONDARY}
                         className={cx(styles.previous, currentIndex === 0 && styles.inactive)}
                         onClick={handleOnPrev}
                     />
-                    <Button.L
+                    <Button.B
                         pattern={ButtonType.SECONDARY}
                         className={cx(currentIndex === (articles.length + 1) - ITEMS_ON_SCREEN && styles.inactive)}
                         onClick={handleOnNext}
