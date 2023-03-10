@@ -32,6 +32,10 @@ const en = {
     COOKIES: 'About cookies',
   },
   HOME: {
+    HERO: {
+      FREE_CONTENT_ACTION: 'View free content',
+      ABOUT_ACTION: 'About project',
+    },
     LAST_ARTICLES: 'Last %%articles%%',
     LAST_ARTICLES_END: {
       TITLE: 'And these are just the latest articles!',
@@ -40,6 +44,8 @@ const en = {
     },
     ALL_ARTICLES: 'All my articles',
     LAST_PODCASTS: 'Last %%podcasts%%',
+    ALL_PODCASTS: 'All podcasts',
+    WANT_TO_BE_A_GUEST: 'Want be a guest of podcast',
     RECOMMENDED_BOOKS: 'Recommended %%books%%',
     MORE_BOOKS: 'More books',
     LAST_WORKSHOPS: 'Currently available ',

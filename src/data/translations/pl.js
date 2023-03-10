@@ -32,6 +32,10 @@ const pl = {
     COOKIES: 'Informacja o cookies',
   },
   HOME: {
+    HERO: {
+      FREE_CONTENT_ACTION: 'Zobacz bezpłatne materiały',
+      ABOUT_ACTION: 'Moja idea',
+    },
     LAST_ARTICLES: 'Ostatnie %%artykuły%%',
     LAST_ARTICLES_END: {
       TITLE: 'A to tylko ostatnie artykuły!',
@@ -40,6 +44,8 @@ const pl = {
     },
     ALL_ARTICLES: 'Wszystkie moje artykuły',
     LAST_PODCASTS: 'Ostatnie %%podcasty%%',
+    ALL_PODCASTS: 'Wszystkie podcasty',
+    WANT_TO_BE_A_GUEST: 'Chcę wystąpić w podcaście',
     RECOMMENDED_BOOKS: 'Polecane %%książki%%',
     MORE_BOOKS: 'Więcej książek',
     LAST_WORKSHOPS: 'Aktualnie dostępne ',

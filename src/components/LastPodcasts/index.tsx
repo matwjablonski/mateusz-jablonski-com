@@ -7,8 +7,10 @@ import LastPodcastPreview from '../LastPodcastPreview';
 import { LastPodcastPreviewSize } from '../LastPodcastPreview/LastPodcastPreview.types';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
+    const { t } = useTranslations();
     const [first, ...rest] = podcasts;
 
     return (
@@ -48,8 +50,8 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                 </div>
             </div>
             <div className={styles.btnsLine}>
-                <Button.L href="/" pattern={ButtonType.CLEAN} label="Wszystkie podcasty" />
-                <Button.L href="/" pattern={ButtonType.SECONDARY} label="Chcę wystąpić w podcaście" />
+                <Button.L href="/" pattern={ButtonType.CLEAN} label={t.HOME.ALL_PODCASTS} />
+                <Button.L href="/" pattern={ButtonType.SECONDARY} label={t.HOME.WANT_TO_BE_A_GUEST} />
             </div>
         </div>
     )
