@@ -117,7 +117,12 @@ module.exports = withPlugins([
         source: '/books/2021-07-19%20Zakamarki%20marki',
         destination: '/book/zakamarki-marki',
         permanent: true
-      }
+      },
+      {
+        source: '/robots.txt',
+        destination: '/api/robots',
+        permanent: true
+      },
     ]
   },
 });
