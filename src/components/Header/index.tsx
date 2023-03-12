@@ -9,7 +9,11 @@ import MainNav from '../MainNav';
 import { useTranslations } from '../../hooks/useTranslations';
 import { useRouter } from 'next/router';
 
-const Header: FunctionComponent = () => {
+type HeaderProps = {
+  reverse?: boolean;
+};
+
+const Header: FunctionComponent<HeaderProps> = ({ reverse }) => {
   const [isMenuOpen, setToggleMenu] = useState(false);
   const { t } = useTranslations();
   const { locale, asPath } = useRouter();
@@ -30,7 +34,7 @@ const Header: FunctionComponent = () => {
           <Image src={logo || '/logo.svg'} width={178} height={35} alt={t.HEADER.TITLE}/>
         </Link>
         <button type="button" className={cx(styles.menuToggler, isMenuOpen && styles.isOpen)} onClick={toggleMenu}/>
-        <MainNav isMobileOpen={isMenuOpen} />
+        <MainNav isMobileOpen={isMenuOpen} reverse={reverse} />
       </header>
       <div className={styles.langSwitcher}>
         <Link

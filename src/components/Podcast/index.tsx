@@ -42,7 +42,7 @@ const Podcast: FunctionComponent<PodcastProps> = ({
       </div>
       {featuredImage && <PodcastCover image={featuredImage}/>}
       <div className={styles.content}>
-        <PostSidebar author={author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
+        <PostSidebar author={author && author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <PodcastContent
           content={content}
           title={title}

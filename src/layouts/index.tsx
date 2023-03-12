@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import cx from 'classnames';
 import { useRouter } from 'next/router'
 import Head from 'next/head';
@@ -12,7 +12,15 @@ import favico from '../public/favicon.ico';
 const mainTitle = "Mateusz Jabłoński - blog, podcast, kursy o programowaniu i rozwoju";
 const mainDescription = "Blog, podcast oraz kursy o programowaniu i rozwoju. Oferuję aktualną wiedzę oraz wsparcie mentorskie w nauce programowania.";
 
-const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolean }> = ({children, head, hideOverflow}) => {
+type MainLayoutProps = {
+  head: HeadInterface;
+  hideOverflow?: boolean;
+  dark?: boolean;
+  hideFunds?: boolean;
+  hideSocialMedia?: boolean;
+}
+
+const MainLayout: FC<MainLayoutProps> = ({children, head, hideOverflow, dark, hideFunds, hideSocialMedia }) => {
   const { asPath } = useRouter();
 
   useEffect(() => {
@@ -33,11 +41,13 @@ const MainLayout: FunctionComponent<{ head: HeadInterface, hideOverflow?: boolea
         {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url)} />}
         <link rel="icon" href={favico.src} />
       </Head>
-      <Header />
-      <main className={cx(hideOverflow && styles.hiddenOverflow)}>
-        {children}
-      </main>
-      <Footer />
+      <div className={cx(dark && styles.darkBackground)}>
+        <Header reverse={dark} />
+        <main className={cx(hideOverflow && styles.hiddenOverflow)}>
+          {children}
+        </main>
+        <Footer hideFunds={hideFunds} hideSocialMedia={hideSocialMedia} />
+      </div>
     </>
   );
 }

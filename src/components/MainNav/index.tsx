@@ -7,13 +7,13 @@ import { ButtonType } from '../Button/Button.types';
 import styles from './MainNav.module.scss';
 import { useTranslations } from '../../hooks/useTranslations';
 
-const MainNav: FunctionComponent<{ isMobileOpen: boolean }> = ({ isMobileOpen }) => {
+const MainNav: FunctionComponent<{ isMobileOpen: boolean, reverse?: boolean, }> = ({ isMobileOpen, reverse }) => {
   const { t } = useTranslations();
 
   return (
       <nav className={cx(styles.nav, isMobileOpen && styles.isMenuOpen)}>
         <ul className={styles.list}>
-          {menuData.items.map(item => <li key={item.id} className={styles.item}>
+          {menuData.items.map(item => <li key={item.id} className={cx(styles.item, reverse && styles.reverse)}>
             { 
               item.type === 'link' && (
                 <Link href={item.url} title={t.MENU[item.title]}>

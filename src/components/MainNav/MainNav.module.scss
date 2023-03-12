@@ -136,6 +136,10 @@
                 }
             }
         }
+
+        &.reverse {
+            color: colors.$color-white;
+        }
     }
 
     &.isMenuOpen {

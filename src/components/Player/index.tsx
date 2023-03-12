@@ -80,9 +80,9 @@ interface PlayerProps {
     return (
         <div className={styles.player}>
             <div className={styles.cover}>
-                {
+                {/* {
                     cover && <Image src={prepareAssetUrl(cover.fields.file.url)} width={200} height={200} alt=""/>
-                }
+                } */}
             </div>
             <div>
                 <h3 className={styles.title}>{title}</h3>

@@ -54,7 +54,7 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             externalLink={body.externalLink}
             video={body.video}
           />
-          {body.author.map(a => <PostAuthor key={a.fields.name} author={a.fields}/>)}
+          {body.author && body.author.map(a => <PostAuthor key={a.fields.name} author={a.fields}/>)}
             <div ref={commentsRef}>
               <CommentsList comments={comments} postId={body.id} title={body.title} />
             </div>

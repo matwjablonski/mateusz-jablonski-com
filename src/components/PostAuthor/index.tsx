@@ -17,7 +17,8 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
             <div className={styles.authorImage}>
                 {
                     author.image ? 
-                        <Image src={prepareImageUrl(author.image.fields.file.url)} width={197} height={197} className={styles.image} alt={author.name} /> :
+                        <div /> :
+                        // <Image src={prepareImageUrl(author.image.fields.file.url)} width={197} height={197} className={styles.image} alt={author.name} /> :
                         <div />
                 }
             </div>

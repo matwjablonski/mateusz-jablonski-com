@@ -11,7 +11,7 @@ interface DashboardPageProps {
 
 const DashboardPage: FC<DashboardPageProps> = () => {
     return (
-        <MainLayout head={{}} hideOverflow>
+        <MainLayout head={{}} hideOverflow dark hideFunds hideSocialMedia>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title="Strefa kursanta" description="W przygotowaniu"/>
