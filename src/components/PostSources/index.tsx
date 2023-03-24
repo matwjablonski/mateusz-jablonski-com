@@ -3,6 +3,7 @@ import { PostSourcesProps } from './PostSources.types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styles from './PostSources.module.scss';
 import { INLINES } from '@contentful/rich-text-types';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const options = {
     renderNode: {
@@ -11,10 +12,11 @@ const options = {
   }
 
 const PostSources: FC<PostSourcesProps> = ({ sources }) => {
-    return <div className={styles.sources}>
-        <h3 className={styles.title}>Źródła</h3>
-        {documentToReactComponents(sources, options)}
-    </div>
+  const { t } = useTranslations();
+  return <div className={styles.sources}>
+      <h3 className={styles.title}>{t.ARTICLE.SOURCES}</h3>
+      {documentToReactComponents(sources, options)}
+  </div>
 }
 
 PostSources.displayName = 'PostSources';

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import styles from './Modal.module.scss';
 import Button from '../../Button';
 import { ButtonType } from "../../Button/Button.types";
+import { useTranslations } from '../../../hooks/useTranslations';
 
 interface ModalProps {
     isOpen: boolean;
@@ -12,6 +13,7 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, subtitle, title, children }: ModalProps) => {
+    const { t } = useTranslations();
 
     return isOpen ? (
         <div className={styles.modal}>
@@ -24,7 +26,7 @@ const Modal = ({ isOpen, onClose, subtitle, title, children }: ModalProps) => {
             </div>
             <div className={styles.content}>
                 <div className={styles.back}>
-                    <Button.B label="Cofnij" action={onClose} pattern={ButtonType.BACK}/>
+                    <Button.B label={t.ARTICLE.COMMENTS.BACK} action={onClose} pattern={ButtonType.BACK}/>
                 </div>
                 <div className={styles.scrollable}>
                     {children}

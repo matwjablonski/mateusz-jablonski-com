@@ -85,6 +85,20 @@ const en = {
     ACTIONS: {
       READ_MORE: 'Read more',
     },
+    SOURCES: 'Sources',
+    SHARE: 'Share this article:',
+    AUTHOR: {
+      TITLE: 'About the author',
+      YOU_WILL_FIND_ME: 'You\'ll find me'
+    },
+    COMMENTS: {
+      TITLE: 'Comments',
+      ADD: 'Add comment',
+      NO_NAME: 'Anonymous author',
+      FIRST_MESSAGE: 'No one has posted anything yet, but that means.... you may be the first.',
+      COMMENTING_TITLE: 'You comment on the article',
+      BACK: 'Go back'
+    }
   },
   WORKSHOPS: {
     ACTIONS: {

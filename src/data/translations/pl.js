@@ -85,6 +85,20 @@ const pl = {
     ACTIONS: {
       READ_MORE: 'Czytaj więcej',
     },
+    SOURCES: 'Źródła',
+    SHARE: 'Udostępnij ten artykuł:',
+    AUTHOR: {
+      TITLE: 'O autorze',
+      YOU_WILL_FIND_ME: 'Znajdziesz mnie'
+    },
+    COMMENTS: {
+      TITLE: 'Komentarze',
+      ADD: 'Dodaj komentarz',
+      NO_NAME: 'Anonimowy autor',
+      FIRST_MESSAGE: 'Jeszcze nikt nic nie napisał, ale to znaczy że... możesz być pierwszy/pierwsza.',
+      COMMENTING_TITLE: 'Komentujesz artykuł',
+      BACK: 'Cofnij'
+    }
   },
   WORKSHOPS: {
     ACTIONS: {

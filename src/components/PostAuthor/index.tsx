@@ -10,8 +10,10 @@ import LiIcon from '../../public/icons/li-bold.svg';
 import FacebookIcon from '../../public/icons/facebook-bold.svg';
 import GithubIcon from '../../public/icons/github-bold.svg';
 import InstagramIcon from '../../public/icons/instagram-bold.svg';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
+    const { t } = useTranslations();
     return (
         <div className={styles.authorWrapper}>
             <div className={styles.authorImage}>
@@ -23,12 +25,12 @@ const PostAuthor: FunctionComponent<PostAuthorProps> = ({ author }) => {
                 }
             </div>
             <div className={styles.content}>
-                <h3 className={styles.sectionTitle}>O autorze</h3>
+                <h3 className={styles.sectionTitle}>{t.ARTICLE.AUTHOR.TITLE}</h3>
                 <h2 className={styles.authorName}>{author.name}</h2>
                 <div className={styles.authorBio}>
                     {documentToReactComponents(author.shortBiography, {})}
                 </div>
-                <h4 className={styles.socialTitle}>Znajdziesz mnie</h4>
+                <h4 className={styles.socialTitle}>{t.ARTICLE.AUTHOR.YOU_WILL_FIND_ME}</h4>
                 <ul className={styles.socials}>
                     { author.twitter && (
                         <li className={styles.socialItem}>

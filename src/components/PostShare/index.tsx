@@ -7,12 +7,14 @@ import TwitterIcon from '../../public/icons/twitter-bold.svg';
 import FacebookIcon from '../../public/icons/facebook-bold-color.svg';
 import LiIcon from '../../public/icons/li-bold-color.svg';
 import MailIcon from '../../public/icons/mail.svg';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const PostShare: FunctionComponent = () => {
     const { asPath } = useRouter();
+    const { t } = useTranslations();
     
     return <div className={styles.shareWrapper}>
-        <h3 className={styles.title}>Udostępnij ten artykuł:</h3>
+        <h3 className={styles.title}>{t.ARTICLE.SHARE}</h3>
         <TwitterShareButton url={`https://mateuszjablonski.com${asPath}`} className={styles.button}>
             <Image src={TwitterIcon} width={24} height={19} alt=""/>
         </TwitterShareButton>
