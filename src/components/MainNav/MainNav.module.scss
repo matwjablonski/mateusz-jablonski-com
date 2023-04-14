@@ -82,7 +82,7 @@
                 }
 
                 @include media.bp(lg) {
-                    padding: 0 gutters.$gutter;
+                    padding: 0 (gutters.$gutter * 0.85);
                 }
             }
 
@@ -138,7 +138,7 @@
         }
 
         &.reverse {
-            color: colors.$color-white;
+            color: colors.$color-white;_
         }
     }
 
