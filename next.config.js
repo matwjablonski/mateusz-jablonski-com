@@ -131,5 +131,5 @@ const commonConfig = withPlugins([
 module.exports = withSentryConfig(
   commonConfig,
   { silent: true },
-  { hideSourcemaps: true },
+  { hideSourcemaps: true, autoInstrumentServerFunctions: false, },
 );

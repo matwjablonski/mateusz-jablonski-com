@@ -138,6 +138,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     order: '-fields.createdDate',
     'fields.createdDate[lte]': new Date(),
     locale: mapLocale(locale),
+    select: 'fields.slug,fields.title,fields.excerpt,fields.createdDate,fields.featuredImage,fields.externalSource',
   });
 
   const nextArticlesRes = await fetchEntries({
@@ -146,6 +147,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     order: 'fields.createdDate',
     'fields.createdDate[gt]': new Date(),
     locale: mapLocale(locale),
+    select: 'fields.createdDate',
   });
 
   const podcastsRes = await fetchEntries({
@@ -155,6 +157,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     limit: 4,
     'fields.createdDate[lte]': new Date(),
     locale: mapLocale(locale),
+    select: 'fields.createdDate,fields.slug,fields.title,fields.featuredImage,fields.episode,fields.excerpt,fields.podcastTitle'
   });
 
   const nextPodcastsRes = await fetchEntries({
@@ -163,6 +166,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     order: 'fields.createdDate',
     'fields.createdDate[gt]': new Date(),
     locale: mapLocale(locale),
+    select: 'fields.createdDate',
   });
 
   const booksRes = await fetchEntries({
@@ -172,6 +176,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     'fields.review[exists]': true,
     limit: 4,
     locale: mapLocale(locale),
+    select: 'fields.title,fields.slug,fields.cover,fields.author'
   });
 
   const nextCourseRes = await fetchEntries({
@@ -181,6 +186,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     'fields.publishDate[gt]': new Date(),
     limit: 1,
     locale: mapLocale(locale),
+    select: 'fields.title,fields.startDate,fields.publishDate',
   });
 
   const homeDetails = await homeRes.data.map(p => p.fields).shift();

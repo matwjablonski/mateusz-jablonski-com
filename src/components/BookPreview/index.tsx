@@ -5,7 +5,7 @@ import { Book } from '../../types/common/Book.types';
 import prepareImageUrl from '../../utils/prepareAssetUrl';
 import styles from './BookPreview.module.scss';
 
-const BookPreview: FunctionComponent<Book> = ({ title, slug, cover, author}) => {
+const BookPreview: FunctionComponent<Book> = ({ title, slug, cover, author }) => {
     return (
         <Link href={`/book/${slug}`} title={`${title} - ${author}`}>
             <article className={styles.bookPreview}>
