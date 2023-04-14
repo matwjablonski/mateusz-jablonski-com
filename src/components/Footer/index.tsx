@@ -29,6 +29,7 @@ const Footer: FC<FooterProps> = memo(({ hideFunds, hideSocialMedia }) => {
           <div className={styles.copyInner}>
             <Link
               href="/"
+              aria-label={t.FOOTER.TITLE}
             >
               <Image src={logo || '/logo-footer.svg'} alt="" width={114} height={24} />
             </Link>

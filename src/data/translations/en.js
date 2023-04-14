@@ -9,6 +9,7 @@ const en = {
     TITLE: 'Mateusz Jabłoński - Blog, programming, selfdevelopment',
   },
   FOOTER: {
+    TITLE: 'Mateusz Jabłoński - Blog, programming, selfdevelopment',
     FUNDS_INFO: {
       MESSAGE: 'I forward %%5% of payments%% on ',
       INFO: ' and from the sales of my courses to the Foundation ',

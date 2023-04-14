@@ -9,6 +9,7 @@ const pl = {
     TITLE: 'Mateusz Jabłoński - Blog, programowanie, rozwój',
   },
   FOOTER: {
+    TITLE: 'Mateusz Jabłoński - Blog, programowanie, rozwój',
     FUNDS_INFO: {
       MESSAGE: '%%5% wpłat%% na ',
       INFO: ' i ze sprzedaży kursów przekazuję do fundacji ',
