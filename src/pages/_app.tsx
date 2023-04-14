@@ -4,8 +4,8 @@ import cx from 'classnames';
 import { useRouter } from 'next/router'
 import Script from 'next/script';
 import * as gtag from '../lib/gtag'
-import localFont from '@next/font/local';
-import { IBM_Plex_Sans } from '@next/font/google'
+import localFont from 'next/font/local';
+import { IBM_Plex_Sans } from 'next/font/google'
 
 const monumentExtendedFont = localFont({
   src: '../public/fonts/PPMonumentExtended-Regular.woff',

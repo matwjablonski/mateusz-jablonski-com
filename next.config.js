@@ -1,9 +1,15 @@
+// This file sets a custom webpack configuration to use your Next.js app
+// with Sentry.
+// https://nextjs.org/docs/api-reference/next.config.js/introduction
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+const { withSentryConfig } = require('@sentry/nextjs');
+
 // next.config.js
 require('dotenv').config();
 const withPlugins = require('next-compose-plugins');
 const withFonts = require('next-fonts');
 
-module.exports = withPlugins([
+const commonConfig = withPlugins([
   [withFonts],
 ], {
   i18n: {
@@ -121,3 +127,9 @@ module.exports = withPlugins([
     ]
   },
 });
+
+module.exports = withSentryConfig(
+  commonConfig,
+  { silent: true },
+  { hideSourcemaps: true },
+);
