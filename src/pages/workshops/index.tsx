@@ -7,19 +7,19 @@ import { Entry } from "contentful";
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 
-interface CoursePageProps {
+interface WorkshopsPageProps {
     body: Page,
 }
 
-const CoursePage: FC<CoursePageProps> = () => {
+const WorkshopsPage: FC<WorkshopsPageProps> = () => {
     return (
         <MainLayout head={{}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                <PageTitle title="Kursy" description="W przygotowaniu"/>
+                <PageTitle title="Warsztaty" description="W przygotowaniu"/>
             </Grid>
         </MainLayout>
     )
 }
 
-export default CoursePage;
+export default WorkshopsPage;

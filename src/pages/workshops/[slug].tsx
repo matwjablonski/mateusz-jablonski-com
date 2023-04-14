@@ -22,12 +22,11 @@ import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types'
 import { formatDate } from '../../utils/formatDate'
 
-interface CoursePageProps {
+interface WorkshopPageProps {
     body: Course,
 }
 
-
-const CoursePage: FC<CoursePageProps> = ({ body }) => {
+const WorkshopPage: FC<WorkshopPageProps> = ({ body }) => {
     const {
         head,
         title,
@@ -113,4 +112,4 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       };
 }
 
-export default CoursePage;
+export default WorkshopPage;

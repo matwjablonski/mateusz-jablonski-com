@@ -25,7 +25,7 @@ const pl = {
     HOME: 'Home',
     BLOG: 'Blog',
     ABOUT: 'O mnie',
-    COURSES: 'Kursy',
+    WORKSHOPS: 'Warsztaty',
     PODCAST: 'Podcast',
     CONTACT: 'Kontakt',
     MEMBER_AREA: 'Strefa kursanta',

@@ -25,7 +25,7 @@ const en = {
     HOME: 'Home',
     BLOG: 'Blog',
     ABOUT: 'About',
-    COURSES: 'Courses',
+    WORKSHOPS: 'Workshops',
     PODCAST: 'Podcast',
     CONTACT: 'Contact',
     MEMBER_AREA: 'Student zone',

@@ -124,6 +124,11 @@ const commonConfig = withPlugins([
         destination: '/api/robots',
         permanent: true
       },
+      {
+        source: '/course',
+        destination: '/workshops',
+        permanent: true
+      }
     ]
   },
 });
