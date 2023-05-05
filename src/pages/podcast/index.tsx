@@ -36,14 +36,21 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
 
     const { t } = useTranslations();
 
-    console.log(podcastGuest);
+    console.log(podcasts)
+
     return (
         <MainLayout head={head ? (head.fields as HeadInterface) : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description}/>
                 <h3 className={podcastStyles.SmallSectionTitle}>{t.PODCAST.MY_PODCASTS.TITLE}</h3>
-                <SectionPodcast>dasd</SectionPodcast>
+                {podcasts.length > 0 && podcasts.map(podcast => (
+                    <SectionPodcast key={podcast.name}>
+                        <h3>{podcast.name}</h3>
+                        <p>{podcast.description}</p>
+                        Liczba odcinków: {podcast.episodes.length}
+                    </SectionPodcast>
+                ))}
                 <h3 className={podcastStyles.SmallSectionTitle}>{t.PODCAST.GUEST_PODCASTS.TITLE}</h3>
                 <SectionPodcast>
                     {Object.keys(podcastGuest).map(podcastName => (

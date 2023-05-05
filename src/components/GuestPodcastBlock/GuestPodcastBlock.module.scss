@@ -3,6 +3,11 @@
 @use '../../styles/settings/gutters';
 
 .GuestPodcastBlock {
+  &:not(:last-child) {
+    margin-bottom: gutters.$gutter-bigger;
+    padding-bottom: gutters.$gutter-bigger;
+    border-bottom: 1px solid colors.$color-primary-700;
+  }
 
   .Title {
     color: colors.$color-primary;
