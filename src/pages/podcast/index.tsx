@@ -3,7 +3,7 @@ import Grid from "../../components/Grid";
 import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
 import { FC } from "react";
-import { Entry } from "contentful";
+import podcastStyles from '../../styles/Podcast.module.scss';
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 import { GetServerSideProps } from 'next';
@@ -11,6 +11,8 @@ import { fetchEntries } from '../../contentful';
 import { formatDate } from '../../utils/formatDate';
 import { Podcast, PodcastEpisode } from '../../types/common/Podcast.types';
 import GuestPodcastBlock from '../../components/GuestPodcastBlock';
+import { useTranslations } from '../../hooks/useTranslations';
+import SectionPodcast from '../../components/SectionPodcast';
 
 type PodcastType = Partial<Podcast> & { episodes: PodcastEpisode[]};
 
@@ -26,25 +28,33 @@ const PAGE_SIZE = 9;
 const FIRST_PAGE_SIZE = PAGE_SIZE + 1;
 
 const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => {
-
     const {
         head,
         title,
         description,
     } = body;
 
-    console.log(podcasts);
+    const { t } = useTranslations();
+
+    console.log(podcastGuest);
     return (
         <MainLayout head={head ? (head.fields as HeadInterface) : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
                 <PageTitle title={title} description={description}/>
-                My podcasts
-                <div>dasd</div>
-                Guest podcasts
-                {Object.keys(podcastGuest).map(podcastName => (
-                    <GuestPodcastBlock key={podcastName} podcastTitle={podcastName} episodes={podcastGuest[podcastName]} />
-                ))}
+                <h3 className={podcastStyles.SmallSectionTitle}>{t.PODCAST.MY_PODCASTS.TITLE}</h3>
+                <SectionPodcast>dasd</SectionPodcast>
+                <h3 className={podcastStyles.SmallSectionTitle}>{t.PODCAST.GUEST_PODCASTS.TITLE}</h3>
+                <SectionPodcast>
+                    {Object.keys(podcastGuest).map(podcastName => (
+                        <GuestPodcastBlock
+                            key={podcastName}
+                            title={podcastName}
+                            description={podcastGuest[podcastName][0].podcast.fields.description}
+                            episodes={podcastGuest[podcastName]}
+                        />
+                    ))}
+                </SectionPodcast>
             </Grid>
         </MainLayout>
     )
@@ -76,7 +86,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             formatString: 'yyyy-MM-dd HH:mm:ss'
           }),
         'fields.guestPodcast': true,
-        select: 'fields.slug,fields.createdDate,fields.author,fields.episode,fields.podcast,fields.excerpt,fields.externalLink,fields.title,fields.featuredImage',
+        select: 'fields.slug,fields.createdDate,fields.author,fields.episode,fields.podcast,fields.time,fields.excerpt,fields.externalLink,fields.title,fields.featuredImage',
     });
 
     const body = await res.data

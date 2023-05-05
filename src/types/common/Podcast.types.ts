@@ -6,6 +6,7 @@ import { HeadInterface } from "./Head.types";
 export interface Podcast {
     name: string;
     cover: Asset;
+    description: string;
     website?: string;
     externalPodcast: boolean;
 }
@@ -20,6 +21,7 @@ export interface PodcastEpisode {
     content?: Document;
     featuredImage: Asset;
     file?: Asset;
+    time?: number;
     video?: string;
     head?: Entry<EntrySkeletonType<HeadInterface>>;
     author?: Entry<EntrySkeletonType<Author>>[];

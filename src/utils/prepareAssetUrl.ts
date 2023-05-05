@@ -1,3 +1,5 @@
-const prepareAssetUrl = (url: string) => `https:${url}`;
+import { AssetFile } from 'contentful';
+
+const prepareAssetUrl = (url: string | AssetFile) => `https:${url}`;
 
 export default prepareAssetUrl;

@@ -1,0 +1,14 @@
+@use './settings/fonts';
+@use './settings/gutters';
+@use './settings/colors';
+
+.SmallSectionTitle {
+  color: colors.$color-primary;
+  font-size: 16px;
+  font-family: fonts.$font-headline;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -.01;
+  line-height: 1.25;
+  margin: 0 0 gutters.$gutter;
+}

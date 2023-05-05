@@ -4,6 +4,12 @@ const en = {
     TOMORROW: 'tomorrow',
     DONT_KNOW: 'I don\'t know',
     DAYS: 'days',
+    HOUR: 'hour',
+    HOURS_2_4: 'hours',
+    HOURS: 'hours',
+    MINUTE: 'minute',
+    MINUTES_2_4: 'minutes',
+    MINUTES: 'minutes',
   },
   HEADER: {
     TITLE: 'Mateusz Jabłoński - Blog, programming, selfdevelopment',
@@ -119,6 +125,14 @@ const en = {
       MAIN_CONTENT_1: 'Dołącz bezpłatnie do mojego newslettera. Raz na dwa tygodnie otrzymasz ode mnie wiadomość z informacjami o nowych materiałach, które znajdziesz na mojej stronie. Będziesz nie tylko pierwszy, ale uzyskasz dostęp do ciekawostek, interesujących ofert i nie publikowanych wcześniej materiałów.',
       MAIN_CONTENT_2: 'Newsletter, podobnie jak większość materiałów na mojej stronie, jest całkowicie bezpłatny. Obiecuję nie spamować i wysłać to, co rzeczywiście może Ci się przydać.',
     },
+  },
+  PODCAST: {
+    MY_PODCASTS: {
+      TITLE: 'My podcasts'
+    },
+    GUEST_PODCASTS: {
+      TITLE: 'Guest podcasts'
+    }
   },
 }
 
