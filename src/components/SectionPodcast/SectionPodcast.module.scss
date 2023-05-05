@@ -8,5 +8,9 @@
   border-radius: 8px;
   box-shadow: 0px 8px 48px 0px rgba(colors.$color-primary-300, .11);
   padding: gutters.$gutter-big (gutters.$gutter * 2);
-  margin-bottom: gutters.$gutter-bigger;
+  margin-bottom: gutters.$gutter-medium;
+
+  &:last-child {
+    margin-bottom: gutters.$gutter-bigger;
+  }
 }

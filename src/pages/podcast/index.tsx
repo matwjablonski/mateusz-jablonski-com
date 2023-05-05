@@ -13,6 +13,9 @@ import { Podcast, PodcastEpisode } from '../../types/common/Podcast.types';
 import GuestPodcastBlock from '../../components/GuestPodcastBlock';
 import { useTranslations } from '../../hooks/useTranslations';
 import SectionPodcast from '../../components/SectionPodcast';
+import Image from 'next/image';
+import prepareAssetUrl from '../../utils/prepareAssetUrl';
+import MyPodcastHeader from '../../components/MyPodcastHeader';
 
 type PodcastType = Partial<Podcast> & { episodes: PodcastEpisode[]};
 
@@ -44,13 +47,20 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                 <Breadcrumbs />
                 <PageTitle title={title} description={description}/>
                 <h3 className={podcastStyles.SmallSectionTitle}>{t.PODCAST.MY_PODCASTS.TITLE}</h3>
-                {podcasts.length > 0 && podcasts.map(podcast => (
-                    <SectionPodcast key={podcast.name}>
-                        <h3>{podcast.name}</h3>
-                        <p>{podcast.description}</p>
-                        Liczba odcinków: {podcast.episodes.length}
-                    </SectionPodcast>
-                ))}
+                <div>
+                    {podcasts.length > 0 && podcasts.map(podcast => (
+                        <SectionPodcast key={podcast.name}>
+                            <MyPodcastHeader
+                                name={podcast.name}
+                                authors={podcast.authors}
+                                cover={podcast.cover}
+                                description={podcast.description}    
+                            />
+                            
+                            Liczba odcinków: {podcast.episodes.length}
+                        </SectionPodcast>
+                    ))}
+                </div>
                 <h3 className={podcastStyles.SmallSectionTitle}>{t.PODCAST.GUEST_PODCASTS.TITLE}</h3>
                 <SectionPodcast>
                     {Object.keys(podcastGuest).map(podcastName => (
@@ -80,7 +90,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const podcastsChannelsRes = await fetchEntries({
         content_type: 'podcastChannel',
         'fields.externalPodcast': false,
-        select: 'fields.name,fields.description,fields.cover',
+        order: 'fields.name',
+        select: 'fields.name,fields.description,fields.cover,fields.authors',
     });
 
     const podcastGuestRes = await fetchEntries({
@@ -123,6 +134,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const podcasts: Podcasts = await Promise.all(podcastsChannelsRes.data.map(async p => ({
         ...p.fields,
+        authors: (p.fields.authors ?? []).map(a => ({ ...a.fields })),
         episodes: await fetchPodcast(p.fields.name),
     })))
 

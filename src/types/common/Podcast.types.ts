@@ -9,6 +9,7 @@ export interface Podcast {
     description: string;
     website?: string;
     externalPodcast: boolean;
+    authors?: Author[];
 }
 
 export interface PodcastEpisode {
