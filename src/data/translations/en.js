@@ -58,6 +58,12 @@ const en = {
     LISTEN_PODCAST: 'Listen to my podcast:',
     LISTEN_PODCAST_ON: 'Listen $1 podcast on $2',
   },
+  BREADCRUMBS: {
+    CONTACT: 'Contact',
+    ABOUT: 'About',
+    WORKSHOPS: 'Workshops',
+    BOOKS: 'Books'
+  },
   ABOUT: {
     MOTIVATOR: {
       TITLE: 'I would like to be %%very good%% at what I do',
@@ -107,6 +113,7 @@ const en = {
       ALL: 'All workshops',
     },
   },
+  CONTACT: {},
 }
 
 export default en;

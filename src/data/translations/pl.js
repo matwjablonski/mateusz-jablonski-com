@@ -58,6 +58,12 @@ const pl = {
     LISTEN_PODCAST: 'Słuchaj mojego podcastu:',
     LISTEN_PODCAST_ON: 'Słuchaj podcastu @1 na @2',
   },
+  BREADCRUMBS: {
+    CONTACT: 'Kontakt',
+    ABOUT: 'O mnie',
+    WORKSHOPS: 'Warsztaty',
+    BOOKS: 'Książki'
+  },
   ABOUT: {
     MOTIVATOR: {
       TITLE: 'Chciałbym być %%bardzo dobry%% w tym, co robię',
@@ -105,6 +111,13 @@ const pl = {
     ACTIONS: {
       TAKE_PART: 'Weź udział',
       ALL: 'Wszystkie warsztaty',
+    },
+  },
+  CONTACT: {
+    NEWSLETTER: {
+      TITLE: 'Mój newsletter',
+      MAIN_CONTENT_1: 'Dołącz bezpłatnie do mojego newslettera. Raz na dwa tygodnie otrzymasz ode mnie wiadomość z informacjami o nowych materiałach, które znajdziesz na mojej stronie. Będziesz nie tylko pierwszy, ale uzyskasz dostęp do ciekawostek, interesujących ofert i nie publikowanych wcześniej materiałów.',
+      MAIN_CONTENT_2: 'Newsletter, podobnie jak większość materiałów na mojej stronie, jest całkowicie bezpłatny. Obiecuję nie spamować i wysłać to, co rzeczywiście może Ci się przydać.',
     },
   },
 }

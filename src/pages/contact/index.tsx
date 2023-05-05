@@ -15,6 +15,7 @@ import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import CaptchaProvider from "../../providers/CaptchaProvider";
 import MyNewsletter from "../../components/MyNewsletter";
 import Columns from "../../components/Columns";
+import { useTranslations } from '../../hooks/useTranslations';
 
 interface ContactPageProps {
     body: Page,
@@ -22,6 +23,7 @@ interface ContactPageProps {
 }
 
 const ContactPage: FC<ContactPageProps> = ({ body: { title, head, description}, testimonials }) => {
+    const { t } = useTranslations();
     return (
         <CaptchaProvider>
             <MainLayout head={head ? head.fields : {}} hideOverflow>

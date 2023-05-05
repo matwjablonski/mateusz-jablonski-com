@@ -17,7 +17,7 @@ import Button from '../components/Button';
 import { ButtonType } from '../components/Button/Button.types';
 import LastBooks from '../components/LastBooks';
 import Hero from '../components/Hero';
-import { Asset, Entry } from 'contentful';
+import { Asset, EntrySkeletonType, Entry } from 'contentful';
 import NextCourseCounter from '../components/NextCourseCounter';
 import { Course } from '../types/common/Course.types';
 import ListenNow from '../components/ListenNow';
@@ -38,9 +38,9 @@ interface HomeData {
   lastArticlesDescription: string;
   lastPodcastsDescription: string;
   lastCoursesDescription: string;
-  featuredCourses: Entry<Course>[];
+  featuredCourses: Entry<EntrySkeletonType<Course>>[];
   lastBooksDescription: string;
-  head?: Entry<HeadInterface>;
+  head?: Entry<EntrySkeletonType<HeadInterface>>;
 }
 
 interface HomeProps {
@@ -69,59 +69,59 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
   const { t, translate } = useTranslations();
 
   return (
-      <MainLayout head={head ? head.fields : {}} hideOverflow>
-        <Grid>
-          <Hero title={title} description={description} image={welcomeImage} />
-          <section>
-            <TitleBarWithComponent 
-              title={<>{translate({ value: t.HOME.LAST_ARTICLES, tagName: 'strong'})}</>}
-              text={lastArticlesDescription}
+    <MainLayout head={head ? (head.fields as HeadInterface) : {}} hideOverflow>
+      <Grid>
+        <Hero title={title} description={description} image={welcomeImage} />
+        <section>
+          <TitleBarWithComponent 
+            title={<>{translate({ value: t.HOME.LAST_ARTICLES, tagName: 'strong'})}</>}
+            text={lastArticlesDescription}
+          >
+            <Counter nextItemName={t.HOME.NEXT_ARTICLE} days={nextArticleInDays} />
+          </TitleBarWithComponent>
+          <LastArticles articles={articles} />
+        </section>
+        <section className={styles.podcastSection}>
+          <TitleBarWithComponent 
+            title={<>{translate({ value: t.HOME.LAST_PODCASTS, tagName: 'strong'})}</>}
+            text={lastPodcastsDescription}
+          >
+            <Counter nextItemName={t.HOME.NEXT_PODCAST} days={nextPodcastInDays} />
+          </TitleBarWithComponent>
+          <LastPodcasts podcasts={podcasts} />
+          <ListenNow className={styles.listenNow} />
+        </section>
+      </Grid>
+        <section className={styles.coursesSection}>
+          <Grid>
+          <TitleBarWithComponent 
+              title={<>{t.HOME.LAST_WORKSHOPS} <br/><strong>{t.HOME.LAST_WORKSHOPS_STRONG}</strong></>} 
+              text={lastCoursesDescription}
+              type={TitleBarType.REVERT}
             >
-              <Counter nextItemName={t.HOME.NEXT_ARTICLE} days={nextArticleInDays} />
+              {nextCourse && <NextCourseCounter title={nextCourse.title} startDate={nextCourse.startDate} endDate={nextCourse.publishDate} />}
             </TitleBarWithComponent>
-            <LastArticles articles={articles} />
-          </section>
-          <section className={styles.podcastSection}>
+            <FeaturedCourses featuredCourses={featuredCourses} />
+          </Grid>
+        </section>
+        <section className={styles.booksSection}>
+          <Grid>
             <TitleBarWithComponent 
-              title={<>{translate({ value: t.HOME.LAST_PODCASTS, tagName: 'strong'})}</>}
-              text={lastPodcastsDescription}
+              title={<>{translate({ value: t.HOME.RECOMMENDED_BOOKS, tagName: 'strong'})}</>}
+              text={lastBooksDescription}
+              type={TitleBarType.REVERT}
             >
-              <Counter nextItemName={t.HOME.NEXT_PODCAST} days={nextPodcastInDays} />
+              <Button.L label={t.HOME.MORE_BOOKS} pattern={ButtonType.PRIMARY} href="/book" />
             </TitleBarWithComponent>
-            <LastPodcasts podcasts={podcasts} />
-            <ListenNow className={styles.listenNow} />
-          </section>
-        </Grid>
-          <section className={styles.coursesSection}>
-            <Grid>
-            <TitleBarWithComponent 
-                title={<>{t.HOME.LAST_WORKSHOPS} <br/><strong>{t.HOME.LAST_WORKSHOPS_STRONG}</strong></>} 
-                text={lastCoursesDescription}
-                type={TitleBarType.REVERT}
-              >
-                {nextCourse && <NextCourseCounter title={nextCourse.title} startDate={nextCourse.startDate} endDate={nextCourse.publishDate} />}
-              </TitleBarWithComponent>
-              <FeaturedCourses featuredCourses={featuredCourses} />
-            </Grid>
-          </section>
-          <section className={styles.booksSection}>
-            <Grid>
-              <TitleBarWithComponent 
-                title={<>{translate({ value: t.HOME.RECOMMENDED_BOOKS, tagName: 'strong'})}</>}
-                text={lastBooksDescription}
-                type={TitleBarType.REVERT}
-              >
-                <Button.L label={t.HOME.MORE_BOOKS} pattern={ButtonType.PRIMARY} href="/book" />
-              </TitleBarWithComponent>
-              <LastBooks books={books} />
-            </Grid>
-          </section>
-        <Grid>
-          <section>
-            <HomeNewsletter />
-          </section>
-        </Grid>
-      </MainLayout>
+            <LastBooks books={books} />
+          </Grid>
+        </section>
+      <Grid>
+        <section>
+          <HomeNewsletter />
+        </section>
+      </Grid>
+    </MainLayout>
   )
 }
 
@@ -136,7 +136,10 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     include: 2,
     limit: 5,
     order: '-fields.createdDate',
-    'fields.createdDate[lte]': new Date(),
+    'fields.createdDate[lte]': formatDate({
+      dateObject: new Date(),
+      formatString: 'yyyy-MM-dd HH:mm:ss'
+    }),
     locale: mapLocale(locale),
     select: 'fields.slug,fields.title,fields.excerpt,fields.createdDate,fields.featuredImage,fields.externalSource',
   });
@@ -145,7 +148,10 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     content_type: 'article',
     include: 2,
     order: 'fields.createdDate',
-    'fields.createdDate[gt]': new Date(),
+    'fields.createdDate[gt]': formatDate({
+      dateObject: new Date(),
+      formatString: 'yyyy-MM-dd HH:mm:ss'
+    }),
     locale: mapLocale(locale),
     select: 'fields.createdDate',
   });
@@ -155,16 +161,22 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     include: 2,
     order: '-fields.createdDate',
     limit: 4,
-    'fields.createdDate[lte]': new Date(),
+    'fields.createdDate[lte]': formatDate({
+      dateObject: new Date(),
+      formatString: 'yyyy-MM-dd HH:mm:ss'
+    }),
     locale: mapLocale(locale),
-    select: 'fields.createdDate,fields.slug,fields.title,fields.featuredImage,fields.episode,fields.excerpt,fields.podcastTitle'
+    select: 'fields.createdDate,fields.slug,fields.title,fields.featuredImage,fields.episode,fields.excerpt,fields.podcast'
   });
 
   const nextPodcastsRes = await fetchEntries({
     content_type: 'podcast',
     include: 2,
     order: 'fields.createdDate',
-    'fields.createdDate[gt]': new Date(),
+    'fields.createdDate[gt]': formatDate({
+      dateObject: new Date(),
+      formatString: 'yyyy-MM-dd HH:mm:ss'
+    }),
     locale: mapLocale(locale),
     select: 'fields.createdDate',
   });
@@ -183,7 +195,10 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     content_type: 'course',
     include: 2,
     order: 'fields.publishDate',
-    'fields.publishDate[gt]': new Date(),
+    'fields.publishDate[gt]': formatDate({
+      dateObject: new Date(),
+      formatString: 'yyyy-MM-dd HH:mm:ss'
+    }),
     limit: 1,
     locale: mapLocale(locale),
     select: 'fields.title,fields.startDate,fields.publishDate',

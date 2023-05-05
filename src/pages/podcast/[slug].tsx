@@ -1,7 +1,7 @@
 import { Entry } from "contentful";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { HeadInterface } from "../../types/common/Head.types";
-import { Podcast } from "../../types/common/Podcast.types";
+import { Podcast, PodcastEpisode } from "../../types/common/Podcast.types";
 import { ParsedUrlQuery } from "querystring";
 import { formatDate, formatDateAndTimeWithSeparator } from "../../utils/formatDate";
 import { fetchEntries } from "../../contentful";
@@ -19,7 +19,7 @@ import { Comment } from "../../types/common/Comment.type";
 import CaptchaProvider from "../../providers/CaptchaProvider";
 
 interface SinglePodcastPageProps {
-    body: Podcast;
+    body: PodcastEpisode;
     comments: Comment[];
 }
 
@@ -34,7 +34,7 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
 
   return body ? (
     <CaptchaProvider>
-      <MainLayout head={head ? head.fields : {}}>
+      <MainLayout head={head ? (head.fields as HeadInterface) : {}}>
         <Grid>
           <Breadcrumbs />
           <PodcastComponent
@@ -48,9 +48,9 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             file={body.file}
             episode={body.episode}
             createdDate={body.createdDate}
-            podcastTitle={body.podcastTitle}
+            podcastTitle={body.podcast.name}
             podcastExcerpt={body.podcastExcerpt}
-            podcastCover={body.podcastCover}
+            podcastCover={body.podcast.cover}
             externalLink={body.externalLink}
             video={body.video}
           />

@@ -38,7 +38,7 @@ const MainLayout: FC<MainLayoutProps> = ({children, head, hideOverflow, dark, hi
         <meta property="og:title" content={head.title ? `${head.title} :: ${mainTitle}` : mainTitle} />
         <meta property="og:url" content={`https://mateuszjablonski.com${asPath}`} />
         <meta property="og:description" content={head.description || mainDescription} />
-        {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url)} />}
+        {head.image && <meta property="og:image" content={prepareImageUrl(head.image.fields.file.url as string)} />}
         <link rel="icon" href={favico.src} />
       </Head>
       <div className={cx(dark && styles.darkBackground)}>

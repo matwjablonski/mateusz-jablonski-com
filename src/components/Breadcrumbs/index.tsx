@@ -2,9 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import styles from './Breadcrumbs.module.scss';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const Breadcrumbs = () => {
     const { pathname } = useRouter();
+    const { t } = useTranslations();
 
     const pathsArray = pathname.split('/');
     const breadcrumbsItems = pathsArray.length > 2 ? pathsArray.splice(0, pathsArray.length - 1) : pathsArray;
@@ -12,13 +14,13 @@ const Breadcrumbs = () => {
     const mapBreadcrumbs = (name: string) => {
         switch (name) {
             case 'contact':
-                return 'Kontakt';
+                return t.BREADCRUMBS.CONTACT;
             case 'about':
-                return 'O mnie';
-            case 'course':
-                return 'Kursy';
+                return t.BREADCRUMBS.ABOUT;
+            case 'workshops':
+                return  t.BREADCRUMBS.WORKSHOPS;
             case 'book':
-                return 'Książki';
+                return t.BREADCRUMBS.BOOKS;
             default:
                 return name;
         }

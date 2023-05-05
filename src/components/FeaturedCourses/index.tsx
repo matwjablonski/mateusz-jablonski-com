@@ -1,4 +1,4 @@
-import { Entry } from 'contentful';
+import { EntrySkeletonType, Entry } from 'contentful';
 import React, { FunctionComponent } from 'react';
 import { useTranslations } from '../../hooks/useTranslations';
 import { Course } from '../../types/common/Course.types';
@@ -7,7 +7,7 @@ import { ButtonType } from '../Button/Button.types';
 import FeaturedCoursePreview from '../FeaturedCoursePreview';
 import styles from './FeaturedCourses.module.scss';
 
-const FeaturedCourses: FunctionComponent<{ featuredCourses: Entry<Course>[]}> = ({ featuredCourses }) => {
+const FeaturedCourses: FunctionComponent<{ featuredCourses: Entry<EntrySkeletonType<Course>>[]}> = ({ featuredCourses }) => {
     const { t } = useTranslations();
     return (
         <div className={styles.section}>

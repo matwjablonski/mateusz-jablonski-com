@@ -1,0 +1,15 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
+
+.GuestPodcastBlock {
+  background-color: colors.$color-primary-700;
+  border-radius: gutters.$gutter;
+  padding: (gutters.$gutter * 2) gutters.$gutter-medium;
+
+  .Title {
+    color: colors.$color-white;
+    font-family: fonts.$font-headline;
+    margin: 0;
+  }
+}

@@ -6,20 +6,145 @@ import { FC } from "react";
 import { Entry } from "contentful";
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
+import { GetServerSideProps } from 'next';
+import { fetchEntries } from '../../contentful';
+import { formatDate } from '../../utils/formatDate';
+import { Podcast, PodcastEpisode } from '../../types/common/Podcast.types';
+import GuestPodcastBlock from '../../components/GuestPodcastBlock';
+
+type PodcastType = Partial<Podcast> & { episodes: PodcastEpisode[]};
+
+type Podcasts = PodcastType[];
 
 interface PodcastPageProps {
     body: Page,
+    podcastGuest: { [key: string]: Partial<PodcastEpisode>[] },
+    podcasts?: Podcasts;
 }
 
-const PodcastPage: FC<PodcastPageProps> = () => {
+const PAGE_SIZE = 9;
+const FIRST_PAGE_SIZE = PAGE_SIZE + 1;
+
+const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => {
+
+    const {
+        head,
+        title,
+        description,
+    } = body;
+
+    console.log(podcasts);
     return (
-        <MainLayout head={{}} hideOverflow>
+        <MainLayout head={head ? (head.fields as HeadInterface) : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                <PageTitle title="Podcast" description="W przygotowaniu"/>
+                <PageTitle title={title} description={description}/>
+                My podcasts
+                <div>dasd</div>
+                Guest podcasts
+                {Object.keys(podcastGuest).map(podcastName => (
+                    <GuestPodcastBlock key={podcastName} podcastTitle={podcastName} episodes={podcastGuest[podcastName]} />
+                ))}
             </Grid>
         </MainLayout>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    type PodcastEpisodeWithName = Partial<Omit<PodcastEpisode, 'podcast'> & { podcastName: string }>;
+    let guestPodcastsByTitle: { [key: string]: PodcastEpisodeWithName[] } = {};
+
+    const res = await fetchEntries({
+        content_type: 'page',
+        'fields.slug': 'podcast',
+        include: 2,
+    });
+
+    const podcastsChannelsRes = await fetchEntries({
+        content_type: 'podcastChannel',
+        'fields.externalPodcast': false,
+        select: 'fields.name,fields.description,fields.cover',
+    });
+
+    const podcastGuestRes = await fetchEntries({
+        content_type: 'podcast',
+        include: 2,
+        skip: 0,
+        order: '-fields.createdDate',
+        'fields.createdDate[lte]': formatDate({
+            dateObject: new Date(),
+            formatString: 'yyyy-MM-dd HH:mm:ss'
+          }),
+        'fields.guestPodcast': true,
+        select: 'fields.slug,fields.createdDate,fields.author,fields.episode,fields.podcast,fields.excerpt,fields.externalLink,fields.title,fields.featuredImage',
+    });
+
+    const body = await res.data
+        .map(p => ({ ...p.fields }))
+        .shift();
+
+    const fetchPodcast = async (name: string) => {
+        const res = await fetchEntries({
+            content_type: 'podcast',
+            include: 2,
+            skip: 0,
+            'fields.podcast.sys.contentType.sys.id': 'podcastChannel',
+            'fields.podcast.fields.name': name,
+            select: 'fields.slug,fields.title,fields.createdDate,fields.episode,fields.author'
+        });
+
+        const data = res.data.map(p => ({ 
+            ...p.fields,
+            createdDate: formatDate({
+                dateObject: p.fields?.createdDate,
+                formatString: 'dd MMMM yyyy'
+            }),
+        }))
+
+        return data;
+    }
+
+    const podcasts: Podcasts = await Promise.all(podcastsChannelsRes.data.map(async p => ({
+        ...p.fields,
+        episodes: await fetchPodcast(p.fields.name),
+    })))
+
+    const podcastGuest: PodcastEpisodeWithName[] = await podcastGuestRes.data.map(p => ({
+        ...p.fields,
+        podcastName: p.fields?.podcast?.fields?.name ?? '',
+        createdDate: formatDate({
+            dateObject: p.fields?.createdDate,
+            formatString: 'dd MMMM yyyy'
+        }),
+    }));
+
+    if (podcastGuest.length > 0) {
+        guestPodcastsByTitle = podcastGuest
+            .reduce<{ [key: string]: PodcastEpisodeWithName[] }>((acc, curr) => {
+                if (curr.podcastName in acc) {
+                    acc[curr.podcastName].push(curr); 
+                } else {
+                    acc[curr.podcastName] = [ curr ]
+                }
+
+                return acc;
+            }, {})
+    }
+
+    if (!body) {
+        return {
+            notFound: true
+        }
+    }
+
+    return {
+        props: {
+            body,
+            podcasts,
+            podcastGuest: guestPodcastsByTitle,
+            // totalArticles: podcastGuest.total,
+        }
+    }
 }
 
 export default PodcastPage;
