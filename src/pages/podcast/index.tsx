@@ -50,7 +50,7 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                         <GuestPodcastBlock
                             key={podcastName}
                             title={podcastName}
-                            description={podcastGuest[podcastName][0].podcast.fields.description}
+                            description={podcastGuest[podcastName][0].podcast.description}
                             episodes={podcastGuest[podcastName]}
                         />
                     ))}
@@ -121,6 +121,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const podcastGuest: PodcastEpisodeWithName[] = await podcastGuestRes.data.map(p => ({
         ...p.fields,
+        podcast: p.fields?.podcast?.fields || {},
         podcastName: p.fields?.podcast?.fields?.name ?? '',
         createdDate: formatDate({
             dateObject: p.fields?.createdDate,
