@@ -1,4 +1,4 @@
-import { Entry } from 'contentful';
+import { EntrySkeletonType } from 'contentful';
 import { ArticleFeaturedImage } from '../../types/common/Article.types';
 
 export enum Preview {
@@ -11,7 +11,7 @@ export interface ArticlePreviewProps {
     excerpt: any;
     slug: string;
     createdDate: Date;
-    featuredImage: Entry<ArticleFeaturedImage>;
+    featuredImage: EntrySkeletonType<ArticleFeaturedImage>;
     className?: string;
     preview: Preview;
     externalSource?: string;

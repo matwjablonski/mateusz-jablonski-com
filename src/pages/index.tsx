@@ -7,7 +7,7 @@ import MainLayout from '../layouts/index'
 import TitleBarWithComponent from '../components/TitleBarWithComponent';
 import LastArticles from '../components/LastArticles';
 import HomeNewsletter from '../components/Newsletter/HomeNewsletter';
-import { Podcast } from '../types/common/Podcast.types';
+import { Podcast, PodcastEpisode } from '../types/common/Podcast.types';
 import { Article } from '../types/common/Article.types';
 import LastPodcasts from '../components/LastPodcasts';
 import { Book } from '../types/common/Book.types';
@@ -44,7 +44,7 @@ interface HomeData {
 }
 
 interface HomeProps {
-  podcasts: Podcast[];
+  podcasts: PodcastEpisode[];
   articles: Article[];
   nextArticleInDays: number;
   nextPodcastInDays: number;

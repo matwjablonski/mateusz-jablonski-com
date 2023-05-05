@@ -31,7 +31,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
                                     (
                                         <div className={styles.imageBox}>
                                             <Image
-                                                src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
+                                                src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url as string)}
                                                 width={imageWidth}
                                                 height={imageHeight}
                                                 className={styles.image}
@@ -50,7 +50,7 @@ const ArticlePreview: FunctionComponent<ArticlePreviewProps> = ({
                                     (
                                         <div className={styles.imageBox}>
                                             <Image
-                                                src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url)}
+                                                src={prepareImageUrl(featuredImage?.fields?.image?.fields?.file.url as string)}
                                                 width={imageWidth}
                                                 height={imageHeight}
                                                 className={styles.image}

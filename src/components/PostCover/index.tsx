@@ -13,7 +13,7 @@ const PostCover: FunctionComponent<PostCoverProps> = ({
   return (
     <figure className={cx(styles.wrapper)}>
       <Image 
-        src={prepareImageUrl(image.fields.file.url)}
+        src={prepareImageUrl(image.fields.file.url as string)}
         width={1147}
         height={460}
         alt={`${title} ${t('PAGES.POST.COVER_THUMBNAIL.BY_WHOM')} ${author}`}

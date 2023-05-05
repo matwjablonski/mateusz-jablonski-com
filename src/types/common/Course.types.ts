@@ -1,4 +1,4 @@
-import { Asset, Entry } from "contentful";
+import { Asset, Entry, EntrySkeletonType } from "contentful";
 import { HeadInterface } from "./Head.types";
 import { Document } from "@contentful/rich-text-types";
 
@@ -10,7 +10,7 @@ export interface Course {
     description: string;
     longDescription: string;
     featuredImage: Asset;
-    head?: Entry<HeadInterface>;
+    head?: EntrySkeletonType<HeadInterface>;
     program?: Document;
     days?: number;
     maxParticipants?: number;

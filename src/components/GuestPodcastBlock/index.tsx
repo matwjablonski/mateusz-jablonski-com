@@ -22,7 +22,7 @@ const GuestPodcastBlock: FC<GuestPodcastBlock> = ({ podcastTitle, episodes }) =>
             createdDate={createdDate}
             excerpt={excerpt}
             slug={slug}
-            author={author ? author[0].fields.name : ''}
+            author={author ? (author[0].fields.name as unknown as string) : ''}
             image={featuredImage}
           />
         ))}

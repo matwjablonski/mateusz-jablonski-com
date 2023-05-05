@@ -113,7 +113,13 @@ const en = {
       ALL: 'All workshops',
     },
   },
-  CONTACT: {},
+  CONTACT: {
+    NEWSLETTER: {
+      TITLE: 'Mój newsletter',
+      MAIN_CONTENT_1: 'Dołącz bezpłatnie do mojego newslettera. Raz na dwa tygodnie otrzymasz ode mnie wiadomość z informacjami o nowych materiałach, które znajdziesz na mojej stronie. Będziesz nie tylko pierwszy, ale uzyskasz dostęp do ciekawostek, interesujących ofert i nie publikowanych wcześniej materiałów.',
+      MAIN_CONTENT_2: 'Newsletter, podobnie jak większość materiałów na mojej stronie, jest całkowicie bezpłatny. Obiecuję nie spamować i wysłać to, co rzeczywiście może Ci się przydać.',
+    },
+  },
 }
 
 export default en;

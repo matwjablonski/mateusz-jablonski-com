@@ -1,5 +1,5 @@
-import { Podcast } from "../../types/common/Podcast.types";
+import { PodcastEpisode } from "../../types/common/Podcast.types";
 
 export interface LastPodcastsProps {
-    podcasts: Podcast[],
+    podcasts: PodcastEpisode[],
 }

@@ -1,6 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
 import { MutableRefObject } from 'react';
-import { Asset, Entry } from "contentful";
+import { Asset, Entry, EntrySkeletonType } from "contentful";
 import { Author } from '../../types/common/Author.types';
 import { Book } from '../../types/common/Book.types';
 
@@ -13,12 +13,12 @@ export interface PodcastProps {
     featuredImage: Asset;
     summary?: Document,
     sources?: Document;
-    author?: Entry<Author>[];
+    author?: Entry<EntrySkeletonType<Author>>[];
     createdDate?: Date;
     categoryName?: string;
     episode?: number;
     level?: string;
-    recommendedBook?: Entry<Book>;
+    recommendedBook?: EntrySkeletonType<Book>;
     file?: Asset;
     video?: string;
     podcastTitle?: string;

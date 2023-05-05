@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Entry } from 'contentful';
+import { Entry, EntrySkeletonType } from 'contentful';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Course } from '../../types/common/Course.types';
@@ -10,18 +10,18 @@ import placeholder from '../../public/placeholder.png';
 import prepareImageUrl from '../../utils/prepareAssetUrl';
 import { useTranslations } from '../../hooks/useTranslations';
 
-const FeaturedCoursePreview: FunctionComponent<{ course: Entry<Course> }> = ({ course }) => {
-    const { title, slug, description, featuredImage} = course.fields;
+const FeaturedCoursePreview: FunctionComponent<{ course: Course }> = ({ course }) => {
+    const { title, slug, description, featuredImage} = course;
     const { t } = useTranslations();
 
     return <div className={styles.course}>
         <div className={styles.imageBox}>
             <Image
-                src={featuredImage ? prepareImageUrl(featuredImage.fields.file.url) : placeholder}
+                src={featuredImage ? prepareImageUrl(featuredImage.fields.file.url as string) : placeholder}
                 width={544}
                 height={256}
                 className={styles.image}
-                alt={featuredImage.fields.title}
+                alt={featuredImage.fields.title as string}
             />
         </div>
         <Link href={`course/${slug}`} title={title}>

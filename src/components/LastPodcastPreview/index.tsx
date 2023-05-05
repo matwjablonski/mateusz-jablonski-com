@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ImagePlaceholder from '../ImagePlaceholder';
 import prepareImageUrl from '../../utils/prepareAssetUrl';
-import { Podcast } from '../../types/common/Podcast.types';
 import styles from './LastPodcastPreview.module.scss'
 import EpisodeNumber from '../EpisodeNumber';
 import { EpisodeNumberSize } from '../EpisodeNumber/EpisodeNumber.types';
@@ -28,7 +27,7 @@ const LastPodcastPreview: FunctionComponent<LastPodcastPreviewProps> = ({
                                 <Image 
                                     width={736}
                                     height={605}
-                                    src={prepareImageUrl(featuredImage.fields.file.url)}
+                                    src={prepareImageUrl(featuredImage.fields.file.url as string)}
                                     className={styles.image}
                                     alt=""
                                 /> : 
@@ -41,7 +40,7 @@ const LastPodcastPreview: FunctionComponent<LastPodcastPreviewProps> = ({
                                 <Image
                                     width={353}
                                     height={191}
-                                    src={prepareImageUrl(featuredImage.fields.file.url)}
+                                    src={prepareImageUrl(featuredImage.fields.file.url as string)}
                                     className={styles.image}
                                     alt=""
                                 /> : 

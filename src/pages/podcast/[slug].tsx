@@ -17,6 +17,7 @@ import CommentsList from "../../components/CommentsList";
 import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import { Comment } from "../../types/common/Comment.type";
 import CaptchaProvider from "../../providers/CaptchaProvider";
+import { Author } from '../../types/common/Author.types';
 
 interface SinglePodcastPageProps {
     body: PodcastEpisode;
@@ -54,7 +55,7 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             externalLink={body.externalLink}
             video={body.video}
           />
-          {body.author && body.author.map(a => <PostAuthor key={a.fields.name} author={a.fields}/>)}
+          {body.author && body.author.map(a => <PostAuthor key={a.fields.name as unknown as string} author={a.fields as Author}/>)}
             <div ref={commentsRef}>
               <CommentsList comments={comments} postId={body.id} title={body.title} />
             </div>

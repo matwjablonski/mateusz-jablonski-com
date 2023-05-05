@@ -3,7 +3,7 @@ import Grid from "../../components/Grid";
 import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
 import { FC, ReactNode } from "react";
-import { Entry } from "contentful";
+import { EntrySkeletonType } from "contentful";
 import { GetStaticProps } from 'next';
 import { fetchEntries, fetchMultipleContentTypesEntries } from "../../contentful";
 import { HeadInterface } from "../../types/common/Head.types";
@@ -30,7 +30,7 @@ import { mapLocale } from '../../lib/locales';
 import { useTranslations } from '../../hooks/useTranslations';
 
 interface AboutPageProps {
-    head?: Entry<HeadInterface>;
+    head?: EntrySkeletonType<HeadInterface>;
     body: Page,
     book: Book,
     testimonials?: Testimonials[];
@@ -62,7 +62,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                         <CurrentRead
                             title={book.title}
                             author={book.author}
-                            imageUrl={book.cover.fields.file.url}
+                            imageUrl={book.cover.fields.file.url as string}
                             affiliateLink={book.affiliateLink}
                             bookType={book.bookType}
                             slug={book.slug}

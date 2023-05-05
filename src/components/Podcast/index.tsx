@@ -10,6 +10,7 @@ import MetaItem from '../MetaItem';
 import PodcastCover from '../PodcastCover';
 import PodcastContent from '../PodcastContent';
 import { useTranslations } from '../../hooks/useTranslations';
+import { Author } from '../../types/common/Author.types';
 
 const Podcast: FunctionComponent<PodcastProps> = ({
   content,
@@ -42,7 +43,7 @@ const Podcast: FunctionComponent<PodcastProps> = ({
       </div>
       {featuredImage && <PodcastCover image={featuredImage}/>}
       <div className={styles.content}>
-        <PostSidebar author={author && author[0].fields} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
+        <PostSidebar author={author && author[0].fields as Author} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <PodcastContent
           content={content}
           title={title}

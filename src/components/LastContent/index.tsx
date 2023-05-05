@@ -1,13 +1,13 @@
 import { Article } from "../../types/common/Article.types"
 import { Book } from "../../types/common/Book.types"
-import { Podcast } from "../../types/common/Podcast.types"
+import { Podcast, PodcastEpisode } from "../../types/common/Podcast.types"
 import ArticlePreview from "../ArticlePreview";
 import { Preview } from "../ArticlePreview/ArticlePreview.types";
 import BookBigPreview from "../BookBigPreview";
 import PodcastPreview from '../PodcastPreview';
 import styles from './LastContent.module.scss';
 
-export type ContentType = ((Article | Book | Podcast) & {type: string}); 
+export type ContentType = ((Article | Book | PodcastEpisode) & {type: string}); 
 
 interface LastContentProps {
     content: ContentType[];
@@ -22,47 +22,50 @@ const LastContent = ({ content }: LastContentProps) => {
                 {
                     content.map(item => {
                         if (item.type === 'article') {
+                            const articleItem = item as Article;
                             return (
                                 <ArticlePreview
-                                    key={`article${item.title}`}
-                                    title={item.title}
-                                    slug={item.slug}
-                                    excerpt={item.excerpt}
-                                    createdDate={item.createdDate}
-                                    featuredImage={(item as Article).featuredImage}
+                                    key={`article${articleItem.title}`}
+                                    title={articleItem.title}
+                                    slug={articleItem.slug}
+                                    excerpt={articleItem.excerpt}
+                                    createdDate={articleItem.createdDate}
+                                    featuredImage={articleItem.featuredImage}
                                     preview={Preview.VERTICAL}
-                                    externalSource={(item as Article).externalSource}
+                                    externalSource={articleItem.externalSource}
                                     showContentType
                                 />
                             )
                         }
 
                         if (item.type === 'book') {
+                            const bookItem = item as Book;
                             return (
                                 <BookBigPreview
-                                    key={`book-${item.title}`}
-                                    title={item.title}
-                                    slug={item.slug}
-                                    author={(item as Book).author}
-                                    excerpt={item.excerpt}
-                                    image={(item as Book).cover}
-                                    createdDate={item.createdDate}
+                                    key={`book-${bookItem.title}`}
+                                    title={bookItem.title}
+                                    slug={bookItem.slug}
+                                    author={bookItem.author}
+                                    excerpt={bookItem.excerpt}
+                                    image={bookItem.cover}
+                                    createdDate={bookItem.createdDate}
                                     showContentType
                                 />
                             );
                         }
 
                         if (item.type === 'podcast') {
+                            const podcastItem = item as PodcastEpisode;
                             return (
                                 <PodcastPreview
-                                    key={`book-${item.title}`}
-                                    title={item.title}
-                                    slug={item.slug}
-                                    author={(item as Podcast).author[0].fields?.name || ''}
+                                    key={`book-${podcastItem.title}`}
+                                    title={podcastItem.title}
+                                    slug={podcastItem.slug}
+                                    author={podcastItem.author[0].fields?.name as unknown as string || ''}
                                     excerpt={item.excerpt}
-                                    image={(item as Podcast).featuredImage}
-                                    createdDate={item.createdDate}
-                                    podcastName={(item as Podcast).podcastTitle}
+                                    image={podcastItem.featuredImage}
+                                    createdDate={podcastItem.createdDate}
+                                    podcastName={podcastItem.podcast.name}
                                     showContentType
                                 />
                             );

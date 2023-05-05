@@ -1,4 +1,4 @@
-import { Asset, Entry } from "contentful";
+import { Asset, EntrySkeletonType } from "contentful";
 import { HeadInterface } from "./Head.types";
 import { Document } from "@contentful/rich-text-types";
 import { Author } from "./Author.types";
@@ -22,9 +22,9 @@ export interface Book {
     review: Document;
     currentRead: boolean;
     rate?: number;
-    seller?: Entry<BookSeller>;
-    head?: Entry<HeadInterface>
-    reviewAuthor?: Entry<Author>[];
+    seller?: EntrySkeletonType<BookSeller>;
+    head?: EntrySkeletonType<HeadInterface>
+    reviewAuthor?: EntrySkeletonType<Author>[];
     bookType?: BookType;
     categoryName?: string;
 }

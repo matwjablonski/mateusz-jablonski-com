@@ -1,4 +1,4 @@
-import { Asset, Entry } from "contentful";
+import { Asset, EntrySkeletonType } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 import { HeadInterface } from "./Head.types";
 import { Author } from "./Author.types";
@@ -10,7 +10,7 @@ export interface ArticleFeaturedImage {
 }
 
 export interface Article {
-    head?: Entry<HeadInterface>;
+    head?: EntrySkeletonType<HeadInterface>;
     id: string;
     createdDate: Date;
     title: string;
@@ -18,8 +18,8 @@ export interface Article {
     excerpt?: Document;
     slug: string;
     content?: Document;
-    featuredImage?: Entry<ArticleFeaturedImage>;
-    author?: Entry<Author>[];
+    featuredImage?: EntrySkeletonType<ArticleFeaturedImage>;
+    author?: EntrySkeletonType<Author>[];
     sources?: Document;
     categoryName?: string;
     level?: string;

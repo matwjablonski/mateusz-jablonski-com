@@ -13,7 +13,7 @@ const BookPreview: FunctionComponent<Book> = ({ title, slug, cover, author }) =>
                     {
                         cover && (
                             <Image 
-                                src={prepareImageUrl(cover.fields.file.url)}
+                                src={prepareImageUrl(cover.fields.file.url as string)}
                                 height={290}
                                 width={192}
                                 alt={`${title} - ${author}`}

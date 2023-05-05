@@ -15,8 +15,8 @@ const RecommendedBook: FC<{book: Book}> = ({ book: { title, cover, author, affil
             <div className={styles.bookWrapper}>
                 <div className={styles.bookImageWrapper}>
                     <Image
-                        src={prepareImageUrl(cover.fields.file.url)}
-                        alt={cover.fields.title}
+                        src={prepareImageUrl(cover.fields.file.url as string)}
+                        alt={cover.fields.title as string}
                         height={160}
                         width={106}
                     />

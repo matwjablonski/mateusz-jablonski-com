@@ -74,7 +74,7 @@ const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, ext
       {externalLink && <>
         <div className={styles.buttonExternal}>
           {podcastCover && <div className={styles.buttonExternalCover}>
-            <Image src={prepareAssetUrl(podcastCover.fields.file.url)} width={200} height={200} alt="" />
+            <Image src={prepareAssetUrl(podcastCover.fields.file.url as string)} width={200} height={200} alt="" />
           </div>}
           <div className={styles.buttonExternalContent}>
             <p>Odcinek do przesłuchania dostępny jest w serwisie zewnętrznym. Aby posłuchać kliknij przycisk poniżej.</p>
@@ -85,8 +85,8 @@ const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, ext
       {file && <DynamicPlayer
         cover={podcastCover}
         title={title}
-        description={file.fields.description}
-        file={prepareFileUrl(file.fields.file.url)}
+        description={file.fields.description as string}
+        file={prepareFileUrl(file.fields.file.url as string)}
       />}
       <div className={styles.dots}></div>
       {video && <>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { NextPageContext } from "next";
 import { fetchEntries } from '../../contentful'
-import { Podcast } from "../../types/common/Podcast.types";
+import { Podcast, PodcastEpisode } from "../../types/common/Podcast.types";
 
-const getPodcastsRssXml = (podcasts: Podcast[]) => {
+const getPodcastsRssXml = (podcasts: PodcastEpisode[]) => {
     let rssItemsXml = "";
     podcasts.forEach(post => {
       rssItemsXml += `
@@ -23,7 +23,7 @@ const getPodcastsRssXml = (podcasts: Podcast[]) => {
     };
 };
   
-const getRssXml = (podcasts: Podcast[]) => {
+const getRssXml = (podcasts: PodcastEpisode[]) => {
     const { rssItemsXml, latestPodcastDate } = getPodcastsRssXml(podcasts);
     return `<?xml version="1.0" ?>
         <rss version="2.0">

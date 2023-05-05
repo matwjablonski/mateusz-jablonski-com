@@ -30,7 +30,7 @@ const BookBigPreview: FunctionComponent<BookBigPreviewProps> = ({
                                     (
                                         <div className={styles.imageBox}>
                                             <Image
-                                                src={prepareImageUrl(image?.fields?.file.url)}
+                                                src={prepareImageUrl(image?.fields?.file.url as string)}
                                                 height={imageHeight}
                                                 width={imageWidth}
                                                 className={styles.image}

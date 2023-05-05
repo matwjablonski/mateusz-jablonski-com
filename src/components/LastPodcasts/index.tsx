@@ -25,7 +25,7 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         featuredImage={first.featuredImage}
                         episode={first.episode}
                         excerpt={first.excerpt}
-                        podcastTitle={first.podcastTitle}
+                        podcastTitle={first.podcast.name}
                     />
                 </div>
                 <div className={styles.column}>
@@ -36,7 +36,7 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         excerpt,
                         createdDate,
                         slug,
-                        podcastTitle,
+                        podcast,
                     }) => <LastPodcastPreview 
                         key={slug}
                         previewSize={LastPodcastPreviewSize.SMALL}
@@ -45,7 +45,7 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         featuredImage={featuredImage}
                         episode={episode}
                         excerpt={excerpt}
-                        podcastTitle={podcastTitle}
+                        podcastTitle={podcast.name}
                     />)}
                 </div>
             </div>

@@ -12,7 +12,7 @@ const FeaturedCourses: FunctionComponent<{ featuredCourses: Entry<EntrySkeletonT
     return (
         <div className={styles.section}>
             <div className={styles.wrapper}>
-                { featuredCourses.map((course) => <FeaturedCoursePreview key={course.sys.id} course={course}/>)}
+                { featuredCourses.map((course) => <FeaturedCoursePreview key={course.sys.id} course={course.fields as Course}/>)}
             </div>
             <Button.L label={t.WORKSHOPS.ACTIONS.ALL} pattern={ButtonType.WHITE} href="/course"/>
         </div>

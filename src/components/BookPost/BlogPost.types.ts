@@ -1,6 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
 import { MutableRefObject } from 'react';
-import { Entry } from "contentful";
+import { EntrySkeletonType } from "contentful";
 import { Author } from '../../types/common/Author.types';
 import { Book, BookSeller, BookType } from '../../types/common/Book.types';
 
@@ -12,13 +12,13 @@ export interface BlogPostProps {
     excerpt: Document;
     summary?: Document,
     sources?: Document;
-    author?: Entry<Author>[];
+    author?: EntrySkeletonType<Author>[];
     createdDate?: Date;
     categoryName?: string;
     affiliateLink: string;
     coverImage: string;
     rate?: number;
-    recommendedBook?: Entry<Book>;
+    recommendedBook?: EntrySkeletonType<Book>;
     bookType?: BookType;
-    seller?: Entry<BookSeller>;
+    seller?: EntrySkeletonType<BookSeller>;
 }
