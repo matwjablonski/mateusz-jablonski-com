@@ -16,16 +16,18 @@ const MyPodcastHeader: FC<MyPodcastHeader> = ({ name, authors, cover, descriptio
   return (
     <header className={styles.MyPodcastHeader}>
       <div className={styles.Top}>
-        <div>
+        <div className={styles.CoverWrapper}>
           {cover && <Image src={prepareAssetUrl(cover?.fields.file.url)} alt="" width={200} height={200}/>}
         </div>
-        <div>
-          <h3>{name}</h3>
-          {authors.map(author => <p key={author.name}>{author.name}</p>)}
+        <div className={styles.TopContent}>
+          <h3 className={styles.Title}>{name}</h3>
+          <div className={styles.Authors}>
+            {authors.map(author => <p key={author.name}>{author.name}</p>)}
+          </div>
         </div>
       </div>
       <div>
-        <p>{description}</p>
+        <p className={styles.Text}>{description}</p>
       </div>
     </header>
   )

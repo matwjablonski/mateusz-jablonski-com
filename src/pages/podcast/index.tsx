@@ -16,6 +16,7 @@ import SectionPodcast from '../../components/SectionPodcast';
 import Image from 'next/image';
 import prepareAssetUrl from '../../utils/prepareAssetUrl';
 import MyPodcastHeader from '../../components/MyPodcastHeader';
+import GuestPodcastPreview from '../../components/GuestPodcastPreview';
 
 type PodcastType = Partial<Podcast> & { episodes: PodcastEpisode[]};
 
@@ -56,7 +57,20 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                                 cover={podcast.cover}
                                 description={podcast.description}    
                             />
-                            
+                            {podcast.episodes.map(({ episode, createdDate, excerpt, slug, externalLink, time, featuredImage, title: episodeTitle}) => (
+                                <GuestPodcastPreview
+                                    key={`${episodeTitle}-${episode}`}
+                                    title={episodeTitle}
+                                    createdDate={createdDate}
+                                    excerpt={excerpt}
+                                    slug={slug}
+                                    episode={episode}
+                                    externalLink={externalLink}
+                                    time={time}
+                                    // author={author ? (author[0].fields.name as unknown as string) : ''}
+                                    image={featuredImage}
+                                />
+                            ))}
                             Liczba odcinków: {podcast.episodes.length}
                         </SectionPodcast>
                     ))}
@@ -118,7 +132,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             skip: 0,
             'fields.podcast.sys.contentType.sys.id': 'podcastChannel',
             'fields.podcast.fields.name': name,
-            select: 'fields.slug,fields.title,fields.createdDate,fields.episode,fields.author'
+            select: 'fields.slug,fields.title,fields.createdDate,fields.episode,fields.author,fields.featuredImage,fields.time,fields.excerpt'
         });
 
         const data = res.data.map(p => ({ 
@@ -127,7 +141,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
                 dateObject: p.fields?.createdDate,
                 formatString: 'dd MMMM yyyy'
             }),
-        }))
+        })).sort((a, b) => b.episode - a.episode);
 
         return data;
     }

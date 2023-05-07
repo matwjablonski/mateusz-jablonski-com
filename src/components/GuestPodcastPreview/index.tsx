@@ -54,7 +54,7 @@ const GuestPodcastPreview: FC<GuestPodcastPreview> = ({ title, createdDate, exce
     <article className={styles.GuestPodcastPreview}>
       <div className={styles.Image}>
         <ExternalLink href={externalLink}>
-          <Image src={prepareImageUrl(image.fields.file.url)} alt={title} width={250} height={250}/>
+          {image && <Image src={prepareImageUrl(image.fields.file.url)} alt={title} width={250} height={250}/>}
         </ExternalLink>
       </div>
       <div className={styles.Content}>
@@ -63,7 +63,8 @@ const GuestPodcastPreview: FC<GuestPodcastPreview> = ({ title, createdDate, exce
           <time className={styles.Time}>{prepareTime()}</time>
           <p className={styles.Text}>{excerpt}</p>
         </div>
-        <Button.L pattern={ButtonType.PRIMARY} label="Słuchaj" href={externalLink} isExternal />
+        {externalLink && <Button.L pattern={ButtonType.PRIMARY} label="Słuchaj" href={externalLink} isExternal />}
+        {!externalLink && <Button.L pattern={ButtonType.PRIMARY} label="Słuchaj" href={`/podcast/${slug}`} />}
       </div>
     </article>
   )
