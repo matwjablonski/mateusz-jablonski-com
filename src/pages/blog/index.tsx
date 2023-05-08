@@ -99,7 +99,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
         skip: 0,
         limit: FIRST_PAGE_SIZE,
         order: '-fields.createdDate',
-        'fields.createdDate[lte]': new Date(),
+        'fields.createdDate[lte]': formatDate({
+            dateObject: new Date(),
+            formatString: 'yyyy-MM-dd HH:mm:ss'
+          }),
     });
 
     const body = await res.data
