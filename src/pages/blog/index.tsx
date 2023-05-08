@@ -4,7 +4,7 @@ import Grid from '../../components/Grid';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { Entry } from 'contentful';
 import { HeadInterface } from '../../types/common/Head.types';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { Page } from '../../types/common/Page.types';
 import { fetchEntries } from '../../contentful';
 import PageTitle from '../../components/PageTitle';
@@ -16,6 +16,8 @@ import { Preview } from '../../components/ArticlePreview/ArticlePreview.types';
 import HomeNewsletter from '../../components/Newsletter/HomeNewsletter';
 import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types';
+import { ParsedUrlQuery } from 'querystring';
+import { mapLocale } from '../../lib/locales';
 
 interface BlogPageProps {
     body: Page,
@@ -86,11 +88,12 @@ const BlogPage: FC<BlogPageProps> = ({ body: { title, description, head }, artic
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext<ParsedUrlQuery>) => {
     const res = await fetchEntries({
         content_type: 'page',
         'fields.slug': 'blog',
         include: 2,
+        locale: mapLocale(context.locale),
     });
 
     const articlesRes = await fetchEntries({
@@ -103,6 +106,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             dateObject: new Date(),
             formatString: 'yyyy-MM-dd HH:mm:ss'
           }),
+        locale: mapLocale(context.locale),
     });
 
     const body = await res.data
