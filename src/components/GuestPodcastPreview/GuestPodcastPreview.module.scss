@@ -17,6 +17,10 @@
     font-size: 0;
     position: relative;
 
+    a {
+      display: inline-block;
+    }
+
     .EpisodeNo {
       position: absolute;
       left: gutters.$gutter;

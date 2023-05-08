@@ -17,11 +17,13 @@ interface PodcastContentProps {
   content: Document;
   podcastExcerpt?: Document;
   className?: string;
+  createdDate?: Date;
   file: Asset;
   title: string;
   podcastCover?: Asset;
   externalLink?: string;
   video?: string;
+  time?: number;
 }
 
 const DynamicPlayer = dynamic(
@@ -29,7 +31,7 @@ const DynamicPlayer = dynamic(
   { ssr: false }
 );
 
-const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, externalLink, video }: PodcastContentProps) => {
+const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, externalLink, video, createdDate, time }: PodcastContentProps) => {
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
@@ -85,6 +87,8 @@ const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, ext
       {file && <DynamicPlayer
         cover={podcastCover}
         title={title}
+        createdDate={createdDate}
+        time={time}
         description={file.fields.description as string}
         file={prepareFileUrl(file.fields.file.url as string)}
       />}

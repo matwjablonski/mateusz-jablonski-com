@@ -6,15 +6,20 @@ import { formatTime } from "../../utils/formatTime";
 import { Asset } from "contentful";
 import Image from "next/image";
 import prepareAssetUrl from "../../utils/prepareAssetUrl";
+import { convertMinutesToTimeObject } from '../../utils/formatTime'
+import ImagePlaceholder from '../ImagePlaceholder';
+import { useTranslations } from '../../hooks/useTranslations';
 
 interface PlayerProps {
     file: string;
     title: string;
     description: string;
     cover: Asset;
+    createdDate?: Date;
+    time?: number;
 }
 
- const Player = ({ file, title, description, cover }: PlayerProps) => {
+ const Player = ({ file, title, description, cover, createdDate, time }: PlayerProps) => {
     const wavesurferRef = useRef<any>();
     const [backgroundPosiiton, setBackgroundPosition] = useState(0);
     const [progress, setProgress] = useState(0);
@@ -23,6 +28,35 @@ interface PlayerProps {
     const [audioDuration, setAudioDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const player = useRef<HTMLDivElement>(null);
+    const { t } = useTranslations();
+
+    const formattedTime = () => {
+        const { minutes, hours } = convertMinutesToTimeObject(time);
+
+        let hoursTranslations = t.COMMON.HOUR;
+        let minutesTranslations = t.COMMON.MINUTE;
+
+        if (hours > 1 && hours < 5) {
+        hoursTranslations = t.COMMON.HOURS_2_4;
+        }
+
+        if (minutes > 1 && minutes < 5) {
+        minutesTranslations = t.COMMON.MINUTES_2_4;
+        }
+
+        if (hours >= 5) {
+        hoursTranslations = t.COMMON.HOURS;
+        }
+
+        if (minutes >= 5) {
+        minutesTranslations = t.COMMON.MINUTES;
+        }
+
+        const hoursString = hours ? `${hours} ${hoursTranslations}` : '';
+        const minutesString = minutes ? `${minutes} ${minutesTranslations}` : '';
+
+        return hoursString ? `${hoursString} ${minutesString}` : minutesString;
+    }
 
     useEffect(() => {
         if (player && player.current) {
@@ -83,11 +117,20 @@ interface PlayerProps {
                 {/* {
                     cover && <Image src={prepareAssetUrl(cover.fields.file.url)} width={200} height={200} alt=""/>
                 } */}
+                <ImagePlaceholder width={200} height={200} />
             </div>
             <div>
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.description}>{description}</p>
-                <button onClick={play}>Play / Pause</button>
+                <div className={styles.meta}>
+                    <div className={styles.actions}>
+                        <button onClick={play} className={styles.actionButton} aria-label="Play / Pause" />
+                    </div>
+                    <div>
+                        {createdDate} 
+                        <div>{formattedTime()}</div>
+                    </div>
+                </div>
                 <div className={styles.innerPlayer}>
                     {!isPlayerReady && <div className={styles.loadingAudio}>Trwa ładowanie pliku audio ({loadingProgress}%)</div>}
                     <div className={cx(styles.wave, isPlayerReady && styles.waveIsReady)} ref={player} style={{ backgroundPositionX: `${backgroundPosiiton}px`}}>

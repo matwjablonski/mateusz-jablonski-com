@@ -26,6 +26,7 @@ const Podcast: FunctionComponent<PodcastProps> = ({
   file,
   podcastCover,
   externalLink,
+  time,
   podcastTitle,
 }) => {
   const { t } = useTranslations();
@@ -45,12 +46,14 @@ const Podcast: FunctionComponent<PodcastProps> = ({
       <div className={styles.content}>
         <PostSidebar author={author && author[0].fields as Author} numberOfComments={numberOfComments} commentsBlockRef={commentsBlockRef}/>
         <PodcastContent
+          createdDate={createdDate}
           content={content}
           title={title}
           podcastExcerpt={podcastExcerpt}
           file={file}
           podcastCover={podcastCover}
           externalLink={externalLink}  
+          time={time}
         />
       </div>
       <PostShare />

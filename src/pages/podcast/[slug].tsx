@@ -54,6 +54,7 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             podcastCover={body.podcast.cover}
             externalLink={body.externalLink}
             video={body.video}
+            time={body.time}
           />
           {body.author && body.author.map(a => <PostAuthor key={a.fields.name as unknown as string} author={a.fields as Author}/>)}
             <div ref={commentsRef}>

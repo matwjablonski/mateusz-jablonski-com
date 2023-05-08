@@ -25,4 +25,5 @@ export interface PodcastProps {
     podcastExcerpt?: Document;
     podcastCover?: Asset;
     externalLink?: string;
+    time?: number;
 }
