@@ -1,21 +1,15 @@
 {
     "items": [
         {
-            "id": "vd23iblwdxp1b110",
-            "title": "HOME",
-            "url": "/",
-            "type": "link"
-        },
-        {
             "id": "lky2u5r60x2pvme3",
             "title": "BLOG",
             "url": "/blog",
             "type": "link"
         },
         {
-            "id": "tkfcf34gsrg2lt9h",
-            "title": "ABOUT",
-            "url": "/about",
+            "id": "bg501a1tp4nala73",
+            "title": "PODCAST",
+            "url": "/podcast",
             "type": "link"
         },
         {
@@ -23,11 +17,11 @@
             "title": "WORKSHOPS",
             "url": "/workshops",
             "type": "link"
-        },
+        }, 
         {
-            "id": "bg501a1tp4nala73",
-            "title": "PODCAST",
-            "url": "/podcast",
+            "id": "tkfcf34gsrg2lt9h",
+            "title": "ABOUT",
+            "url": "/about",
             "type": "link"
         },
         {
