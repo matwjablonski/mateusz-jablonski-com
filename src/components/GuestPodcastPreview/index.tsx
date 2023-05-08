@@ -8,6 +8,8 @@ import ExternalLink from '../ExternalLink';
 import styles from './GuestPodcastPreview.module.scss';
 import { convertMinutesToTimeObject } from '../../utils/formatTime';
 import { useTranslations } from '../../hooks/useTranslations';
+import EpisodeNumber from '../EpisodeNumber';
+import Link from 'next/link';
 
 type GuestPodcastPreview = {
   title: string;
@@ -49,22 +51,37 @@ const GuestPodcastPreview: FC<GuestPodcastPreview> = ({ title, createdDate, exce
 
     return hoursString ? `${hoursString} ${minutesString}` : minutesString;
   }
+
+  const imageContent = <>
+    <div className={styles.EpisodeNo}>
+      <EpisodeNumber episode={episode} />
+    </div>
+    {image && <Image src={prepareImageUrl(image.fields.file.url)} alt={title} width={250} height={250}/>}
+  </>
   
   return (
     <article className={styles.GuestPodcastPreview}>
       <div className={styles.Image}>
-        <ExternalLink href={externalLink}>
-          {image && <Image src={prepareImageUrl(image.fields.file.url)} alt={title} width={250} height={250}/>}
-        </ExternalLink>
+        {externalLink && <ExternalLink href={externalLink}>
+          {imageContent}
+        </ExternalLink>}
+        {!externalLink && <Link href={`/podcast/${slug}`}>
+          {imageContent}
+        </Link>}
       </div>
       <div className={styles.Content}>
         <div>
-          <h4 className={styles.Title}><strong>#{episode}</strong> {title}</h4>
+          {externalLink && <ExternalLink href={externalLink}>
+            <h4 className={styles.Title}>{title}</h4>
+          </ExternalLink>}
+          {!externalLink && <Link href={`/podcast/${slug}`}>
+            <h4 className={styles.Title}>{title}</h4>
+          </Link>}
           <time className={styles.Time}>{prepareTime()}</time>
           <p className={styles.Text}>{excerpt}</p>
         </div>
-        {externalLink && <Button.L pattern={ButtonType.PRIMARY} label="Słuchaj" href={externalLink} isExternal />}
-        {!externalLink && <Button.L pattern={ButtonType.PRIMARY} label="Słuchaj" href={`/podcast/${slug}`} />}
+        {externalLink && <Button.L pattern={ButtonType.PRIMARY} label={t.PODCAST.COMMON.LISTEN} href={externalLink} isExternal />}
+        {!externalLink && <Button.L pattern={ButtonType.PRIMARY} label={t.PODCAST.COMMON.LISTEN} href={`/podcast/${slug}`} />}
       </div>
     </article>
   )

@@ -136,6 +136,9 @@ const pl = {
     },
     GUEST_PODCASTS: {
       TITLE: 'Gościnne podcasty'
+    },
+    COMMON: {
+      LISTEN: 'Słuchaj'
     }
   },
 }
