@@ -10,6 +10,7 @@ export interface ArticleFeaturedImage {
 }
 
 export interface Article {
+    isTranslationReady?: boolean;
     head?: EntrySkeletonType<HeadInterface>;
     id: string;
     createdDate: Date;

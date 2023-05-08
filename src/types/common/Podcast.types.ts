@@ -13,6 +13,7 @@ export interface Podcast {
 }
 
 export interface PodcastEpisode {
+    isTranslationReady?: boolean;
     guestPodcast: boolean;
     title: string;
     createdDate: Date;

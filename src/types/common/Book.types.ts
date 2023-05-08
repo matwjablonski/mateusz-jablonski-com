@@ -11,6 +11,7 @@ export interface BookSeller {
 }
 
 export interface Book {
+    isTranslationReady?: boolean;
     id: string;
     title: string;
     createdDate: Date;

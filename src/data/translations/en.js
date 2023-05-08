@@ -11,6 +11,10 @@ const en = {
     MINUTES_2_4: 'minutes',
     MINUTES: 'minutes',
   },
+  NOT_TRANSLATED: {
+    TITLE: 'This page is available only in polish',
+    MESSAGE: 'I am working on the translation!',
+  },
   HEADER: {
     TITLE: 'Mateusz Jabłoński - Blog, programming, selfdevelopment',
   },

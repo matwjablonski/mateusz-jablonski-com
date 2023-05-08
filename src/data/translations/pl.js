@@ -11,6 +11,10 @@ const pl = {
     MINUTES_2_4: 'minuty',
     MINUTES: 'minut',
   },
+  NOT_TRANSLATED: {
+    TITLE: 'Ta strona dostępna jest tylko w języku angielskim',
+    MESSAGE: 'Aktualnie pracuję nad jej tłumaczeniem!',
+  },
   HEADER: {
     TITLE: 'Mateusz Jabłoński - Blog, programowanie, rozwój',
   },

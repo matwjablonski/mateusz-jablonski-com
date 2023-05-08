@@ -1,0 +1,45 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+
+.NotTranslated {
+  border-radius: 8px;
+  background: url('../../public/bg-nottranslated.svg') no-repeat;
+  background-size: cover;
+  padding: gutters.$gutter-bigger gutters.$gutter-big;
+  margin-bottom: gutters.$gutter-bigger;
+  position: relative;
+
+  .Title {
+    color: colors.$color-white;
+    margin: 0 0 (gutters.$gutter-small * 1.5);
+    font-weight: 500;
+    font-family: fonts.$font-headline;
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .Message {
+    margin: 0;
+    color: colors.$color-primary-100;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  .Close {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    top: gutters.$gutter;
+    right: gutters.$gutter;
+    height: 26px;
+    width: 26px;
+    background-color: transparent;
+    color: colors.$color-white;
+    font-family: fonts.$font-headline;
+    font-size: 20px;
+  }
+}

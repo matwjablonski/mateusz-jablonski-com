@@ -15,9 +15,10 @@ import PageNewsletter from '../../components/Newsletter/PageNewsletter';
 import CaptchaProvider from '../../providers/CaptchaProvider';
 import { mapLocale } from '../../lib/locales';
 import BuyCoffee from '../../components/BuyCoffee';
+import NotTranslated from '../../components/NotTranslated';
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
-  const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level } = body;
+  const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level, isTranslationReady } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
   return body ? (
@@ -25,6 +26,7 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
       <MainLayout head={head ? head.fields : {}}>
         <Grid>
           <Breadcrumbs />
+          {!isTranslationReady && <NotTranslated />} 
           <Post
             content={content}
             title={title}
