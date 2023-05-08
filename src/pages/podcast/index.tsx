@@ -71,7 +71,6 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                                     image={featuredImage}
                                 />
                             ))}
-                            Liczba odcinków: {podcast.episodes.length}
                         </SectionPodcast>
                     ))}
                 </div>

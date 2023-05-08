@@ -1,0 +1,28 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
+
+.AuthorSmallBox {
+  border-radius: 4px;
+  background-color: colors.$color-primary-100;
+  padding: (gutters.$gutter-small * 1.5) (gutters.$gutter-small * 1.5) (gutters.$gutter-small * 1.5) gutters.$gutter-small;
+  margin-right: gutters.$gutter;
+  color: colors.$color-primary;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: fonts.$font-headline;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    display: block;
+    background-image: url('../../public/icons/user.svg');
+    height: 24px;
+    width: 24px;
+    margin-right: 4px;
+  }    
+}

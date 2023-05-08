@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { Author } from '../../types/common/Author.types';
 import prepareAssetUrl from '../../utils/prepareAssetUrl';
+import AuthorSmallBox from '../AuthorSmallBox';
 import styles from './MyPodcastHeader.module.scss';
 
 type MyPodcastHeader = {
@@ -22,7 +23,7 @@ const MyPodcastHeader: FC<MyPodcastHeader> = ({ name, authors, cover, descriptio
         <div className={styles.TopContent}>
           <h3 className={styles.Title}>{name}</h3>
           <div className={styles.Authors}>
-            {authors.map(author => <p key={author.name}>{author.name}</p>)}
+            {authors.map(author => <AuthorSmallBox key={author.name} author={author.name} />)}
           </div>
         </div>
       </div>

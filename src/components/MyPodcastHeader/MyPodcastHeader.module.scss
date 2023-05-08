@@ -4,7 +4,7 @@
 
 .MyPodcastHeader {
   max-width: 750px;
-  margin: 0 auto;
+  margin: 0 auto gutters.$gutter-big;
   width: 100%;
 
   .Top {
@@ -31,7 +31,7 @@
     font-size: 40px;
     line-height: 1.25;
     font-family: fonts.$font-headline;
-    letter-spacing: -0.01;
+    letter-spacing: -0.01em;
     color: colors.$color-primary;
     font-weight: 500;
     margin: 0 0 gutters.$gutter-medium;
@@ -45,7 +45,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 1.4;
-    letter-spacing: -0.01;
+    letter-spacing: -0.01em;
     color: colors.$color-text;
+    margin: 0;
   }
 }

@@ -50,8 +50,8 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                 </div>
             </div>
             <div className={styles.btnsLine}>
-                <Button.L href="/" pattern={ButtonType.CLEAN} label={t.HOME.ALL_PODCASTS} />
-                <Button.L href="/" pattern={ButtonType.SECONDARY} label={t.HOME.WANT_TO_BE_A_GUEST} />
+                <Button.L href="/podcast" pattern={ButtonType.CLEAN} label={t.HOME.ALL_PODCASTS} />
+                <Button.L href="/contact" pattern={ButtonType.SECONDARY} label={t.HOME.WANT_TO_BE_A_GUEST} />
             </div>
         </div>
     )
