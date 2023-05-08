@@ -18,6 +18,7 @@ export interface PodcastEpisode {
     createdDate: Date;
     slug: string;
     excerpt: string;
+    season?: number;
     episode: number;
     content?: Document;
     featuredImage: Asset;

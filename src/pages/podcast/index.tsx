@@ -17,8 +17,9 @@ import Image from 'next/image';
 import prepareAssetUrl from '../../utils/prepareAssetUrl';
 import MyPodcastHeader from '../../components/MyPodcastHeader';
 import GuestPodcastPreview from '../../components/GuestPodcastPreview';
+import PodcastSeason from '../../components/PodcastSeason';
 
-type PodcastType = Partial<Podcast> & { episodes: PodcastEpisode[]};
+type PodcastType = Partial<Podcast> & { seasons: { [key: string | number ]: PodcastEpisode[] }};
 
 type Podcasts = PodcastType[];
 
@@ -57,18 +58,11 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                                 cover={podcast.cover}
                                 description={podcast.description}    
                             />
-                            {podcast.episodes.map(({ episode, createdDate, excerpt, slug, externalLink, time, featuredImage, title: episodeTitle}) => (
-                                <GuestPodcastPreview
-                                    key={`${episodeTitle}-${episode}`}
-                                    title={episodeTitle}
-                                    createdDate={createdDate}
-                                    excerpt={excerpt}
-                                    slug={slug}
-                                    episode={episode}
-                                    externalLink={externalLink}
-                                    time={time}
-                                    // author={author ? (author[0].fields.name as unknown as string) : ''}
-                                    image={featuredImage}
+                            {Object.keys(podcast.seasons).map((season) => (
+                                <PodcastSeason
+                                    key={`season-${season}`}
+                                    season={+season}
+                                    episodes={podcast.seasons[season]}
                                 />
                             ))}
                         </SectionPodcast>
@@ -131,16 +125,35 @@ export const getServerSideProps: GetServerSideProps = async () => {
             skip: 0,
             'fields.podcast.sys.contentType.sys.id': 'podcastChannel',
             'fields.podcast.fields.name': name,
-            select: 'fields.slug,fields.title,fields.createdDate,fields.episode,fields.author,fields.featuredImage,fields.time,fields.excerpt'
+            select: 'fields.slug,fields.season,fields.title,fields.createdDate,fields.episode,fields.author,fields.featuredImage,fields.time,fields.excerpt'
         });
 
-        const data = res.data.map(p => ({ 
-            ...p.fields,
-            createdDate: formatDate({
-                dateObject: p.fields?.createdDate,
-                formatString: 'dd MMMM yyyy'
-            }),
-        })).sort((a, b) => b.episode - a.episode);
+        const data = res.data
+            .map(p => ({ 
+                ...p.fields,
+                createdDate: formatDate({
+                    dateObject: p.fields?.createdDate,
+                    formatString: 'dd MMMM yyyy'
+                }),
+            }))
+            .sort((a, b) => b.episode - a.episode)
+            .reduce((acc, curr) => {
+                if (curr.season) {
+                    if (!(curr.season in acc)) {
+                        acc[curr.season] = [curr]
+                    } else {
+                        acc[curr.season].push(curr);
+                    }
+                } else {    
+                    if (!acc[0]) {
+                        acc[0] = [curr];
+                    } else {
+                        acc[0].push(curr);
+                    }
+                }
+
+                return acc;
+            }, {});
 
         return data;
     }
@@ -148,7 +161,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const podcasts: Podcasts = await Promise.all(podcastsChannelsRes.data.map(async p => ({
         ...p.fields,
         authors: (p.fields.authors ?? []).map(a => ({ ...a.fields })),
-        episodes: await fetchPodcast(p.fields.name),
+        seasons: await fetchPodcast(p.fields.name),
     })))
 
     const podcastGuest: PodcastEpisodeWithName[] = await podcastGuestRes.data.map(p => ({

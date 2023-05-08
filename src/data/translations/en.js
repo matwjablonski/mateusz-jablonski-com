@@ -128,7 +128,11 @@ const en = {
   },
   PODCAST: {
     MY_PODCASTS: {
-      TITLE: 'My podcasts'
+      TITLE: 'My podcasts',
+      META: {
+        SEASON: 'Season',
+        EPISODES: 'Episodes',
+      }
     },
     GUEST_PODCASTS: {
       TITLE: 'Guest podcasts'

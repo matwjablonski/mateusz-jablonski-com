@@ -1,0 +1,41 @@
+@use '../../styles/settings/colors';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/gutters';
+
+.PodcastSeason {
+  .Meta {
+    display: flex;
+    margin-bottom: gutters.$gutter;
+  }
+
+  .Season,
+  .Episodes {
+    margin: 0;
+    color: colors.$color-primary;
+    font-size: 0.8rem;
+    font-family: fonts.$font-headline;
+    font-weight: 400;
+  }
+
+  .Season {
+    margin-right: gutters.$gutter-small;
+    padding-right: (gutters.$gutter-small + 6);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 6px;
+      width: 6px;
+      border-radius: 100%;
+      background-color: colors.$color-primary;
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: auto;
+      bottom: 0;
+    }
+  }
+}
