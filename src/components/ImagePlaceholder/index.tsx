@@ -5,8 +5,8 @@ import image from '../../public/icons/image-solid.svg'
 import styles from './ImagePlaceholder.module.scss';
 
 type ImagePlaceholder = {
-    width: number;
-    height: number;
+    width: number | string;
+    height: number | string;
     withoutShadow?: boolean;
 }
 
