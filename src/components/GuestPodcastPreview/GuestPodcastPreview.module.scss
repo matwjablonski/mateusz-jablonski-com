@@ -48,8 +48,12 @@
     max-width: 600px;
   }
 
+  .TimesBox {
+    display: flex;
+  }
+
   .Time {
-    margin: 0 0 gutters.$gutter;
+    margin: 0 gutters.$gutter gutters.$gutter 0;
     font-size: 14px;
     color: colors.$color-text;
     font-family: fonts.$font-headline;
@@ -58,6 +62,10 @@
     line-height: 1.25;
     text-transform: uppercase;
     display: block;
+
+    span {
+      padding-left: gutters.$gutter;
+    }
   }
 
   .Text {

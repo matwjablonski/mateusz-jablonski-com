@@ -77,7 +77,10 @@ const GuestPodcastPreview: FC<GuestPodcastPreview> = ({ title, createdDate, exce
           {!externalLink && <Link href={`/podcast/${slug}`}>
             <h4 className={styles.Title}>{title}</h4>
           </Link>}
-          <time className={styles.Time}>{prepareTime()}</time>
+          <div className={styles.TimesBox}>
+            <time className={styles.Time}>{createdDate}<span>|</span></time>
+            <time className={styles.Time}>{prepareTime()}</time>
+          </div>
           <p className={styles.Text}>{excerpt}</p>
         </div>
         {externalLink && <Button.L pattern={ButtonType.PRIMARY} label={t.PODCAST.COMMON.LISTEN} href={externalLink} isExternal />}
