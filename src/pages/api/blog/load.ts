@@ -12,7 +12,10 @@ const load = async (req: NextApiRequest, res: NextApiResponse) => {
             skip: skip,
             limit: limit,
             order: '-fields.createdDate',
-            'fields.createdDate[lte]': new Date(),
+            'fields.createdDate[lte]': formatDate({
+                dateObject: new Date(),
+                formatString: 'yyyy-MM-dd HH:mm:ss'
+            }),
         });
 
         const articles = await articlesRes.data.map(p => ({
