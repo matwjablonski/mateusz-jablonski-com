@@ -25,6 +25,7 @@ interface PlayerProps {
     const [progress, setProgress] = useState(0);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [isPlayerReady, setIsPlayerReady] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [audioDuration, setAudioDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const player = useRef<HTMLDivElement>(null);
@@ -108,6 +109,7 @@ interface PlayerProps {
     }, [file]);
 
     const play = useCallback(() => {
+        setIsPlaying((prev) => !prev);
         wavesurferRef.current.playPause();
       }, []);
 
@@ -124,11 +126,12 @@ interface PlayerProps {
                 <p className={styles.description}>{description}</p>
                 <div className={styles.meta}>
                     <div className={styles.actions}>
-                        <button onClick={play} className={styles.actionButton} aria-label="Play / Pause" />
+                        {isPlaying}
+                        <button onClick={play} className={cx(styles.actionButton, !isPlaying ? styles.isPlaying : styles.isPaused)} aria-label="Play / Pause" />
                     </div>
                     <div>
-                        {createdDate} 
-                        <div>{formattedTime()}</div>
+                        <div className={styles.created}>{createdDate}</div>
+                        <div className={styles.durationInMinutes}>{formattedTime()}</div>
                     </div>
                 </div>
                 <div className={styles.innerPlayer}>

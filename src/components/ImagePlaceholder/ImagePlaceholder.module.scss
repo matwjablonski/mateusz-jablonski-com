@@ -9,4 +9,9 @@
     align-items: center;
     justify-content: center;
     margin-bottom: gutters.$gutter-medium;
+
+    &.noShadow {
+        margin-bottom: 0;
+        filter: none;
+    }
 }

@@ -26,6 +26,10 @@ import { HeadInterface } from '../types/common/Head.types';
 import { formatDate } from '../utils/formatDate';
 import { mapLocale } from '../lib/locales';
 import { useTranslations } from '../hooks/useTranslations';
+import externalSources from '../data/external-sources.json';
+
+const { podcasts: { piwnicait } } = externalSources;
+
 
 interface HomeData {
   title: string;
@@ -89,7 +93,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
             <Counter nextItemName={t.HOME.NEXT_PODCAST} days={nextPodcastInDays} />
           </TitleBarWithComponent>
           <LastPodcasts podcasts={podcasts} />
-          <ListenNow className={styles.listenNow} />
+          <ListenNow className={styles.listenNow} podcastName="Piwnica IT" links={piwnicait} />
         </section>
       </Grid>
         <section className={styles.coursesSection}>

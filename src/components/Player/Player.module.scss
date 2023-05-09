@@ -112,6 +112,27 @@
         justify-content: space-between;
     }
 
+    .created {
+        font-size: 12px;
+        text-align: right;
+        color: colors.$color-primary-700;
+        font-weight: 500;
+        font-family: fonts.$font-headline;
+        margin: 0 0 2px;
+        line-height: 1.25;
+    }
+
+    .durationInMinutes {
+        letter-spacing: -0.01em;
+        color: colors.$color-primary;
+        font-size: 16px;
+        font-family: fonts.$font-headline;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 1.25;
+        font-weight: 500;
+    }
+
     .actions {
         margin-bottom: gutters.$gutter-medium;
     }
@@ -137,8 +158,28 @@
             width: 56px;
             height: 48px;
             content: '';
-            background: url('../../public/icons/play.svg') no-repeat;
-            background-position: 13px 10px;
+        }
+
+        &.isPlaying {
+            &::after {
+                background: url('../../public/icons/play.svg') no-repeat;
+                background-position: 13px 10px;
+            }
+        }
+
+        &.isPaused {
+            background: colors.$color-primary-300;
+            transition: .7s;
+
+            &:hover {
+                background: colors.$color-primary-500;
+                transition: .7s;
+            }
+
+            &::after {
+                background: url('../../public/icons/pause.svg') no-repeat;
+                background-position: 13px 10px;
+            }
         }
 
         &:hover {

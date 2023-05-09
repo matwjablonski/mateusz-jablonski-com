@@ -10,6 +10,10 @@ export interface Podcast {
     website?: string;
     externalPodcast: boolean;
     authors?: Author[];
+    spotify?: string;
+    applepodcast?: string;
+    youtube?: string;
+    googlepodcasts?: string;
 }
 
 export interface PodcastEpisode {

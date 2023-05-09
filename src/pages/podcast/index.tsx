@@ -18,6 +18,7 @@ import prepareAssetUrl from '../../utils/prepareAssetUrl';
 import MyPodcastHeader from '../../components/MyPodcastHeader';
 import GuestPodcastPreview from '../../components/GuestPodcastPreview';
 import PodcastSeason from '../../components/PodcastSeason';
+import ListenNow from '../../components/ListenNow';
 
 type PodcastType = Partial<Podcast> & { seasons: { [key: string | number ]: PodcastEpisode[] }};
 
@@ -58,6 +59,19 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                                 cover={podcast.cover}
                                 description={podcast.description}    
                             />
+                            {(podcast.youtube || podcast.spotify || podcast.applepodcast || podcast.googlepodcasts) && (
+                                <ListenNow 
+                                    podcastName={podcast.name}
+                                    links={{
+                                        youtube: podcast.youtube,
+                                        spotify: podcast.spotify,
+                                        applepodcast: podcast.applepodcast,
+                                        googlepodcasts: podcast.googlepodcasts,
+                                    }}
+                                    className={podcastStyles.ListenNow}
+                                    isIdle
+                                />
+                            )}
                             {Object.keys(podcast.seasons).map((season) => (
                                 <PodcastSeason
                                     key={`season-${season}`}
@@ -98,7 +112,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         content_type: 'podcastChannel',
         'fields.externalPodcast': false,
         order: 'fields.name',
-        select: 'fields.name,fields.description,fields.cover,fields.authors',
+        select: 'fields.name,fields.description,fields.cover,fields.authors,fields.spotify,fields.youtube,fields.applepodcast,fields.googlepodcasts',
     });
 
     const podcastGuestRes = await fetchEntries({
