@@ -1,14 +1,19 @@
 {
   "items": [
     {
+      "id": "pon3pxjwato9ss3y",
+      "title": "DOCS",
+      "url": "/docs"
+    },
+    {
       "id": "245pdxjwato9s3yx",
       "title": "PRIVACY_POLICY",
-      "url": "/p/polityka-prywatnosci"
+      "url": "/docs/polityka-prywatnosci"
     },
     {
       "id": "e3apon3ps0eiihxd",
       "title": "COOKIES",
-      "url": "/p/cookies"
+      "url": "/docs/cookies"
     }
   ]
 }

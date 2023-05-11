@@ -41,6 +41,7 @@ const en = {
     MEMBER_AREA: 'Student zone',
     PRIVACY_POLICY: 'Privacy policy',
     COOKIES: 'About cookies',
+    DOCS: 'Documents',
   },
   HOME: {
     HERO: {
@@ -72,7 +73,8 @@ const en = {
     CONTACT: 'Contact',
     ABOUT: 'About',
     WORKSHOPS: 'Workshops',
-    BOOKS: 'Books'
+    BOOKS: 'Books',
+    DOCS: 'Documents',
   },
   ABOUT: {
     MOTIVATOR: {
@@ -145,6 +147,10 @@ const en = {
       LISTEN: 'Listen'
     }
   },
+  DOCS: {
+    TITLE: 'Documents',
+    DESCRIPTION: 'W poniższej tabeli znajdziesz informacje o dokumentach prawnych dostępnych w moim serwisie. Dokumenty te zawierają informacje o sposobie działania niniejszej witryny.',
+  }
 }
 
 export default en;

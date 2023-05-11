@@ -128,6 +128,16 @@ const commonConfig = withPlugins([
         source: '/course',
         destination: '/workshops',
         permanent: true
+      },
+      {
+        source: '/p/polityka-prywatnosci',
+        destination: '/docs/polityka-prywatnosci',
+        permanent: true
+      },
+      {
+        source: '/p/cookies',
+        destination: '/docs/cookies',
+        permanent: true
       }
     ]
   },

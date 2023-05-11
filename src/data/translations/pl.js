@@ -41,6 +41,7 @@ const pl = {
     MEMBER_AREA: 'Strefa kursanta',
     PRIVACY_POLICY: 'Polityka prywatności',
     COOKIES: 'Informacja o cookies',
+    DOCS: 'Dokumenty',
   },
   HOME: {
     HERO: {
@@ -72,7 +73,8 @@ const pl = {
     CONTACT: 'Kontakt',
     ABOUT: 'O mnie',
     WORKSHOPS: 'Warsztaty',
-    BOOKS: 'Książki'
+    BOOKS: 'Książki',
+    DOCS: 'Dokumenty',
   },
   ABOUT: {
     MOTIVATOR: {
@@ -145,6 +147,10 @@ const pl = {
       LISTEN: 'Słuchaj'
     }
   },
+  DOCS: {
+    TITLE: 'Dokumenty',
+    DESCRIPTION: 'W poniższej tabeli znajdziesz informacje o dokumentach prawnych dostępnych w moim serwisie. Dokumenty te zawierają informacje o sposobie działania niniejszej witryny.',
+  }
 }
 
 export default pl;

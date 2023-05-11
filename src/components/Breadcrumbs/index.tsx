@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import styles from './Breadcrumbs.module.scss';
 import { useTranslations } from '../../hooks/useTranslations';
 
-const Breadcrumbs = () => {
+type Breadcrumbs = {
+    pageTitle?: string;
+}
+
+const Breadcrumbs: FC<Breadcrumbs> = ({ pageTitle }) => {
     const { pathname } = useRouter();
     const { t } = useTranslations();
 
@@ -21,6 +25,8 @@ const Breadcrumbs = () => {
                 return  t.BREADCRUMBS.WORKSHOPS;
             case 'book':
                 return t.BREADCRUMBS.BOOKS;
+            case 'docs':
+                return t.BREADCRUMBS.DOCS;
             default:
                 return name;
         }
@@ -33,10 +39,13 @@ const Breadcrumbs = () => {
                         <Link href={`/${breadcrumb}`}>
                             { breadcrumb ? mapBreadcrumbs(breadcrumb) : 'Jabłoński' }
                         </Link>
-                        { i !== breadcrumbsItems.length - 1 && <span className={styles.separator}>/</span>}
+                        { (i !== breadcrumbsItems.length - 1 || pageTitle) && <span className={styles.separator}>/</span>}
                     </li>
                 )
             }
+            {pageTitle && <li className={styles.item} key={`breadcrumb-${pageTitle}`}>
+                {pageTitle}
+            </li>}
         </ul>
     );
 }
