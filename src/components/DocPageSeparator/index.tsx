@@ -1,12 +1,5 @@
 import styles from './DocPageSeparator.module.scss';
 
-const DocPageSeparator = () => {
-
-  return (
-    <div className={styles.DocPageSeparator}>
-      separator
-    </div>
-  )
-}
+const DocPageSeparator = () => <div className={styles.DocPageSeparator} />;
 
 export default DocPageSeparator;
