@@ -1,0 +1,9 @@
+@use '../../styles/settings/gutters';
+
+.DocPageSeparator {
+  margin-bottom: gutters.$gutter-bigger;
+  border-radius: 8px;
+  background: url('../../public/docs.webp') no-repeat;
+  background-size: cover;
+  min-height: 200px;
+}

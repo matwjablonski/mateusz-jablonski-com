@@ -162,4 +162,9 @@
         margin: (gutters.$gutter * 2) auto 0;
         max-width: 736px;
     }
+
+    li::marker {
+        color: colors.$color-text;
+        font-size: 22px;
+    }
 }

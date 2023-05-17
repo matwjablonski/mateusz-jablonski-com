@@ -10,6 +10,9 @@ import MainLayout from '../../layouts';
 import { mapLocale } from '../../lib/locales';
 import CaptchaProvider from '../../providers/CaptchaProvider';
 import { Page } from '../../types/common/Page.types';
+import Content from '../../components/Content';
+import styles from '../../styles/Docs.module.scss';
+import DocPageSeparator from '../../components/DocPageSeparator';
 
 type DocPage = {
   body: Page;
@@ -32,6 +35,10 @@ const DocPage: FC<DocPage> = ({ body }) => {
           <Breadcrumbs pageTitle={title} />
           {!isTranslationReady && <NotTranslated />}
           <PageTitle title={title} description={description} />
+          <DocPageSeparator />
+          <div className={styles.doc}>
+            <Content content={content} disableSummary />
+          </div>
         </Grid>
       </MainLayout>
     </CaptchaProvider>
