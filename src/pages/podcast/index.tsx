@@ -139,6 +139,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
             skip: 0,
             'fields.podcast.sys.contentType.sys.id': 'podcastChannel',
             'fields.podcast.fields.name': name,
+            'fields.createdDate[lte]': formatDate({
+                dateObject: new Date(),
+                formatString: 'yyyy-MM-dd HH:mm:ss'
+              }),
             select: 'fields.slug,fields.season,fields.title,fields.createdDate,fields.episode,fields.author,fields.featuredImage,fields.time,fields.excerpt'
         });
 
