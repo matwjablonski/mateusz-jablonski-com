@@ -129,10 +129,13 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         locale: mapLocale(locale),
     });
 
-    const lastContent = await lastContentRes.data.map(p => ({
-        type: p.sys.contentType.sys.id,
-        ...p.fields,
-    }));
+    const lastContent = await lastContentRes.data.map(p => {
+        console.log(p);
+        return ({
+            type: p.sys?.contentType?.sys?.id || '',
+            ...p.fields,
+        })
+    });
 
     const book = await booksRes.data.map(p => ({
         ...p.fields,

@@ -39,12 +39,20 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
   const items = res.items
     .map((item) => {
       if (item.sys.contentType.sys.id === 'article') {
-        const id = item.fields.featuredImage.sys.id;;
-        item.fields.featuredImage.fields = res.includes.Entry.find(entry => entry.sys.id === id)?.fields;
+        const id = item.fields.featuredImage?.sys.id;;
+        if (id) {
+          item.fields.featuredImage.fields = res.includes.Entry.find(entry => entry.sys.id === id)?.fields;
+        } else {
+          item.fields.featuredImage = null;
+        }
 
-        const imageId = item.fields.featuredImage.fields.image.sys.id;
+        const imageId = item.fields.featuredImage && item.fields.featuredImage.fields.image.sys.id;
 
-        item.fields.featuredImage.fields.image.fields = res.includes.Asset.find(asset => asset.sys.id === imageId)?.fields;
+        if (imageId) {
+          item.fields.featuredImage.fields.image.fields = res.includes.Asset.find(asset => asset.sys.id === imageId)?.fields;
+        } else {
+          item.fields.featuredImage = null;
+        }
       };
 
       if (item.sys.contentType.sys.id === 'book') {
