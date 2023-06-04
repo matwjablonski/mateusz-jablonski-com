@@ -43,7 +43,7 @@
     "react-hook-form": "^7.15.4",
     "react-i18next": "^11.8.5",
     "react-share": "^4.4.0",
-    "sass": "^1.32.6",
+    "sass": "^1.62.1",
     "sitemap": "^6.3.5",
     "ts-jest": "^27.0.3",
     "wavesurfer-react": "^2.2.2",
