@@ -47,7 +47,7 @@
     "sitemap": "^6.3.5",
     "ts-jest": "^27.0.3",
     "wavesurfer-react": "^2.2.2",
-    "wavesurfer.js": "^6.2.0",
+    "wavesurfer.js": "^6.6.3",
     "yaml": "^2.2.2",
     "yup": "^0.32.11"
   },
