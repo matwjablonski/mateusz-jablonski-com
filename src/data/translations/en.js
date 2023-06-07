@@ -11,6 +11,12 @@ const en = {
     MINUTES_2_4: 'minutes',
     MINUTES: 'minutes',
   },
+  COOKIES: {
+    TITLE: 'Cookies monster was here already!',
+    MESSAGE: 'My website uses "cookies". Detailed informations about it you can find in my %%cookies policy%%.',
+    ACCEPT: 'Accept',
+    NOT_ACCEPT: 'I\'m not okay with that',
+  },
   NOT_TRANSLATED: {
     TITLE: 'This page is available only in polish',
     MESSAGE: 'I am working on the translation!',

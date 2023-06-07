@@ -46,7 +46,7 @@ const L: FC<AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps> = memo(({ patte
     </Link>) : <>{createAnchorContent()}</>
 });
 
-const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, className, ...rest}) => {
+const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pattern, label = '', action, className, hideArrow, ...rest}) => {
   return (
       <button className={cx(styles.button, styles[pattern], className)} onClick={action} {...rest}>
         {pattern === ButtonType.BACK && (
@@ -55,17 +55,17 @@ const B: FC<ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps> = memo(({ pat
           </div>
         )}
         {label}
-        {pattern === ButtonType.CLEAN && (
+        {!hideArrow && pattern === ButtonType.CLEAN && (
           <div className={styles.arrow}>
             <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
           </div>
         )}
-        {pattern === ButtonType.SECONDARY && (
+        {!hideArrow && pattern === ButtonType.SECONDARY && (
           <div className={styles.arrow}>
             <Image src={arrow || '/icons/arrow.svg'} width={49} height={6} alt=""/>
           </div>
         )}
-        {(pattern === ButtonType.PRIMARY || pattern === ButtonType.LIGTHENED) && (
+        {(!hideArrow && pattern === ButtonType.PRIMARY || pattern === ButtonType.LIGTHENED) && (
           <div className={styles.arrow}>
             <Image src={arrowWhite || '/icons/arrow-white.svg'} width={38} height={6} alt=""/>
           </div>

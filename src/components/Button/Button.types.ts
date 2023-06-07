@@ -13,6 +13,7 @@ export interface ButtonProps {
   href?: string;
   label?: string;
   action?: () => void;
+  hideArrow?: boolean;
 }
 
 export interface LinkProps extends ButtonProps {

@@ -11,6 +11,12 @@ const pl = {
     MINUTES_2_4: 'minuty',
     MINUTES: 'minut',
   },
+  COOKIES: {
+    TITLE: 'Ciasteczkowy potwór już tu był!',
+    MESSAGE: 'Moja strona www wykorzystuje "ciasteczka". Szczegółowe informacje znajdziesz w mojej %%polityce zarządzania ciasteczkami%%.',
+    ACCEPT: 'Ok',
+    NOT_ACCEPT: 'Nie pasuje mi to',
+  },
   NOT_TRANSLATED: {
     TITLE: 'Ta strona dostępna jest tylko w języku angielskim',
     MESSAGE: 'Aktualnie pracuję nad jej tłumaczeniem!',
