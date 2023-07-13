@@ -225,6 +225,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   const podcasts = await podcastsRes.data.map(p => ({
     ...p.fields,
+    podcast: p.fields.podcast.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
       formatString: 'dd MMMM yyyy',

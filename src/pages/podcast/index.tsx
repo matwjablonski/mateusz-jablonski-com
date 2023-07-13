@@ -42,8 +42,6 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
 
     const { t } = useTranslations();
 
-    console.log(podcasts)
-
     return (
         <MainLayout head={head ? (head.fields as HeadInterface) : {}} hideOverflow>
             <Grid>
