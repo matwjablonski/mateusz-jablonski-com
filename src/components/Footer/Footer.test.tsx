@@ -3,6 +3,24 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Footer from './';
 
+jest.mock('next/router', () => require('next-router-mock'));
+jest.mock('../../hooks/useTranslations', () => ({
+  useTranslations: () => ({
+    translate: () => 'translated text',
+    t: {
+      FOOTER: {
+        SOCIAL_MEDIA: {
+          TITLE: 'Social media',
+        },
+        FUNDS_INFO: {
+          MESSAGE: 'Funds info',
+        },
+      },
+      MENU: {},
+    },
+  }),
+}));
+
 describe('Footer component', () => {
   afterEach(() => {
     jest.useRealTimers();
@@ -12,9 +30,12 @@ describe('Footer component', () => {
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(2021, 3, 1));
 
-    render(<Footer/>);
+    const { rerender } = render(<Footer />);
 
-    const copy = screen.getByText('© 2021 Woodpecker sp z o.o. All rights reserved');
+    const a = rerender(<Footer />);
+    console.log(a);
+
+    const copy = screen.getByText('© 2019 - 2021 Mateusz Jabłoński. All rights reserved');
     expect(copy).toBeVisible();
   });
 
@@ -22,9 +43,9 @@ describe('Footer component', () => {
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(2023, 3, 1));
 
-    render(<Footer/>);
+    render(<Footer />);
 
-    const copy = screen.getByText('© 2021 - 2023 Woodpecker sp z o.o. All rights reserved');
+    const copy = screen.getByText('© 2019 - 2023 Mateusz Jabłoński. All rights reserved');
     expect(copy).toBeVisible();
   });
 });

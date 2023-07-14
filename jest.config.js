@@ -2,12 +2,16 @@ module.exports = {
   // The root of your source code, typically /src
   // `<rootDir>` is a token Jest substitutes
   roots: ["<rootDir>/src"],
+  collectCoverage: true,
+  coverageProvider: 'v8',
   testEnvironment: 'jsdom',
 
   // Jest transformations -- this adds support for TypeScript
   // using ts-jest
   transform: {
+    "\\.[jt]sx?$": "babel-jest",
     "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
     ".+\\.(svg|css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
   },
 

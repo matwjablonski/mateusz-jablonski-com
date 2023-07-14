@@ -8,6 +8,7 @@ import ModalsPortal from '../Modal/ModalsPortal';
 import Modal from '../Modal/Modal';
 import CommentAddForm from '../CommentAddForm';
 import { useTranslations } from '../../hooks/useTranslations';
+import { formatAuthorName } from '../../utils/formatAuthorName';
 
 const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId, title }) => {
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
@@ -27,7 +28,7 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId, 
                                 <div className={styles.meta}>
                                     <UserAvatar email={comment?.email} />
                                     <div>
-                                        <h4 className={styles.author}>{comment.author || t.ARTICLE.COMMENTS.NO_NAME}</h4>
+                                        <h4 className={styles.author}>{formatAuthorName(comment.author) || t.ARTICLE.COMMENTS.NO_NAME}</h4>
                                         <span className={styles.date}>{comment.createdDate}</span>
                                     </div>
                                 </div>
