@@ -6,10 +6,16 @@
 .newsletterHome {
     background: colors.$color-primary;
     border-radius: 8px;
-    padding: gutters.$gutter-big;
-    margin-left: -(gutters.$gutter-big);
-    margin-right: -(gutters.$gutter-big);
+    padding: gutters.$gutter-medium;
+    margin-left: 0;
+    margin-right: 0;
     position: relative;
+
+    @include media.bp(md) {
+        margin-left: -(gutters.$gutter-big);
+        margin-right: -(gutters.$gutter-big);
+        padding: gutters.$gutter-big;
+    }
 
     &::after {
         content: '';
@@ -64,11 +70,20 @@
 
     .smallForm {
         display: flex;
+        flex-direction: column;
         max-width: 100%;
 
+        @include media.bp(sm) {
+            flex-direction: row;
+        }
+
         [class*="InputWrapper"] {
-            margin-bottom: 0;
-            margin-right: gutters.$gutter;
+            margin-bottom: gutters.$gutter;
+            
+            @include media.bp(sm) {
+                margin-right: gutters.$gutter;
+                margin-bottom: 0;
+            }
 
             input {
                 padding-top: 14px;
