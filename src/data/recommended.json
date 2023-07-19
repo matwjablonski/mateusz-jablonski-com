@@ -64,6 +64,11 @@
             "name": "Za Rubieżą. Historia i polityka",
             "image": "zarubieza.jpg",
             "source": "https://anchor.fm/miosz-szymaski2/"
+        },
+        {
+            "name": "CTO Talks",
+            "image": "ctotalks.jpg",
+            "source": "https://www.youtube.com/@cto-talks"
         }
     ]
 }
