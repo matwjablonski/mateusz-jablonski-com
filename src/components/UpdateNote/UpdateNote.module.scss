@@ -1,0 +1,32 @@
+@use '../../styles/settings/gutters';
+@use '../../styles/settings/fonts';
+@use '../../styles/settings/colors';
+@use '../../styles/settings/media';
+
+.UpdateNote {
+  .Card {
+    background-color: rgba(colors.$color-text-highlight, 0.7);
+    margin: 0;
+    display: inline-block;
+    padding: gutters.$gutter gutters.$gutter gutters.$gutter-small;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: colors.$color-primary-300;
+  }
+ 
+  .Content {
+    background-color: rgba(colors.$color-text-highlight, 0.5);
+    padding: gutters.$gutter-medium;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  
+}

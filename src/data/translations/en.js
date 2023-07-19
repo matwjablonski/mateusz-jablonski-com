@@ -112,6 +112,9 @@ const en = {
     },
     SOURCES: 'Sources',
     SHARE: 'Share this article:',
+    UPDATE_NOTE: {
+      TITLE: 'Updated on @1',
+    },
     AUTHOR: {
       TITLE: 'About the author',
       YOU_WILL_FIND_ME: 'You\'ll find me'
