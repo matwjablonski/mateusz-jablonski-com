@@ -112,11 +112,15 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const relatedToShow = [];
   let n = 0;
 
-  while (n < missingItemsForRelated) {
-    const randomId = generateRandomNumber(0, relatedRes.data.length - 1);
-    if (!relatedToShow.includes(randomId)) {
-      relatedToShow.push(randomId);
-      n++;
+  if (relatedRes.data.length <= missingItemsForRelated) {
+    relatedToShow.push(...Array.from({length: relatedRes.data.length},(_, k) => k));
+  } else {
+    while (n < Math.min(missingItemsForRelated, relatedRes.data.length)) {
+      const randomId = generateRandomNumber(0, relatedRes.data.length - 1);
+      if (!relatedToShow.includes(randomId)) {
+        relatedToShow.push(randomId);
+        n++;
+      }
     }
   }
 
