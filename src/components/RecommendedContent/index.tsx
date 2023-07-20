@@ -5,19 +5,21 @@ import ArticlePreview from "../ArticlePreview";
 import { Preview } from "../ArticlePreview/ArticlePreview.types";
 import BookBigPreview from "../BookBigPreview";
 import PodcastPreview from '../PodcastPreview';
-import styles from './LastContent.module.scss';
+import styles from './RecommendedContent.module.scss';
 
 export type ContentType = ((Article | Book | PodcastEpisode) & {type: string}); 
 
-interface LastContentProps {
+interface RecommendedContentProps {
     content: ContentType[];
+    title: string;
+    text: string;
 }
 
-const LastContent = ({ content }: LastContentProps) => {
+const RecommendedContent = ({ content, title, text }: RecommendedContentProps) => {
     return (
         <div className={styles.lastContent}>
-            <h2 className={styles.title}>Ostatnie materiały</h2>
-            <p className={styles.text}>Poniżej znajdziesz najnowsze przygotowane przeze mnie materiały. Zapraszam do zapoznania się z nimi. Mam nadzieję, że wyciągniesz z nich dużo wartości dla siebie.</p>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.text}>{text}</p>
             <div className={styles.dataRow}>
                 {
                     content.map(item => {
@@ -61,7 +63,7 @@ const LastContent = ({ content }: LastContentProps) => {
                                     key={`book-${podcastItem.title}`}
                                     title={podcastItem.title}
                                     slug={podcastItem.slug}
-                                    author={podcastItem.author[0].fields?.name as unknown as string || ''}
+                                    author={podcastItem.author && podcastItem.author[0].fields?.name as unknown as string || ''}
                                     excerpt={item.excerpt}
                                     image={podcastItem.featuredImage}
                                     createdDate={podcastItem.createdDate}
@@ -77,4 +79,4 @@ const LastContent = ({ content }: LastContentProps) => {
     );
 }
 
-export default LastContent;
+export default RecommendedContent;

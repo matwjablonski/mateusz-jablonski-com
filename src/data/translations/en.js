@@ -88,6 +88,10 @@ const en = {
       MESSAGE: 'my experience shows me how much I have been able to achieve, and also how much is still in front of me.',
     },
     DOTTED_TITLE: 'Space %%between characters%%',
+    LAST_CONTENT: {
+      TITLE: 'Latest content',
+      TEXT: 'Below you will find the latest materials I have prepared. I invite you to take a look at them. I hope you will draw a lot of value for yourself from them.',
+    },
   },
   ARTICLE: {
     SUMMARY: {
@@ -126,7 +130,11 @@ const en = {
       FIRST_MESSAGE: 'No one has posted anything yet, but that means.... you may be the first.',
       COMMENTING_TITLE: 'You comment on the article',
       BACK: 'Go back'
-    }
+    },
+    RELATED: {
+      TITLE: 'You may be interested in',
+      TEXT: 'lorem',
+    },
   },
   WORKSHOPS: {
     ACTIONS: {

@@ -88,6 +88,10 @@ const pl = {
       MESSAGE: 'moje doświadczenie pokazuje mi jak wiele udało mi się osiągnąć, a także jak dużo nadal przede mną.',
     },
     DOTTED_TITLE: 'Przestrzeń %%pomiędzy znakami%%',
+    LAST_CONTENT: {
+      TITLE: 'Ostatnie materiały',
+      TEXT: 'Poniżej znajdziesz najnowsze przygotowane przeze mnie materiały. Zapraszam do zapoznania się z nimi. Mam nadzieję, że wyciągniesz z nich dużo wartości dla siebie.',
+    },
   },
   ARTICLE: {
     SUMMARY: {
@@ -126,7 +130,11 @@ const pl = {
       FIRST_MESSAGE: 'Jeszcze nikt nic nie napisał, ale to znaczy że... możesz być pierwszy/pierwsza.',
       COMMENTING_TITLE: 'Komentujesz artykuł',
       BACK: 'Cofnij'
-    }
+    },
+    RELATED: {
+      TITLE: 'Powiązane treści',
+      TEXT: 'Jeżeli ten artykuł Cię zainteresował sprawdź inne materiały powiązane z nim tematycznie. Poniżej znajdziesz artykuły i odcinki podcastów mojego autorstwa oraz polecane przeze mnie książki, które rozszerzają ten temat.',
+    },
   },
   WORKSHOPS: {
     ACTIONS: {

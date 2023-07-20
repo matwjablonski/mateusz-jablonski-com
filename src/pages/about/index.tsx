@@ -21,7 +21,7 @@ import PageNewsletter from "../../components/Newsletter/PageNewsletter";
 import recommended from '../../data/recommended.json';
 import RecommendedPodcastTile from "../../components/RecommendedPodcastTile";
 import dynamic from "next/dynamic";
-import LastContent, { ContentType } from "../../components/LastContent";
+import RecommendedContent, { ContentType } from "../../components/RecommendedContent";
 import { getRecommendedChannels, Vlog } from "../../lib/google/youtube/getRecommendedChannels";
 import RecommendedVlogTile from "../../components/RecommendedVlogTile";
 import MyStory from "../../components/MyStory";
@@ -100,7 +100,11 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                     />
                 )}
                 <PageNewsletter />
-                <LastContent content={lastContent} />
+                <RecommendedContent
+                    content={lastContent}
+                    title={t.ABOUT.LAST_CONTENT.TITLE}
+                    text={t.ABOUT.LAST_CONTENT.TEXT}
+                />
             </Grid>
         </MainLayout>
     )
@@ -129,13 +133,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         locale: mapLocale(locale),
     });
 
-    const lastContent = await lastContentRes.data.map(p => {
-        console.log(p);
-        return ({
-            type: p.sys?.contentType?.sys?.id || '',
-            ...p.fields,
-        })
-    });
+    const lastContent = await lastContentRes.data.map(p => ({
+        type: p.sys?.contentType?.sys?.id || '',
+        ...p.fields,
+    }));
 
     const book = await booksRes.data.map(p => ({
         ...p.fields,

@@ -14,7 +14,6 @@ const Entry = ({node: {data: {target: {fields, sys}}}}) => {
     case 'updateNote':
       return <UpdateNote note={fields.note} date={fields.date} />
     default:
-      console.log('sys.contentType.sys.id', sys.contentType.sys.id);
       return null
   }
 }

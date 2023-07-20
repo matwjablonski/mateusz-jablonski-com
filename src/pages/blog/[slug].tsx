@@ -16,10 +16,17 @@ import CaptchaProvider from '../../providers/CaptchaProvider';
 import { mapLocale } from '../../lib/locales';
 import BuyCoffee from '../../components/BuyCoffee';
 import NotTranslated from '../../components/NotTranslated';
+import RecommendedContent from '../../components/RecommendedContent';
+import { useTranslations } from '../../hooks/useTranslations';
+import styles from '../../styles/Article.module.scss';
+import { generateRandomNumber } from '../../lib/random';
+
+const MAX_RELATED_CONTENT_ITEMS = 3;
 
 const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({body, comments}) => {
-  const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level, isTranslationReady } = body;
+  const { head, author, content, title, sources, summary, excerpt, featuredImage, createdDate, categoryName, level, isTranslationReady, related } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslations();
 
   return body ? (
     <CaptchaProvider>
@@ -45,6 +52,13 @@ const BlogPost: FunctionComponent<{ body: Article, comments: Comment[] }> = ({bo
           <div ref={commentsRef}>
             <CommentsList comments={comments} postId={body.id} title={title} />
           </div>
+          <div className={styles.relatedContentSection}>
+            <RecommendedContent
+              content={related}
+              title={t.ARTICLE.RELATED.TITLE}
+              text={t.ARTICLE.RELATED.TEXT}  
+            />
+          </div>
           <PageNewsletter />
         </Grid>
       </MainLayout>
@@ -61,12 +75,24 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     'fields.slug': slug,
     include: 2,
     locale: mapLocale(context.locale),
-  })
+  });
+
+  
+
+  const tagsObjects = res.data[0].metadata.tags;
+  const tags = tagsObjects.map(tag => tag.sys.id);
+
+  const relatedIdsAddedByUser = (res.data[0].fields.related || []).map(r => r.sys.id);
+  const idsToExcludeFromRelated = [...relatedIdsAddedByUser, res.data[0].sys.id];
 
   const body = await res.data
     .map(p => ({ 
       ...p.fields,
       id: p.sys.id,
+      related: (p.fields.related || []).map(r => ({
+        type: r.sys.contentType.sys.id,
+        ...r.fields
+      })),
       createdDate: formatDate({
         dateObject: p.fields.createdDate,
         formatString: 'dd MMMM yyyy',
@@ -74,6 +100,32 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       })
     }))
     .shift();
+
+  const missingItemsForRelated = MAX_RELATED_CONTENT_ITEMS - body.related.length;
+
+  const relatedRes = await fetchEntries({
+    include: 2,
+    'sys.id[nin]': idsToExcludeFromRelated.toString(),
+    'metadata.tags.sys.id[in]': tags.toString(),
+  });
+
+  const relatedToShow = [];
+  let n = 0;
+
+  while (n < missingItemsForRelated) {
+    const randomId = generateRandomNumber(0, relatedRes.data.length - 1);
+    if (!relatedToShow.includes(randomId)) {
+      relatedToShow.push(randomId);
+      n++;
+    }
+  }
+
+  const related = await relatedRes.data
+    .filter((_, i) => relatedToShow.includes(i))
+    .map(p => ({
+      type: p.sys.contentType.sys.id,
+      ...p.fields,
+    }));
 
   const commentsRes = await fetchEntries({
     content_type: 'comment',
@@ -96,7 +148,13 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 
   return {
     props: {
-      body,
+      body: {
+        ...body,
+        related: [
+          ...body.related,
+          ...related,
+        ]
+      },
       comments,
     }
   };

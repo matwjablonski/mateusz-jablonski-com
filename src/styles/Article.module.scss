@@ -1,0 +1,6 @@
+@use './settings/gutters';
+
+.relatedContentSection {
+  margin-bottom: gutters.$gutter-biggest;
+}
+

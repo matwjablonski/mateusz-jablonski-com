@@ -2,6 +2,7 @@ import { Asset, EntrySkeletonType } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 import { HeadInterface } from "./Head.types";
 import { Author } from "./Author.types";
+import { ContentType } from '../../components/RecommendedContent';
 
 export interface ArticleFeaturedImage {
     image: Asset;
@@ -25,4 +26,6 @@ export interface Article {
     categoryName?: string;
     level?: string;
     externalSource?: string;
+    related?: ContentType[];
+    tags?: string[];
 }
