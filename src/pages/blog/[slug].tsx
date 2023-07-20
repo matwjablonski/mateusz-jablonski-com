@@ -91,7 +91,12 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       id: p.sys.id,
       related: (p.fields.related || []).map(r => ({
         type: r.sys.contentType.sys.id,
-        ...r.fields
+        ...r.fields,
+        createdDate: formatDate({
+          dateObject: r.fields.createdDate,
+          formatString: 'dd MMMM yyyy',
+          locale: context.locale,
+        }),
       })),
       createdDate: formatDate({
         dateObject: p.fields.createdDate,
@@ -129,6 +134,11 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     .map(p => ({
       type: p.sys.contentType.sys.id,
       ...p.fields,
+      createdDate: formatDate({
+        dateObject: p.fields.createdDate,
+        formatString: 'dd MMMM yyyy',
+        locale: context.locale,
+      }),
     }));
 
   const commentsRes = await fetchEntries({
