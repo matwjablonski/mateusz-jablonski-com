@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import cx from 'classnames';
 import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
@@ -19,6 +19,7 @@ interface PodcastContentProps {
   className?: string;
   createdDate?: Date;
   file: Asset;
+  fileUrl?: string;
   title: string;
   podcastCover?: Asset;
   externalLink?: string;
@@ -31,7 +32,20 @@ const DynamicPlayer = dynamic(
   { ssr: false }
 );
 
-const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, externalLink, video, createdDate, time }: PodcastContentProps) => {
+const PodcastContent = ({content, title, file, fileUrl, podcastCover, externalLink, video, createdDate, time }: PodcastContentProps) => {
+  const fileUrlToLoad = useMemo(() => {
+    if (file) {
+      return prepareFileUrl(file?.fields?.file?.url as string);
+    }
+
+    if (fileUrl) {
+      return `/api/podcast/external?source=${fileUrl}`;
+    }
+
+    return null;
+
+  }, [file, fileUrl]); 
+  
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
@@ -73,7 +87,7 @@ const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, ext
 
   return (
     <div className={styles.content}>
-      {externalLink && <>
+      {(externalLink && !fileUrl) && <>
         <div className={styles.buttonExternal}>
           {podcastCover && <div className={styles.buttonExternalCover}>
             <Image src={prepareAssetUrl(podcastCover.fields.file.url as string)} width={200} height={200} alt="" />
@@ -84,13 +98,13 @@ const PodcastContent = ({content, title, file, podcastExcerpt, podcastCover, ext
           </div>
         </div>
       </>}
-      {file && <DynamicPlayer
+      {(fileUrlToLoad) && <DynamicPlayer
         cover={podcastCover}
         title={title}
         createdDate={createdDate}
         time={time}
-        description={file.fields.description as string}
-        file={prepareFileUrl(file.fields.file.url as string)}
+        description={file?.fields?.description as string || title}
+        file={fileUrlToLoad}
       />}
       <div className={styles.dots}></div>
       {video && <>

@@ -28,6 +28,7 @@ export interface PodcastEpisode {
     content?: Document;
     featuredImage: Asset;
     file?: Asset;
+    fileUrl?: string;
     time?: number;
     video?: string;
     head?: Entry<EntrySkeletonType<HeadInterface>>;

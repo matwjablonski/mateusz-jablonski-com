@@ -24,6 +24,7 @@ const Podcast: FunctionComponent<PodcastProps> = ({
   createdDate,
   episode,
   file,
+  fileUrl,
   podcastCover,
   externalLink,
   time,
@@ -51,6 +52,7 @@ const Podcast: FunctionComponent<PodcastProps> = ({
           title={title}
           podcastExcerpt={podcastExcerpt}
           file={file}
+          fileUrl={fileUrl}
           podcastCover={podcastCover}
           externalLink={externalLink}  
           time={time}

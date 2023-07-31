@@ -20,7 +20,7 @@ const MyPodcastHeader: FC<MyPodcastHeader> = ({ name, authors, cover, descriptio
       <div className={styles.Top}>
         <div className={styles.CoverWrapper}>
           {!cover && <ImagePlaceholder width={250} height={250} withoutShadow />}
-          {cover && <Image src={prepareAssetUrl(cover?.fields.file.url)} alt={name} width={250} height={250}/>}
+          {cover && <Image src={prepareAssetUrl(cover?.fields.file.url as string)} alt={name} width={250} height={250}/>}
         </div>
         <div className={styles.TopContent}>
           <h3 className={styles.Title}>{name}</h3>

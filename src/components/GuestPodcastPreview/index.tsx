@@ -56,7 +56,7 @@ const GuestPodcastPreview: FC<GuestPodcastPreview> = ({ title, createdDate, exce
     <div className={styles.EpisodeNo}>
       <EpisodeNumber episode={episode} />
     </div>
-    {image && <Image src={prepareImageUrl(image.fields.file.url)} alt={title} width={250} height={250}/>}
+    {image && <Image src={prepareImageUrl(image?.fields?.file?.url as string)} alt={title} width={250} height={250}/>}
   </>
   
   return (

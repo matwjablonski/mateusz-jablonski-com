@@ -47,6 +47,7 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             commentsBlockRef={commentsRef}
             author={body.author}
             file={body.file}
+            fileUrl={body.fileUrl}
             episode={body.episode}
             createdDate={body.createdDate}
             podcastTitle={body.podcast.name}

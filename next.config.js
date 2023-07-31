@@ -25,6 +25,7 @@ const commonConfig = withPlugins([
       'lh3.googleusercontent.com',
       'yt3.ggpht.com',
       'yt3.googleusercontent.com',
+      'woodpecker.pl',
     ],
   },
   async redirects() {

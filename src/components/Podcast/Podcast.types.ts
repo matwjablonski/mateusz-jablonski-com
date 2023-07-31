@@ -20,6 +20,7 @@ export interface PodcastProps {
     level?: string;
     recommendedBook?: EntrySkeletonType<Book>;
     file?: Asset;
+    fileUrl?: string;
     video?: string;
     podcastTitle?: string;
     podcastExcerpt?: Document;
