@@ -14,4 +14,12 @@ describe('prepareAssetUrl', () => {
 
     expect(result).toBe(`https://${testedUrl}`);
   });
+
+  it('should add https before url and remove unnecessary leading characters', () => {
+    const testedUrl = '//abc.pl';
+
+    const result = prepareAssetUrl(testedUrl);
+
+    expect(result).toBe(`https://abc.pl`);
+  })
 });
