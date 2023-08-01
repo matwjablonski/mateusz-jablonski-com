@@ -38,13 +38,13 @@ const PodcastContent = ({content, title, file, fileUrl, podcastCover, externalLi
       return prepareFileUrl(file?.fields?.file?.url as string);
     }
 
-    if (fileUrl) {
-      return `/api/podcast/external?source=${fileUrl}`;
-    }
+    // if (fileUrl) {
+    //   return `/api/podcast/external?source=${fileUrl}`;
+    // }
 
     return null;
 
-  }, [file, fileUrl]); 
+  }, [file]); 
   
   const options = {
     renderNode: {
@@ -87,7 +87,7 @@ const PodcastContent = ({content, title, file, fileUrl, podcastCover, externalLi
 
   return (
     <div className={styles.content}>
-      {(externalLink && !fileUrl) && <>
+      {(externalLink) && <>
         <div className={styles.buttonExternal}>
           {podcastCover && <div className={styles.buttonExternalCover}>
             <Image src={prepareAssetUrl(podcastCover.fields.file.url as string)} width={200} height={200} alt="" />
