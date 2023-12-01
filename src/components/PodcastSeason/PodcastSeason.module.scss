@@ -3,6 +3,10 @@
 @use '../../styles/settings/gutters';
 
 .PodcastSeason {
+  &:not(:last-child) {
+    margin-bottom: gutters.$gutter-big;
+  }
+
   .Meta {
     display: flex;
     margin-bottom: gutters.$gutter;

@@ -70,7 +70,7 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                                     isIdle
                                 />
                             )}
-                            {Object.keys(podcast.seasons).map((season) => (
+                            {Object.keys(podcast.seasons).reverse().map((season) => (
                                 <PodcastSeason
                                     key={`season-${season}`}
                                     season={+season}

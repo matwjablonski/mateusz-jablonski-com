@@ -12,13 +12,13 @@ const PodcastCover: FunctionComponent<PodcastCoverProps> = ({
   const { t } = useTranslation();
   return (
     <figure className={cx(styles.wrapper)}>
-      <Image 
+      {image && <Image 
         src={prepareImageUrl(image?.fields.file.url as string)}
         width={1147}
         height={460}
         alt={`${image.fields.title} ${t('PAGES.POST.COVER_THUMBNAIL.BY_WHOM')}`}
         className={styles.image}
-      />
+      />}
     </figure>
   );
 };
