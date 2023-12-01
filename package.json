@@ -35,7 +35,7 @@
     "jest": "^27.0.6",
     "jest-transform-stub": "^2.0.0",
     "md5": "^2.3.0",
-    "next": "^13.2.4",
+    "next": "^13.5.4",
     "next-compose-plugins": "^2.2.1",
     "next-fonts": "^1.5.1",
     "next-router-mock": "^0.9.7",
