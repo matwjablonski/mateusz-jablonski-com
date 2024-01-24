@@ -25,7 +25,7 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         featuredImage={first.featuredImage}
                         episode={first.episode}
                         excerpt={first.excerpt}
-                        podcastTitle={first.podcast.name}
+                        podcastTitle={first.podcast.fields.name}
                     />
                 </div>
                 <div className={styles.column}>
@@ -45,7 +45,7 @@ const LastPodcasts: FunctionComponent<LastPodcastsProps> = ({ podcasts }) => {
                         featuredImage={featuredImage}
                         episode={episode}
                         excerpt={excerpt}
-                        podcastTitle={podcast.name}
+                        podcastTitle={podcast.fields.name}
                     />)}
                 </div>
             </div>
