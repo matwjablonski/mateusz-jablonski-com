@@ -50,20 +50,4 @@
     right: 0;
     top: 15%;
     z-index: 9;
-
-    .langSwitcherButton {
-        background-color: colors.$color-primary-900;
-        border-top-left-radius: global.$border-radius;
-        border-bottom-left-radius: global.$border-radius;
-        padding: gutters.$gutter;
-        font-weight: 700;
-        color: colors.$color-white;
-        transition: global.$timing-core;
-
-        &:hover {
-            background-color: colors.$color-primary-700;
-            padding-right: gutters.$gutter * 2;
-            transition: global.$timing-core;
-        }
-    }
 }

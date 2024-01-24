@@ -13,9 +13,9 @@ interface WorkshopsPageProps {
 
 const WorkshopsPage: FC<WorkshopsPageProps> = () => {
     return (
-        <MainLayout head={{}} hideOverflow>
+        <MainLayout head={{}} hideOverflow dark>
             <Grid>
-                <Breadcrumbs />
+                <Breadcrumbs dark />
                 <PageTitle title="Warsztaty" description="W przygotowaniu"/>
             </Grid>
         </MainLayout>

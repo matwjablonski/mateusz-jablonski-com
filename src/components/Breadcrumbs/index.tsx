@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import styles from './Breadcrumbs.module.scss';
 import { useTranslations } from '../../hooks/useTranslations';
+import { BreadcrumbsList, Item, Separator } from './ui';
 
 type Breadcrumbs = {
     pageTitle?: string;
+    dark?: boolean;
 }
 
-const Breadcrumbs: FC<Breadcrumbs> = ({ pageTitle }) => {
+const Breadcrumbs: FC<Breadcrumbs> = ({ pageTitle, dark}) => {
     const { pathname } = useRouter();
     const { t } = useTranslations();
 
@@ -33,20 +34,20 @@ const Breadcrumbs: FC<Breadcrumbs> = ({ pageTitle }) => {
     }
 
     return (
-        <ul className={styles.breadcrumbs}>
+        <BreadcrumbsList>
             {
-                breadcrumbsItems.map((breadcrumb, i) => <li className={styles.item} key={`breadcrumb-${breadcrumb}`}>
+                breadcrumbsItems.map((breadcrumb, i) => <Item key={`breadcrumb-${breadcrumb}`} reverse={dark}>
                         <Link href={`/${breadcrumb}`}>
                             { breadcrumb ? mapBreadcrumbs(breadcrumb) : 'Jabłoński' }
                         </Link>
-                        { (i !== breadcrumbsItems.length - 1 || pageTitle) && <span className={styles.separator}>/</span>}
-                    </li>
+                        { (i !== breadcrumbsItems.length - 1 || pageTitle) && <Separator>/</Separator>}
+                    </Item>
                 )
             }
-            {pageTitle && <li className={styles.item} key={`breadcrumb-${pageTitle}`}>
+            {pageTitle && <Item key={`breadcrumb-${pageTitle}`} reverse={dark}>
                 {pageTitle}
-            </li>}
-        </ul>
+            </Item>}
+        </BreadcrumbsList>
     );
 }
 
