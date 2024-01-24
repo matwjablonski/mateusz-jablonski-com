@@ -35,10 +35,10 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
         <Grid>
           <Breadcrumbs />
           <PodcastComponent
-            applepodcast={body.podcast.fields.applepodcast}
+            applepodcast={body.podcast.fields?.applepodcast}
             spotify={body.podcast.fields.spotify}
-            googlepodcast={body.podcast.fields.googlepodcasts}
-            youtube={body.podcast.fields.youtube}
+            googlepodcast={body.podcast.fields?.googlepodcasts}
+            youtube={body.podcast.fields?.youtube}
             content={body.content}
             title={body.title}
             excerpt={body.excerpt}
@@ -50,9 +50,9 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             fileUrl={body.fileUrl}
             episode={body.episode}
             createdDate={body.createdDate}
-            podcastTitle={body.podcast.fields.name}
+            podcastTitle={body.podcast.fields?.name}
             podcastExcerpt={body.podcastExcerpt}
-            podcastCover={body.podcast.fields.cover}
+            podcastCover={body.podcast.fields?.cover}
             externalLink={body.externalLink}
             video={body.video}
             time={body.time}

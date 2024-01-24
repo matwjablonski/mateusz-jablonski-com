@@ -67,7 +67,7 @@ const RecommendedContent = ({ content, title, text }: RecommendedContentProps) =
                                     excerpt={item.excerpt}
                                     image={podcastItem.featuredImage}
                                     createdDate={podcastItem.createdDate}
-                                    podcastName={podcastItem.podcast.fields.name}
+                                    podcastName={podcastItem.podcast.fields?.name}
                                     showContentType
                                 />
                             );
