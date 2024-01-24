@@ -2,67 +2,21 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/gutters';
 
-.player {
+.Player {
     position: relative;
     display: flex;
+    width: 100%;
 
-    .cover {
-        flex: 0 0 200px;
-        margin-right: gutters.$gutter-medium;
-
-        img {
-            border-radius: 4px;
-        }
+    .PlayerOuter {
+        flex: 1 0 100%;
     }
 
-    .title {
-        font-size: 24px;
-        font-family: fonts.$font-headline;
-        letter-spacing: -0.01em;
-        line-height: 1.25;
-        margin: 0 0 gutters.$gutter;
-    }
-
-    .description {
-        font-size: 14px;
-        line-height: 1.4;
-        letter-spacing: -0.01em;
-        color: colors.$color-text;
-        margin: 0 0 gutters.$gutter-medium;
-    }
-
-    .innerPlayer {
+    .InnerPlayer {
+        margin-top: gutters.$gutter;
         position: relative;
     }
-    
-    .loadingAudio {
-        font-family: fonts.$font-headline;
-        color: colors.$color-primary-500;
-        position: absolute;
-        left: 0;
-        top: 30px;
-        text-transform: uppercase;
-        font-size: 18px;
-    }
 
-    .times {
-        display: flex;
-        justify-content: space-between;
-        margin: gutters.$gutter 0;
-    }
-
-    .time {
-        font-family: fonts.$font-headline;
-        font-size: 12px;
-        line-height: 1.25;
-        color: colors.$color-primary-300;
-    }
-
-    .currentTime {
-        color: colors.$color-primary-500;
-    }
-
-    .wave {
+    .Wave {
         height: 65px;
         overflow: hidden;
         position: relative;
@@ -70,7 +24,7 @@
         background-repeat: no-repeat;
         background-position-y: 30px;
 
-        &.waveIsReady {
+        &.WaveIsReady {
             &::before {
                 display: block;
                 content: "";
@@ -78,11 +32,11 @@
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                background: colors.$color-primary-300;
+                background: colors.$color-white;
                 height: 2px;
             }
     
-            .bottomProgressBar {
+            .BottomProgressBar {
                 background: colors.$color-primary-500;
                 width: 20%;
                 z-index: 2;
@@ -104,87 +58,6 @@
                     z-index: -1;
                 }
             }
-        }
-    }
-
-    .meta {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .created {
-        font-size: 12px;
-        text-align: right;
-        color: colors.$color-primary-700;
-        font-weight: 500;
-        font-family: fonts.$font-headline;
-        margin: 0 0 2px;
-        line-height: 1.25;
-    }
-
-    .durationInMinutes {
-        letter-spacing: -0.01em;
-        color: colors.$color-primary;
-        font-size: 16px;
-        font-family: fonts.$font-headline;
-        text-align: right;
-        text-transform: uppercase;
-        line-height: 1.25;
-        font-weight: 500;
-    }
-
-    .actions {
-        margin-bottom: gutters.$gutter-medium;
-    }
-
-    .actionButton {
-        appearance: none;
-        border: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(90.1deg, colors.$color-primary-500 0.08%, colors.$color-primary-300 99.21%);
-        width: 56px;
-        height: 48px;
-        border-radius: 4px;
-        margin: 0;
-        padding: 0;
-        transition: .7s;
-        cursor: pointer;
-        position: relative;
-
-        &::after {
-            display: block;
-            width: 56px;
-            height: 48px;
-            content: '';
-        }
-
-        &.isPlaying {
-            &::after {
-                background: url('../../public/icons/play.svg') no-repeat;
-                background-position: 13px 10px;
-            }
-        }
-
-        &.isPaused {
-            background: colors.$color-primary-300;
-            transition: .7s;
-
-            &:hover {
-                background: colors.$color-primary-500;
-                transition: .7s;
-            }
-
-            &::after {
-                background: url('../../public/icons/pause.svg') no-repeat;
-                background-position: 13px 10px;
-            }
-        }
-
-        &:hover {
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90.1deg, #0136F8 0.08%, #14A5FF 67.71%, #14D5FF 99.21%);
-            transition: .7s;
         }
     }
 }

@@ -4,6 +4,7 @@ const pl = {
     TOMORROW: 'jutro',
     DONT_KNOW: 'nie wiem',
     DAYS: 'dni',
+    HOUR_SHORT: 'g',
     HOUR: 'godzina',
     HOURS_2_4: 'godziny',
     HOURS: 'godzin',
@@ -158,11 +159,20 @@ const pl = {
       }
     },
     GUEST_PODCASTS: {
-      TITLE: 'Gościnne podcasty'
+      TITLE: 'Gościnne podcasty',
     },
     COMMON: {
-      LISTEN: 'Słuchaj'
-    }
+      LISTEN: 'Słuchaj',
+      SOURCES_TITLE_DOUBLE: 'Nasz podcast znajdziesz',
+      AUTHOR: 'Autor: @1',
+      COMMENTS: 'Komentarze',
+      READ_MORE: 'Czytaj więcej',
+      TRANSCRIPTION: 'Transkrypcja',
+    },
+    PLAYER: {
+      LOADING_FILE: 'Trwa ładowanie pliku audio',
+      PLAY_PAUSE: 'Play / Pause',
+    },
   },
   DOCS: {
     TITLE: 'Dokumenty',

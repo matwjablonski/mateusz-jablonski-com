@@ -3,42 +3,40 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/media';
 
-.wrapper {
-  .title {
-    margin-bottom: gutters.$gutter-medium;
-    font-size: 32px;
-    margin-bottom: gutters.$gutter-medium;
-  }
+.title {
+  margin-bottom: gutters.$gutter-medium;
+  font-size: 32px;
+  margin-bottom: gutters.$gutter-medium;
+}
 
-  .excerpt {
-    margin-bottom: gutters.$gutter-big;
+.excerpt {
+  margin-bottom: gutters.$gutter-big;
 
-    p {
-      color: colors.$color-primary-700;
-      font-size: 24px;
-      line-height: 1.4;
-      letter-spacing: -0.01em;
-      max-width: 930px;
-      font-weight: 400;
+  p {
+    color: colors.$color-primary-700;
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    max-width: 930px;
+    font-weight: 400;
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
+}
 
-  .content {
-    display: flex;
-    align-items: flex-start;
-  }
+.content {
+  display: flex;
+  align-items: flex-start;
+}
 
-  .metabar {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: gutters.$gutter-bigger;
+.metabar {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: gutters.$gutter-bigger;
 
-    @include media.bp(sm) {
-      flex-direction: row;
-    }
+  @include media.bp(sm) {
+    flex-direction: row;
   }
 }

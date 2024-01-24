@@ -5,6 +5,7 @@ const en = {
     DONT_KNOW: 'I don\'t know',
     DAYS: 'days',
     HOUR: 'hour',
+    HOUR_SHORT: 'h',
     HOURS_2_4: 'hours',
     HOURS: 'hours',
     MINUTE: 'minute',
@@ -158,11 +159,20 @@ const en = {
       }
     },
     GUEST_PODCASTS: {
-      TITLE: 'Guest podcasts'
+      TITLE: 'Guest podcasts',
     },
     COMMON: {
-      LISTEN: 'Listen'
-    }
+      LISTEN: 'Listen',
+      SOURCES_TITLE_DOUBLE: 'You can find our podcast',
+      AUTHOR: 'Author: @1',
+      COMMENTS: 'Comments',
+      READ_MORE: 'Read more',
+      TRANSCRIPTION: 'Transcription',
+    },
+    PLAYER: {
+      LOADING_FILE: 'Audio file loading in progress',
+      PLAY_PAUSE: 'Play / Pause',
+    },
   },
   DOCS: {
     TITLE: 'Documents',

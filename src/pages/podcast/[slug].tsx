@@ -24,21 +24,21 @@ interface SinglePodcastPageProps {
     comments: Comment[];
 }
 
-const DynamicPlayer = dynamic(
-  () => import('../../components/Player'),
-  { ssr: false }
-);
-
 const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
   const { head } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
+  console.log('body', body.podcast.fields);
   return body ? (
     <CaptchaProvider>
       <MainLayout head={head ? (head.fields as HeadInterface) : {}}>
         <Grid>
           <Breadcrumbs />
           <PodcastComponent
+            applepodcast={body.podcast.fields.applepodcast}
+            spotify={body.podcast.fields.spotify}
+            googlepodcast={body.podcast.fields.googlepodcasts}
+            youtube={body.podcast.fields.youtube}
             content={body.content}
             title={body.title}
             excerpt={body.excerpt}
@@ -50,18 +50,17 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             fileUrl={body.fileUrl}
             episode={body.episode}
             createdDate={body.createdDate}
-            podcastTitle={body.podcast.name}
+            podcastTitle={body.podcast.fields.name}
             podcastExcerpt={body.podcastExcerpt}
-            podcastCover={body.podcast.cover}
+            podcastCover={body.podcast.fields.cover}
             externalLink={body.externalLink}
             video={body.video}
             time={body.time}
           />
-          {body.author && body.author.map(a => <PostAuthor key={a.fields.name as unknown as string} author={a.fields as Author}/>)}
-            <div ref={commentsRef}>
-              <CommentsList comments={comments} postId={body.id} title={body.title} />
-            </div>
-            <PageNewsletter />
+          <div ref={commentsRef}>
+            <CommentsList comments={comments} postId={body.id} title={body.title} />
+          </div>
+          <PageNewsletter />
         </Grid>
       </MainLayout>
     </CaptchaProvider>
@@ -83,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       id: p.sys.id,
       createdDate: formatDate({
         dateObject: p.fields.createdDate,
-        formatString: 'dd MMMM yyyy',
+        formatString: 'dd.MM.yyyy',
         locale: context.locale,
       })
     }))

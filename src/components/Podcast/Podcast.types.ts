@@ -27,4 +27,8 @@ export interface PodcastProps {
     podcastCover?: Asset;
     externalLink?: string;
     time?: number;
+    spotify?: string;
+    applepodcast?: string;
+    googlepodcast?: string;
+    youtube?: string;
 }

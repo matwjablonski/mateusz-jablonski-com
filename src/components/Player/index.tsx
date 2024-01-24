@@ -5,10 +5,10 @@ import cx from 'classnames';
 import { formatTime } from "../../utils/formatTime";
 import { Asset } from "contentful";
 import Image from "next/image";
-import prepareAssetUrl from "../../utils/prepareAssetUrl";
+import prepareUrl from '../../utils/prepareAssetUrl';
 import { convertMinutesToTimeObject } from '../../utils/formatTime'
-import ImagePlaceholder from '../ImagePlaceholder';
 import { useTranslations } from '../../hooks/useTranslations';
+import { Title, Meta, MetaArea, MetaBottom, CreatedDate, PodcastCover, Times, Time, LoadingAudio, Duration, PlayPauseButton } from './ui';
 
 interface PlayerProps {
     file: string;
@@ -17,9 +17,10 @@ interface PlayerProps {
     cover: Asset;
     createdDate?: Date;
     time?: number;
+    podcastCover?: Asset;
 }
 
- const Player = ({ file, title, description, cover, createdDate, time }: PlayerProps) => {
+ const Player = ({ file, title, createdDate, time, podcastCover }: PlayerProps) => {
     const wavesurferRef = useRef<any>();
     const [backgroundPosiiton, setBackgroundPosition] = useState(0);
     const [progress, setProgress] = useState(0);
@@ -34,29 +35,17 @@ interface PlayerProps {
     const formattedTime = () => {
         const { minutes, hours } = convertMinutesToTimeObject(time);
 
-        let hoursTranslations = t.COMMON.HOUR;
         let minutesTranslations = t.COMMON.MINUTE;
 
-        if (hours > 1 && hours < 5) {
-        hoursTranslations = t.COMMON.HOURS_2_4;
+        if (time > 1 && time < 5) {
+            minutesTranslations = t.COMMON.MINUTES_2_4;
         }
 
-        if (minutes > 1 && minutes < 5) {
-        minutesTranslations = t.COMMON.MINUTES_2_4;
-        }
-
-        if (hours >= 5) {
-        hoursTranslations = t.COMMON.HOURS;
-        }
-
-        if (minutes >= 5) {
+        if (time >= 5) {
         minutesTranslations = t.COMMON.MINUTES;
         }
 
-        const hoursString = hours ? `${hours} ${hoursTranslations}` : '';
-        const minutesString = minutes ? `${minutes} ${minutesTranslations}` : '';
-
-        return hoursString ? `${hoursString} ${minutesString}` : minutesString;
+        return `${time} ${minutesTranslations}`;
     }
 
     useEffect(() => {
@@ -114,56 +103,60 @@ interface PlayerProps {
       }, []);
 
     return (
-        <div className={styles.player}>
-            <div className={styles.cover}>
-                {/* {
-                    cover && <Image src={prepareAssetUrl(cover.fields.file.url)} width={200} height={200} alt=""/>
-                } */}
-                <ImagePlaceholder width={200} height={200} />
-            </div>
-            <div>
-                <h3 className={styles.title}>{title}</h3>
-                <p className={styles.description}>{description}</p>
-                <div className={styles.meta}>
-                    <div className={styles.actions}>
-                        {isPlaying}
-                        <button onClick={play} className={cx(styles.actionButton, !isPlaying ? styles.isPlaying : styles.isPaused)} aria-label="Play / Pause" />
-                    </div>
-                    <div>
-                        <div className={styles.created}>{createdDate}</div>
-                        <div className={styles.durationInMinutes}>{formattedTime()}</div>
-                    </div>
-                </div>
-                <div className={styles.innerPlayer}>
-                    {!isPlayerReady && <div className={styles.loadingAudio}>Trwa ładowanie pliku audio ({loadingProgress}%)</div>}
-                    <div className={cx(styles.wave, isPlayerReady && styles.waveIsReady)} ref={player} style={{ backgroundPositionX: `${backgroundPosiiton}px`}}>
-                        <WaveSurfer 
-                            plugins={plugins}
-                            onMount={handleWSMount}
-                        >                
-                            <WaveForm
-                                id="waveform"
-                                cursorColor="transparent"
-                                barGap={4}
-                                barWidth={2}
-                                progressColor="#0136F8"
-                                waveColor="#14A5FF"
-                                autoCenter={false}
+        <>
+            <MetaArea>
+                {podcastCover && <PodcastCover>
+                    <Image src={prepareUrl(podcastCover.fields.file.url as string)} width={200} height={200} alt="" />
+                </PodcastCover>}
+                <Meta>
+                    <Title>{title}</Title>
+                    <MetaBottom>
+                        <div>
+                            <PlayPauseButton 
+                                label={t.PODCAST.PLAYER.PLAY_PAUSE}
+                                isPlayerReady={isPlayerReady}
+                                isPlaying={isPlaying}
+                                play={play}
                             />
-                            
-                        </WaveSurfer>
-                        <div className={styles.bottomProgressBar} style={{ width: `${progress}%`}}/>
+                        </div>
+                        <div>
+                            <CreatedDate>{createdDate}</CreatedDate>
+                            <Duration>{formattedTime()}</Duration>
+                        </div>
+                    </MetaBottom>
+                </Meta>
+            </MetaArea>
+            <div className={styles.Player}>
+                <div className={styles.PlayerOuter}>
+                    <div className={styles.InnerPlayer}>
+                        {!isPlayerReady && <LoadingAudio>{t.PODCAST.PLAYER.LOADING_FILE} ({loadingProgress}%)</LoadingAudio>}
+                        <div className={cx(styles.Wave, isPlayerReady && styles.WaveIsReady)} ref={player} style={{ backgroundPositionX: `${backgroundPosiiton}px`}}>
+                            <WaveSurfer 
+                                plugins={plugins}
+                                onMount={handleWSMount}
+                            >                
+                                <WaveForm
+                                    id="waveform"
+                                    cursorColor="transparent"
+                                    barGap={4}
+                                    barWidth={2}
+                                    progressColor="#0136F8"
+                                    waveColor="#fff"
+                                    autoCenter={false}
+                                />
+                                
+                            </WaveSurfer>
+                            <div className={styles.BottomProgressBar} style={{ width: `${progress}%`}}/>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.times}>
-                    <div className={cx(styles.time, styles.currentTime)}>{formatTime(currentTime)}</div>
-                    <div className={cx(styles.time)}>{formatTime(audioDuration)}</div>
+                    <Times>
+                        <Time>{formatTime(currentTime)}</Time>
+                        <Time>{formatTime(audioDuration)}</Time>
+                    </Times>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
 export default Player;
-
-// export default Player;

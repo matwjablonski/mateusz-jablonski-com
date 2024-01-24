@@ -24,11 +24,11 @@ const FeaturedCoursePreview: FunctionComponent<{ course: Course }> = ({ course }
                 alt={featuredImage.fields.title as string}
             />
         </div>
-        <Link href={`course/${slug}`} title={title}>
+        <Link href={`workshops/${slug}`} title={title}>
             <h3 className={styles.title}>{title}</h3>
         </Link>
         <p className={styles.text}>{description}</p>
-        <Button.L href={`course/${slug}`} label={t.WORKSHOPS.ACTIONS.TAKE_PART} pattern={ButtonType.PRIMARY} />
+        <Button.L href={`workshops/${slug}`} label={t.WORKSHOPS.ACTIONS.TAKE_PART} pattern={ButtonType.PRIMARY} />
     </div>
 }
 
