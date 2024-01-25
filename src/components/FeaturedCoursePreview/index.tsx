@@ -21,7 +21,7 @@ const FeaturedCoursePreview: FunctionComponent<{ course: Course }> = ({ course }
                 width={544}
                 height={256}
                 className={styles.image}
-                alt={featuredImage.fields.title as string}
+                alt={featuredImage ? featuredImage.fields.title as string : title}
             />
         </div>
         <Link href={`workshops/${slug}`} title={title}>

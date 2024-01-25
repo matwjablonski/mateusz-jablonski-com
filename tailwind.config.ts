@@ -35,6 +35,9 @@ const config: Config = {
       margin: {
         22: '5.5rem',
       },
+      padding: {
+        22: '5.5rem',
+      },
       lineClamp: {
         22: '22',
       },
