@@ -46,7 +46,7 @@ const MainLayout: FC<MainLayoutProps> = ({children, head, hideOverflow, dark, hi
         <main className={cx(hideOverflow && styles.hiddenOverflow)}>
           {children}
         </main>
-        <Footer hideFunds={hideFunds} hideSocialMedia={hideSocialMedia} />
+        <Footer hideFunds={hideFunds} hideSocialMedia={hideSocialMedia} dark={dark} />
       </div>
     </>
   );

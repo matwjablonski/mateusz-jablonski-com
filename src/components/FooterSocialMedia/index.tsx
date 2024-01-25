@@ -4,21 +4,22 @@ import SocialMediaTile from '../SocialMediaTile';
 import { SocialMediaType } from '../../types/common/SocialMedia.types';
 import externalSources from '../../data/external-sources.json';
 import { useTranslations } from '../../hooks/useTranslations';
+import { Tiles, Title, Wrapper } from './ui';
 
-const FooterSocialMedia: FunctionComponent = memo(() => {
+const FooterSocialMedia: FunctionComponent<{ dark: boolean }> = memo(({ dark }) => {
   const { t, translate } = useTranslations();
   return (
-    <section className={styles.footerSocialMedia}>
-      <h2 className={styles.title}>
+    <Wrapper>
+      <Title dark={dark}>
         {translate({ value: t.FOOTER.SOCIAL_MEDIA.TITLE, tagName: 'span' })}
-      </h2>
-      <div className={styles.socialMediaTiles}>
+      </Title>
+      <Tiles>
         <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER} key={SocialMediaType.TWITTER}/>
         <SocialMediaTile href={externalSources.facebook} socialMediaType={SocialMediaType.FACEBOOK} key={SocialMediaType.FACEBOOK}/>
         <SocialMediaTile href={externalSources.instagram} socialMediaType={SocialMediaType.INSTAGRAM} key={SocialMediaType.INSTAGRAM}/>
         <SocialMediaTile href={externalSources.linkedin} socialMediaType={SocialMediaType.LINKEDIN} key={SocialMediaType.LINKEDIN}/>
-      </div>
-    </section>
+      </Tiles>
+    </Wrapper>
   )
 });
 

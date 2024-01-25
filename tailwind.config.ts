@@ -20,6 +20,10 @@ const config: Config = {
         700: '#3B4F9F',
         900: '#001773',
       },
+      'funds-green': {
+        DEFAULT: '#4EBF82',
+        'opacity-50': 'rgba(78, 191, 130, 0.5)',
+      },
     },
     extend: {
       boxShadow: {
@@ -33,6 +37,13 @@ const config: Config = {
       },
       lineClamp: {
         22: '22',
+      },
+      text: {
+        fill: {
+          transparent: {
+            '-webkit-text-fill-color': 'transparent',
+          },
+        }
       },
     },
   },

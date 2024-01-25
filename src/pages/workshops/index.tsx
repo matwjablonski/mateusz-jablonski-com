@@ -16,7 +16,7 @@ const WorkshopsPage: FC<WorkshopsPageProps> = () => {
         <MainLayout head={{}} hideOverflow dark>
             <Grid>
                 <Breadcrumbs dark />
-                <PageTitle title="Warsztaty" description="W przygotowaniu"/>
+                <PageTitle title="Warsztaty" description="W przygotowaniu" dark/>
             </Grid>
         </MainLayout>
     )

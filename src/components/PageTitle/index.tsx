@@ -4,10 +4,10 @@ import Title from '../Title';
 import { PageTitleProps } from './PageTitle.types';
 import styles from './PageTitle.module.scss';
 
-const PageTitle: FC<PageTitleProps> = ({ title, description, center }) => {
+const PageTitle: FC<PageTitleProps> = ({ title, description, center, dark }) => {
     return (
         <div className={cx(styles.pageTitle, center && styles.center)}>
-            <Title>{title}</Title>
+            <Title dark={dark}>{title}</Title>
             <p className={styles.p}>{description}</p>
         </div>
     )

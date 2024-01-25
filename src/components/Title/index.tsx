@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import cx from 'classnames';
-import styles from './Title.module.scss'
 import { TitleProps } from './Title.types';
+import { TitleItem } from './ui';
 
-const Title: FunctionComponent<TitleProps> = ({classes, children, capitalize}) => (
-  <div className={styles.wrapper}>
-    <h2 className={cx(classes, capitalize && styles.capitalize)}>{children}</h2>
-  </div>
+const Title: FunctionComponent<TitleProps> = ({ classes, children, capitalize, dark }) => (
+  <TitleItem dark={dark} capitalize={capitalize} classes={classes}>
+    {children}
+  </TitleItem>
 )
 
 export default Title

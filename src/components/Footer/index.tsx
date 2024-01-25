@@ -12,19 +12,21 @@ import { useTranslations } from '../../hooks/useTranslations';
 type FooterProps = {
   hideFunds?: boolean;
   hideSocialMedia?: boolean;
+  dark?: boolean;
 };
 
-const Footer: FC<FooterProps> = memo(({ hideFunds, hideSocialMedia }) => {
+const Footer: FC<FooterProps> = memo(({ hideFunds, hideSocialMedia, dark }) => {
   const { t } = useTranslations();
   const date: string = useMemo(
     () => new Date().getFullYear().toString() === '2019' ? '2019' : `2019 - ${new Date().getFullYear()}`,
     [],
   );
+
   return (
     <Grid>
       <footer className={styles.footer}>
-        {!hideSocialMedia && <FooterSocialMedia />}
-        {!hideFunds && <FundsInfo />}
+        {!hideSocialMedia && <FooterSocialMedia dark={dark} />}
+        {!hideFunds && <FundsInfo dark={dark} />}
         <section className={styles.copy}>
           <div className={styles.copyInner}>
             <Link
