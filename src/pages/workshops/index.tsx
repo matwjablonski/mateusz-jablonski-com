@@ -3,14 +3,12 @@ import Grid from "../../components/Grid";
 import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
 import { FC } from "react";
-import { Entry, EntrySkeletonType } from "contentful";
-import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
 import { GetServerSideProps } from 'next';
 import { fetchEntries } from '../../contentful';
 import { Course } from '../../types/common/Course.types';
 import FeaturedCoursePreview from '../../components/FeaturedCoursePreview';
-import { WorkshopBox, Wrapper } from './ui';
+import { WorkshopBox, Wrapper } from '../../components/pages/workshops/ui';
 
 interface WorkshopsPageProps {
     body: Page,
