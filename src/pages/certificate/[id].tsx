@@ -2,12 +2,26 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { fetchEntries } from '../../contentful'
 import { formatDate } from '../../utils/formatDate'
 import { ParsedUrlQuery } from 'querystring'
+import MainLayout from '../../layouts'
+import Grid from '../../components/Grid'
+import PageTitle from '../../components/PageTitle'
+import { Certificate } from '../../components/Certificate'
 
 const CertificatePage = ({ body }) => {
 
-
   return (
-    <div>Certificate dla {body.name}</div>
+    <MainLayout head={{}} hideOverflow dark hideFunds hideSocialMedia>
+      <Grid>
+        <Certificate
+          name={body?.name}
+          description={body?.description}
+          workshopsTitle={body?.workshops?.title}
+          workshopsSlug={body?.workshops?.slug}
+          dateOfWorkshops={body?.dateOfWorkshops}
+          id={body?.id}
+        />
+      </Grid>
+    </MainLayout>
   )
 }
 
@@ -23,11 +37,15 @@ const res = await fetchEntries({
 const body = await res.data
   .map(p => ({ 
     ...p.fields,
-    nextWorkshops: formatDate({
-      dateObject: p.fields.nextWorkshops,
+    dateOfWorkshops: formatDate({
+      dateObject: p.fields.dateOfWorkshops,
       formatString: 'dd.MM.yyyy',
       locale: context.locale,
-    })
+    }),
+    workshops: {
+      title: p.fields.workshops.fields.title,
+      slug: p.fields.workshops.fields.slug,
+    }
   }))
   .shift();
 
