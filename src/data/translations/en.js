@@ -142,6 +142,9 @@ const en = {
       TAKE_PART: 'Take part',
       ALL: 'All workshops',
     },
+    PROGRAM: {
+      TITLE: 'Training program',
+    },
   },
   CONTACT: {
     NEWSLETTER: {

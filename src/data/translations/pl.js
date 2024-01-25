@@ -142,6 +142,9 @@ const pl = {
       TAKE_PART: 'Weź udział',
       ALL: 'Wszystkie warsztaty',
     },
+    PROGRAM: {
+      TITLE: 'Program',
+    },
   },
   CONTACT: {
     NEWSLETTER: {

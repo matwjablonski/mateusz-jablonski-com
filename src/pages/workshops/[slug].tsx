@@ -10,7 +10,6 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import TitleBarWithComponent from '../../components/TitleBarWithComponent'
 import CourseMeta from '../../components/CourseMeta'
-import CourseProgram from '../../components/CourseProgram'
 import CourseParticipantsCounter from '../../components/CourseParticipantsCounter';
 import styles from '../../styles/Course.module.scss';
 import Image from 'next/image';
@@ -21,6 +20,7 @@ import gps from '../../public/icons/gps.svg';
 import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types'
 import { formatDate } from '../../utils/formatDate'
+import TrainingProgram from '../../components/TrainingProgram'
 
 interface WorkshopPageProps {
     body: Course,
@@ -79,7 +79,7 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ body }) => {
                         )}
                     </div>
                 </TitleBarWithComponent>
-                <CourseProgram content={program}/>
+                <TrainingProgram content={program}/>
             </Grid>
         </MainLayout>
     )
