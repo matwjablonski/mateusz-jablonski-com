@@ -1,16 +1,15 @@
 import { FC } from 'react';
-import cx from 'classnames';
 import Title from '../Title';
 import { PageTitleProps } from './PageTitle.types';
-import styles from './PageTitle.module.scss';
+import { Text, Wrapper } from './ui';
 
 const PageTitle: FC<PageTitleProps> = ({ title, description, center, dark }) => {
     return (
-        <div className={cx(styles.pageTitle, center && styles.center)}>
+        <Wrapper dark={dark} center={center}>
             <Title dark={dark}>{title}</Title>
-            <p className={styles.p}>{description}</p>
-        </div>
+            <Text dark={dark} center={center}>{description}</Text>
+        </Wrapper>
     )
-}
+};
 
 export default PageTitle;

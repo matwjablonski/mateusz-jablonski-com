@@ -13,8 +13,8 @@ const DashboardPage: FC<DashboardPageProps> = () => {
     return (
         <MainLayout head={{}} hideOverflow dark hideFunds hideSocialMedia>
             <Grid>
-                <Breadcrumbs />
-                <PageTitle title="Strefa kursanta" description="W przygotowaniu"/>
+                <Breadcrumbs dark />
+                <PageTitle title="Strefa kursanta" description="W przygotowaniu" dark/>
             </Grid>
         </MainLayout>
     )
