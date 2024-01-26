@@ -11,6 +11,7 @@
     &.small {
         min-height: 191px;
         margin-bottom: gutters.$gutter;
+        overflow: hidden;
 
         .episode {
             top: 0;
