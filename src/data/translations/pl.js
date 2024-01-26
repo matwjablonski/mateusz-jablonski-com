@@ -153,6 +153,10 @@ const pl = {
       MAIN_CONTENT_2: 'Newsletter, podobnie jak większość materiałów na mojej stronie, jest całkowicie bezpłatny. Obiecuję nie spamować i wysłać to, co rzeczywiście może Ci się przydać.',
     },
   },
+  POLL: {
+    TITLE: 'Ankieta',
+    DESCRIPTION: 'Poniższa ankieta dotyczy szkolenia "@1", które zakończyło się dnia @2 roku. Ankieta jest anonimowa. Pierwsze pytanie ma na celu potwierdzenie obecności na szkoleniu. Odpowiedź na pierwsze pytanie nie jest nigdzie zapisywana oraz wysyłana.'
+  },
   PODCAST: {
     MY_PODCASTS: {
       TITLE: 'Moje podcasty',
