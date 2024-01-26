@@ -14,6 +14,8 @@ export const Item = ({ children, reverse }) => (
       ml-4
 
       ${reverse ? 'text-main-100' : 'text-main-900'}
+
+      first:ml-0
     `}
   >{children}</li>
 );
