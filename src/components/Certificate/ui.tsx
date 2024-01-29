@@ -64,6 +64,6 @@ export const Tag = ({ children }) => (
     px-3
     py-1
     text-main-700
-    rounded-full
+    rounded-[10px]
   ">{children}</div>
 );
