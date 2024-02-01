@@ -38,6 +38,9 @@ const config: Config = {
       padding: {
         22: '5.5rem',
       },
+      height: {
+        'full-vh': 'calc(100vh - 205px)',
+      },
       lineClamp: {
         22: '22',
       },

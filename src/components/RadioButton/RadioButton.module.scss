@@ -5,6 +5,7 @@
 
 .radioButton {
     margin-right: gutters.$gutter-small;
+    margin-bottom: gutters.$gutter-small;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -34,6 +35,20 @@
             box-shadow: inset 0px 2px 3px rgba(20, 165, 255, 0.6);
             background-color: colors.$color-primary-100;
             border-color: colors.$color-primary-100;
+        }
+    }
+
+    &.onDarkBg {
+        .label {
+            border-color: colors.$color-primary-100;
+            color: colors.$color-primary-100;
+        }
+
+        .input {
+            &:checked + label {
+                border-color: colors.$color-primary-900;
+                color: colors.$color-primary-500;
+            }
         }
     }
 }

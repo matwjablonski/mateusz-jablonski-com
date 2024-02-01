@@ -66,6 +66,26 @@
         }
     }
 
+    &.password {
+        &::before {
+            width: 24px;
+            height: 24px;
+            content: "";
+            display: block;
+            background: url("../../public/icons/key.svg");
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1;
+        }
+
+        input {
+            padding-left: 42px;
+        }
+    }
+
     input,
     textarea {
         padding: 12px;

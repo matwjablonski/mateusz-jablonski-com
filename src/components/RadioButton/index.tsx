@@ -1,6 +1,7 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import styles from './RadioButton.module.scss';
 import Image from "next/image";
+import cx from 'classnames';
 
 interface RadioButtonProps extends Partial<HTMLInputElement> {
     register: (key: string) => UseFormRegisterReturn;
@@ -8,6 +9,7 @@ interface RadioButtonProps extends Partial<HTMLInputElement> {
     label: string;
     icon?: any;
     iconWidth?: number | `${number}`;
+    dark?: boolean;
 }
 
 const RadioButton = ({
@@ -17,8 +19,9 @@ const RadioButton = ({
     label,
     icon,
     iconWidth,
+    dark,
 }: RadioButtonProps) => (
-    <div className={styles.radioButton}>
+    <div className={cx(styles.radioButton, dark && styles.onDarkBg)}>
         <input
             {...register(name)}
             value={value}

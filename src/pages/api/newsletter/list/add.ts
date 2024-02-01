@@ -1,17 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { env } from 'process';
+import { addListMember } from '../../../../lib/mailchimp/addListMember';
 
-const mailchimp = require('@mailchimp/mailchimp_marketing');
-
-mailchimp.setConfig({
-    apiKey: env.MAILCHIMP_API_KEY,
-    server: env.MAILCHIMP_DATA_CENTER,
-});
 
 const add = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const { email } = JSON.parse(req.body);
-        const response = await mailchimp.lists.addListMember(env.MAILCHIMP_LIST_ID, { email_address: email, status: 'subscribed' });
+        const response = await addListMember(email);
 
         res.send({ status: response.status, message: 'Udało się! Twój adres email został zapisany poprawnie.' }); 
     } catch(e) {

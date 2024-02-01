@@ -5,10 +5,14 @@ import { useCallback, useEffect, useState } from 'react';
 import PageTitle from '../../components/PageTitle';
 import { useTranslations } from '../../hooks/useTranslations';
 import { formatDate } from '../../utils/formatDate';
+import PollVerification from '../../components/PollVerification';
+import Loader from '../../components/Loader';
+import CaptchaProvider from '../../providers/CaptchaProvider';
+import Poll from '../../components/Poll';
 
 const PollPage = () => {
-  const { query: { id }, locale} = useRouter();
-  const [ pollData, setPollData ] = useState<{ name: string, date: string }>();
+  const { query: { id, accessCode }, locale } = useRouter();
+  const [ pollData, setPollData ] = useState<{ name: string, date: string, id: number }>();
   const { t, translate } = useTranslations();
 
   const fetchDataForPoll = useCallback(async () => {
@@ -22,30 +26,48 @@ const PollPage = () => {
     if (id) {
       fetchDataForPoll();
     }
-  }, [id, fetchDataForPoll]);
+  }, [id, fetchDataForPoll]);   
+
+  const verifiedComponent = (
+    <Poll 
+      date={formatDate({
+        dateObject: pollData?.date,
+        formatString: 'dd MMMM yyyy',
+        locale: locale,
+      })}
+      name={pollData?.name}
+    />  
+  );
 
   return (
-    <MainLayout head={{}} hideOverflow dark hideFunds hideSocialMedia>
-      <Grid>
-        { pollData ? (
-          <>
-            <PageTitle title="Ankieta" description={
-              translate({
-                value: t.POLL.DESCRIPTION,
-                variables: [
-                  pollData?.name,
-                  formatDate({
-                    dateObject: pollData?.date,
-                    formatString: 'dd MMMM yyyy',
-                    locale: locale,
-                  }),
-                ],
-              })
-            } dark />
-          </>
-        ) : null }
-      </Grid>
-    </MainLayout>
+    <CaptchaProvider>
+      <MainLayout head={{}} hideOverflow dark hideFunds hideSocialMedia>
+        <Grid>
+          { pollData ? (
+            <>
+              <PageTitle title="Ankieta" description={
+                translate({
+                  value: t.POLL.DESCRIPTION,
+                  variables: [
+                    pollData?.name,
+                    formatDate({
+                      dateObject: pollData?.date,
+                      formatString: 'dd MMMM yyyy',
+                      locale: locale,
+                    }),
+                  ],
+                })
+              } dark />
+              {pollData && <PollVerification
+                verifiedComponent={verifiedComponent}
+                pollId={pollData.id}
+                accessCode={accessCode}  
+              />}
+            </>
+          ) : <Loader revert msg="Trwa ładowanie ankiety" /> }
+        </Grid>
+      </MainLayout>
+    </CaptchaProvider>
   )
 };
 

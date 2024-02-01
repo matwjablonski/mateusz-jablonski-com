@@ -10,6 +10,7 @@ export enum InputPlaceholderTypes {
     EMAIL = 'email',
     DAY = 'day',
     NIGHT = 'night',
+    PASSWORD = 'password',
 }
 
 export interface InputWrapperProps {

@@ -28,7 +28,6 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
   const { head } = body;
   const commentsRef = useRef<HTMLDivElement>(null);
 
-  console.log('body', body.podcast.fields);
   return body ? (
     <CaptchaProvider>
       <MainLayout head={head ? (head.fields as HeadInterface) : {}}>

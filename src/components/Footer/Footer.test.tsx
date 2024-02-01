@@ -30,10 +30,7 @@ describe('Footer component', () => {
     jest.useFakeTimers('modern');
     jest.setSystemTime(new Date(2021, 3, 1));
 
-    const { rerender } = render(<Footer />);
-
-    const a = rerender(<Footer />);
-    console.log(a);
+    render(<Footer />);
 
     const copy = screen.getByText('© 2019 - 2021 Mateusz Jabłoński. All rights reserved');
     expect(copy).toBeVisible();

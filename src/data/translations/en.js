@@ -155,7 +155,7 @@ const en = {
   },
   POLL: {
     TITLE: 'Poll',
-    DESCRIPTION: 'Poniższa ankieta dotyczy szkolenia "@1". Ankieta jest anonimowa. Odpowiedź na pierwsze pytanie nie jest nigdzie zapisywana.'
+    DESCRIPTION: 'Poniższa ankieta dotyczy szkolenia "@1". Ankieta jest anonimowa. Ankieta składa się z 5 kroków. Każda odpowiedź ma dla mnie ogromną wartość, bo dzięki niej będę mógł poprawić jakość szkolenia. Dziękuję za poświęcony czas!'
   },
   PODCAST: {
     MY_PODCASTS: {
