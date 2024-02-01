@@ -13,9 +13,13 @@ import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import { useCallback, useState } from 'react';
 import PollSection from '../PollSection';
-import { Actions } from './ui';
+import { Actions, PoorBox, WowBox } from './ui';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import PollSuccess from '../PollSuccess';
+import { calculateAverage } from '../../utils/calculateAverage';
+
+const AVERAGE_FOR_WOW = 4.5;
+const AVERAGE_FOR_POOR = 2.6;
 
 const schema = yup.object({
   trainerKnowledge: yup.string().required('Wybierz swoją ocenę.'),
@@ -37,7 +41,7 @@ const schema = yup.object({
 }).required();
 
 const Poll = ({ date, name }) => {
-  const { register, handleSubmit, reset, watch, formState: { errors, ...rest }, setError } = useForm({
+  const { register, handleSubmit, reset, watch, formState: { errors }, getValues } = useForm({
     resolver: yupResolver(schema),
   });
   const [currentStep, setCurrentStep] = useState(0);
@@ -49,49 +53,36 @@ const Poll = ({ date, name }) => {
     setCurrentStep(sectionIndex + 1);
   }
 
+  const isFirstStepCompleted = !watch('trainerExperience') ||
+    !watch('trainerKnowledge') ||
+    !watch('trainerCommunication') ||
+    !watch('trainerEngagement') ||
+    !watch('trainerQuestions') ||
+    !watch('trainerOpenness') ||
+    !watch('trainerCulture');
+
+  const isSecondStepCompleted = !watch('workshopsContent') ||
+    !watch('workshopsRealization') ||
+    !watch('workshopsDuration');
+
+  const isThirdStepCompleted = !watch('yourKnowledgeBefore') ||
+    !watch('yourKnowledgeAfter') ||
+    !watch('yourKnowledgeUsefulness');
+
+  const isForthStepCompleted = !watch('yourOpinionAboutWorkshops') || !watch('yourOpinionAboutMaterials');
+
   const isNextDisabled = () => {
     if (currentStep === 0) {
-      if (
-        !watch('trainerExperience') ||
-        !watch('trainerKnowledge') ||
-        !watch('trainerCommunication') ||
-        !watch('trainerEngagement') ||
-        !watch('trainerQuestions') ||
-        !watch('trainerOpenness') ||
-        !watch('trainerCulture')
-      ) {
-        return true;
-      }
-      return false;
+      return isFirstStepCompleted;
     }
     if (currentStep === 1) {
-      if (
-        !watch('workshopsContent') ||
-        !watch('workshopsRealization') ||
-        !watch('workshopsDuration')
-      ) {
-        return true;
-      }
-      return false;
+      return isSecondStepCompleted;
     }
     if (currentStep === 2) {
-      if (
-        !watch('yourKnowledgeBefore') ||
-        !watch('yourKnowledgeAfter') ||
-        !watch('yourKnowledgeUsefulness')
-      ) {
-        return true;
-      }
-      return false;
+      return isThirdStepCompleted;
     }
     if (currentStep === 3) {
-      if (
-        !watch('yourOpinionAboutWorkshops') ||
-        !watch('yourOpinionAboutMaterials')
-      ) {
-        return true;
-      }
-      return false;
+      return isForthStepCompleted;
     }
   }
 
@@ -125,13 +116,55 @@ const Poll = ({ date, name }) => {
     )
   }
 
+  const averageComponent = (average) => {
+    if (average >= AVERAGE_FOR_WOW) {
+      return <WowBox>Wow! Bardzo sie cieszę, że doceniasz moją pracę! Będę wdzięczny, jeśli w kroku czwartym napiszesz co podobało Ci się najbardziej, a co mógłbym jeszcze poprawić. 😉</WowBox>
+    }
+
+    if (average <= AVERAGE_FOR_POOR) {
+      return <PoorBox>Przykro mi, że nie udało mi się spełnić Twoich oczekiwań. Będę wdzięczny, jeśli w kroku czwartym opiszesz elementy, które wymagają poprawy. Każde szkolenie to nowe doświadczenie. Każda opinia to szansa na rozwój. 😉</PoorBox>
+    }
+  }
+
+  const averageLine = () => {
+    if (currentStep === 0 && !isFirstStepCompleted) {
+      const {
+        trainerKnowledge,
+        trainerExperience,
+        trainerCommunication,
+        trainerEngagement,
+        trainerOpenness, 
+        trainerQuestions,
+        trainerCulture,
+      } = getValues();
+
+      const average = calculateAverage([
+        +trainerKnowledge, +trainerExperience, +trainerCommunication, +trainerEngagement, +trainerQuestions, +trainerOpenness, +trainerCulture
+      ]);
+      
+      return averageComponent(average);
+    }
+
+    if (currentStep === 1 && !isSecondStepCompleted) {
+      const { workshopsContent, workshopsDuration, workshopsRealization } = getValues();
+
+      const average = calculateAverage([
+        +workshopsContent, +workshopsDuration, +workshopsRealization
+      ]);
+
+      return averageComponent(average);
+    }
+
+    return null;
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
       {pollSteps.map(({ id, questions, title, description, type }, sectionIndex) => (
         <PollSection 
           key={id}
           isVisible={sectionIndex === currentStep}
-       title={title}
+          title={title}
           description={description}
           steps={pollSteps.length}
           currentStep={currentStep + 1}
@@ -161,6 +194,7 @@ const Poll = ({ date, name }) => {
               </InputWrapper>
             </PollQuestion>
           ))}
+          {averageLine()}
           <Actions>
             {pollSteps.length > currentStep + 1 && (
               <Button.B

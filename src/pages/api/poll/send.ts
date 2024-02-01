@@ -1,16 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { env } from 'process';
-import { subscribeNewsletter } from '../../../lib/subscribeNewsletter';
 import { addListMember } from '../../../lib/mailchimp/addListMember';
+import { calculateAverage } from '../../../utils/calculateAverage';
 
 sgMail.setApiKey(env.SENDGRID_API_KEY)
-
-const calculateAverage = (values: number[]) => {
-  const sum = values.reduce((a, b) => a + b, 0);
-
-  return (Math.round((sum / values.length * 100)) / 100);
-}
 
 const send = async (req: NextApiRequest, res: NextApiResponse  ) => {
   try {
