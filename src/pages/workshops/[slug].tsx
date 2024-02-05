@@ -101,7 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const body = await res.data
     .map(p => ({ 
       ...p.fields,
-      reviews: p.fields.reviews.map(r => ({
+      reviews: (p.fields.reviews || []).map(r => ({
         ...r.fields,
         date: formatDate({
           dateObject: r.fields.date,

@@ -7,7 +7,7 @@ const WorkshopReviews = ({ reviews = [] }) => {
   return (
     <Wrapper>
       <Title>{t.WORKSHOPS.REVIEWS.TITLE}</Title>
-      {reviews.length && <Reviews>
+      {reviews.length > 0 && <Reviews>
         {reviews.map((review, index) => (
           <WorkshopReview
             key={index}
