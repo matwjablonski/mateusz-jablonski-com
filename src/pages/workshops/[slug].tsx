@@ -101,7 +101,14 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const body = await res.data
     .map(p => ({ 
       ...p.fields,
-      reviews: p.fields.reviews.map(r => ({...r.fields})),
+      reviews: p.fields.reviews.map(r => ({
+        ...r.fields,
+        date: formatDate({
+          dateObject: r.fields.date,
+          formatString: 'dd MMMM yyyy',
+          locale: context.locale,
+        })
+      })),
       nextWorkshops: formatDate({
         dateObject: p.fields.nextWorkshops,
         formatString: 'dd.MM.yyyy',

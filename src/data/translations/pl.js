@@ -148,6 +148,7 @@ const pl = {
     REVIEWS: {
       TITLE: 'Dołącz do grona zadowolonych uczestników moich warsztatów!',
       NO_REVIEWS: 'Aktualnie brak opinii o tych warsztatach.',
+      ANONYMOUS_USER: 'Uczestnik warsztatów',
     },
   },
   CONTACT: {

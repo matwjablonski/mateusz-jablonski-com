@@ -12,6 +12,11 @@ const config: Config = {
     colors: {
       transparent: 'transparent',
       white: '#FFFFFF',
+      gray: {
+        200: '#eeeeee',
+        500: '#cacaca',
+        800: '#525252',
+      },
       main: {
         DEFAULT: '#001773',
         100: '#DEF3FF',
