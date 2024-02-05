@@ -18,4 +18,5 @@ export interface Course {
     currency?: string;
     nextWorkshops?: Date;
     cityOrRemote?: string;
+    reviews: { name: string, content: string, rate: string, date: string }[];
 }

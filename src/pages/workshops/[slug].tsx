@@ -21,6 +21,7 @@ import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types'
 import { formatDate } from '../../utils/formatDate'
 import TrainingProgram from '../../components/TrainingProgram'
+import WorkshopReviews from '../../components/WorkshopReviews'
 
 interface WorkshopPageProps {
     body: Course,
@@ -38,7 +39,9 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ body }) => {
         maxParticipants,
         nextWorkshops,
         cityOrRemote,
+        reviews,
     } = body;
+
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -80,6 +83,7 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ body }) => {
                     </div>
                 </TitleBarWithComponent>
                 <TrainingProgram content={program}/>
+                <WorkshopReviews reviews={reviews} />
             </Grid>
         </MainLayout>
     )
@@ -97,6 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const body = await res.data
     .map(p => ({ 
       ...p.fields,
+      reviews: p.fields.reviews.map(r => ({...r.fields})),
       nextWorkshops: formatDate({
         dateObject: p.fields.nextWorkshops,
         formatString: 'dd.MM.yyyy',

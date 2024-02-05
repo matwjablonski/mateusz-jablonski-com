@@ -145,6 +145,10 @@ const en = {
     PROGRAM: {
       TITLE: 'Training program',
     },
+    REVIEWS: {
+      TITLE: 'Dołącz do grona zadowolonych uczestników moich warsztatów!',
+      NO_REVIEWS: 'Aktualnie brak opinii o tych warsztatach.',
+    },
   },
   CONTACT: {
     NEWSLETTER: {

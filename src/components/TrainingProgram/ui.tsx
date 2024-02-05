@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ExpandArrowIco from '../../public/icons/expand-arrow.svg';
 
 export const Wrapper = ({ children }) => (
-  <section>{children}</section>
+  <section className="mb-16">{children}</section>
 );
 
 export const Title = ({ children }) => (
