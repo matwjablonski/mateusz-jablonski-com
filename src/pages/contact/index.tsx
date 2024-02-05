@@ -70,7 +70,9 @@ export const getStaticProps: GetStaticProps = async () => {
     });
 
     const testimonialsRes = await fetchEntries({
-        content_type: 'testimonials'
+        content_type: 'testimonials',
+        'fields.isGeneralReview[exists]': true,
+        select: 'fields.name,fields.content'
     });
 
     const body = await res.data
