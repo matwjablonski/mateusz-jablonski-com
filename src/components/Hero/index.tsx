@@ -38,13 +38,13 @@ const Hero: FunctionComponent<HeroProps> = ({ title, description, image }) => {
                 </div>
             </div>
             <div className={styles.imageWrapper}>
-                {/* <Image
-                    src={prepareImageUrl(image.fields.file.url)}
-                    alt={image.fields.title}
+                <Image
+                    src={prepareImageUrl(image.fields.file.url as string)}
+                    alt={image.fields.title as string}
                     width={430}
                     height={530} 
                     className={styles.image}
-                /> */}
+                />
             </div>
         </section>
     )
