@@ -27,9 +27,10 @@ import { formatDate } from '../utils/formatDate';
 import { mapLocale } from '../lib/locales';
 import { useTranslations } from '../hooks/useTranslations';
 import externalSources from '../data/external-sources.json';
+import LastEvents from '../components/LastEvents';
+import { Event } from '../types/common/Event.types';
 
 const { podcasts: { piwnicait } } = externalSources;
-
 
 interface HomeData {
   title: string;
@@ -42,6 +43,7 @@ interface HomeData {
   lastArticlesDescription: string;
   lastPodcastsDescription: string;
   lastCoursesDescription: string;
+  lastEventsDescription: string;
   featuredCourses: Entry<EntrySkeletonType<Course>>[];
   lastBooksDescription: string;
   head?: Entry<EntrySkeletonType<HeadInterface>>;
@@ -50,14 +52,16 @@ interface HomeData {
 interface HomeProps {
   podcasts: PodcastEpisode[];
   articles: Article[];
+  events: Event[];
   nextArticleInDays: number;
   nextPodcastInDays: number;
+  nextEventInDays: number;
   books: Book[];
   nextCourse: Course;
   data: HomeData;
 }
 
-const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, nextCourse, data}: HomeProps) => {
+const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, nextCourse, data, events, nextEventInDays}: HomeProps) => {
   const {
     title,
     description,
@@ -65,6 +69,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
     lastArticlesDescription,
     lastPodcastsDescription,
     lastCoursesDescription,
+    lastEventsDescription,
     featuredCourses,
     lastBooksDescription,
     head,
@@ -84,6 +89,15 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
             <Counter nextItemName={t.HOME.NEXT_ARTICLE} days={nextArticleInDays} />
           </TitleBarWithComponent>
           <LastArticles articles={articles} />
+        </section>
+        <section>
+          <TitleBarWithComponent 
+            title={<>{translate({ value: t.HOME.LAST_EVENTS, tagName: 'strong'})}</>}
+            text={lastEventsDescription}
+          >
+            <Counter nextItemName={t.HOME.NEXT_EVENT} days={nextEventInDays} plural />
+          </TitleBarWithComponent>
+          <LastEvents events={events} />
         </section>
         <section className={styles.podcastSection}>
           <TitleBarWithComponent 
@@ -160,6 +174,15 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     select: 'fields.createdDate',
   });
 
+  const eventsRes = await fetchEntries({
+    content_type: 'event',
+    include: 2,
+    order: '-fields.eventDate',
+    limit: 6,
+    locale: mapLocale(locale),
+    select: 'fields.eventDate,fields.slug,fields.title,fields.typeOfEvent,fields.place'
+  });
+
   const podcastsRes = await fetchEntries({
     content_type: 'podcast',
     include: 2,
@@ -223,11 +246,27 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   const nextArticleInDays = nextArticle ? differenceInDays(new Date(nextArticle.fields.createdDate) , new Date()) + 1 : null;
 
+  const nextEvents = await eventsRes.data.filter(events => new Date(events.fields.eventDate) > new Date());
+
+  const closestEvent = nextEvents.reduce((a, b) => (a.fields.eventDate < b.fields.eventDate ? a : b)); 
+  
+  const nextEventInDays = closestEvent ? differenceInDays(new Date(closestEvent.fields.eventDate) , new Date()) + 1 : null;
+
   const podcasts = await podcastsRes.data.map(p => ({
     ...p.fields,
     podcast: p.fields.podcast.fields,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
+      formatString: 'dd MMMM yyyy',
+      locale,
+    }),
+  }));
+
+  const events = await eventsRes.data.map(p => ({
+    ...p.fields,
+    rawEventDate: p.fields?.eventDate,
+    eventDate: formatDate({
+      dateObject: p.fields?.eventDate,
       formatString: 'dd MMMM yyyy',
       locale,
     }),
@@ -258,6 +297,8 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
       articles,
       nextArticleInDays,
       podcasts,
+      events,
+      nextEventInDays,
       nextPodcastInDays,
       nextCourse,
       books,

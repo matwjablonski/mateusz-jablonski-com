@@ -1,8 +1,10 @@
 const pl = {
   COMMON: {
     NEXT: 'Następny ',
+    NEXT_PLURAL: 'Następne ',
     TOMORROW: 'jutro',
     DONT_KNOW: 'nie wiem',
+    DAY: 'dzień',
     DAYS: 'dni',
     HOUR_SHORT: 'g',
     HOUR: 'godzina',
@@ -75,6 +77,9 @@ const pl = {
     PREV_ARTICLE_SLIDE: 'Poprzedni artykuł',
     LISTEN_PODCAST: 'Słuchaj mojego podcastu:',
     LISTEN_PODCAST_ON: 'Słuchaj podcastu @1 na @2',
+    LAST_EVENTS: 'Najbliższe %%wydarzenia%%',
+    NEXT_EVENT: 'wydarzenie',
+    NEXT_EVENT_IN: 'Już za @1 @2',
   },
   BREADCRUMBS: {
     CONTACT: 'Kontakt',

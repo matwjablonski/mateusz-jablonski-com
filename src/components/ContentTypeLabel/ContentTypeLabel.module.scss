@@ -13,6 +13,10 @@
     text-transform: uppercase;
     margin-bottom: gutters.$gutter-medium;
 
+    &.reverse {
+        color: colors.$color-primary-300;
+    }
+
     &::before {
         content: '';
         width: 24px;
@@ -37,6 +41,54 @@
     &.podcast {
         &::before {            
             background: url('../../public/icons/podcast.svg') no-repeat;
+        }
+    }
+
+    &.workshops {
+        &::before {            
+            background: url('../../public/icons/course-300.svg') no-repeat;
+        }
+
+        &:not(.reverse) {
+            &::before {
+                background: url('../../public/icons/course-500.svg') no-repeat;
+            }
+        }
+    }
+
+    &.webinar {
+        &::before {            
+            background: url('../../public/icons/browser-300.svg') no-repeat;
+        }
+
+        &:not(.reverse) {
+            &::before {
+                background: url('../../public/icons/browser-500.svg') no-repeat;
+            }
+        }
+    }
+
+    &.lecture {
+        &::before {            
+            background: url('../../public/icons/school-300.svg') no-repeat;
+        }
+
+        &:not(.reverse) {
+            &::before {
+                background: url('../../public/icons/school-500.svg') no-repeat;
+            }
+        }
+    }
+
+    &.conference {
+        &::before {            
+            background: url('../../public/icons/affiliate-300.svg') no-repeat;
+        }
+
+        &:not(.reverse) {
+            &::before {
+                background: url('../../public/icons/affiliate-500.svg') no-repeat;
+            }
         }
     }
 }

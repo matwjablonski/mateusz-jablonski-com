@@ -5,7 +5,7 @@ import { CounterProps } from './Counter.types';
 import calendar from '../../public/icons/calendar.svg';
 import { useTranslations } from '../../hooks/useTranslations';
 
-const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
+const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName, plural }) => {
     const { t } = useTranslations();
 
     const prepareDaysLabel = () => {
@@ -21,7 +21,7 @@ const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName }) => {
     return (
         <div className={styles.counter}>
             <div className={styles.counterText}>
-                <span className={styles.nextTitle}>{t.COMMON.NEXT} {nextItemName}</span>
+                <span className={styles.nextTitle}>{plural ? t.COMMON.NEXT_PLURAL : t.COMMON.NEXT} {nextItemName}</span>
                 <span className={styles.remainingDays}>{prepareDaysLabel()}</span>
             </div>
             <div className={styles.icon}>

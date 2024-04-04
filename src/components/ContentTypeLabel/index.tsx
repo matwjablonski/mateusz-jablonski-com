@@ -5,14 +5,19 @@ export enum ContentTypeEnum {
     BOOK = 'book',
     ARTICLE = 'article',
     PODCAST = 'podcast',
+    WORKSHOPS = 'workshops',
+    WEBINAR = 'webinar',
+    CONFERENCE = 'conference',
+    LECTURE = 'lecture',
 }
 
 interface ContentTypeLabelProps {
     contentType: ContentTypeEnum;
     additionalName?: string;
+    reverse?: boolean;
 }
 
-const ContentTypeLabel = ({ contentType, additionalName }: ContentTypeLabelProps) => {
+const ContentTypeLabel = ({ contentType, additionalName, reverse }: ContentTypeLabelProps) => {
     const prepareLabel = () => {
         switch(contentType) {
             case ContentTypeEnum.BOOK:
@@ -21,11 +26,19 @@ const ContentTypeLabel = ({ contentType, additionalName }: ContentTypeLabelProps
                 return 'Artykuł';
             case ContentTypeEnum.PODCAST:
                 return 'Podcast';
+            case ContentTypeEnum.WORKSHOPS:
+                return 'Warsztaty';
+            case ContentTypeEnum.WEBINAR:
+                return 'Webinar';
+            case ContentTypeEnum.CONFERENCE:
+                return 'Konferencja';
+            case ContentTypeEnum.LECTURE:
+                return 'Wykład';
         }
     }
 
     return (
-        <div className={cx(styles.contentTypeLabel, styles[contentType])}>
+        <div className={cx(styles.contentTypeLabel, styles[contentType], reverse && styles.reverse)}>
             {prepareLabel()}{additionalName && `: ${additionalName}`}
         </div>
     )
