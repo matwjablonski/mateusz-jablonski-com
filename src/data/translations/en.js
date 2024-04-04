@@ -13,6 +13,13 @@ const en = {
     MINUTE: 'minute',
     MINUTES_2_4: 'minutes',
     MINUTES: 'minutes',
+    BOOK_REVIEW: 'Book review',
+    ARTICLE: 'Article',
+    PODCAST: 'Podcast',
+    WORKSHOPS: 'Workshops',
+    WEBINAR: 'Webinar',
+    CONFERENCE: 'Conference',
+    LECTURE: 'Lecture',
   },
   COOKIES: {
     TITLE: 'Cookies monster was here already!',

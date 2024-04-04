@@ -13,6 +13,13 @@ const pl = {
     MINUTE: 'minuta',
     MINUTES_2_4: 'minuty',
     MINUTES: 'minut',
+    BOOK_REVIEW: 'Recenzja książki',
+    ARTICLE: 'Artykuł',
+    PODCAST: 'Podcast',
+    WORKSHOPS: 'Warsztaty',
+    WEBINAR: 'Webinar',
+    CONFERENCE: 'Konferencja',
+    LECTURE: 'Wykład',
   },
   COOKIES: {
     TITLE: 'Ciasteczkowy potwór już tu był!',

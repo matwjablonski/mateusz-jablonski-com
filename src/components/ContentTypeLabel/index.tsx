@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import styles from './ContentTypeLabel.module.scss';
+import { useTranslations } from '../../hooks/useTranslations';
 
 export enum ContentTypeEnum {
     BOOK = 'book',
@@ -18,22 +19,24 @@ interface ContentTypeLabelProps {
 }
 
 const ContentTypeLabel = ({ contentType, additionalName, reverse }: ContentTypeLabelProps) => {
+    const { t } = useTranslations();
+
     const prepareLabel = () => {
         switch(contentType) {
             case ContentTypeEnum.BOOK:
-                return 'Recenzja książki';
+                return t.COMMON.BOOK_REVIEW;
             case ContentTypeEnum.ARTICLE:
-                return 'Artykuł';
+                return t.COMMON.ARTICLE;
             case ContentTypeEnum.PODCAST:
-                return 'Podcast';
+                return t.COMMON.PODCAST;
             case ContentTypeEnum.WORKSHOPS:
-                return 'Warsztaty';
+                return t.COMMON.WORKSHOPS;
             case ContentTypeEnum.WEBINAR:
-                return 'Webinar';
+                return t.COMMON.WEBINAR;
             case ContentTypeEnum.CONFERENCE:
-                return 'Konferencja';
+                return t.COMMON.CONFERENCE;
             case ContentTypeEnum.LECTURE:
-                return 'Wykład';
+                return t.COMMON.LECTURE;
         }
     }
 
