@@ -87,6 +87,10 @@ const pl = {
     LAST_EVENTS: 'Najbliższe %%wydarzenia%%',
     NEXT_EVENT: 'wydarzenie',
     NEXT_EVENT_IN: 'Już za @1 @2',
+    BOOKS: {
+      NO_LINK: 'Brak recenzji',
+      WITH_LINK: 'Przejdź do recenzji',
+    },
   },
   BREADCRUMBS: {
     CONTACT: 'Kontakt',

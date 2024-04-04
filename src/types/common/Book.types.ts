@@ -28,4 +28,6 @@ export interface Book {
     reviewAuthor?: EntrySkeletonType<Author>[];
     bookType?: BookType;
     categoryName?: string;
+
+    hasReview?: boolean;
 }

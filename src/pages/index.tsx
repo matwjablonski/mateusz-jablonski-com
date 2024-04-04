@@ -212,10 +212,10 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     content_type: 'book',
     include: 2,
     order: '-fields.createdDate',
-    'fields.review[exists]': true,
+    'fields.rate[exists]': true,
     limit: 4,
     locale: mapLocale(locale),
-    select: 'fields.title,fields.slug,fields.cover,fields.author'
+    select: 'fields.title,fields.slug,fields.cover,fields.author,fields.review,fields.rate'
   });
 
   const nextCourseRes = await fetchEntries({
@@ -283,7 +283,12 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   })).shift() : null;
 
   const books = await booksRes.data.map(p => ({
-    ...p.fields,
+    title: p.fields.title,
+    slug: p.fields.slug,
+    cover: p.fields.cover,
+    author: p.fields.author,
+    rate: p.fields.rate,
+    hasReview: !!p.fields.review,
     createdDate: formatDate({
       dateObject: p.fields?.createdDate,
       formatString: 'dd MMMM yyyy',
