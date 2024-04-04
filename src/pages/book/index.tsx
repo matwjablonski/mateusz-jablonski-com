@@ -50,13 +50,13 @@ const BooksPage: FC<BooksPageProps> = ({ body: { title, description, head }, boo
                         key={`article${book.slug}`}
                         {...book}
                     />)}
-                    {shouldShowLoadMoreBtn && <Button.B 
-                        label="Wczytaj więcej treści"
-                        pattern={ButtonType.SECONDARY}
-                        action={fetchArticles}
-                        disabled={disabledFetch}
-                    />}
                 </section>
+                {/* {shouldShowLoadMoreBtn && <Button.B 
+                    label="Wczytaj więcej treści"
+                    pattern={ButtonType.SECONDARY}
+                    action={fetchArticles}
+                    disabled={disabledFetch}
+                />} */}
                 <section>
                     <HomeNewsletter />
                 </section>
@@ -65,7 +65,7 @@ const BooksPage: FC<BooksPageProps> = ({ body: { title, description, head }, boo
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     const res = await fetchEntries({
         content_type: 'page',
         'fields.slug': 'books',
@@ -76,13 +76,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
         content_type: 'book',
         include: 2,
         skip: 0,
-        limit: FIRST_PAGE_SIZE,
+        // 200 is fixed value to disable pagination, button for fetching is commented out above
+        limit: 200 || FIRST_PAGE_SIZE,
         order: '-fields.createdDate',
         'fields.createdDate[lte]': formatDate({
             dateObject: new Date(),
             formatString: 'yyyy-MM-dd HH:mm:ss'
           }),
-        'fields.review[exists]': true,
+        'fields.rate[exists]': true,
+        select: 'fields.title,fields.slug,fields.cover,fields.author,fields.review,fields.rate',
     });
 
     const body = await res.data
@@ -90,10 +92,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
         .shift();
 
     const books = await booksRes.data.map(p => ({
-        ...p.fields,
+        title: p.fields.title,
+        slug: p.fields.slug,
+        cover: p.fields.cover,
+        author: p.fields.author,
+        rate: p.fields.rate,
+        hasReview: !!p.fields.review,
         createdDate: formatDate({
             dateObject: p.fields?.createdDate,
-            formatString: 'dd MMMM yyyy'
+            formatString: 'dd MMMM yyyy',
+            locale,
         }),
     }));
 
