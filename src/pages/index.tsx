@@ -250,7 +250,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   const closestEvent = nextEvents.reduce((a, b) => (a.fields.eventDate < b.fields.eventDate ? a : b)); 
   
-  const nextEventInDays = closestEvent ? differenceInDays(new Date(closestEvent.fields.eventDate) , new Date()) + 1 : null;
+  const nextEventInDays = closestEvent ? differenceInDays(new Date(closestEvent.fields.eventDate) , new Date()) : null;
 
   const podcasts = await podcastsRes.data.map(p => ({
     ...p.fields,
