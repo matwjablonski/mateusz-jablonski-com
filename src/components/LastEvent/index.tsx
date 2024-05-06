@@ -20,7 +20,7 @@ const LastEvent: FC<LastEvent> = ({ typeOfEvent, title, eventDate, place, passed
     <div>
       <DateBox passed={passed}>
         {eventDate} {!passed && <JustIn>
-        {translate({
+        {daysToEvent === 1 ? t.HOME.NEXT_EVENT_TODAY : translate({
           value: t.HOME.NEXT_EVENT_IN,
           variables: [ daysToEvent.toString(), daysToEvent === 1 ? t.COMMON.DAY : t.COMMON.DAYS]
         })}
