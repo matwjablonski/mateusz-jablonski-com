@@ -4,6 +4,7 @@ const pl = {
     NEXT_PLURAL: 'Następne ',
     TOMORROW: 'jutro',
     DONT_KNOW: 'nie wiem',
+    TODAY: 'dzisiaj',
     DAY: 'dzień',
     DAYS: 'dni',
     HOUR_SHORT: 'g',

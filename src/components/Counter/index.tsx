@@ -12,6 +12,9 @@ const Counter: FunctionComponent<CounterProps> = ({ days, nextItemName, plural }
         if (days === null) {
             return t.COMMON.DONT_KNOW;
         }
+        if (days === 0) {
+            return t.COMMON.TODAY;
+        }
         if (days === 1) {
             return t.COMMON.TOMORROW;
         }
