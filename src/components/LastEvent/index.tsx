@@ -8,7 +8,7 @@ import { useTranslations } from '../../hooks/useTranslations';
 type LastEvent = { passed: boolean; } & Pick<Event, 'typeOfEvent' | 'title' | 'eventDate' | 'place' | 'rawEventDate'>;
 
 const LastEvent: FC<LastEvent> = ({ typeOfEvent, title, eventDate, place, passed, rawEventDate }) => {
-  const daysToEvent = rawEventDate && !passed ? differenceInDays(new Date(rawEventDate) , new Date()) + 1 : null;
+  const daysToEvent = rawEventDate && !passed ? differenceInDays(new Date(rawEventDate) , new Date()) : null;
 
   const { t, translate } = useTranslations();
 
@@ -20,7 +20,7 @@ const LastEvent: FC<LastEvent> = ({ typeOfEvent, title, eventDate, place, passed
     <div>
       <DateBox passed={passed}>
         {eventDate} {!passed && <JustIn>
-        {daysToEvent === 1 ? t.HOME.NEXT_EVENT_TODAY : translate({
+        {daysToEvent === 0 ? t.HOME.NEXT_EVENT_TODAY : translate({
           value: t.HOME.NEXT_EVENT_IN,
           variables: [ daysToEvent.toString(), daysToEvent === 1 ? t.COMMON.DAY : t.COMMON.DAYS]
         })}
