@@ -17,12 +17,12 @@
         align-items: flex-start;
         justify-content: flex-start;
         margin-bottom: gutters.$gutter;
+        gap: gutters.$gutter;
 
         @include media.bp(sm) {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0;
         }
     }
 
