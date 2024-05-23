@@ -1,9 +1,10 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .articlePreview {
-    flex: 0 1 352px;
+    flex: 0 1 100%;
     margin: 0 gutters.$gutter;
     display: flex;
     flex-direction: column;
@@ -11,14 +12,23 @@
     justify-content: space-between;
     transition: 700ms;
 
+    @include media.bp(sm) {
+        flex: 0 1 352px;
+      }
+
     .imageBox {
         margin-bottom: gutters.$gutter-medium;
         filter: drop-shadow(0px 4px 16px rgba(20, 165, 255, 0.16));
         position: relative;
+        width: 100%;
+        height: 216px;
+        overflow: hidden;
     }
 
     .image {
         border-radius: 4px;
+        width: 100%;
+        object-fit: cover;
     }
 
     .date {

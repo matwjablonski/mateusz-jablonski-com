@@ -30,6 +30,11 @@
   .content {
     display: flex;
     align-items: flex-start;
+    justify-content: center;
+
+    @include media.bp(lg) {
+      justify-content: flex-start;
+    }
   }
 
   .metabar {

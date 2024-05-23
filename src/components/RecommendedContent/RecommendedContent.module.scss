@@ -1,10 +1,15 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
 @use '../../styles/settings/fonts';
+@use '../../styles/settings/media';
 
 .lastContent {
     margin-top: gutters.$gutter-biggest;
     margin-bottom: gutters.$gutter-big;
+    
+    @include media.bp(md) {
+        margin-top: gutters.$gutter-bigger;
+    }
 
     .title {
         font-family: fonts.$font-headline;
@@ -27,5 +32,14 @@
         display: flex;
         margin-right: -(gutters.$gutter);
         margin-left: -(gutters.$gutter);
+        flex-wrap: wrap;
+
+        > * {
+            margin-bottom: gutters.$gutter-big;
+        }
+
+        @include media.bp(lg) {
+            flex-wrap: nowrap;
+        }
     }
 }

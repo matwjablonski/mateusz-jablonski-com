@@ -12,7 +12,7 @@
     transition: opacity 700ms;
     padding-bottom: gutters.$gutter;
 
-    @include media.bp(md) {
+    @include media.bp(lg) {
         display: block;
         width: 20%;
     }

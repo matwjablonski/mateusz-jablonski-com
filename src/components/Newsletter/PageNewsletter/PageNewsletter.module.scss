@@ -11,7 +11,7 @@
     margin-right: 0;
     position: relative;
 
-    @include media.bp(md) {
+    @include media.bp(xl) {
         margin-left: -(gutters.$gutter-big);
         margin-right: -(gutters.$gutter-big);
         padding: gutters.$gutter-big;

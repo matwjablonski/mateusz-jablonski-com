@@ -1,14 +1,21 @@
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .sources {
     margin-top: gutters.$gutter-big;
-    margin-right: -(gutters.$gutter * 2);
-    margin-left: -(gutters.$gutter * 2);
+    margin-right: 0;
+    margin-left: 0;
     padding: (gutters.$gutter * 2);
     border: 1px solid colors.$color-primary-300;
     border-radius: 8px;
-    width: calc(100% + gutters.$gutter-bigger);
+    width: 100%;
+
+    @include media.bp(md) {
+        margin-right: -(gutters.$gutter * 2);
+        margin-left: -(gutters.$gutter * 2);
+        width: calc(100% + gutters.$gutter-bigger);
+    }
 
     .title {
         margin: 0 0 gutters.$gutter-small;
