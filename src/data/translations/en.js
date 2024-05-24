@@ -111,6 +111,16 @@ const en = {
       TITLE: 'Latest content',
       TEXT: 'Below you will find the latest materials I have prepared. I invite you to take a look at them. I hope you will draw a lot of value for yourself from them.',
     },
+    CURRENT: {
+      READ: {
+        TITLE: 'I am currently reading',
+        NO_ACTIVITY: 'Temporary inactivity',
+      },
+      LISTEN: {
+        TITLE: 'I am currently listening',
+        NO_ACTIVITY: 'Temporary inactivity',
+      },
+    },
   },
   ARTICLE: {
     SUMMARY: {

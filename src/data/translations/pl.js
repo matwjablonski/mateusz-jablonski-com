@@ -111,6 +111,16 @@ const pl = {
       TITLE: 'Ostatnie materiały',
       TEXT: 'Poniżej znajdziesz najnowsze przygotowane przeze mnie materiały. Zapraszam do zapoznania się z nimi. Mam nadzieję, że wyciągniesz z nich dużo wartości dla siebie.',
     },
+    CURRENT: {
+      READ: {
+        TITLE: 'Aktualnie czytam',
+        NO_ACTIVITY: 'Chwilowy brak aktywności',
+      },
+      LISTEN: {
+        TITLE: 'Aktualnie słucham',
+        NO_ACTIVITY: 'Chwilowy brak aktywności',
+      },
+    },
   },
   ARTICLE: {
     SUMMARY: {

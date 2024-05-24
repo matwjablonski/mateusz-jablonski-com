@@ -28,6 +28,7 @@ import MyStory from "../../components/MyStory";
 import Motivator from "../../components/Motivator";
 import { mapLocale } from '../../lib/locales';
 import { useTranslations } from '../../hooks/useTranslations';
+import { NoActivity } from '../../components/NoActivity/NoActivity';
 
 interface AboutPageProps {
     head?: EntrySkeletonType<HeadInterface>;
@@ -45,6 +46,7 @@ const DynamicRecommendedThree = dynamic(
 
 const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent, vlogs }) => {
     const { t, translate } = useTranslations();
+
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
@@ -58,8 +60,8 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
             />
             <Grid>
                 <Columns>
-                    {book && <ShortBox title="Aktualnie czytam">
-                        <CurrentRead
+                    <ShortBox title={t.ABOUT.CURRENT.READ.TITLE}>
+                        {book ? <CurrentRead
                             title={book.title}
                             author={book.author}
                             imageUrl={book.cover.fields.file.url as string}
@@ -67,9 +69,11 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                             bookType={book.bookType}
                             slug={book.slug}
                             hasReview={!!book.review}
-                        />
-                    </ShortBox>}
-                    <ShortBox title="Aktualnie słucham">brak danych</ShortBox>
+                        /> : <NoActivity activityName="read" />}
+                    </ShortBox>
+                    <ShortBox title={t.ABOUT.CURRENT.LISTEN.TITLE}>
+                        <NoActivity activityName="listen" />
+                    </ShortBox>
                 </Columns>
                 {
                     recommended.podcasts.length >= 3 && (
@@ -142,7 +146,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
     const book = await booksRes.data.map(p => ({
         ...p.fields,
-      })).shift();
+      })).shift() || null;
 
     const body = await res.data
         .map(p => ({ ...p.fields }))

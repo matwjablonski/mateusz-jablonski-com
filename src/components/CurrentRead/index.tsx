@@ -42,7 +42,7 @@ const CurrentRead: FC<CurrentReadProps> = ({ title, author, imageUrl, affiliateL
                     </Link> : 
                     <h3 className={styles.title}>{title}</h3>
             }
-            <Button.L href={affiliateLink} pattern={ButtonType.CLEAN} label={generateLabel()} isExternal/>
+            {affiliateLink && <Button.L href={affiliateLink} pattern={ButtonType.CLEAN} label={generateLabel()} isExternal/>}
         </div>
     </div>
 }
