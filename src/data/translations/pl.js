@@ -117,7 +117,7 @@ const pl = {
         NO_ACTIVITY: 'Chwilowy brak aktywności',
       },
       LISTEN: {
-        TITLE: 'Aktualnie słucham',
+        TITLE: 'Ostatnio słuchałem',
         NO_ACTIVITY: 'Chwilowy brak aktywności',
       },
     },

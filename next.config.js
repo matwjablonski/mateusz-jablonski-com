@@ -26,6 +26,7 @@ const commonConfig = withPlugins([
       'yt3.ggpht.com',
       'yt3.googleusercontent.com',
       'woodpecker.pl',
+      'lastfm.freetls.fastly.net',
     ],
   },
   async redirects() {

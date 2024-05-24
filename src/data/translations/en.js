@@ -117,7 +117,7 @@ const en = {
         NO_ACTIVITY: 'Temporary inactivity',
       },
       LISTEN: {
-        TITLE: 'I am currently listening',
+        TITLE: 'Recently listened',
         NO_ACTIVITY: 'Temporary inactivity',
       },
     },

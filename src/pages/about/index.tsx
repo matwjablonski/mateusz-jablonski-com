@@ -2,7 +2,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Grid from "../../components/Grid";
 import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { EntrySkeletonType } from "contentful";
 import { GetStaticProps } from 'next';
 import { fetchEntries, fetchMultipleContentTypesEntries } from "../../contentful";
@@ -29,6 +29,7 @@ import Motivator from "../../components/Motivator";
 import { mapLocale } from '../../lib/locales';
 import { useTranslations } from '../../hooks/useTranslations';
 import { NoActivity } from '../../components/NoActivity/NoActivity';
+import { CurrentTrack } from '../../components/CurrentTrack';
 
 interface AboutPageProps {
     head?: EntrySkeletonType<HeadInterface>;
@@ -44,8 +45,26 @@ const DynamicRecommendedThree = dynamic(
     { ssr: false },
 )
 
+type Track = {
+    name: string;
+    artist: string;
+    cover: string;
+}
+
 const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastContent, vlogs }) => {
     const { t, translate } = useTranslations();
+    const [ lastTrack, setLastTrack ] = useState<Track | null>(null);
+
+    const fetchLastTrack = async () => {
+        const lastTrack = await fetch('/api/music/lastTracks');
+        const data = await lastTrack.json();
+        
+        setLastTrack(data);
+    }
+
+    useEffect(() => {
+        fetchLastTrack();
+    }, []);
 
     return (
         <MainLayout head={head ? head.fields : {}} hideOverflow>
@@ -72,7 +91,10 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                         /> : <NoActivity activityName="read" />}
                     </ShortBox>
                     <ShortBox title={t.ABOUT.CURRENT.LISTEN.TITLE}>
-                        <NoActivity activityName="listen" />
+                        {lastTrack ? (
+                            <CurrentTrack title={lastTrack.name} artist={lastTrack.artist} image={lastTrack.cover}/>
+                        ) : 
+                        <NoActivity activityName="listen" />}
                     </ShortBox>
                 </Columns>
                 {
