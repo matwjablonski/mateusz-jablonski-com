@@ -17,10 +17,10 @@ export const NoActivity: FC<NoActivity> = ({ activityName }) => {
   const { t } = useTranslations();
   const getActivityLabel = () => t.ABOUT.CURRENT[activityName.toUpperCase()].NO_ACTIVITY;
 
-  return (
+  return activityName ? (
     <div className="flex justify-center items-center p-15 flex-col">
       <h4 className="mb-6 text-main-700 text-md font-heading">{getActivityLabel()}</h4>
       <Image src={icons[activityName]} alt="" width={100} />
     </div>
-  )
+  ) : null;
 }
