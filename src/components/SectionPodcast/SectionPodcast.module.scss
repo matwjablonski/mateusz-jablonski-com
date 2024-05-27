@@ -7,8 +7,12 @@
   background: colors.$color-white;
   border-radius: 8px;
   box-shadow: 0px 8px 48px 0px rgba(colors.$color-primary-300, .11);
-  padding: gutters.$gutter-big (gutters.$gutter * 2);
+  padding: gutters.$gutter;
   margin-bottom: gutters.$gutter-medium;
+
+  @include media.bp(sm) {
+    padding: gutters.$gutter-big (gutters.$gutter * 2);
+  }
 
   &:last-child {
     margin-bottom: gutters.$gutter-bigger;

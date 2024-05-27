@@ -1,6 +1,7 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .MyPodcastHeader {
   max-width: 850px;
@@ -9,8 +10,13 @@
 
   .Top {
     display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
     margin-bottom: gutters.$gutter-medium;
+
+    @include media.bp(sm) {
+      flex-direction: row;
+    }
   }
 
   .CoverWrapper {
@@ -18,28 +24,51 @@
     margin: 0;
     overflow: hidden;
     border-radius: 8px;
-    min-width: 250px;
+    width: 100%;
+    max-width: 250px;
+
+    @include media.bp(sm) {
+      width: auto;
+      min-width: 250px;
+      max-width: initial;
+    }
   }
 
   .TopContent {
-    margin-left: gutters.$gutter-medium;
+    margin-top: gutters.$gutter-medium;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    @include media.bp(sm) {
+      margin-left: gutters.$gutter-medium;
+      margin-top: 0;
+    }
   }
 
   .Title {
-    font-size: 40px;
+    font-size: 30px;
     line-height: 1.25;
     font-family: fonts.$font-headline;
     letter-spacing: -0.01em;
     color: colors.$color-primary;
     font-weight: 500;
     margin: 0 0 gutters.$gutter-medium;
+
+    @include media.bp(sm) {
+      font-size: 40px;
+    }
   }
 
   .Authors {
     display: flex;
+    flex-direction: column;
+    gap: gutters.$gutter;
+
+    @include media.bp(md) {
+      flex-direction: row;
+      gap: 0;
+    }
   }
 
   .Text {

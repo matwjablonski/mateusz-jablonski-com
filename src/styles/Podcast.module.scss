@@ -10,7 +10,7 @@
   text-transform: uppercase;
   letter-spacing: -.01;
   line-height: 1.25;
-  margin: 0 0 gutters.$gutter;
+  margin: gutters.$gutter-bigger 0 gutters.$gutter;
 }
 
 .ListenNow {

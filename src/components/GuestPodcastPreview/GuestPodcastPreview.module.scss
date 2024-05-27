@@ -1,9 +1,15 @@
 @use '../../styles/settings/fonts';
 @use '../../styles/settings/gutters';
 @use '../../styles/settings/colors';
+@use '../../styles/settings/media';
 
 .GuestPodcastPreview {
   display: flex;
+  flex-direction: column;
+
+  @include media.bp(sm) {
+    flex-direction: row;
+  }
 
   &:not(:last-child) {
     margin-bottom: gutters.$gutter * 2;
@@ -12,31 +18,58 @@
   .Image {
     border-radius: 4px;
     overflow: hidden;
-    min-width: 250px;
+    min-width: 100%;
     margin: 0;
     font-size: 0;
+    height: 200px;
     position: relative;
 
+    @include media.bp(sm) {
+      height: auto;
+      min-width: 250px;
+    }
+
     a {
-      display: inline-block;
+      display: block;
+
+      @include media.bp(sm) {
+        display: inline-block;
+      }
     }
 
     .EpisodeNo {
       position: absolute;
       left: gutters.$gutter;
+      z-index: 2;
     }
 
     img {
       object-fit: cover;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @include media.bp(sm) {
+        width: auto;
+        position: static;
+        top: 0;
+        transform: initial;
+      }
     }
   }
 
   .Content {
-    margin-left: gutters.$gutter-medium;
+    margin-top: gutters.$gutter-medium;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+
+    @include media.bp(sm) {
+      margin-left: gutters.$gutter-medium;
+      margin-top: 0;
+    }
   }
 
   .Title {
@@ -50,12 +83,21 @@
 
   .TimesBox {
     display: flex;
+    flex-direction: column;
+    gap: gutters.$gutter-small;
+    margin-bottom: gutters.$gutter;
+
+    @include media.bp(sm) {
+      flex-direction: row;
+      margin-bottom: 0;
+      gap: initial;
+    }
   }
 
   .Time {
-    margin: 0 gutters.$gutter gutters.$gutter 0;
+    margin: 0;
     font-size: 14px;
-    color: colors.$color-text;
+    color: colors.$color-primary-300;
     font-family: fonts.$font-headline;
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -63,8 +105,18 @@
     text-transform: uppercase;
     display: block;
 
+    @include media.bp(sm) {
+      margin: 0 gutters.$gutter gutters.$gutter 0;
+      color: colors.$color-text;
+    }
+
     span {
-      padding-left: gutters.$gutter;
+      display: none;
+      
+      @include media.bp(sm) {
+        padding-left: gutters.$gutter;
+        display: inline;
+      }
     }
   }
 
