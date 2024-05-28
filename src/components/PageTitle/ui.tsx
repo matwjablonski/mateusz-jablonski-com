@@ -1,5 +1,5 @@
 export const Wrapper = ({ children, dark, center }) => (
-  <div className={`${center ? 'text-center' : ''}`}>
+  <div className={`${center ? 'text-center' : ''} mb-16`}>
     {children}
   </div>
 );

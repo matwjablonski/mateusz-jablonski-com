@@ -73,13 +73,15 @@ const BlogPage: FC<BlogPageProps> = ({ body: { title, description, head }, artic
                         preview={Preview.VERTICAL}
                         externalSource={article.externalSource}
                     />)}
+                </section>
+                <div className={styles.loadMoreBox}>
                     {shouldShowLoadMoreBtn && <Button.B 
                         label="Wczytaj więcej treści"
                         pattern={ButtonType.SECONDARY}
                         action={fetchArticles}
                         disabled={disabledFetch}
                     />}
-                </section>
+                </div>
                 <section>
                     <HomeNewsletter />
                 </section>

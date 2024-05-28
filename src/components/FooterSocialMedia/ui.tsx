@@ -15,6 +15,7 @@ export const Title = ({ children, dark }) => (
     text-[40px]
     font-normal
     mr-4
+    mb-8
     max-w-[450px]
     leading-[1.2]
     grow
@@ -36,6 +37,7 @@ export const Title = ({ children, dark }) => (
 export const Tiles = ({ children }) => (
   <div className="
     flex
+    gap-4
     w-full
     flex-wrap
 

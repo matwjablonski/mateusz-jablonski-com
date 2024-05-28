@@ -8,8 +8,8 @@
     margin: 0 0 gutters.$gutter;
 
     @include media.bp(xs) {
-        flex: 0 1 calc(50% - #{gutters.$gutter * 2});
-        margin: 0 gutters.$gutter gutters.$gutter-medium;
+        flex: 0 1 calc(50% - 8px);
+        margin: 0 0 gutters.$gutter-medium;
     }
 
     @include media.bp(md) {
