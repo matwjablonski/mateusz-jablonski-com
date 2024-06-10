@@ -86,7 +86,7 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
                         <GuestPodcastBlock
                             key={podcastName}
                             title={podcastName}
-                            description={podcastGuest[podcastName][0].podcast.fields?.description}
+                            description={podcastGuest[podcastName][0].podcast?.description}
                             episodes={podcastGuest[podcastName]}
                         />
                     ))}

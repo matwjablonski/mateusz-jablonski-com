@@ -33,7 +33,7 @@ export interface PodcastEpisode {
     video?: string;
     head?: Entry<EntrySkeletonType<HeadInterface>>;
     author?: Entry<EntrySkeletonType<Author>>[];
-    podcast: EntrySkeletonType<Podcast>;
+    podcast: Podcast;
     id: string;
     podcastExcerpt: Document;
     externalLink?: string;

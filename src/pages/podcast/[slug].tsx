@@ -34,10 +34,10 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
         <Grid>
           <Breadcrumbs />
           <PodcastComponent
-            applepodcast={body.podcast.fields?.applepodcast}
-            spotify={body.podcast.fields.spotify}
-            googlepodcast={body.podcast.fields?.googlepodcasts}
-            youtube={body.podcast.fields?.youtube}
+            applepodcast={body.podcast?.applepodcast}
+            spotify={body.podcast.spotify}
+            googlepodcast={body.podcast?.googlepodcasts}
+            youtube={body.podcast?.youtube}
             content={body.content}
             title={body.title}
             excerpt={body.excerpt}
@@ -49,9 +49,9 @@ const SinglePodcastPage = ({ body, comments }: SinglePodcastPageProps) => {
             fileUrl={body.fileUrl}
             episode={body.episode}
             createdDate={body.createdDate}
-            podcastTitle={body.podcast.fields?.name}
+            podcastTitle={body.podcast?.name}
             podcastExcerpt={body.podcastExcerpt}
-            podcastCover={body.podcast.fields?.cover}
+            podcastCover={body.podcast?.cover}
             externalLink={body.externalLink}
             video={body.video}
             time={body.time}
@@ -79,6 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     .map(p => ({ 
       ...p.fields,
       id: p.sys.id,
+      podcast: p.fields.podcast.fields,
       createdDate: formatDate({
         dateObject: p.fields.createdDate,
         formatString: 'dd.MM.yyyy',

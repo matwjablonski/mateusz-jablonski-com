@@ -12,6 +12,7 @@ import { LastPodcastPreviewProps, LastPodcastPreviewSize } from './LastPodcastPr
 const LastPodcastPreview: FunctionComponent<LastPodcastPreviewProps> = ({ 
     title, createdDate, slug, excerpt, featuredImage, episode, previewSize, podcastTitle,
 }) => {
+    console.log(podcastTitle);
 
     const podcastInfo = <>
         {podcastTitle}
