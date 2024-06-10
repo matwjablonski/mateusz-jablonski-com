@@ -40,7 +40,9 @@ export const Tiles = ({ children }) => (
     gap-4
     w-full
     flex-wrap
-
+    
+    lg:gap-6
+    lg:justify-end
     lg:-mr-4
   ">{children}</div>
 );
