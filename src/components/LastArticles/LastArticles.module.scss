@@ -26,11 +26,10 @@
 
 .lastArticles {
     display: flex;
-    margin-left: -(gutters.$gutter);
-    margin-right: -(gutters.$gutter);
     padding-bottom: gutters.$gutter-medium + gutters.$gutter;
     position: relative;
     transition: 700ms;
+    gap: (gutters.$gutter * 2);
 }
 
 .lastBox {
