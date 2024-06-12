@@ -30,8 +30,7 @@
     
     .dataRow {
         display: flex;
-        margin-right: -(gutters.$gutter);
-        margin-left: -(gutters.$gutter);
+        gap: gutters.$gutter * 2;
         flex-wrap: wrap;
 
         > * {
