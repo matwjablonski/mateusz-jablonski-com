@@ -25,6 +25,7 @@ const Content = ({content, summary, sources, disableSummary}: ContentProps) => {
       [BLOCKS.HEADING_2]: (node, children) => <h2>{children}</h2>,
       [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
       [BLOCKS.HEADING_4]: (node, children) => <h4>{children}</h4>,
+      [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,
       [BLOCKS.QUOTE]: (node, children) => <div className={styles.wideAsset}>
         <blockquote className={styles.blockquote}>
           {children}
