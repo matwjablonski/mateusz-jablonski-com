@@ -70,6 +70,15 @@ async function fetchMultipleContentTypesEntries(contentTypes: string[], limit: n
 
       return item;
     })
+    .filter(item => {
+      if (item.sys.contentType.sys.id === 'book') {
+        if (item.fields.review) {
+          return item;
+        }
+        return null;
+      }
+      return item;
+    })
     .map(item => (
       {
         ...item, 
