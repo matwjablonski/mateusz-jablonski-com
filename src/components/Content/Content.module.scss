@@ -103,11 +103,11 @@
         }
     }
 
-    ul {
+    > ul {
         margin-left: 2rem;
     }
 
-    ul li {
+    > ul li {
         list-style: circle;
     }
 
@@ -119,7 +119,7 @@
         margin-bottom: gutters.$gutter;
     }
 
-    a {
+    > p a {
         color: colors.$color-primary-300;
         border-bottom: 2px dotted colors.$color-primary-300;
         transition: all 0.3s;
