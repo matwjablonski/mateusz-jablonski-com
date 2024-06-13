@@ -119,6 +119,19 @@
         margin-bottom: gutters.$gutter;
     }
 
+    a {
+        color: colors.$color-primary-300;
+        border-bottom: 2px dotted colors.$color-primary-300;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: colors.$color-primary-300;
+            border-color: colors.$color-white;
+            color: colors.$color-white;
+            transition: all 0.3s;
+        }
+    }
+
     .figure {
         text-align: center;
     }
