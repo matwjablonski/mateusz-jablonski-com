@@ -148,7 +148,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
     const testimonialsRes = await fetchEntries({
         content_type: 'testimonials',
-        'fields.isGeneralReview[exists]': true,
+        'fields.isGeneralReview': true,
         select: 'fields.name,fields.content',
         locale: mapLocale(locale),
     });
