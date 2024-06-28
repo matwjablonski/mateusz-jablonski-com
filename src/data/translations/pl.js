@@ -21,6 +21,14 @@ const pl = {
     WEBINAR: 'Webinar',
     CONFERENCE: 'Konferencja',
     LECTURE: 'Wykład',
+    SEARCH: {
+      CLOSE: 'Zamknij',
+      TIP: 'Aby otworzyć wyszukiwarkę, naciśnij ctrl + s na klawiaturze. Aby zamknąć, naciśnij esc.',
+      LABEL: 'Wyszukaj',
+      PLACEHOLDER: 'Wpisz temat, który Cię interesuje...',
+      NO_RESULTS: 'Nie znaleziono wyników dla frazy: @1',
+      LOADING: 'Trwa wyszukiwanie...',
+    },
   },
   COOKIES: {
     TITLE: 'Ciasteczkowy potwór już tu był!',
@@ -217,7 +225,24 @@ const pl = {
   DOCS: {
     TITLE: 'Dokumenty',
     DESCRIPTION: 'W poniższej tabeli znajdziesz informacje o dokumentach prawnych dostępnych w moim serwisie. Dokumenty te zawierają informacje o sposobie działania niniejszej witryny.',
-  }
+  },
+  LEVELS: {
+    0: 'Koder Nowicjusz',
+    1: 'Skrypter Początkujący',
+    2: 'Programista Praktykant',
+    3: 'Kompilator Entuzjasta',
+    4: 'Konstruktor Modułów',
+    5: 'Architekt Algorytmów',
+    6: 'Władca Pętli',
+    7: 'Szaman Debugowania',
+    8: 'Mistrz Bibliotek',
+    9: 'Sędzia Kodu',
+    10: 'Mistrz Polimorfizmu',
+    11: 'Czarodziej Interfejsów',
+    12: 'Inżynier Skalowalności',
+    13: 'Guru Architektury',
+    14: 'Mistrz Programowania',
+  },
 }
 
 export default pl;

@@ -30,12 +30,6 @@ const DynamicGoogleScripts = dynamic(
 const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) => {
   const [ isCookieMonster, setAsCookieMonster ] = useState(() => hasCookie('cookies_accepted'));
 
-  const handleKeyPress = useCallback(({ ctrlKey, key}) => {
-    if (ctrlKey && (key === 's' || key === 'S')) {
-      console.log('search');
-    }
-  }, []);
-
   const handleCookiesAcceptance = useCallback(() => {
     setCookie('cookies_accepted', 'true');
     setAsCookieMonster(true);
@@ -44,14 +38,6 @@ const App: FC<{ Component: FC, pageProps: any }> = ({ Component, pageProps }) =>
   const handleCookiesDismiss = useCallback(() => {
     setCookie('cookies_accepted', 'false');
     setAsCookieMonster(true);
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener('keypress', handleKeyPress);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
   }, []);
 
   return (

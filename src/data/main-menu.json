@@ -31,6 +31,12 @@
             "type": "link"
         },
         {
+            "id": "2flcoqujbx0a6puo",
+            "title": "SEARCH",
+            "url": "#",
+            "type": "search"
+        },
+        {
             "id": "vflckmujbxza6puo",
             "title": "MEMBER_AREA",
             "url": "/dashboard",

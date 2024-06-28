@@ -21,6 +21,14 @@ const en = {
     WEBINAR: 'Webinar',
     CONFERENCE: 'Conference',
     LECTURE: 'Lecture',
+    SEARCH: {
+      CLOSE: 'Close',
+      TIP: 'To open the search engine, press ctrl + s on the keyboard. To close, press esc.',
+      LABEL: 'Search',
+      PLACEHOLDER: 'Enter the topic you are interested in...',
+      NO_RESULTS: 'No results found for the phrase: @1',
+      LOADING: 'Searching...',
+    },
   },
   COOKIES: {
     TITLE: 'Cookies monster was here already!',
@@ -217,7 +225,24 @@ const en = {
   DOCS: {
     TITLE: 'Documents',
     DESCRIPTION: 'W poniższej tabeli znajdziesz informacje o dokumentach prawnych dostępnych w moim serwisie. Dokumenty te zawierają informacje o sposobie działania niniejszej witryny.',
-  }
+  },
+  LEVELS: {
+    0: 'Code Novice',
+    1: 'Beginner Scripter',
+    2: 'Apprentice Programmer',
+    3: 'Compiler Enthusiast',
+    4: 'Module Builder',
+    5: 'Algorithm Architect',
+    6: 'Loop Master',
+    7: 'Debugging Shaman',
+    8: 'Library Master',
+    9: 'Code Judge',
+    10: 'Polymorphism Expert',
+    11: 'Interface Wizard',
+    12: 'Scalability Engineer',
+    13: 'Architecture Guru',
+    14: 'Programming Grandmaster',
+  },
 }
 
 export default en;

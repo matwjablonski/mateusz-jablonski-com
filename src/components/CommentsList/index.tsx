@@ -44,6 +44,7 @@ const CommentsList: FunctionComponent<CommentsListProps> = ({ comments, postId, 
                     onClose={() => setIsCommentsModalOpen(false)}
                     subtitle={t.ARTICLE.COMMENTS.COMMENTING_TITLE}
                     title={title}
+                    backLabel={t.ARTICLE.COMMENTS.BACK}
                 >
                     <CommentAddForm postId={postId} onClose={() => setIsCommentsModalOpen(false)}/>
                 </Modal>

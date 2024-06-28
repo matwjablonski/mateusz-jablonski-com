@@ -140,6 +140,24 @@
         &.reverse {
             color: colors.$color-white;
         }
+
+        &.search {
+            min-width: 32px;
+            display: flex;
+            align-items: center;
+            padding: 0 gutters.$gutter-small;
+            margin-top: gutters.$gutter-big;
+
+            @include media.bp(md) {
+                justify-content: center;
+                margin-top: 0;
+                padding: 0;
+            }
+            
+            img {
+                cursor: pointer;
+            }
+        }
     }
 
     &.isMenuOpen {
