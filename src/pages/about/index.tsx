@@ -70,7 +70,7 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
         <MainLayout head={head ? head.fields : {}} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                {/* <MyStory /> */}
+                <MyStory />
                 <Motivator />
             </Grid>
             <SectionHero
