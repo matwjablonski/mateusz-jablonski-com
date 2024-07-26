@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useTranslations } from '../../hooks/useTranslations'
 import InputWrapper from '../InputWrapper';
 import { ResultsMessage, ResultsWrapper, Tip } from './ui'
@@ -21,6 +21,7 @@ export const Search = ({ onClose }) => {
   const [searchResults, setSearchResults] = useState<SearchResults | null>(null);
   const [searchValue, setSearchValue] = useState<string>();
   const [isSearching, setIsSearching] = useState(false);
+  const searchInputRef = useRef(null);
   const { push } = useRouter();
 
   const handleGoto = async (e, url: string) => {
@@ -47,6 +48,10 @@ export const Search = ({ onClose }) => {
     }
   }, 400);
 
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
+
   return (
     <div>
       <Tip>{t.COMMON.SEARCH.TIP}</Tip>
@@ -55,6 +60,7 @@ export const Search = ({ onClose }) => {
           type="text"
           placeholder={t.COMMON.SEARCH.PLACEHOLDER}
           onChange={onSearch}
+          ref={searchInputRef}
         />
       </InputWrapper>
       {isSearching && <ResultsMessage>{t.COMMON.SEARCH.LOADING}</ResultsMessage>}
