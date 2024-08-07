@@ -51,7 +51,7 @@ const Content = ({content, summary, sources, disableSummary}: ContentProps) => {
           }
         </figure>
       },
-      [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri}>{children}</a>,
+      [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri} target="_blank" rel="noreferrer nofollow">{children}</a>,
     }
   }
 
