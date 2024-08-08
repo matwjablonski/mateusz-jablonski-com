@@ -26,7 +26,7 @@
     "@types/jest": "^26.0.23",
     "@types/lodash.debounce": "^4.0.9",
     "@types/wavesurfer.js": "^6.0.3",
-    "@vercel/postgres": "^0.7.2",
+    "@vercel/postgres": "^0.9.0",
     "autoprefixer": "^10.4.17",
     "axios": "^1.4.0",
     "classnames": "^2.2.6",
