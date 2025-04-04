@@ -15,8 +15,8 @@ const FooterSocialMedia: FunctionComponent<{ dark: boolean }> = memo(({ dark }) 
       </Title>
       <Tiles>
         <SocialMediaTile href={externalSources.twitter} socialMediaType={SocialMediaType.TWITTER} key={SocialMediaType.TWITTER}/>
-        <SocialMediaTile href={externalSources.facebook} socialMediaType={SocialMediaType.FACEBOOK} key={SocialMediaType.FACEBOOK}/>
-        <SocialMediaTile href={externalSources.instagram} socialMediaType={SocialMediaType.INSTAGRAM} key={SocialMediaType.INSTAGRAM}/>
+        <SocialMediaTile href={externalSources.buycoffee} socialMediaType={SocialMediaType.BUYCOFFEE} key={SocialMediaType.BUYCOFFEE}/>
+        <SocialMediaTile href={externalSources.github} socialMediaType={SocialMediaType.GITHUB} key={SocialMediaType.GITHUB}/>
         <SocialMediaTile href={externalSources.linkedin} socialMediaType={SocialMediaType.LINKEDIN} key={SocialMediaType.LINKEDIN}/>
       </Tiles>
     </Wrapper>

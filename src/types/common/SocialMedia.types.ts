@@ -3,5 +3,6 @@ export enum SocialMediaType {
   FACEBOOK = 'facebook',
   LINKEDIN = 'linkedin',
   INSTAGRAM = 'instagram',
-  GITHUB = 'github'
+  GITHUB = 'github',
+  BUYCOFFEE = 'buycoffee',
 }

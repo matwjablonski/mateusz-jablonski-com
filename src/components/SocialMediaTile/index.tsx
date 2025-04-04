@@ -8,6 +8,8 @@ import x from '../../public/icons/x.svg';
 import facebook from '../../public/icons/facebook.svg';
 import li from '../../public/icons/li.svg';
 import instagram from '../../public/icons/instagram.svg';
+import github from '../../public/icons/github.svg';
+import buycoffee from '../../public/icons/buycoffee.svg';
 
 const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, socialMediaType}) => {
   const [name, setName] = useState<string>(null);
@@ -35,6 +37,10 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
         setName('GitHub');
         setClassName('github');
         break;
+      case SocialMediaType.BUYCOFFEE:
+        setName('Buycoffee');
+        setClassName('buycoffee');
+        break;
     }
   }, [socialMediaType])
 
@@ -49,7 +55,9 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
       case SocialMediaType.LINKEDIN:
         return <Image src={li || `/icons/li.svg`} width={72} height={72} alt=""/>;
       case SocialMediaType.GITHUB:
-        return <Image src={x || `/icons/twitter.svg`} width={49} height={6} alt=""/>;
+        return <Image src={github || `/icons/github.svg`} width={49} height={6} alt=""/>;
+      case SocialMediaType.BUYCOFFEE:
+          return <Image src={buycoffee || `/icons/buycoffee.svg`} width={49} height={6} alt=""/>;
     }    
   }
 

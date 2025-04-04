@@ -65,6 +65,14 @@
         &.linkedin {
             background: linear-gradient(180deg, #0078B5 0%, #1A93D0 100%);
         }
+
+        &.github {
+            background: linear-gradient(180deg, #000 0%, #333 100%);
+        }
+
+        &.buycoffee {
+            background: linear-gradient(180deg, rgb(0, 168, 98) 0%, rgb(17, 139, 88) 100%);
+        }
     }
     
     .name {
