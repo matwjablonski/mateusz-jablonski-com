@@ -21,7 +21,7 @@
     "@hookform/resolvers": "^2.9.7",
     "@mailchimp/mailchimp_marketing": "^3.0.69",
     "@sendgrid/mail": "^7.7.0",
-    "@sentry/nextjs": "^7.48.0",
+    "@sentry/nextjs": "^8.32.0",
     "@svgr/webpack": "^6.2.1",
     "@types/jest": "^26.0.23",
     "@types/lodash.debounce": "^4.0.9",
