@@ -129,6 +129,20 @@ const pl = {
         NO_ACTIVITY: 'Chwilowy brak aktywności',
       },
     },
+    STORY: {
+      TITLE: 'Jak to się zaczęło?',
+      INTRO: 'Programowaniem zacząłem się interesować już dawno temu. Mając zaledwie 12 lat wraz z dwójką moich przyjaciół snuliśmy marzenia o wielkich projektach IT, braliśmy udział w różnych konkursach informatycznych i świetnie się przy tym bawiliśmy.',
+      BLOCKQUOTE: 'Nigdy nie przypuszczałem, że programowanie stanie się moją pasją i zawodem.',
+      EPISODE_1_1: 'W 2011 roku życie pokierowało moją karierę w kierunku tworzenia stron internetowych.',
+      EPISODE_1_2: 'Od samego początku czułem, że się w tym odnajduję, że sprawia mi to dużo radości, a osiągane efekty popychają mnie dalej - coś kazało mi zagłębiać się w ten temat i wyciągać z niego coraz więcej dla siebie.',
+      EPISODE_1_3: 'Niewątpliwie dużą rolę w moim życiu odegrali moi pierwsi mentorzy i współpracownicy.',
+      EPISODE_2_1: 'Kilka lat później postanowiłem spróbować swoich sił w edukacji. Na ścieżkę mentorską wstąpiłem pod koniec 2016 roku.',
+      EPISODE_2_2: 'Od tamtego czasu nieustannie staram się rozwijać nie tylko swoje umiejętności techniczne, ale również miękkie - przemawianie, pisanie, rozmawianie.',
+      EPISODE_2_3: 'Zrozumiałem jak ważną rolę pełni mentor - trener podczas każdej sesji mentorskiej, warsztatów czy szkoleń. Można być świetnym programistą i nie mieć zacięcia do uczenia innych.',
+      PHOTO_1_CAPTION: 'To ja wraz ze znajomymi przed II LO. Rok 2008.',
+      PHOTO_2_CAPTION: 'Pierwsze kroki z Wordpress i Magento. Rok 2011.',
+      PHOTO_3_CAPTION: 'Szkolenie wewnętrzne w Sonalake. Rok 2020.',
+    },
   },
   ARTICLE: {
     SUMMARY: {

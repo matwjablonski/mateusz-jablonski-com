@@ -129,6 +129,20 @@ const en = {
         NO_ACTIVITY: 'Temporary inactivity',
       },
     },
+    STORY: {
+      TITLE: 'How did it all start?',
+      INTRO: 'I became interested in programming a long time ago. At the age of just 12, together with two of my friends, we dreamed about big IT projects, took part in various computer science competitions, and had a lot of fun doing it.',
+      BLOCKQUOTE: 'I never imagined that programming would become both my passion and profession.',
+      EPISODE_1_1: 'In 2011, life steered my career toward web development.',
+      EPISODE_1_2: 'From the very beginning, I felt that this was my place, that it brought me a lot of joy, and that the results I achieved kept pushing me forward—something made me want to dive deeper and get more out of it.',
+      EPISODE_1_3: 'Undoubtedly, my first mentors and colleagues played a significant role in my journey.',
+      EPISODE_2_1: 'A few years later, I decided to try my hand at education. I began my mentoring path at the end of 2016.',
+      EPISODE_2_2: 'Since then, I have constantly worked on developing not only my technical skills, but also my soft skills—speaking, writing, communicating.',
+      EPISODE_2_3: 'I realized how important the role of a mentor or trainer is during every mentoring session, workshop, or training. One can be a great programmer and still lack the inclination to teach others.',
+      PHOTO_1_CAPTION: 'That’s me with friends in front of Secondary School No. 2. Year 2008.',
+      PHOTO_2_CAPTION: 'First steps with WordPress and Magento. Year 2011.',
+      PHOTO_3_CAPTION: 'Internal training at Sonalake. Year 2020.',
+    },
   },
   ARTICLE: {
     SUMMARY: {
