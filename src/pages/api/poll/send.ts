@@ -1,10 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import sgMail, { MailDataRequired } from '@sendgrid/mail';
+import nodemailer from 'nodemailer';
 import { env } from 'process';
 import { addListMember } from '../../../lib/mailchimp/addListMember';
 import { calculateAverage } from '../../../utils/calculateAverage';
 
-sgMail.setApiKey(env.SENDGRID_API_KEY)
+const transporter = nodemailer.createTransport({
+  host: env.SMTP_HOST,
+  port: parseInt(env.SMTP_PORT || '587'),
+  auth: {
+    user: env.SMTP_USER,
+    pass: env.SMTP_PASSWORD,
+  },
+});
 
 const send = async (req: NextApiRequest, res: NextApiResponse  ) => {
   try {
@@ -31,9 +38,9 @@ const send = async (req: NextApiRequest, res: NextApiResponse  ) => {
       newsletterEmail,
     } = values;
 
-    const data: MailDataRequired = {
+    const mailOptions = {
       to: 'mail@mateuszjablonski.com',
-      from: 'mail@mateuszjablonski.com',
+      from: env.SMTP_FROM || 'mail@mateuszjablonski.com',
       subject: `Ankieta do szkolenia z dnia ${date}`,
       html: `
         <h2>Ankieta do szkolenia: ${name}</h2>
@@ -82,15 +89,16 @@ const send = async (req: NextApiRequest, res: NextApiResponse  ) => {
       `,
     };
 
-    await sgMail.send(data);
+    await transporter.sendMail(mailOptions);
 
     if (newsletterEmail) {
       await addListMember(newsletterEmail);
     }
 
-    res.send({ status: 'success', message: 'Ankieta została zapisana. Dziękuję za wypełnienie.'});
+    return res.status(200).json({ status: 'success', message: 'Ankieta została zapisana. Dziękuję za wypełnienie.'});
   } catch (err) {
-
+    console.error('Poll send error:', err);
+    return res.status(500).json({ status: 'error', message: 'Wystąpił błąd podczas wysyłania ankiety.' });
   }
 }
 

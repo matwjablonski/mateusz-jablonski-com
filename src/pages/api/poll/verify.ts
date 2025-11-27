@@ -8,16 +8,17 @@ const verify = async (req: NextApiRequest, res: NextApiResponse  ) => {
     const result = rows.find(row => row.poll_access_code === requestData.accessPassword);
 
     if (rowCount === 0) {
-      throw new Error('Invalid poll id');
+      return res.status(404).json({ status: 'error', message: 'Invalid poll id' });
     }
 
     if (result) {
-      res.send({ status: 'success' });
+      return res.status(200).json({ status: 'success' });
     }
 
-    throw new Error('Invalid Access code');
+    return res.status(401).json({ status: 'error', message: 'Invalid Access code' });
   } catch (err) {
-    res.send({ status: 'error', message: err.message });
+    console.error('Poll verify error:', err);
+    return res.status(500).json({ status: 'error', message: err.message });
   }
 };
 
