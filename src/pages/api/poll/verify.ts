@@ -17,7 +17,7 @@ const verify = async (req: NextApiRequest, res: NextApiResponse  ) => {
 
     throw new Error('Invalid Access code');
   } catch (err) {
-    // res.send({ status: 'error', message: err.message });
+    res.send({ status: 'error', message: err.message });
   }
 };
 

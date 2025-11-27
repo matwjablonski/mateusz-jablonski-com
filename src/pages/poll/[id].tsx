@@ -45,7 +45,7 @@ const PollPage = () => {
         <Grid>
           { pollData ? (
             <>
-              <PageTitle title="Ankieta" description={
+              <PageTitle title={t.POLL.TITLE} description={
                 translate({
                   value: t.POLL.DESCRIPTION,
                   variables: [
@@ -64,7 +64,7 @@ const PollPage = () => {
                 accessCode={accessCode}  
               />}
             </>
-          ) : <Loader revert msg="Trwa ładowanie ankiety" /> }
+          ) : <Loader revert msg={t.POLL.LOADING} /> }
         </Grid>
       </MainLayout>
     </CaptchaProvider>

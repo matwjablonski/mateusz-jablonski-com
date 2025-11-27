@@ -3,204 +3,205 @@ import TwoIcon from '../../public/icons/square-number-2.svg';
 import ThreeIcon from '../../public/icons/square-number-3.svg';
 import FourIcon from '../../public/icons/square-number-4.svg';
 import FiveIcon from '../../public/icons/square-number-5.svg';
+import pl from '../../data/translations/pl';
 
-const goodOrBadNotes = [
+const getGoodOrBadNotes = (t: typeof pl) => [
   {
     value: '1',
-    label: 'Fatalnie',
+    label: t.POLL.ANSWERS.GOOD_OR_BAD.ONE,
     icon: OneIcon,
     iconWidth: 24,
   },
   {
       value: '2',
-      label: 'Kiepsko',
+      label: t.POLL.ANSWERS.GOOD_OR_BAD.TWO,
       icon: TwoIcon,
       iconWidth: 24,
   },
   {
       value: '3',
-      label: 'Tak sobie',
+      label: t.POLL.ANSWERS.GOOD_OR_BAD.THREE,
       icon: ThreeIcon,
       iconWidth: 24,
   },
   {
       value: '4',
-      label: 'Dobrze',
+      label: t.POLL.ANSWERS.GOOD_OR_BAD.FOUR,
       icon: FourIcon,
       iconWidth: 24,
   },
   {
       value: '5',
-      label: 'Bardzo dobrze',
+      label: t.POLL.ANSWERS.GOOD_OR_BAD.FIVE,
       icon: FiveIcon,
       iconWidth: 24,
   },
 ];
 
-const knowledgeNotes = [
+const getKnowledgeNotes = (t: typeof pl) => [
   {
     value: '1',
-    label: 'Brak wiedzy',
+    label: t.POLL.ANSWERS.KNOWLEDGE_NOTES.ONE,
     icon: OneIcon,
     iconWidth: 24,
   },
   {
       value: '2',
-      label: 'Niewielka wiedza',
+      label: t.POLL.ANSWERS.KNOWLEDGE_NOTES.TWO,
       icon: TwoIcon,
       iconWidth: 24,
   },
   {
       value: '3',
-      label: 'Coś tam wiem',
+      label: t.POLL.ANSWERS.KNOWLEDGE_NOTES.THREE,
       icon: ThreeIcon,
       iconWidth: 24,
   },
   {
       value: '4',
-      label: 'Ogarniam temat',
+      label: t.POLL.ANSWERS.KNOWLEDGE_NOTES.FOUR,
       icon: FourIcon,
       iconWidth: 24,
   },
   {
       value: '5',
-      label: 'Profesjonalista / Profesjonalistka',
+      label: t.POLL.ANSWERS.KNOWLEDGE_NOTES.FIVE,
       icon: FiveIcon,
       iconWidth: 24,
   },
 ];
 
-const trainerQuestions = [
+const getTrainerQuestions = (t: typeof pl) => [
   {
     id: 'trainerKnowledge',
-    question: 'Dysponował wiedzą w zakresie omawianych tematów',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_KNOWLEDGE,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'trainerExperience',
-    question: 'Dysponował doświadczeniem w zakresie omawianych tematów',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_EXPERIENCE,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'trainerCommunication',
-    question: 'Przekazywał informacje systematycznie i skutecznie',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_COMMUNICATION,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'trainerEngagement',
-    question: 'Był komunikatywny i zaangażowany',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_ENGAGEMENT,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'trainerQuestions',
-    question: 'Starał się nie pozostawiać pytań bez odpowiedzi',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_QUESTIONS,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'trainerOpenness',
-    question: 'Był otwarty na potrzeby grupy',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_OPENNESS,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'trainerCulture',
-    question: 'Cechowała go wysoka kultura osobista',
+    question: t.POLL.QUESTIONS.TRAINER_PREPARATION.INTERNAL_QUESTIONS.TRAINER_CULTURE,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
 ];
 
-const workshopsQuestions = [
+const getWorkshopsQuestions = (t: typeof pl) => [
   {
     id: 'workshopsContent',
-    question: 'Zagadnienia w programie szkolenia zostały właściwie dobrane',
+    question: t.POLL.QUESTIONS.WORKSHOPS.INTERNAL_QUESTIONS.WORKSHOPS_CONTENT,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'workshopsRealization',
-    question: 'Program szkolenia został zrealizowany w odpowiednim stopniu',
+    question: t.POLL.QUESTIONS.WORKSHOPS.INTERNAL_QUESTIONS.WORKSHOPS_REALIZATION,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
   {
     id: 'workshopsDuration',
-    question: 'Czas trwania został dobrany do zawartości programu',
+    question: t.POLL.QUESTIONS.WORKSHOPS.INTERNAL_QUESTIONS.WORKSHOPS_DURATION,
     description: '',
-    options: goodOrBadNotes,
+    options: getGoodOrBadNotes(t),
   },
 ];
 
-const yourKnowledgeQuestions = [
+const getYourKnowledgeQuestions = (t: typeof pl) => [
   {
     id: 'yourKnowledgeBefore',
-    question: 'Jak oceniasz swój poziom wiedzy PRZED szkoleniem?',
-    options: knowledgeNotes,
+    question: t.POLL.QUESTIONS.YOUR_KNOWLEDGE.INTERNAL_QUESTIONS.YOUR_KNOWLEDGE_BEFORE,
+    options: getKnowledgeNotes(t),
   },
   {
     id: 'yourKnowledgeAfter',
-    question: 'Jak oceniasz swój poziom wiedzy PO szkoleniu?',
-    options: knowledgeNotes,
+    question: t.POLL.QUESTIONS.YOUR_KNOWLEDGE.INTERNAL_QUESTIONS.YOUR_KNOWLEDGE_AFTER,
+    options: getKnowledgeNotes(t),
   },
   {
     id: 'yourKnowledgeUsefulness',
-    question: 'Jak oceniasz przydatność wiedzy przekazanej na szkoleniu?',
-    options: goodOrBadNotes,
+    question: t.POLL.QUESTIONS.YOUR_KNOWLEDGE.INTERNAL_QUESTIONS.YOUR_KNOWLEDGE_USEFULNESS,
+    options: getGoodOrBadNotes(t),
   },
 ];
 
-export const pollSteps = [
+export const getPollSteps = (t: typeof pl) => [
   {
     id: 'trainer',
-    title: 'Jak oceniasz przygotowanie prowadzącego?',
-    description: 'W skali od 1 do 5, gdzie 1 to fatalnie, a 5 to bardzo dobrze.',
+    title: t.POLL.QUESTIONS.TRAINER_PREPARATION.TITLE,
+    description: t.POLL.QUESTIONS.TRAINER_PREPARATION.DESCRIPTION,
     type: 'options',
-    questions: trainerQuestions,
+    questions: getTrainerQuestions(t),
   },
   {
     id: 'workshops',
-    title: 'Jak oceniasz szkolenie?',
-    description: 'W skali od 1 do 5, gdzie 1 to fatalnie, a 5 to bardzo dobrze.',
+    title: t.POLL.QUESTIONS.WORKSHOPS.TITLE,
+    description: t.POLL.QUESTIONS.WORKSHOPS.DESCRIPTION,
     type: 'options',
-    questions: workshopsQuestions,
+    questions: getWorkshopsQuestions(t),
   },
   {
     id: 'yourKnowledge',
-    title: 'Jak oceniasz swój poziom wiedzy?',
-    description: 'W skali od 1 do 5, gdzie 1 to brak wiedzy, a 5 to profesjonalista / profesjonalistka.',
+    title: t.POLL.QUESTIONS.YOUR_KNOWLEDGE.TITLE,
+    description: t.POLL.QUESTIONS.YOUR_KNOWLEDGE.DESCRIPTION,
     type: 'options',
-    questions: yourKnowledgeQuestions,
+    questions: getYourKnowledgeQuestions(t),
   },
   {
     id: 'yourOpinion',
-    title: 'Co chciał(a)byś przekazać prowadzącemu?',
-    description: 'Będę wdzięczny za każdą opinię. Pozwolają mi one ulepszać moją pracę w przyszłości. Wprowadzać nowości i poprawiać błędy.',
+    title: t.POLL.QUESTIONS.YOUR_OPINION.TITLE,
+    description: t.POLL.QUESTIONS.YOUR_OPINION.DESCRIPTION,
     type: 'textarea',
     questions: [
       {
         id: 'yourOpinionAboutWorkshops',
-        question: 'Co wg Ciebie można poprawić / ulepszyć / zmienić lub co powinno pozostać bez zmian? Jak podobało Ci się szkolenie?',
+        question: t.POLL.QUESTIONS.YOUR_OPINION.INTERNAL_QUESTIONS.YOUR_OPINION_ABOUT_WORKSHOPS,
       },
       {
         id: 'yourOpinionAboutMaterials',
-        question: 'Co myślisz o materiałach szkoleniowych? Prezentacji, gadżetach, certyfikatach itp.',
+        question: t.POLL.QUESTIONS.YOUR_OPINION.INTERNAL_QUESTIONS.YOUR_OPINION_ABOUT_MATERIALS,
       },
     ],
   },
   {
     id: 'newsletter',
-    title: 'Newsletter',
-    description: 'Chcesz otrzymywać informacje o nowych szkoleniach i materiałach? Podaj swój adres email, a zostanie on dopisany do mojej listy mailingowej.',
+    title: t.POLL.NEWSLETTER_OPTION.TITLE,
+    description: t.POLL.NEWSLETTER_OPTION.DESCRIPTION,
     type: 'newsletter',
     questions: [
       {
         id: 'newsletterEmail',
-        question: 'Twój adres email',
+        question: t.POLL.NEWSLETTER_OPTION.YOUR_EMAIL,
       },
     ],
   }

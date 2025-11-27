@@ -209,8 +209,95 @@ const en = {
     },
   },
   POLL: {
-    TITLE: 'Poll',
-    DESCRIPTION: 'Poniższa ankieta dotyczy szkolenia "@1". Ankieta jest anonimowa. Ankieta składa się z 5 kroków. Każda odpowiedź ma dla mnie ogromną wartość, bo dzięki niej będę mógł poprawić jakość szkolenia. Dziękuję za poświęcony czas!'
+    TITLE: 'Questionnaire',
+    DESCRIPTION: 'The following survey concerns the “@1” training. The survey is anonymous. It consists of 5 steps. Every answer is extremely valuable to me, as it helps me improve the quality of the training. Thank you for your time!',
+    LOADING: 'Loading questionnaire',
+    PASSWORD_QUESTION: 'Enter access password for the survey',
+    PASSWORD: 'Enter access password',
+    PASSWORD_VERIFICATION: 'Verifying access password',
+    NEXT: 'Next',
+    BACK: 'Back',
+    SUBMIT: 'Submit',
+    STEP: 'Step @1 of @2',
+    THANKS: {
+      TEXT_1: 'Thank you for your time and honest answers. As a token of appreciation, I would like to give you a code for a 20% discount on your first hosting space purchase at mydevil.net.',
+      TEXT_2: 'Enter the referral code below when creating an account at mydevil.net and enjoy a cheaper hosting service.',
+    },
+    SELECT_YOUR_ANSWER: 'Select your rating',
+    WRITE_YOUR_COMMENT: 'Write your opinion',
+    WRONG_EMAIL: 'The provided email is not valid',
+    SUCCESS_MESSAGE: 'Your answers have been saved.',
+    ERRORS: {
+      SELECT_RATING: 'Select your rating.',
+      WRITE_OPINION: 'Write your opinion.',
+      INVALID_EMAIL: 'The provided email is not valid.',
+    },
+    ANSWERS: {
+      GOOD_OR_BAD: {
+        ONE: 'Terrible',
+        TWO: 'Bad',
+        THREE: 'So-so',
+        FOUR: 'Good',
+        FIVE: 'Very good',
+      },
+      KNOWLEDGE_NOTES: {
+        ONE: 'No knowledge',
+        TWO: 'Little knowledge',
+        THREE: 'Some knowledge',
+        FOUR: 'Good understanding',
+        FIVE: 'Professional',
+      },
+    },
+    AVERAGE_NOTES: {
+      WOW: 'Wow! I am very glad that you appreciate my work! I would be grateful if in the fourth step you write what you liked the most and what I could still improve. 😉',
+      IAM_SORRY: 'I am sorry that I did not meet your expectations. I would be grateful if in the fourth step you describe the elements that need improvement. Every training is a new experience. Every opinion is a chance for development. 😉',
+    },
+    QUESTIONS: {
+      TRAINER_PREPARATION: {
+        TITLE: 'How do you rate the trainer\'s preparation?',
+        DESCRIPTION: 'On a scale from 1 to 5, where 1 is terrible and 5 is very good.',
+        INTERNAL_QUESTIONS: {
+          TRAINER_KNOWLEDGE: 'He had knowledge in the field of the topics discussed',
+          TRAINER_EXPERIENCE: 'He had experience in the field of the topics discussed',
+          TRAINER_COMMUNICATION: 'He conveyed information systematically and effectively',
+          TRAINER_ENGAGEMENT: 'He was communicative and engaged',
+          TRAINER_QUESTIONS: 'He tried not to leave any questions unanswered',
+          TRAINER_OPENNESS: 'He was open to the needs of the group',
+          TRAINER_CULTURE: 'He was characterized by high personal culture',
+        }
+      },
+      WORKSHOPS: {
+        TITLE: 'How do you rate the training?',
+        DESCRIPTION: 'On a scale from 1 to 5, where 1 is terrible and 5 is very good.',
+        INTERNAL_QUESTIONS: {
+          WORKSHOPS_CONTENT: 'The topics in the training program were properly selected',
+          WORKSHOPS_REALIZATION: 'The training program was implemented to an appropriate extent',
+          WORKSHOPS_DURATION: 'The duration was matched to the content of the program',
+        }
+      },
+      YOUR_KNOWLEDGE: {
+        TITLE: 'How do you rate your knowledge level?',
+        DESCRIPTION: 'On a scale from 1 to 5, where 1 is no knowledge and 5 is a professional.',
+        INTERNAL_QUESTIONS: {
+          YOUR_KNOWLEDGE_BEFORE: 'How do you rate your knowledge level BEFORE the training?',
+          YOUR_KNOWLEDGE_AFTER: 'How do you rate your knowledge level AFTER the training?',
+          YOUR_KNOWLEDGE_USEFULNESS: 'How do you rate the usefulness of the knowledge provided during the training?',
+        }
+      },
+      YOUR_OPINION: {
+        TITLE: 'What would you like to convey to the trainer?',
+        DESCRIPTION: 'I appreciate any feedback. It helps me improve my work in the future, introduce new things, and fix mistakes.',
+        INTERNAL_QUESTIONS: {
+          YOUR_OPINION_ABOUT_WORKSHOPS: 'What do you think can be improved / enhanced / changed or what should remain unchanged? How did you like the training?',
+          YOUR_OPINION_ABOUT_MATERIALS: 'What do you think about the training materials? Presentations, gadgets, certificates, etc.',
+        },
+      }
+    },
+    NEWSLETTER_OPTION: {
+      TITLE: 'Newsletter',
+      DESCRIPTION: 'Do you want to receive information about new trainings and materials? Provide your email address, and it will be added to my mailing list. It optional and you can unsubscribe at any time.',
+      YOUR_EMAIL: 'Your email address',
+    },
   },
   PODCAST: {
     MY_PODCASTS: {

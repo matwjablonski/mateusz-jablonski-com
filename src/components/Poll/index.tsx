@@ -8,7 +8,7 @@ import MessageWrapper, { MessageType } from '../MessageWrapper';
 import { ErrorMessage } from '@hookform/error-message';
 import RadioButtonsGroup from '../RadioButtonsGroup';
 import RadioButton from '../RadioButton';
-import { pollSteps } from './questions';
+import { getPollSteps } from './questions';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import { useCallback, useState } from 'react';
@@ -17,32 +17,34 @@ import { Actions, PoorBox, WowBox } from './ui';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import PollSuccess from '../PollSuccess';
 import { calculateAverage } from '../../utils/calculateAverage';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const AVERAGE_FOR_WOW = 4.5;
 const AVERAGE_FOR_POOR = 2.6;
 
-const schema = yup.object({
-  trainerKnowledge: yup.string().required('Wybierz swoją ocenę.'),
-  trainerExperience: yup.string().required('Wybierz swoją ocenę.'),
-  trainerCommunication: yup.string().required('Wybierz swoją ocenę.'),
-  trainerEngagement: yup.string().required('Wybierz swoją ocenę.'),
-  trainerQuestions: yup.string().required('Wybierz swoją ocenę.'),
-  trainerOpenness: yup.string().required('Wybierz swoją ocenę.'),
-  trainerCulture: yup.string().required('Wybierz swoją ocenę.'),
-  workshopsContent: yup.string().required('Wybierz swoją ocenę.'),
-  workshopsRealization: yup.string().required('Wybierz swoją ocenę.'),
-  workshopsDuration: yup.string().required('Wybierz swoją ocenę.'),
-  yourKnowledgeBefore: yup.string().required('Wybierz swoją ocenę.'),
-  yourKnowledgeAfter: yup.string().required('Wybierz swoją ocenę.'),
-  yourKnowledgeUsefulness: yup.string().required('Wybierz swoją ocenę.'),
-  yourOpinionAboutWorkshops: yup.string().required('Napisz swoją opinię.'),
-  yourOpinionAboutMaterials: yup.string().required('Napisz swoją opinię.'),
-  newsletterEmail: yup.string().email('Podany email nie jest prawidłowy.'),
+const getSchema = (t) => yup.object({
+  trainerKnowledge: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  trainerExperience: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  trainerCommunication: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  trainerEngagement: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  trainerQuestions: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  trainerOpenness: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  trainerCulture: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  workshopsContent: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  workshopsRealization: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  workshopsDuration: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  yourKnowledgeBefore: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  yourKnowledgeAfter: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  yourKnowledgeUsefulness: yup.string().required(t.POLL.ERRORS.SELECT_RATING),
+  yourOpinionAboutWorkshops: yup.string().required(t.POLL.ERRORS.WRITE_OPINION),
+  yourOpinionAboutMaterials: yup.string().required(t.POLL.ERRORS.WRITE_OPINION),
+  newsletterEmail: yup.string().email(t.POLL.ERRORS.INVALID_EMAIL),
 }).required();
 
 const Poll = ({ date, name }) => {
+  const { t } = useTranslations();
   const { register, handleSubmit, reset, watch, formState: { errors }, getValues } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(getSchema(t)),
   });
   const [currentStep, setCurrentStep] = useState(0);
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -112,17 +114,17 @@ const Poll = ({ date, name }) => {
 
   if (isSubmitted) {
     return (
-      <PollSuccess message="Twoje odpowiedzi zostały zapisane." />
+      <PollSuccess message={t.POLL.SUCCESS_MESSAGE} />
     )
   }
 
   const averageComponent = (average) => {
     if (average >= AVERAGE_FOR_WOW) {
-      return <WowBox>Wow! Bardzo sie cieszę, że doceniasz moją pracę! Będę wdzięczny, jeśli w kroku czwartym napiszesz co podobało Ci się najbardziej, a co mógłbym jeszcze poprawić. 😉</WowBox>
+      return <WowBox>{t.POLL.AVERAGE_NOTES.WOW}</WowBox>
     }
 
     if (average <= AVERAGE_FOR_POOR) {
-      return <PoorBox>Przykro mi, że nie udało mi się spełnić Twoich oczekiwań. Będę wdzięczny, jeśli w kroku czwartym opiszesz elementy, które wymagają poprawy. Każde szkolenie to nowe doświadczenie. Każda opinia to szansa na rozwój. 😉</PoorBox>
+      return <PoorBox>{t.POLL.AVERAGE_NOTES.IAM_SORRY}</PoorBox>
     }
   }
 
@@ -157,6 +159,8 @@ const Poll = ({ date, name }) => {
 
     return null;
   }
+
+  const pollSteps = getPollSteps(t);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
@@ -198,7 +202,7 @@ const Poll = ({ date, name }) => {
           <Actions>
             {pollSteps.length > currentStep + 1 && (
               <Button.B
-                label="Dalej"
+                label={t.POLL.NEXT}
                 pattern={ButtonType.PRIMARY}
                 type="button"
                 action={() => {
@@ -209,7 +213,7 @@ const Poll = ({ date, name }) => {
             )}
             {currentStep === pollSteps.length - 1 && (
               <Button.B
-                label="Wyślij"
+                label={t.POLL.SUBMIT}
                 pattern={ButtonType.PRIMARY}
                 type="submit"
                 disabled={isSubmitting}
@@ -217,7 +221,7 @@ const Poll = ({ date, name }) => {
             )}
             {currentStep >= 1 && (
               <Button.B 
-                label="Wstecz"
+                label={t.POLL.BACK}
                 pattern={ButtonType.WHITE}
                 type="button" 
                 action={() => {
