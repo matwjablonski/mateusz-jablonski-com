@@ -6,7 +6,7 @@ import { FC } from "react";
 import podcastStyles from '../../styles/Podcast.module.scss';
 import { HeadInterface } from "../../types/common/Head.types";
 import { Page } from "../../types/common/Page.types";
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { fetchEntries } from '../../contentful';
 import { formatDate } from '../../utils/formatDate';
 import { Podcast, PodcastEpisode } from '../../types/common/Podcast.types';
@@ -17,8 +17,10 @@ import Image from 'next/image';
 import prepareAssetUrl from '../../utils/prepareAssetUrl';
 import MyPodcastHeader from '../../components/MyPodcastHeader';
 import GuestPodcastPreview from '../../components/GuestPodcastPreview';
+import { ParsedUrlQuery } from 'querystring';
 import PodcastSeason from '../../components/PodcastSeason';
 import ListenNow from '../../components/ListenNow';
+import { mapLocale } from "../../lib/locales";
 
 type PodcastType = Partial<Podcast> & { seasons: { [key: string | number ]: PodcastEpisode[] }};
 
@@ -96,7 +98,7 @@ const PodcastPage: FC<PodcastPageProps> = ({ body, podcastGuest, podcasts }) => 
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext<ParsedUrlQuery>) => {
     type PodcastEpisodeWithName = Partial<Omit<PodcastEpisode, 'podcast'> & { podcastName: string }>;
     let guestPodcastsByTitle: { [key: string]: PodcastEpisodeWithName[] } = {};
 
@@ -104,6 +106,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         content_type: 'page',
         'fields.slug': 'podcast',
         include: 2,
+        locale: mapLocale(context.locale),
     });
 
     const podcastsChannelsRes = await fetchEntries({

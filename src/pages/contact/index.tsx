@@ -2,7 +2,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Grid from "../../components/Grid";
 import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
-import { GetStaticProps } from 'next';
+import { GetStaticProps, GetStaticPropsContext } from 'next';
 import { fetchEntries } from "../../contentful";
 import { FC } from "react";
 import { Entry } from "contentful";
@@ -16,6 +16,8 @@ import CaptchaProvider from "../../providers/CaptchaProvider";
 import MyNewsletter from "../../components/MyNewsletter";
 import Columns from "../../components/Columns";
 import { useTranslations } from '../../hooks/useTranslations';
+import { ParsedUrlQuery } from "querystring";
+import { mapLocale } from "../../lib/locales";
 
 interface ContactPageProps {
     body: Page,
@@ -62,11 +64,12 @@ const ContactPage: FC<ContactPageProps> = ({ body: { title, head, description}, 
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext<ParsedUrlQuery>) => {
     const res = await fetchEntries({
         content_type: 'page',
         'fields.slug': 'contact',
         include: 2,
+        locale: mapLocale(context.locale),
     });
 
     const testimonialsRes = await fetchEntries({
