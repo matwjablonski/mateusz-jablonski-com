@@ -12,7 +12,7 @@ import Poll from '../../components/Poll';
 
 const PollPage = () => {
   const { query: { id, accessCode }, locale } = useRouter();
-  const [ pollData, setPollData ] = useState<{ name: string, date: string, id: number }>();
+  const [ pollData, setPollData ] = useState<{ name: string, date: string, id: number, isClosed: boolean }>();
   const { t, translate } = useTranslations();
 
   const fetchDataForPoll = useCallback(async () => {
@@ -30,12 +30,14 @@ const PollPage = () => {
 
   const verifiedComponent = (
     <Poll 
+      pollId={pollData?.id}
       date={formatDate({
         dateObject: pollData?.date,
         formatString: 'dd MMMM yyyy',
         locale: locale,
       })}
       name={pollData?.name}
+      isClosed={pollData?.isClosed}
     />  
   );
 

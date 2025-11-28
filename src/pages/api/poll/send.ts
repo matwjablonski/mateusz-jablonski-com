@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import { env } from 'process';
 import { addListMember } from '../../../lib/mailchimp/addListMember';
 import { calculateAverage } from '../../../utils/calculateAverage';
+import { savePollResponse } from '../../../lib/database/polls';
 
 const transporter = nodemailer.createTransport({
   host: env.SMTP_HOST,
@@ -18,6 +19,7 @@ const send = async (req: NextApiRequest, res: NextApiResponse  ) => {
     const values = JSON.parse(req.body);
 
     const {
+      pastWorkshopId,
       date,
       name,
       trainerKnowledge,
@@ -88,6 +90,26 @@ const send = async (req: NextApiRequest, res: NextApiResponse  ) => {
         <p>Pozdrawiam</p>
       `,
     };
+
+    await savePollResponse({
+      pastWorkshopId: parseInt(pastWorkshopId, 10),
+      trainerKnowledge: parseInt(trainerKnowledge, 10),
+      trainerExperience: parseInt(trainerExperience, 10),
+      trainerCommunication: parseInt(trainerCommunication, 10),
+      trainerEngagement: parseInt(trainerEngagement, 10),
+      trainerQuestions: parseInt(trainerQuestions, 10),
+      trainerOpenness: parseInt(trainerOpenness, 10),
+      trainerCulture: parseInt(trainerCulture, 10),
+      workshopsContent: parseInt(workshopsContent, 10),
+      workshopsRealization: parseInt(workshopsRealization, 10),
+      workshopsDuration: parseInt(workshopsDuration, 10),
+      yourKnowledgeBefore: parseInt(yourKnowledgeBefore, 10),
+      yourKnowledgeAfter: parseInt(yourKnowledgeAfter, 10),
+      yourKnowledgeUsefulness: parseInt(yourKnowledgeUsefulness, 10),
+      yourOpinionAboutWorkshops,
+      yourOpinionAboutMaterials,
+      newsletterEmail: newsletterEmail || null,
+    });
 
     await transporter.sendMail(mailOptions);
 

@@ -1,24 +1,31 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { sql } from "@vercel/postgres";
+import { verifyPollAccess } from '../../../lib/database/polls';
 
 const verify = async (req: NextApiRequest, res: NextApiResponse  ) => {
   try {
     const requestData = JSON.parse(req.body);
-    const { rows, rowCount } = await sql`SELECT * FROM past_workshops WHERE Id = ${requestData.pollId}`;
-    const result = rows.find(row => row.poll_access_code === requestData.accessPassword);
+    const { pollId, accessPassword } = requestData;
+    const pollIdNum = parseInt(pollId, 10);
 
-    if (rowCount === 0) {
-      return res.status(404).json({ status: 'error', message: 'Invalid poll id' });
+    if (!pollIdNum || isNaN(pollIdNum) || !accessPassword) {
+      return res.status(400).json({ status: 'error', message: 'Valid Poll ID and access code are required' });
     }
 
-    if (result) {
+    const isValid = await verifyPollAccess(pollIdNum, accessPassword);
+
+    if (isValid) {
       return res.status(200).json({ status: 'success' });
     }
 
     return res.status(401).json({ status: 'error', message: 'Invalid Access code' });
   } catch (err) {
     console.error('Poll verify error:', err);
-    return res.status(500).json({ status: 'error', message: err.message });
+    
+    if (err.message === 'Poll not found') {
+      return res.status(404).json({ status: 'error', message: 'Invalid poll id' });
+    }
+    
+    return res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 };
 

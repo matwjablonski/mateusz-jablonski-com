@@ -227,6 +227,7 @@ const pl = {
     WRITE_YOUR_COMMENT: 'Napisz swoją opinię',
     WRONG_EMAIL: 'Podany email nie jest prawidłowy',
     SUCCESS_MESSAGE: 'Twoje odpowiedzi zostały zapisane.',
+    CLOSED: 'Ta ankieta została już zamknięta. Nie można już przesyłać odpowiedzi.',
     ERRORS: {
       SELECT_RATING: 'Wybierz swoją ocenę.',
       WRITE_OPINION: 'Napisz swoją opinię.',

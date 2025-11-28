@@ -41,7 +41,7 @@ const getSchema = (t) => yup.object({
   newsletterEmail: yup.string().email(t.POLL.ERRORS.INVALID_EMAIL),
 }).required();
 
-const Poll = ({ date, name }) => {
+const Poll = ({ date, name, pollId, isClosed }) => {
   const { t } = useTranslations();
   const { register, handleSubmit, reset, watch, formState: { errors }, getValues } = useForm({
     resolver: yupResolver(getSchema(t)),
@@ -101,7 +101,7 @@ const Poll = ({ date, name }) => {
           '/api/poll/send',
           {
             method: 'POST',
-            body: JSON.stringify({ ...data, name, date, gReCaptchaToken })
+            body: JSON.stringify({ ...data, pastWorkshopId: pollId, name, date, gReCaptchaToken })
           }
         )
           .finally(() => {
@@ -110,7 +110,7 @@ const Poll = ({ date, name }) => {
               setIsSubmitted(true);
           });
       });
-  }, [executeRecaptcha]);
+  }, [executeRecaptcha, pollId, name, date, reset]);
 
   if (isSubmitted) {
     return (
@@ -158,6 +158,12 @@ const Poll = ({ date, name }) => {
     }
 
     return null;
+  }
+
+  if (isClosed) {
+    return (
+      <p className="text-white font-bold">{t.POLL.CLOSED}</p>
+    );
   }
 
   const pollSteps = getPollSteps(t);

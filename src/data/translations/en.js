@@ -227,6 +227,7 @@ const en = {
     WRITE_YOUR_COMMENT: 'Write your opinion',
     WRONG_EMAIL: 'The provided email is not valid',
     SUCCESS_MESSAGE: 'Your answers have been saved.',
+    CLOSED: 'This questionnaire has been closed. You can no longer submit responses.',
     ERRORS: {
       SELECT_RATING: 'Select your rating.',
       WRITE_OPINION: 'Write your opinion.',
