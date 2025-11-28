@@ -17,10 +17,6 @@ const SocialMediaTile: FunctionComponent<SocialMediaTileProps> = memo(({href, so
 
   const prepareData = useCallback(() => {
     switch (socialMediaType) {
-      case SocialMediaType.TWITTER:
-        setName('X.com');
-        setClassName('x');
-        break;
       case SocialMediaType.FACEBOOK:
         setName('Facebook');
         setClassName('facebook');
