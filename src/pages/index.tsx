@@ -29,6 +29,8 @@ import { useTranslations } from '../hooks/useTranslations';
 import externalSources from '../data/external-sources.json';
 import LastEvents from '../components/LastEvents';
 import { Event } from '../types/common/Event.types';
+import { getFeaturedWorkshops } from '../lib/database/workshops';
+import { Workshop } from '../types/database';
 
 const { podcasts: { piwnicait } } = externalSources;
 
@@ -44,7 +46,6 @@ interface HomeData {
   lastPodcastsDescription: string;
   lastCoursesDescription: string;
   lastEventsDescription: string;
-  featuredCourses: Entry<EntrySkeletonType<Course>>[];
   lastBooksDescription: string;
   head?: Entry<EntrySkeletonType<HeadInterface>>;
 }
@@ -59,9 +60,10 @@ interface HomeProps {
   books: Book[];
   nextCourse: Course;
   data: HomeData;
+  featuredWorkshops: Workshop[];
 }
 
-const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, nextCourse, data, events, nextEventInDays}: HomeProps) => {
+const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, nextCourse, data, events, nextEventInDays, featuredWorkshops}: HomeProps) => {
   const {
     title,
     description,
@@ -70,7 +72,6 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
     lastPodcastsDescription,
     lastCoursesDescription,
     lastEventsDescription,
-    featuredCourses,
     lastBooksDescription,
     head,
   } = data;
@@ -119,7 +120,7 @@ const Home = ({articles, nextArticleInDays, podcasts, nextPodcastInDays, books, 
             >
               {nextCourse && <NextCourseCounter title={nextCourse.title} startDate={nextCourse.startDate} endDate={nextCourse.publishDate} />}
             </TitleBarWithComponent>
-            <FeaturedCourses featuredCourses={featuredCourses} />
+            <FeaturedCourses featuredCourses={featuredWorkshops} />
           </Grid>
         </section>
         <section className={styles.booksSection}>
@@ -296,6 +297,8 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     }),
   }));
 
+  const featuredWorkshops = await getFeaturedWorkshops();
+
   return {
     props: {
       data: homeDetails,
@@ -307,6 +310,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
       nextPodcastInDays,
       nextCourse,
       books,
+      featuredWorkshops,
     }
   }
 }

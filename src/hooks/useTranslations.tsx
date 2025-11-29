@@ -16,7 +16,7 @@ type translateParams = {
   variables?: string[],
 }
 
-export const useTranslations = (): { t: typeof pl, translate(opt: translateParams): ReactNode[] | string } => {
+export const useTranslations = (): { t: typeof pl, translate(opt: translateParams): ReactNode[] | string, translateByFullKey(fullKey: string): string } => {
   const { locale } = useRouter();
 
   const translate = ({ value, tagName, variables, Wrapper, wrapperProps }: translateParams): ReactNode[] | string => {
@@ -55,8 +55,20 @@ export const useTranslations = (): { t: typeof pl, translate(opt: translateParam
     return res;
   }
 
+  const translateByFullKey = (fullKey: string): string => {
+    const keys = fullKey.split('.');
+    let result: any = translations[locale as 'pl' | 'en'];
+
+    keys.forEach((key) => {
+      result = result[key];
+    });
+
+    return result;
+  }
+
   return {
     t: translations[locale],
+    translateByFullKey,
     translate,
   }
 }

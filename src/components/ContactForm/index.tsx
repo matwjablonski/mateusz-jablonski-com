@@ -20,6 +20,7 @@ import CodeIcon from '../../public/icons/code.svg';
 import PhoneIcon from '../../public/icons/phone-option.svg';
 import MailIcon from '../../public/icons/mail-option.svg';
 import WorkIcon from '../../public/icons/work.svg';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const schema = yup.object({
     name: yup.string().required('Imię jest wymagane.'),
@@ -83,6 +84,7 @@ const ContactForm = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+   const { t } = useTranslations()
 
     const onSubmit = useCallback((data) => {
         setIsSubmitting(true);
@@ -107,8 +109,8 @@ const ContactForm = () => {
             {
                 !isSubmitted ? (
                     <>
-                        <h2 className={styles.formTitle}>Formularz kontaktowy</h2>
-                        <p className={styles.formText}>Dla twojej wygody formularz skrócony jest do jak najmniejszej liczby punktów, tak abym jak najszybciej i jak najsprawniej skontaktował się z Tobą.</p>
+                        <h2 className={styles.formTitle}>{t.CONTACT.FORM.TITLE}</h2>
+                        <p className={styles.formText}>{t.CONTACT.FORM.DESCRIPTION}</p>
                         <form onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
                             <InputWrapper label="Wybierz temat:" error={!!errors['topic']}>
                                 <RadioButtonsGroup>
@@ -183,15 +185,15 @@ const ContactForm = () => {
                             <Button.B type="submit" label="Napisz do mnie" pattern={ButtonType.PRIMARY} disabled={isSubmitting}/>
                         </form>
                         <div className={styles.mailToSection}>
-                            <h2>Chcesz przesłać więcej infomacji?</h2>
-                            <p>Najszybciej odpowiadam na wiadomości wysłane za pomocą powyższego formularza. Czas oczekiwania na odpowiedź na zwykły mail może być delikatnie dłuższy. Ale obiecuję - nie będzie to zbyt długo. :)</p>
+                            <h2>{t.CONTACT.FORM.WANT_MORE}</h2>
+                            <p>{t.CONTACT.FORM.WANT_MORE_TEXT}</p>
                             <ButtonBox
                                 text="mail@mateuszjablonski.com"
                                 icon={IconMail}
                                 iconWidth={40}
                                 iconHeight={28}
                             >
-                                <Button.L label="Napisz do mnie" pattern={ButtonType.LIGTHENED} href="mailto:mail@mateuszjablonski.com" isExternal/>
+                                <Button.L label={t.CONTACT.FORM.WANT_MORE_ACTION} pattern={ButtonType.LIGTHENED} href="mailto:mail@mateuszjablonski.com" isExternal/>
                             </ButtonBox>
                         </div>
                     </>

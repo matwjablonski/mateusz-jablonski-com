@@ -200,8 +200,47 @@ const pl = {
       NO_REVIEWS: 'Aktualnie brak opinii o tych warsztatach.',
       ANONYMOUS_USER: 'Uczestnik warsztatów',
     },
+    CREATING_APP_WITH_REACT: {
+      TITLE: 'Tworzenie aplikacji z użyciem React',
+      DESCRIPTION: 'Poznaj jedną z najpopularniejszych bibliotek na rynku. Podczas trzech dni warsztatów poznasz najlepsze praktyki tworzenia aplikacji z wykorzystaniem React.',
+    },
+    WORDPRESS_BASICS: {
+      TITLE: 'Wordpress - od instalacji do zarządzania',
+      DESCRIPTION: 'Celem warsztatów jest pokazanie możliwości tworzenia prostych stron internetowych bez pisania kodu z wykorzystaniem systemu zarządzania treścią Wordpress. Umiejętności zdobyte podczas warsztatów pozwolą na budowanie stron www zarówno do celów prywatnych, jak i zawodowych.',
+    },
+    ADVANCED_NODEJS_WITH_TYPESCRIPT: {
+      TITLE: 'Zaawansowany Node.js z TypeScript',
+      DESCRIPTION: 'Poznaj zaawansowane techniki tworzenia aplikacji backendowych z wykorzystaniem Node.js i TypeScript. Podczas dwóch dni warsztatów dowiesz się jak budować skalowalne i wydajne serwisy internetowe.',
+    },
+    ELECTRONJS_DESKTOP_APPS: {
+      TITLE: 'Budowanie aplikacji desktopowych w ElectronJS',
+      DESCRIPTION: 'Poznaj podstawy tworzenia aplikacji desktopowych z wykorzystaniem Electron. W trakcie jednodniowych warsztatów dowiesz się, jak zorganizować projekt, integrować go z Node.js, tworzyć interfejs użytkownika i przygotować gotową aplikację do dystrybucji.',
+    },
+    ADVANCED_TYPESCRIPT: {
+      TITLE: 'Zaawansowane programowanie w TypeScript',
+      DESCRIPTION: 'Poznaj kluczowe elementy języka TypeScript i naucz się projektować bezpieczny, typowany kod. W trakcie jednodniowych warsztatów omówimy system typów, pracę z interfejsami i klasami, projektowanie generyków oraz dobre praktyki stosowane w nowoczesnych aplikacjach JavaScript.',
+    },
+    ADVANCED_JAVASCRIPT: {
+      TITLE: 'Zaawansowane programowanie w Javascript',
+      DESCRIPTION: 'Poznaj nowoczesne podejście do programowania w JavaScript. Podczas jednodniowych warsztatów omówimy najnowsze funkcje języka, bezpieczne i wydajne wzorce kodu, pracę z asynchronicznością oraz praktyczne techniki programowania funkcyjnego.',
+    },
+    REACT_REDUX: {
+      TITLE: 'Reaktywne programowanie aplikacji webowych w oparciu o React i Redux',
+      DESCRIPTION: 'Poznaj solidne podstawy zarządzania stanem w aplikacjach React z wykorzystaniem Reduxa. W trakcie jednodniowych warsztatów omówimy architekturę unidirectional data flow, tworzenie reduktorów i akcji, pracę z middleware oraz techniki optymalizacji dużych projektów opartych o Redux.',
+    },
+    TYPESCRIPT_PLAYWRIGHT: {
+      TITLE: 'Automatyzacja testów funkcjonalnych aplikacji internetowych z użyciem Playwright i TypeScript',
+      DESCRIPTION: 'Poznaj praktyczne podstawy automatyzacji testów end-to-end z wykorzystaniem Playwright. W trakcie jednodniowych warsztatów omówimy konfigurację środowiska, pisanie testów, pracę z lokalizatorami i interakcjami, a także bardziej zaawansowane funkcje, takie jak POM, mockowanie API czy generowanie raportów.',
+    }
   },
   CONTACT: {
+    FORM: {
+      TITLE: 'Formularz kontaktowy',
+      DESCRIPTION: 'Dla twojej wygody formularz skrócony jest do jak najmniejszej liczby punktów, tak abym jak najszybciej i jak najsprawniej skontaktował się z Tobą.',
+      WANT_MORE: 'Chcesz przesłać więcej infomacji?',
+      WANT_MORE_TEXT: 'Najszybciej odpowiadam na wiadomości wysłane za pomocą powyższego formularza. Czas oczekiwania na odpowiedź na zwykły mail może być delikatnie dłuższy. Ale obiecuję - nie będzie to zbyt długo. :)',
+      WANT_MORE_ACTION: 'Napisz do mnie',
+    },
     NEWSLETTER: {
       TITLE: 'Mój newsletter',
       MAIN_CONTENT_1: 'Dołącz bezpłatnie do mojego newslettera. Raz na dwa tygodnie otrzymasz ode mnie wiadomość z informacjami o nowych materiałach, które znajdziesz na mojej stronie. Będziesz nie tylko pierwszy, ale uzyskasz dostęp do ciekawostek, interesujących ofert i nie publikowanych wcześniej materiałów.',

@@ -4,18 +4,23 @@ import PageTitle from "../../components/PageTitle";
 import MainLayout from "../../layouts";
 import { FC } from "react";
 import { Page } from "../../types/common/Page.types";
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticPropsContext } from 'next';
 import { fetchEntries } from '../../contentful';
-import { Course } from '../../types/common/Course.types';
 import FeaturedCoursePreview from '../../components/FeaturedCoursePreview';
 import { WorkshopBox, Wrapper } from '../../components/pages/workshops/ui';
+import { getAllWorkshops } from '../../lib/database/workshops';
+import { Workshop } from '../../types/database';
+import { useTranslations } from "../../hooks/useTranslations";
+import { mapLocale } from "../../lib/locales";
+import { ParsedUrlQuery } from "querystring";
 
 interface WorkshopsPageProps {
     body: Page,
-    courses: Course[],
+    workshops: Workshop[],
 }
 
-const WorkshopsPage: FC<WorkshopsPageProps> = ({ body, courses }) => {
+const WorkshopsPage: FC<WorkshopsPageProps> = ({ workshops, body }) => {
+    const { translateByFullKey } = useTranslations();
 
     return (
         <MainLayout head={{}} hideOverflow dark>
@@ -24,8 +29,14 @@ const WorkshopsPage: FC<WorkshopsPageProps> = ({ body, courses }) => {
                 <PageTitle title={body.title} description={body.description} dark/>
                 <Wrapper>
                     {
-                        courses.map((course) => <WorkshopBox key={course.title}>
-                            <FeaturedCoursePreview course={course}/>
+                        workshops.map((workshop) => <WorkshopBox key={workshop.id}>
+                            <FeaturedCoursePreview
+                                title={translateByFullKey(workshop.name)}
+                                slug={workshop.slug}
+                                description={translateByFullKey(workshop.description)}
+                                days={workshop.days}
+                                level={workshop.level}
+                            />
                         </WorkshopBox>)
                     }
                 </Wrapper>
@@ -34,35 +45,33 @@ const WorkshopsPage: FC<WorkshopsPageProps> = ({ body, courses }) => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-    const res = await fetchEntries({
-        content_type: 'page',
-        'fields.slug': 'workshops',
-        include: 2,
-    });
+export const getServerSideProps: GetServerSideProps = async (context: GetStaticPropsContext<ParsedUrlQuery>) => {
+    try {
+        const res = await fetchEntries({
+            content_type: 'page',
+            'fields.slug': 'workshops',
+            include: 2,
+            locale: mapLocale(context.locale),
+        });
 
-    const coursesRes = await fetchEntries({
-        content_type: 'course',
-        include: 2,
-        order: 'fields.nextWorkshops',
-    });
+        const body = await res.data
+            .map(p => ({ ...p.fields }))
+            .shift();
 
-    const body = await res.data
-        .map(p => ({ ...p.fields }))
-        .shift();
-
-    const courses = await coursesRes.data.map(c => ({ ...c.fields }));
-
-    if (!body) {
+        const workshops = await getAllWorkshops();
+        
         return {
-            notFound: true
+            props: {
+                body,
+                workshops,
+            }
         }
-    }
-    
-    return {
-        props: {
-            body,
-            courses,
+    } catch (error) {
+        console.error('Error fetching workshops:', error);
+        return {
+            props: {
+                workshops: [],
+            }
         }
     }
 }

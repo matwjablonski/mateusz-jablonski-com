@@ -184,7 +184,7 @@ const en = {
     },
     RELATED: {
       TITLE: 'You may be interested in',
-      TEXT: 'lorem',
+      TEXT: 'If this article interested you, check out other materials related to it thematically. Below you will find articles and podcast episodes authored by me, as well as books I recommend that expand on this topic.',
     },
   },
   WORKSHOPS: {
@@ -196,16 +196,55 @@ const en = {
       TITLE: 'Training program',
     },
     REVIEWS: {
-      TITLE: 'Dołącz do grona zadowolonych uczestników moich warsztatów!',
-      NO_REVIEWS: 'Aktualnie brak opinii o tych warsztatach.',
-      ANONYMOUS_USER: 'Uczestnik warsztatów',
+      TITLE: 'Join the group of satisfied participants of my workshops!',
+      NO_REVIEWS: 'Currently no reviews for these workshops.',
+      ANONYMOUS_USER: 'Workshop participant',
     },
+    CREATING_APP_WITH_REACT: {
+      TITLE: 'Creating an application using React',
+      DESCRIPTION: 'Get to know one of the most popular libraries on the market. During three days of workshops, you will learn the best practices for creating applications using React.',
+    },
+    WORDPRESS_BASICS: {
+      TITLE: 'Wordpress - from installation to management',
+      DESCRIPTION: 'The goal of the workshops is to show the possibilities of creating simple websites without writing code using the Wordpress content management system. The skills gained during the workshops will allow you to build websites for both private and professional purposes.',
+    },
+    ADVANCED_NODEJS_WITH_TYPESCRIPT: {
+      TITLE: 'Advanced Node.js with TypeScript',
+      DESCRIPTION: 'Get to know advanced techniques for creating backend applications using Node.js and TypeScript. During two days of workshops, you will learn how to build scalable and efficient web services.',
+    },
+    ELECTRONJS_DESKTOP_APPS: {
+      TITLE: 'Building desktop applications with ElectronJS',
+      DESCRIPTION: 'Learn the basics of creating desktop applications using Electron. During a one-day workshop, you will learn how to organize a project, integrate it with Node.js, create a user interface, and prepare a finished application for distribution.',
+    },
+    ADVANCED_TYPESCRIPT: {
+      TITLE: 'Advanced Programming in TypeScript',
+      DESCRIPTION: 'Get to know the key elements of the TypeScript language and learn how to design safe, typed code. During a one-day workshop, we will discuss the type system, working with interfaces and classes, designing generics, and best practices used in modern JavaScript applications.',
+    },
+    ADVANCED_JAVASCRIPT: {
+      TITLE: 'Advanced Programming in Javascript',
+      DESCRIPTION: 'Get to know the modern approach to programming in JavaScript. During a one-day workshop, we will discuss the latest language features, safe and efficient code patterns, working with asynchronicity, and practical functional programming techniques.',
+    },
+    REACT_REDUX: {
+      TITLE: 'Reactive web application programming based on React and Redux',
+      DESCRIPTION: 'Get to know the solid basics of state management in React applications using Redux. During a one-day workshop, we will discuss the unidirectional data flow architecture, creating reducers and actions, working with middleware, and optimization techniques for large projects based on Redux.',
+    },
+    TYPESCRIPT_PLAYWRIGHT: {
+      TITLE: 'Automation of functional testing of web applications using Playwright and TypeScript',
+      DESCRIPTION: 'Get to know the practical basics of end-to-end test automation using Playwright. During a one-day workshop, we will discuss environment configuration, writing tests, working with locators and interactions, as well as more advanced features such as POM, API mocking, and report generation.',
+    }
   },
   CONTACT: {
+    FORM: {
+      TITLE: 'Contact Form',
+      DESCRIPTION: 'For your convenience, the form is shortened to the smallest number of points so that I can contact you as quickly and efficiently as possible.',
+      WANT_MORE: 'Do you want to send more information?',
+      WANT_MORE_TEXT: 'I respond fastest to messages sent using the above form. The waiting time for a response to a regular email may be slightly longer. But I promise - it won’t be too long. :)',
+      WANT_MORE_ACTION: 'Write to me',
+    },
     NEWSLETTER: {
-      TITLE: 'Mój newsletter',
-      MAIN_CONTENT_1: 'Dołącz bezpłatnie do mojego newslettera. Raz na dwa tygodnie otrzymasz ode mnie wiadomość z informacjami o nowych materiałach, które znajdziesz na mojej stronie. Będziesz nie tylko pierwszy, ale uzyskasz dostęp do ciekawostek, interesujących ofert i nie publikowanych wcześniej materiałów.',
-      MAIN_CONTENT_2: 'Newsletter, podobnie jak większość materiałów na mojej stronie, jest całkowicie bezpłatny. Obiecuję nie spamować i wysłać to, co rzeczywiście może Ci się przydać.',
+      TITLE: 'My newsletter',
+      MAIN_CONTENT_1: 'Join my newsletter for free. Every two weeks, you will receive a message from me with information about new materials that you will find on my website. You will not only be the first, but you will also gain access to curiosities, interesting offers, and previously unpublished materials.',
+      MAIN_CONTENT_2: 'The newsletter, like most of the materials on my site, is completely free. I promise not to spam and to send what you will actually find useful.',
     },
   },
   POLL: {

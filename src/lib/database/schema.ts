@@ -11,6 +11,17 @@ export interface WorkshopsTable {
   name: string;
   slug: string;
   description: string | null;
+  long_description: string | null;
+  days: number | null;
+  cost_per_user: number | null;
+  currency: string | null;
+  max_participants: number | null;
+  city_or_remote: string | null;
+  program: string | null;
+  is_active: boolean;
+  order: number;
+  is_featured: boolean;
+  level: string | null;
   created_at: ColumnType<Date, never, never>;
   updated_at: ColumnType<Date, Date | undefined, Date>;
 }

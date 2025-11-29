@@ -3,8 +3,19 @@ export interface Workshop {
   name: string;
   slug: string;
   description: string | null;
-  createdAt: Date;
-  updatedAt: Date;
+  longDescription?: string | null;
+  days?: number | null;
+  costPerUser?: number | null;
+  currency?: string | null;
+  maxParticipants?: number | null;
+  cityOrRemote?: string | null;
+  program?: string | null;
+  isActive?: boolean;
+  order?: number;
+  isFeatured?: boolean;
+  level?: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface PastWorkshop {

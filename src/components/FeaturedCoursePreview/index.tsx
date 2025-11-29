@@ -1,35 +1,42 @@
 import React, { FunctionComponent } from 'react';
-import { Entry, EntrySkeletonType } from 'contentful';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Course } from '../../types/common/Course.types';
 import styles from './FeaturedCoursePreview.module.scss';
 import Button from '../Button';
 import { ButtonType } from '../Button/Button.types';
 import placeholder from '../../public/placeholder.png';
-import prepareImageUrl from '../../utils/prepareAssetUrl';
 import { useTranslations } from '../../hooks/useTranslations';
+import { DaysBadge, LevelBadge, WorkshopWrapper } from './ui';
 
-const FeaturedCoursePreview: FunctionComponent<{ course: Course }> = ({ course }) => {
-    const { title, slug, description, featuredImage} = course;
+type FeaturedCoursePreviewProps = {
+    title: string;
+    slug: string;
+    description: string;
+    days?: number;
+    level?: string;
+}
+
+const FeaturedCoursePreview = ({ title, slug, description, days, level }: FeaturedCoursePreviewProps) => {
     const { t } = useTranslations();
 
-    return <div className={styles.course}>
+    return <WorkshopWrapper>
         <div className={styles.imageBox}>
             <Image
-                src={featuredImage ? prepareImageUrl(featuredImage.fields.file.url as string) : placeholder}
+                src={placeholder}
                 width={544}
                 height={256}
                 className={styles.image}
-                alt={featuredImage ? featuredImage.fields.title as string : title}
+                alt={title}
             />
+            {days && <DaysBadge days={days} />}
+            {level && <LevelBadge level={level.toUpperCase()} />}
         </div>
         <Link href={`workshops/${slug}`} title={title}>
             <h3 className={styles.title}>{title}</h3>
         </Link>
         <p className={styles.text}>{description}</p>
         <Button.L href={`workshops/${slug}`} label={t.WORKSHOPS.ACTIONS.TAKE_PART} pattern={ButtonType.PRIMARY} />
-    </div>
+    </WorkshopWrapper>
 }
 
 export default FeaturedCoursePreview;
