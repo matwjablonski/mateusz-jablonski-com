@@ -233,6 +233,15 @@ const pl = {
       DESCRIPTION: 'Poznaj praktyczne podstawy automatyzacji testów end-to-end z wykorzystaniem Playwright. W trakcie jednodniowych warsztatów omówimy konfigurację środowiska, pisanie testów, pracę z lokalizatorami i interakcjami, a także bardziej zaawansowane funkcje, takie jak POM, mockowanie API czy generowanie raportów.',
     }
   },
+  WORKSHOP: {
+    DURATION: 'Czas trwania',
+    COST_PER_USER: 'Koszt na osobę',
+    CITY_OR_REMOTE: 'Miasto / zdalnie',
+    ASK_FOR_PRICE: 'Zapytaj o termin',
+    GROSS: 'brutto',
+    NET: 'netto',
+    COST_NOTE: 'dla grupy min. 4 osób'
+  },
   CONTACT: {
     FORM: {
       TITLE: 'Formularz kontaktowy',

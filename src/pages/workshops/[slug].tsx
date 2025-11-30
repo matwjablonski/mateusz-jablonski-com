@@ -23,7 +23,7 @@ interface WorkshopPageProps {
 }
 
 const WorkshopPage: FC<WorkshopPageProps> = ({ workshop }) => {
-    const { translateByFullKey } = useTranslations();
+    const { t, translateByFullKey } = useTranslations();
 
     if (!workshop) {
         return (
@@ -56,22 +56,22 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop }) => {
                 <TitleBarWithComponent title={<>{titleText}</>} text={longDescription || ''} capitalize={false}>
                     <div className={styles.MetaData}>
                         <CourseMeta
-                            label="Czas trwania"
-                            value={`${days} ${days > 1 ? 'dni' : 'dzień'}`}
+                            label={t.WORKSHOP.DURATION}
+                            value={`${days} ${days > 1 ? t.COMMON.DAYS : t.COMMON.DAY}`}
                             icon={<Image src={clock || `/icons/clock.svg`} alt="" height={32} width={32} />}
                         />
                         {costPerUser && <CourseMeta
-                            label="Koszt na osobę"
-                            value={`${costPerUser} ${currency || 'PLN'} netto`}
-                            valueBelow={`${(costPerUser * 1.23).toFixed(2)} ${currency || 'PLN'} brutto`}
+                            label={t.WORKSHOP.COST_PER_USER}
+                            value={`${costPerUser} ${currency || 'PLN'} ${t.WORKSHOP.NET}`}
+                            valueBelow={t.WORKSHOP.COST_NOTE}
                             icon={<Image src={pig || `/icons/pig-money.svg`} alt="" height={32} width={32} />}
                         />}
                         {cityOrRemote && <CourseMeta
-                            label="Miejsce"
+                            label={t.WORKSHOP.CITY_OR_REMOTE}
                             value={cityOrRemote}
                             icon={<Image src={gps || `/icons/gps.svg`} alt="" height={32} width={32} />}
                         />}
-                        <Button.L pattern={ButtonType.LIGTHENED} label="Zapytaj o termin" href="/contact" />
+                        <Button.L pattern={ButtonType.LIGTHENED} label={t.WORKSHOP.ASK_FOR_PRICE} href="/contact" />
                     </div>
                 </TitleBarWithComponent>
                 {program && <TrainingProgram content={program}/>}

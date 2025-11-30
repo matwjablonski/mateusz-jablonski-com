@@ -233,6 +233,15 @@ const en = {
       DESCRIPTION: 'Get to know the practical basics of end-to-end test automation using Playwright. During a one-day workshop, we will discuss environment configuration, writing tests, working with locators and interactions, as well as more advanced features such as POM, API mocking, and report generation.',
     }
   },
+  WORKSHOP: {
+    DURATION: 'Duration',
+    COST_PER_USER: 'Cost per user',
+    CITY_OR_REMOTE: 'City / remote',
+    ASK_FOR_PRICE: 'Ask for price',
+    GROSS: 'gross',
+    NET: 'net',
+    COST_NOTE: 'For groups of at least 4 people'
+  },
   CONTACT: {
     FORM: {
       TITLE: 'Contact Form',
