@@ -187,6 +187,9 @@ const pl = {
       TEXT: 'Jeżeli ten artykuł Cię zainteresował sprawdź inne materiały powiązane z nim tematycznie. Poniżej znajdziesz artykuły i odcinki podcastów mojego autorstwa oraz polecane przeze mnie książki, które rozszerzają ten temat.',
     },
   },
+  ARTILES: {
+    LOAD_MORE: 'Wczytaj więcej treści'
+  },
   WORKSHOPS: {
     ACTIONS: {
       TAKE_PART: 'Weź udział',

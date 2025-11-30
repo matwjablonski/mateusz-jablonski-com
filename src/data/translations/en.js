@@ -187,6 +187,9 @@ const en = {
       TEXT: 'If this article interested you, check out other materials related to it thematically. Below you will find articles and podcast episodes authored by me, as well as books I recommend that expand on this topic.',
     },
   },
+  ARTILES: {
+    LOAD_MORE: 'Load more content'
+  },
   WORKSHOPS: {
     ACTIONS: {
       TAKE_PART: 'Take part',

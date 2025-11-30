@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, use, useState } from 'react';
 import MainLayout from '../../layouts/index'
 import Grid from '../../components/Grid';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -18,6 +18,7 @@ import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types';
 import { ParsedUrlQuery } from 'querystring';
 import { mapLocale } from '../../lib/locales';
+import { useTranslations } from '../../hooks/useTranslations';
 
 interface BlogPageProps {
     body: Page,
@@ -33,6 +34,7 @@ const BlogPage: FC<BlogPageProps> = ({ body: { title, description, head }, artic
     const [amountOfLoadedArticles, setAmountOfLoadedArticles] = useState(FIRST_PAGE_SIZE);
     const [articlesToShow, setArticlesToShow] = useState(restArticles);
     const [disabledFetch, setDisabledFetch] = useState(false);
+    const { t } = useTranslations();
 
     const shouldShowLoadMoreBtn = amountOfLoadedArticles < totalArticles;
 
@@ -76,7 +78,7 @@ const BlogPage: FC<BlogPageProps> = ({ body: { title, description, head }, artic
                 </section>
                 <div className={styles.loadMoreBox}>
                     {shouldShowLoadMoreBtn && <Button.B 
-                        label="Wczytaj więcej treści"
+                        label={t.ARTILES.LOAD_MORE}
                         pattern={ButtonType.SECONDARY}
                         action={fetchArticles}
                         disabled={disabledFetch}
@@ -119,7 +121,8 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         ...p.fields,
         createdDate: formatDate({
             dateObject: p.fields?.createdDate,
-            formatString: 'dd MMMM yyyy'
+            formatString: 'dd MMMM yyyy',
+            locale: mapLocale(context.locale),
         }),
     }));
 
