@@ -48,12 +48,13 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop }) => {
     } = workshop;
 
     const titleText = translateByFullKey(title);
+    const longDescriptionText = translateByFullKey(longDescription || '');
 
     return (
         <MainLayout head={{ title: titleText || 'Warsztat' }} hideOverflow>
             <Grid>
                 <Breadcrumbs />
-                <TitleBarWithComponent title={<>{titleText}</>} text={longDescription || ''} capitalize={false}>
+                <TitleBarWithComponent title={<>{titleText}</>} text={longDescriptionText} capitalize={false}>
                     <div className={styles.MetaData}>
                         <CourseMeta
                             label={t.WORKSHOP.DURATION}

@@ -206,34 +206,42 @@ const pl = {
     CREATING_APP_WITH_REACT: {
       TITLE: 'Tworzenie aplikacji z użyciem React',
       DESCRIPTION: 'Poznaj jedną z najpopularniejszych bibliotek na rynku. Podczas trzech dni warsztatów poznasz najlepsze praktyki tworzenia aplikacji z wykorzystaniem React.',
+      LONG_DESCRIPTION: 'Podczas warsztatów uczestnicy nie tylko poznają kluczowe koncepty Reacta, ale przede wszystkim nauczą się budować aplikacje w sposób zgodny z najlepszymi praktykami rynkowymi. W trakcie pracy warsztatowej przejdziemy przez cały proces - od analizy wymagań, przez projekt architektury komponentów, aż po implementację funkcjonalności oraz zarządzanie stanem. Szczególny nacisk położymy na organizację kodu, reużywalność i optymalizację wydajności. Po zakończeniu szkolenia uczestnicy będą gotowi samodzielnie tworzyć rozbudowane interfejsy użytkownika oraz podejmować świadome decyzje projektowe w nowych i istniejących projektach Reactowych.',
     },
     WORDPRESS_BASICS: {
       TITLE: 'Wordpress - od instalacji do zarządzania',
       DESCRIPTION: 'Celem warsztatów jest pokazanie możliwości tworzenia prostych stron internetowych bez pisania kodu z wykorzystaniem systemu zarządzania treścią Wordpress. Umiejętności zdobyte podczas warsztatów pozwolą na budowanie stron www zarówno do celów prywatnych, jak i zawodowych.',
+      LONG_DESCRIPTION: 'Warsztaty są skierowane do osób, które chcą szybko i skutecznie nauczyć się tworzenia stron internetowych bez konieczności pisania kodu. Uczestnicy poznają logikę działania WordPressa, nauczą się konfigurować motywy i wtyczki, zarządzać treściami oraz dbać o aktualność i bezpieczeństwo strony. Pracujemy na praktycznych przykładach, aby każdy mógł zbudować własną stronę od podstaw. Dzięki takiemu podejściu uczestnicy zyskają kompetencje potrzebne zarówno do tworzenia prostych serwisów dla siebie, jak i do rozwijania stron dla klientów, firm czy organizacji w sposób profesjonalny i łatwy w utrzymaniu.',
     },
     ADVANCED_NODEJS_WITH_TYPESCRIPT: {
       TITLE: 'Zaawansowany Node.js z TypeScript',
       DESCRIPTION: 'Poznaj zaawansowane techniki tworzenia aplikacji backendowych z wykorzystaniem Node.js i TypeScript. Podczas dwóch dni warsztatów dowiesz się jak budować skalowalne i wydajne serwisy internetowe.',
+      LONG_DESCRIPTION: 'Szkolenie jest przeznaczone dla osób, które chcą wejść na wyższy poziom pracy z backendem w Node.js. Uczestnicy poznają zaawansowane techniki, które są stosowane w profesjonalnych zespołach, w tym wielowarstwową architekturę aplikacji, integrację TypeScriptu w dużych projektach, wzorce projektowe oraz podejście do skalowania usług. Pracujemy na realnych przykładach związanych z przetwarzaniem danych, obsługą asynchroniczności, worker threads, strumieniami oraz integracją z bazami danych. Dzięki temu po szkoleniu uczestnicy są w stanie tworzyć nowoczesne, wydajne i dobrze zaprojektowane serwisy backendowe, które sprawdzają się w środowiskach produkcyjnych.',
     },
     ELECTRONJS_DESKTOP_APPS: {
       TITLE: 'Budowanie aplikacji desktopowych w ElectronJS',
       DESCRIPTION: 'Poznaj podstawy tworzenia aplikacji desktopowych z wykorzystaniem Electron. W trakcie jednodniowych warsztatów dowiesz się, jak zorganizować projekt, integrować go z Node.js, tworzyć interfejs użytkownika i przygotować gotową aplikację do dystrybucji.',
+      LONG_DESCRIPTION: 'Warsztaty wprowadzają uczestników w świat tworzenia aplikacji desktopowych z wykorzystaniem technologii webowych. Podczas dnia intensywnej pracy uczestnicy poznają architekturę ElectronJS, nauczą się skutecznie łączyć logikę Node.js z interfejsem tworzonym w HTML, CSS i JavaScript oraz opracują własną aplikację gotową do kompilacji dla różnych systemów operacyjnych. Warsztat koncentruje się na praktyce: od podstawowych mechanizmów IPC, przez zarządzanie oknami, po bezpieczeństwo i dystrybucję. Uczestnik kończy szkolenie z umiejętnością samodzielnego tworzenia i rozwijania desktopowych narzędzi wewnętrznych, prototypów oraz aplikacji komercyjnych.',
     },
     ADVANCED_TYPESCRIPT: {
       TITLE: 'Zaawansowane programowanie w TypeScript',
       DESCRIPTION: 'Poznaj kluczowe elementy języka TypeScript i naucz się projektować bezpieczny, typowany kod. W trakcie jednodniowych warsztatów omówimy system typów, pracę z interfejsami i klasami, projektowanie generyków oraz dobre praktyki stosowane w nowoczesnych aplikacjach JavaScript.',
+      LONG_DESCRIPTION: 'Podczas szkolenia uczestnicy wejdą w głąb zaawansowanych mechanizmów systemu typów TypeScript. Omówimy praktyczne scenariusze związane z projektowaniem interfejsów, modelowaniem złożonych typów, budowaniem generycznych komponentów oraz tworzeniem API odpornych na błędy. Duży nacisk położymy na realne przykłady z dużych projektów, tak aby uczestnicy mogli świadomie wykorzystywać typowanie do zwiększania jakości i przewidywalności kodu. Po warsztatach uczestnicy posiadają umiejętność projektowania kodu, który jest skalowalny, łatwy w utrzymaniu i wspiera zespoły w pracy nad złożonymi aplikacjami front- i backendowymi.',
     },
     ADVANCED_JAVASCRIPT: {
       TITLE: 'Zaawansowane programowanie w Javascript',
       DESCRIPTION: 'Poznaj nowoczesne podejście do programowania w JavaScript. Podczas jednodniowych warsztatów omówimy najnowsze funkcje języka, bezpieczne i wydajne wzorce kodu, pracę z asynchronicznością oraz praktyczne techniki programowania funkcyjnego.',
+      LONG_DESCRIPTION: 'Warsztat skupia się na współczesnych standardach języka JavaScript oraz technikach, które pozwalają pisać wydajny, czytelny i zrównoważony kod. Uczestnicy przeanalizują zaawansowane aspekty pracy z funkcjami, klasami, modułami oraz asynchronicznością, a także poznają wzorce i antywzorce stosowane w codziennej pracy programistycznej. W trakcie praktycznych ćwiczeń omówimy techniki optymalizacji kodu, debugowanie trudnych przypadków oraz sposoby budowania architektury modularnej. Po szkoleniu uczestnicy potrafią świadomie wykorzystywać pełnię możliwości nowoczesnego JavaScriptu w projektach o różnej skali.',
     },
     REACT_REDUX: {
       TITLE: 'Reaktywne programowanie aplikacji webowych w oparciu o React i Redux',
       DESCRIPTION: 'Poznaj solidne podstawy zarządzania stanem w aplikacjach React z wykorzystaniem Reduxa. W trakcie jednodniowych warsztatów omówimy architekturę unidirectional data flow, tworzenie reduktorów i akcji, pracę z middleware oraz techniki optymalizacji dużych projektów opartych o Redux.',
+      LONG_DESCRIPTION: 'Warsztaty szczegółowo wprowadzają w świat zarządzania stanem w aplikacjach Reactowych z wykorzystaniem Reduxa. Uczestnicy nauczą się budować struktury akcji, reduktorów i store’ów w sposób skalowalny oraz pracować z middleware, narzędziami deweloperskimi i technikami optymalizacji. Przeanalizujemy przepływ danych w architekturze unidirectional data flow i pokażemy, jak wykorzystać go do kontroli złożonych procesów biznesowych. Po warsztatach uczestnicy potrafią projektować i rozwijać duże aplikacje, w których zarządzanie stanem jest przejrzyste, przewidywalne i łatwe w utrzymaniu — zarówno indywidualnie, jak i w większym zespole.',
     },
     TYPESCRIPT_PLAYWRIGHT: {
       TITLE: 'Automatyzacja testów funkcjonalnych aplikacji internetowych z użyciem Playwright i TypeScript',
       DESCRIPTION: 'Poznaj praktyczne podstawy automatyzacji testów end-to-end z wykorzystaniem Playwright. W trakcie jednodniowych warsztatów omówimy konfigurację środowiska, pisanie testów, pracę z lokalizatorami i interakcjami, a także bardziej zaawansowane funkcje, takie jak POM, mockowanie API czy generowanie raportów.',
+      LONG_DESCRIPTION: 'Podczas warsztatów uczestnicy zdobędą praktyczne kompetencje w zakresie automatyzacji testów E2E z Playwright i TypeScript. Wspólnie zbudujemy od podstaw środowisko testowe, napiszemy zestawy stabilnych testów oraz omówimy techniki pracy z lokalizatorami, mockowaniem API, izolacją testów i kontrolą środowiska. Szczególny nacisk położymy na tworzenie testów zgodnych z wzorcami projektowymi i budowanie architektury POM, która skaluje się wraz z projektem. Po szkoleniu uczestnicy będą w stanie przygotować pełny proces automatyzacji testów, integrować go z CI/CD oraz skutecznie wykrywać regresje w aplikacjach webowych o różnej skali.',
     }
   },
   WORKSHOP: {

@@ -37,7 +37,7 @@
       letter-spacing: 0.04em;
       line-height: 1;
       text-overflow: ellipsis;
-      max-width: 290px;
+      max-width: 335px;
       overflow: hidden;
 
       @include media.bp(sm) {
@@ -54,7 +54,7 @@
   .valueBelow {
     display: block;
     font-size: 12px;
-    max-width: 290px;
+    max-width: 335px;
     text-transform: uppercase;
     text-align: right;
     color: colors.$color-white;

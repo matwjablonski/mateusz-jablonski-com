@@ -206,41 +206,49 @@ const en = {
     CREATING_APP_WITH_REACT: {
       TITLE: 'Creating an application using React',
       DESCRIPTION: 'Get to know one of the most popular libraries on the market. During three days of workshops, you will learn the best practices for creating applications using React.',
+      LONG_DESCRIPTION: 'During the workshops, participants will not only learn the key concepts of React but will primarily learn how to build applications in accordance with the best market practices. Throughout the workshop, we will go through the entire process - from requirements analysis, through component architecture design, to functionality implementation and state management. Special emphasis will be placed on code organization, reusability, and performance optimization. After completing the training, participants will be ready to independently create complex user interfaces and make informed design decisions in new and existing React projects.',
     },
     WORDPRESS_BASICS: {
       TITLE: 'Wordpress - from installation to management',
       DESCRIPTION: 'The goal of the workshops is to show the possibilities of creating simple websites without writing code using the Wordpress content management system. The skills gained during the workshops will allow you to build websites for both private and professional purposes.',
+      LONG_DESCRIPTION: 'The workshops are aimed at people who want to quickly and effectively learn how to create websites without writing code. Participants will learn the logic of how WordPress works, how to configure themes and plugins, manage content, and maintain the site\'s currency and security. We work on practical examples so that everyone can build their own site from scratch. This approach gives participants the skills needed to create simple sites for themselves as well as to develop sites for clients, companies, or organizations in a professional and easy-to-maintain way.',
     },
     ADVANCED_NODEJS_WITH_TYPESCRIPT: {
       TITLE: 'Advanced Node.js with TypeScript',
       DESCRIPTION: 'Get to know advanced techniques for creating backend applications using Node.js and TypeScript. During two days of workshops, you will learn how to build scalable and efficient web services.',
+      LONG_DESCRIPTION: 'The training is intended for people who want to take their backend work with Node.js to the next level. Participants will learn advanced techniques used in professional teams, including multi-layer application architecture, integration of TypeScript in large projects, design patterns, and approaches to scaling services. We work on real examples related to data processing, handling asynchronicity, worker threads, streams, and database integration. As a result, after the training, participants will be able to create modern, efficient, and well-designed backend services that perform well in production environments.',
     },
     ELECTRONJS_DESKTOP_APPS: {
       TITLE: 'Building desktop applications with ElectronJS',
       DESCRIPTION: 'Learn the basics of creating desktop applications using Electron. During a one-day workshop, you will learn how to organize a project, integrate it with Node.js, create a user interface, and prepare a finished application for distribution.',
+      LONG_DESCRIPTION: 'The workshop introduces participants to the world of creating desktop applications using web technologies. During a day of intensive work, participants will learn the architecture of ElectronJS, how to effectively combine Node.js logic with an interface created in HTML, CSS, and JavaScript, and develop their own application ready for compilation for various operating systems. The workshop focuses on practice: from basic IPC mechanisms, through window management, to security and distribution. The participant finishes the training with the ability to independently create and develop internal desktop tools, prototypes, and commercial applications.',
     },
     ADVANCED_TYPESCRIPT: {
       TITLE: 'Advanced Programming in TypeScript',
       DESCRIPTION: 'Get to know the key elements of the TypeScript language and learn how to design safe, typed code. During a one-day workshop, we will discuss the type system, working with interfaces and classes, designing generics, and best practices used in modern JavaScript applications.',
+      LONG_DESCRIPTION: 'During the training, participants will delve into the advanced mechanisms of the TypeScript type system. We will discuss practical scenarios related to designing interfaces, modeling complex types, building generic components, and creating error-resistant APIs. A strong emphasis will be placed on real examples from large projects, so that participants can consciously use typing to improve code quality and predictability. After the workshop, participants will have the skills to design code that is scalable, easy to maintain, and supports teams working on complex front-end and back-end applications.',
     },
     ADVANCED_JAVASCRIPT: {
       TITLE: 'Advanced Programming in Javascript',
       DESCRIPTION: 'Get to know the modern approach to programming in JavaScript. During a one-day workshop, we will discuss the latest language features, safe and efficient code patterns, working with asynchronicity, and practical functional programming techniques.',
+      LONG_DESCRIPTION: 'The workshop focuses on modern JavaScript standards and techniques that allow writing efficient, readable, and balanced code. Participants will analyze advanced aspects of working with functions, classes, modules, and asynchronicity, as well as learn patterns and anti-patterns used in everyday programming work. During practical exercises, we will discuss code optimization techniques, debugging difficult cases, and ways to build modular architecture. After the training, participants will be able to consciously use the full potential of modern JavaScript in projects of various scales.',
     },
     REACT_REDUX: {
       TITLE: 'Reactive web application programming based on React and Redux',
       DESCRIPTION: 'Get to know the solid basics of state management in React applications using Redux. During a one-day workshop, we will discuss the unidirectional data flow architecture, creating reducers and actions, working with middleware, and optimization techniques for large projects based on Redux.',
+      LONG_DESCRIPTION: 'The workshop provides a detailed introduction to state management in React applications using Redux. Participants will learn how to build scalable action, reducer, and store structures, work with middleware, developer tools, and optimization techniques. We will analyze data flow in the unidirectional data flow architecture and demonstrate how to use it to control complex business processes. After the workshop, participants will be able to design and develop large applications where state management is clear, predictable, and easy to maintain — both individually and in larger teams.',
     },
     TYPESCRIPT_PLAYWRIGHT: {
       TITLE: 'Automation of functional testing of web applications using Playwright and TypeScript',
       DESCRIPTION: 'Get to know the practical basics of end-to-end test automation using Playwright. During a one-day workshop, we will discuss environment configuration, writing tests, working with locators and interactions, as well as more advanced features such as POM, API mocking, and report generation.',
+      LONG_DESCRIPTION: 'During the workshop, participants will gain practical skills in automating E2E tests with Playwright and TypeScript. Together, we will build a test environment from scratch, write sets of stable tests, and discuss techniques for working with locators, API mocking, test isolation, and environment control. Special emphasis will be placed on creating tests that follow design patterns and building a POM architecture that scales with the project. After the training, participants will be able to prepare a complete test automation process, integrate it with CI/CD, and effectively detect regressions in web applications of various scales.',
     }
   },
   WORKSHOP: {
     DURATION: 'Duration',
     COST_PER_USER: 'Cost per user',
     CITY_OR_REMOTE: 'City / remote',
-    ASK_FOR_PRICE: 'Ask for price',
+    ASK_FOR_PRICE: 'Ask for date',
     GROSS: 'gross',
     NET: 'net',
     COST_NOTE: 'For groups of at least 4 people'

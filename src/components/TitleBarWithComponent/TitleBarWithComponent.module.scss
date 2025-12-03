@@ -9,6 +9,7 @@
     align-items: flex-start;
     margin-bottom: gutters.$gutter-small * 7;
     flex-direction: column;
+    gap: gutters.$gutter * 2;
 
     @include media.bp(md) {
         flex-direction: row;
