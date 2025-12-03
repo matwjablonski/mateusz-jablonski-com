@@ -7,6 +7,7 @@ import { ParsedUrlQuery } from 'querystring'
 import { Workshop } from '../../types/database'
 import { getWorkshopBySlug } from '../../lib/database/workshops'
 import { getCountOfResponsesForWorkshop, getWorkshopAverageRating } from '../../lib/database/polls'
+import { getWorkshopAgenda } from '../../lib/getWorkshopAgenda'
 import TitleBarWithComponent from '../../components/TitleBarWithComponent'
 import CourseMeta from '../../components/CourseMeta'
 import styles from '../../styles/Course.module.scss';
@@ -24,9 +25,10 @@ interface WorkshopPageProps {
     workshop: Workshop | null,
     averageRating: number | null,
     numberOfResponses: number | null,
+    agendaContent: string | null,
 }
 
-const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating, numberOfResponses }) => {
+const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating, numberOfResponses, agendaContent }) => {
     const { t, translateByFullKey, translate } = useTranslations();
 
     if (!workshop) {
@@ -46,7 +48,6 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating, numberOf
         days,
         currency,
         costPerUser,
-        program,
         maxParticipants,
         cityOrRemote,
     } = workshop;
@@ -85,7 +86,7 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating, numberOf
                         <Button.L pattern={ButtonType.LIGTHENED} label={t.WORKSHOP.ASK_FOR_PRICE} href="/contact" />
                     </div>
                 </TitleBarWithComponent>
-                {program && <TrainingProgram content={program}/>}
+                {agendaContent && <TrainingProgram content={agendaContent}/>}
                 {/* TODO: Add reviews from database */}
                 {/* <WorkshopReviews reviews={[]} /> */}
             </Grid>
@@ -113,12 +114,16 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 
         const averageRating = await getWorkshopAverageRating(workshop.id);
         const numberOfResponses = await getCountOfResponsesForWorkshop(workshop.id);
+        
+        const locale = context.locale || 'pl';
+        const agenda = getWorkshopAgenda(slug, locale);
 
         return {
             props: {
                 workshop,
                 averageRating,
                 numberOfResponses,
+                agendaContent: agenda?.content || null,
             }
         };
     } catch (error) {
