@@ -117,9 +117,6 @@ export const getWorkshopAverageRating = async (workshopId: number): Promise<numb
       db.fn.avg<number>('poll_responses.workshops_content').as('avg_workshops_content'),
       db.fn.avg<number>('poll_responses.workshops_realization').as('avg_workshops_realization'),
       db.fn.avg<number>('poll_responses.workshops_duration').as('avg_workshops_duration'),
-      db.fn.avg<number>('poll_responses.your_knowledge_before').as('avg_your_knowledge_before'),
-      db.fn.avg<number>('poll_responses.your_knowledge_after').as('avg_your_knowledge_after'),
-      db.fn.avg<number>('poll_responses.your_knowledge_usefulness').as('avg_your_knowledge_usefulness'),
     ])
     .where('past_workshops.workshop_id', '=', workshopId)
     .executeTakeFirst();
@@ -139,9 +136,6 @@ export const getWorkshopAverageRating = async (workshopId: number): Promise<numb
     Number(statsResult.avg_workshops_content),
     Number(statsResult.avg_workshops_realization),
     Number(statsResult.avg_workshops_duration),
-    Number(statsResult.avg_your_knowledge_before),
-    Number(statsResult.avg_your_knowledge_after),
-    Number(statsResult.avg_your_knowledge_usefulness),
   ].filter((val): val is number => val !== null && val !== undefined);
 
   if (averages.length === 0) {
