@@ -253,6 +253,7 @@ const en = {
     NET: 'net',
     COST_NOTE: 'for a group of min. 4 people',
     AVERAGE_RATING: 'Participant Rating',
+    BASED_ON_RESPONSES: 'Based on @1 responses',
   },
   CONTACT: {
     FORM: {

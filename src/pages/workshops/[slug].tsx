@@ -6,7 +6,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { Workshop } from '../../types/database'
 import { getWorkshopBySlug } from '../../lib/database/workshops'
-import { getWorkshopAverageRating } from '../../lib/database/polls'
+import { getCountOfResponsesForWorkshop, getWorkshopAverageRating } from '../../lib/database/polls'
 import TitleBarWithComponent from '../../components/TitleBarWithComponent'
 import CourseMeta from '../../components/CourseMeta'
 import styles from '../../styles/Course.module.scss';
@@ -23,10 +23,11 @@ import { useTranslations } from "../../hooks/useTranslations"
 interface WorkshopPageProps {
     workshop: Workshop | null,
     averageRating: number | null,
+    numberOfResponses: number | null,
 }
 
-const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating }) => {
-    const { t, translateByFullKey } = useTranslations();
+const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating, numberOfResponses }) => {
+    const { t, translateByFullKey, translate } = useTranslations();
 
     if (!workshop) {
         return (
@@ -75,9 +76,10 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating }) => {
                             value={cityOrRemote}
                             icon={<Image src={gps || `/icons/gps.svg`} alt="" height={32} width={32} />}
                         />}
-                        {averageRating && <CourseMeta
+                        {averageRating > 0 && <CourseMeta
                             label={t.WORKSHOP.AVERAGE_RATING}
                             value={`${averageRating} / 5`}
+                            valueBelow={numberOfResponses ? translate({ value: t.WORKSHOP.BASED_ON_RESPONSES, variables: [ numberOfResponses.toString() ] }) : ''}
                             icon={<Image src={star || `/icons/star.svg`} alt="" height={32} width={32} />}
                         />}
                         <Button.L pattern={ButtonType.LIGTHENED} label={t.WORKSHOP.ASK_FOR_PRICE} href="/contact" />
@@ -110,11 +112,13 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         }
 
         const averageRating = await getWorkshopAverageRating(workshop.id);
+        const numberOfResponses = await getCountOfResponsesForWorkshop(workshop.id);
 
         return {
             props: {
                 workshop,
                 averageRating,
+                numberOfResponses,
             }
         };
     } catch (error) {

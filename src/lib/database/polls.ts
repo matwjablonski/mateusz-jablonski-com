@@ -211,3 +211,14 @@ export const getWorkshopStats = async (workshopId: number): Promise<WorkshopStat
     },
   };
 };
+
+export const getCountOfResponsesForWorkshop = async (workshopId: number): Promise<number> => {
+  const result = await db
+    .selectFrom('poll_responses')
+    .innerJoin('past_workshops', 'past_workshops.id', 'poll_responses.past_workshop_id')
+    .select(db.fn.count<number>('poll_responses.id').as('response_count'))
+    .where('past_workshops.workshop_id', '=', workshopId)
+    .executeTakeFirst();
+
+  return result?.response_count || 0;
+}

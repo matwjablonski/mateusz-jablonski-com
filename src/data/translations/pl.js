@@ -253,6 +253,7 @@ const pl = {
     NET: 'netto',
     COST_NOTE: 'dla grupy min. 4 osób',
     AVERAGE_RATING: 'Ocena uczestników',
+    BASED_ON_RESPONSES: 'Na podstawie @1 odpowiedzi',
   },
   CONTACT: {
     FORM: {
