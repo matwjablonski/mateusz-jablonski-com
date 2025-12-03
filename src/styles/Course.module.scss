@@ -11,6 +11,7 @@
   @include media.bp(md) {
     flex-direction: column;
     min-width: 450px;
+    gap: 0;
   }
 
   > * {

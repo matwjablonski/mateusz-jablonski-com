@@ -246,12 +246,13 @@ const en = {
   },
   WORKSHOP: {
     DURATION: 'Duration',
-    COST_PER_USER: 'Cost per user',
+    COST_PER_USER: 'Cost per person',
     CITY_OR_REMOTE: 'City / remote',
-    ASK_FOR_PRICE: 'Ask for date',
+    ASK_FOR_PRICE: 'Ask for a date',
     GROSS: 'gross',
     NET: 'net',
-    COST_NOTE: 'For groups of at least 4 people'
+    COST_NOTE: 'for a group of min. 4 people',
+    AVERAGE_RATING: 'Participant Rating',
   },
   CONTACT: {
     FORM: {

@@ -6,6 +6,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { Workshop } from '../../types/database'
 import { getWorkshopBySlug } from '../../lib/database/workshops'
+import { getWorkshopAverageRating } from '../../lib/database/polls'
 import TitleBarWithComponent from '../../components/TitleBarWithComponent'
 import CourseMeta from '../../components/CourseMeta'
 import styles from '../../styles/Course.module.scss';
@@ -13,6 +14,7 @@ import Image from 'next/image';
 import pig from '../../public/icons/pig-money.svg';
 import clock from '../../public/icons/clock-4.svg';
 import gps from '../../public/icons/gps.svg';
+import star from '../../public/icons/star.svg';
 import Button from '../../components/Button';
 import { ButtonType } from '../../components/Button/Button.types'
 import TrainingProgram from '../../components/TrainingProgram'
@@ -20,9 +22,10 @@ import { useTranslations } from "../../hooks/useTranslations"
 
 interface WorkshopPageProps {
     workshop: Workshop | null,
+    averageRating: number | null,
 }
 
-const WorkshopPage: FC<WorkshopPageProps> = ({ workshop }) => {
+const WorkshopPage: FC<WorkshopPageProps> = ({ workshop, averageRating }) => {
     const { t, translateByFullKey } = useTranslations();
 
     if (!workshop) {
@@ -56,11 +59,11 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop }) => {
                 <Breadcrumbs />
                 <TitleBarWithComponent title={<>{titleText}</>} text={longDescriptionText} capitalize={false}>
                     <div className={styles.MetaData}>
-                        <CourseMeta
+                        {days && <CourseMeta
                             label={t.WORKSHOP.DURATION}
                             value={`${days} ${days > 1 ? t.COMMON.DAYS : t.COMMON.DAY}`}
                             icon={<Image src={clock || `/icons/clock.svg`} alt="" height={32} width={32} />}
-                        />
+                        />}
                         {costPerUser && <CourseMeta
                             label={t.WORKSHOP.COST_PER_USER}
                             value={`${costPerUser} ${currency || 'PLN'} ${t.WORKSHOP.NET}`}
@@ -71,6 +74,11 @@ const WorkshopPage: FC<WorkshopPageProps> = ({ workshop }) => {
                             label={t.WORKSHOP.CITY_OR_REMOTE}
                             value={cityOrRemote}
                             icon={<Image src={gps || `/icons/gps.svg`} alt="" height={32} width={32} />}
+                        />}
+                        {averageRating && <CourseMeta
+                            label={t.WORKSHOP.AVERAGE_RATING}
+                            value={`${averageRating} / 5`}
+                            icon={<Image src={star || `/icons/star.svg`} alt="" height={32} width={32} />}
                         />}
                         <Button.L pattern={ButtonType.LIGTHENED} label={t.WORKSHOP.ASK_FOR_PRICE} href="/contact" />
                     </div>
@@ -101,9 +109,12 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
             };
         }
 
+        const averageRating = await getWorkshopAverageRating(workshop.id);
+
         return {
             props: {
                 workshop,
+                averageRating,
             }
         };
     } catch (error) {

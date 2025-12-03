@@ -251,7 +251,8 @@ const pl = {
     ASK_FOR_PRICE: 'Zapytaj o termin',
     GROSS: 'brutto',
     NET: 'netto',
-    COST_NOTE: 'dla grupy min. 4 osób'
+    COST_NOTE: 'dla grupy min. 4 osób',
+    AVERAGE_RATING: 'Ocena uczestników',
   },
   CONTACT: {
     FORM: {

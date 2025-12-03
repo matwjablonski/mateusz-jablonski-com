@@ -102,6 +102,56 @@ export const getPollResponsesByPastWorkshopId = async (pastWorkshopId: number): 
   }));
 };
 
+export const getWorkshopAverageRating = async (workshopId: number): Promise<number | null> => {
+  const statsResult = await db
+    .selectFrom('poll_responses')
+    .innerJoin('past_workshops', 'past_workshops.id', 'poll_responses.past_workshop_id')
+    .select([
+      db.fn.avg<number>('poll_responses.trainer_knowledge').as('avg_trainer_knowledge'),
+      db.fn.avg<number>('poll_responses.trainer_experience').as('avg_trainer_experience'),
+      db.fn.avg<number>('poll_responses.trainer_communication').as('avg_trainer_communication'),
+      db.fn.avg<number>('poll_responses.trainer_engagement').as('avg_trainer_engagement'),
+      db.fn.avg<number>('poll_responses.trainer_questions').as('avg_trainer_questions'),
+      db.fn.avg<number>('poll_responses.trainer_openness').as('avg_trainer_openness'),
+      db.fn.avg<number>('poll_responses.trainer_culture').as('avg_trainer_culture'),
+      db.fn.avg<number>('poll_responses.workshops_content').as('avg_workshops_content'),
+      db.fn.avg<number>('poll_responses.workshops_realization').as('avg_workshops_realization'),
+      db.fn.avg<number>('poll_responses.workshops_duration').as('avg_workshops_duration'),
+      db.fn.avg<number>('poll_responses.your_knowledge_before').as('avg_your_knowledge_before'),
+      db.fn.avg<number>('poll_responses.your_knowledge_after').as('avg_your_knowledge_after'),
+      db.fn.avg<number>('poll_responses.your_knowledge_usefulness').as('avg_your_knowledge_usefulness'),
+    ])
+    .where('past_workshops.workshop_id', '=', workshopId)
+    .executeTakeFirst();
+
+  if (!statsResult) {
+    return null;
+  }
+
+  const averages = [
+    Number(statsResult.avg_trainer_knowledge),
+    Number(statsResult.avg_trainer_experience),
+    Number(statsResult.avg_trainer_communication),
+    Number(statsResult.avg_trainer_engagement),
+    Number(statsResult.avg_trainer_questions),
+    Number(statsResult.avg_trainer_openness),
+    Number(statsResult.avg_trainer_culture),
+    Number(statsResult.avg_workshops_content),
+    Number(statsResult.avg_workshops_realization),
+    Number(statsResult.avg_workshops_duration),
+    Number(statsResult.avg_your_knowledge_before),
+    Number(statsResult.avg_your_knowledge_after),
+    Number(statsResult.avg_your_knowledge_usefulness),
+  ].filter((val): val is number => val !== null && val !== undefined);
+
+  if (averages.length === 0) {
+    return null;
+  }
+
+  const overallAverage = averages.reduce((sum, val) => sum + val, 0) / averages.length;
+  return Math.round(overallAverage * 100) / 100;
+};
+
 export const getWorkshopStats = async (workshopId: number): Promise<WorkshopStats | null> => {
   const editionsResult = await db
     .selectFrom('past_workshops')
