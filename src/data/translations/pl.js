@@ -119,6 +119,21 @@ const pl = {
       TITLE: 'Ostatnie materiały',
       TEXT: 'Poniżej znajdziesz najnowsze przygotowane przeze mnie materiały. Zapraszam do zapoznania się z nimi. Mam nadzieję, że wyciągniesz z nich dużo wartości dla siebie.',
     },
+    WHAT_CAN_I_TEACH_YOU: {
+      TITLE: 'Czego mogę Cię nauczyć?',
+      I_TEACH_ADULTS_KIDS_SUBTITLE: 'Uczę programować dzieci i dorosłych',
+      I_TEACH_ADULTS_KIDS_TEXT: 'Nauczanie programowania dla osób dorosłych odbywa się za pośrednictwem szkół programowania, takich jak Kodilla lub prywatnie w formie %%mentoringu lub szkoleń i warsztatów%% (dla Sages, StacjiIT, Orb Experts czy Noble Prog). Mentoring to specyficzna forma współpracy, która wymaga od każdej ze stron pełnego zaanganżowania.',
+      TOPICS_SUBTITLE: 'Na zajęciach ze mną poruszysz tematy związane z:',
+      TOPICS: {
+        0: 'szeroko pojętym programowaniem',
+        1: 'dobrymi praktykami i jakością',
+        2: 'testowaniem',
+        3: 'technologiami frontendowymi',
+        4: 'narzędziami i warsztatem programisty',
+      },
+      WORK_WITH_KIDS_TEXT: 'Praca z dziećmi opiera się przede wszystkim na pokazaniu <strong>nowego sposobu uczenia się</strong>, poznawaniu technologii, wskazywaniu możliwości i niebezpieczeństw, które związane są z branżą IT. Na zajęciach z programowania dzieci tworzą samodzielnie proste programy z wykorzystaniem najpopularniejszych języków programowania. <strong>Najmłodsze dzieci, z którymi pracuję mają 11 lat.</strong> Zajęcia odbywają się w małych maksymalnie 4 osobowych grupach lub indywidualnie.',
+      TRAININGS_TEXT: 'Na szkoleniach i warsztatach ze mną możesz liczyć na dużo uśmiechu, zrozumienie, rzetelną wiedzę, ciekawe materiały dodatkowe i angażujące zadania.',
+    },
     CURRENT: {
       READ: {
         TITLE: 'Aktualnie czytam',

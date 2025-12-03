@@ -119,6 +119,21 @@ const en = {
       TITLE: 'Latest content',
       TEXT: 'Below you will find the latest materials I have prepared. I invite you to take a look at them. I hope you will draw a lot of value for yourself from them.',
     },
+    WHAT_CAN_I_TEACH_YOU: {
+      TITLE: 'What can I teach you?',
+      I_TEACH_ADULTS_KIDS_SUBTITLE: 'I teach programming to children and adults',
+      I_TEACH_ADULTS_KIDS_TEXT: 'Teaching programming to adults takes place through programming schools such as Kodilla or privately in the form of %%mentoring or training and workshops%% (for Sages, StacjaIT, Orb Experts, or Noble Prog). Mentoring is a specific form of cooperation that requires full commitment from each party.',
+      TOPICS_SUBTITLE: 'On the classes with me, you will cover topics related to:',
+      TOPICS: {
+        0: 'widely understood programming',
+        1: 'good practices and quality',
+        2: 'testing',
+        3: 'frontend technologies',
+        4: 'tools and programmer\'s workshop',
+      },
+      WORK_WITH_KIDS_TEXT: 'Work with children is primarily based on showing a %%new way of learning%%, getting to know technology, pointing out opportunities and dangers associated with the IT industry. In programming classes, children independently create simple programs using the most popular programming languages. %%The youngest children I work with are 11 years old.%% Classes take place in small groups of up to 4 people or individually.',
+      TRAININGS_TEXT: 'On trainings and workshops with me, you can count on lots of smiles, understanding, reliable knowledge, interesting additional materials, and engaging tasks.',
+    },
     CURRENT: {
       READ: {
         TITLE: 'I am currently reading',
