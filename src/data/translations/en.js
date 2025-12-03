@@ -377,7 +377,7 @@ const en = {
   },
   DOCS: {
     TITLE: 'Documents',
-    DESCRIPTION: 'W poniższej tabeli znajdziesz informacje o dokumentach prawnych dostępnych w moim serwisie. Dokumenty te zawierają informacje o sposobie działania niniejszej witryny.',
+    DESCRIPTION: 'Below is a table with information about the legal documents available on my website. These documents contain information about how this site operates.',
   },
   LEVELS: {
     0: 'Code Novice',
