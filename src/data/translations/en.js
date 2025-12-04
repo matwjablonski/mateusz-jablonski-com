@@ -101,6 +101,15 @@ const en = {
       NO_LINK: 'No review',
       WITH_LINK: 'Go to review',
     },
+    NEWSLETTER: {
+      TITLE: 'Join the newsletter and stay up to date %%for free!%%',
+      DESCRIPTION: 'Join my newsletter for free. You will receive information about new articles, programming world curiosities, and many practical tips on personal development.',
+    },
+  },
+  NEWSLETTER: {
+    EMAIL_REQUIRED: 'Email field is required',
+    EMAIL_PLACEHOLDER: 'Enter your email address',
+    ACTION: 'Join the Newsletter',
   },
   BREADCRUMBS: {
     CONTACT: 'Contact',

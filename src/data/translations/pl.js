@@ -101,6 +101,15 @@ const pl = {
       NO_LINK: 'Brak recenzji',
       WITH_LINK: 'Przejdź do recenzji',
     },
+    NEWSLETTER: {
+      TITLE: 'Dołącz do newslettera i bądź na bieżąco %%za darmo!%%',
+      DESCRIPTION: 'Dołącz bezpłatnie do mojego newslettera. Będziesz otrzymywać informacje o nowych artykułach, ciekawostki ze świata programowania i dużo praktycznych porad na temat własnego rozwoju.',
+    },
+  },
+  NEWSLETTER: {
+    EMAIL_REQUIRED: 'Pole email jest wymagane',
+    EMAIL_PLACEHOLDER: 'Podaj adres e-mail',
+    ACTION: 'Zapisz mnie do newslettera',
   },
   BREADCRUMBS: {
     CONTACT: 'Kontakt',

@@ -11,10 +11,12 @@ import MessageWrapper, { MessageType } from '../MessageWrapper';
 import Button from '../Button';
 import { ButtonType } from "../Button/Button.types";
 import { InputPlaceholderTypes } from "../InputWrapper/InputWrapper.types";
+import { useTranslations } from "../../hooks/useTranslations";
 
 const Newsletter = ({ cssFormClass }: { cssFormClass?: string }) => {
     const { register, handleSubmit, setError, formState: { errors } } = useForm();
     const [ successMessage, setSuccessMessage ] = useState(null);
+    const { t } = useTranslations();
 
     const onSubmit = (data: NewsletterFormInputs) => {
         setSuccessMessage(null);
@@ -37,8 +39,8 @@ const Newsletter = ({ cssFormClass }: { cssFormClass?: string }) => {
         <div className={cx(styles.newsletterForm, cssFormClass)}>
             <InputWrapper icon={InputPlaceholderTypes.NEWSLETTER} error={!_.isEmpty(errors)} success={!!successMessage}>
                 <input 
-                    {...register('email', { required: 'Pole email jest wymagane' })}
-                    placeholder="Podaj adres e-mail"   
+                    {...register('email', { required: t.NEWSLETTER.EMAIL_REQUIRED })}
+                    placeholder={t.NEWSLETTER.EMAIL_PLACEHOLDER}   
                     onChange={() => setSuccessMessage(null)} 
                 />
                 <MessageWrapper messageType={MessageType.ERROR}>
@@ -46,7 +48,7 @@ const Newsletter = ({ cssFormClass }: { cssFormClass?: string }) => {
                 </MessageWrapper>
                 {successMessage && <MessageWrapper messageType={MessageType.SUCCESS}>{successMessage}</MessageWrapper>}
             </InputWrapper>
-            <Button.B type="submit" label="Zapisz mnie do newslettera" pattern={ButtonType.PRIMARY} onClick={handleSubmit(onSubmit)}/>
+            <Button.B type="submit" label={t.NEWSLETTER.ACTION} pattern={ButtonType.PRIMARY} onClick={handleSubmit(onSubmit)}/>
         </div>
     )
 }
