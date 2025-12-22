@@ -1,0 +1,618 @@
+[
+    {
+        "id": "churchill-opowiesc-o-przegranym-zwyciezcy-nina-smolar",
+        "categoryName": "biografie",
+        "title": "Churchill. Opowieść o przegranym zwycięzcy",
+        "author": "Nina Smolar",
+        "slug": "churchill-opowiesc-o-przegranym-zwyciezcy-nina-smolar",
+        "rate": null,
+        "bookType": "ebook",
+        "currentRead": true,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4998000/4998419/953055-352x500.jpg"
+        },
+        "createdDate": "2025-12-12"
+    },
+    {
+        "id": "bitwa-o-skandie-john-flanagan",
+        "categoryName": "fantastyka",
+        "title": "Bitwa o Skandię",
+        "author": "John Flanagan",
+        "slug": "bitwa-o-skandie-john-flanagan",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/52000/52813/1134702-352x500.jpg"
+        },
+        "createdDate": "2025-09-18"
+    },
+    {
+        "id": "polka-w-korei-jak-sie-zyje-w-kraju-k-popu-kimchi-i-samsunga-agnieszka-klessa-shin",
+        "categoryName": "reportaze",
+        "title": "Polka w Korei. Jak się żyje w kraju K-popu, kimchi i Samsunga",
+        "author": "Agnieszka Klessa-Shin",
+        "slug": "polka-w-korei-jak-sie-zyje-w-kraju-k-popu-kimchi-i-samsunga-agnieszka-klessa-shin",
+        "rate": 5,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5078000/5078772/1087090-352x500.jpg"
+        },
+        "createdDate": "2025-09-08"
+    },
+    {
+        "id": "ziemia-skuta-lodem-john-flanagan",
+        "categoryName": "fantastyka",
+        "title": "Ziemia skuta lodem",
+        "author": "John Flanagan",
+        "slug": "ziemia-skuta-lodem-john-flanagan",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/52000/52811/1134701-352x500.jpg"
+        },
+        "createdDate": "2025-08-19"
+    },
+    {
+        "id": "rtęć-pk-farion-mateusz-gostyński",
+        "categoryName": "kryminał",
+        "title": "Rtęć",
+        "author": "P.K. Farion, Mateusz Gostyński",
+        "slug": "rtęć-pk-farion-mateusz-gostyński",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5039000/5039849/1036203-352x500.jpg"
+        },
+        "createdDate": "2025-08-15"
+    },
+    {
+        "id": "płonący-most-john-flanagan",
+        "categoryName": "fantastyka",
+        "title": "Płonący most",
+        "author": "John Flanagan",
+        "slug": "płonący-most-john-flanagan",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/52000/52756/1134700-352x500.jpg"
+        },
+        "createdDate": "2025-08-09"
+    },
+    {
+        "id": "opowieści-z-narnii-lew-czarownica-i-stara-szafa-cs-lewis",
+        "categoryName": "fantastyka",
+        "title": "Opowieści z Narnii. Lew, czarownica i stara szafa",
+        "author": "C.S. Lewis",
+        "slug": "opowieści-z-narnii-lew-czarownica-i-stara-szafa-cs-lewis",
+        "rate": 7,
+        "bookType": "paper",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/33000/33905/461495-352x500.jpg"
+        },
+        "createdDate": "2025-08-06"
+    },
+    {
+        "id": "lekcje-chemii-bonnie-garmus",
+        "categoryName": "literatura-piękna",
+        "title": "Lekcje chemii",
+        "author": "Bonnie Garmus",
+        "slug": "lekcje-chemii-bonnie-garmus",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5028000/5028116/1104907-352x500.jpg"
+        },
+        "createdDate": "2025-07-27"
+    },
+    {
+        "id": "przepis-na-czlowieka-dawid-mysliwiec",
+        "categoryName": "popularnonaukowe",
+        "title": "Przepis na człowieka",
+        "author": "Dawid Myśliwiec",
+        "slug": "przepis-na-czlowieka-dawid-mysliwiec",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4917000/4917880/822034-352x500.jpg"
+        },
+        "createdDate": "2025-06-23"
+    },
+    {
+        "id": "nimfomanka-sonia-rosa",
+        "categoryName": "literatura-obyczajowa",
+        "title": "Nimfomanka",
+        "author": "Sonia Rosa",
+        "slug": "nimfomanka-sonia-rosa",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4913000/4913588/826671-352x500.jpg"
+        },
+        "createdDate": "2025-05-04"
+    },
+    {
+        "id": "bóg-imperator-diuny-frank-herbert",
+        "categoryName": "science-fiction",
+        "title": "Bóg Imperator Diuny",
+        "author": "Frank Herbert",
+        "slug": "bóg-imperator-diuny-frank-herbert",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5114000/5114517/1252095-352x500.jpg"
+        },
+        "createdDate": "2025-04-29"
+    },
+    {
+        "id": "ruiny-gorlanu-john-flanagan",
+        "categoryName": "fantastyka",
+        "title": "Ruiny Gorlanu",
+        "author": "John Flanagan",
+        "slug": "ruiny-gorlanu-john-flanagan",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4989000/4989803/1134809-352x500.jpg"
+        },
+        "createdDate": "2025-04-14"
+    },
+    {
+        "id": "pył-hugh-howey",
+        "categoryName": "science-fiction",
+        "title": "Pył",
+        "author": "Hugh Howey",
+        "slug": "pył-hugh-howey",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5129000/5129745/1180012-352x500.jpg"
+        },
+        "createdDate": "2025-04-06"
+    },
+    {
+        "id": "zmiana-hugh-howey",
+        "categoryName": "science-fiction",
+        "title": "Zmiana",
+        "author": "Hugh Howey",
+        "slug": "zmiana-hugh-howey",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5119000/5119195/1160047-352x500.jpg"
+        },
+        "createdDate": "2025-03-22"
+    },
+    {
+        "id": "teoria-wszystkiego-stephen-hawking",
+        "categoryName": "popularnonaukowe",
+        "title": "Teoria wszystkiego, czyli krótka historia wszechświata",
+        "author": "Stephen Hawking",
+        "slug": "teoria-wszystkiego-stephen-hawking",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4941000/4941272/876702-352x500.jpg"
+        },
+        "createdDate": "2025-02-25"
+    },
+    {
+        "id": "silos-hugh-howey",
+        "categoryName": "popularnonaukowe",
+        "title": "Silos",
+        "author": "Hugh Howey",
+        "slug": "silos-hugh-howey",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5109000/5109767/1161837-352x500.jpg"
+        },
+        "createdDate": "2025-02-20"
+    },
+    {
+        "id": "gen-ukryta-historia-siddhartha-mukherjee",
+        "categoryName": "popularnonaukowe",
+        "title": "Gen. Ukryta historia",
+        "author": "Siddhartha Mukherjee",
+        "slug": "gen-ukryta-historia-siddhartha-mukherjee",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4368000/4368326/572795-352x500.jpg"
+        },
+        "createdDate": "2025-02-03"
+    },
+    {
+        "id": "solaris-stanisław-lem",
+        "categoryName": "science-fiction",
+        "title": "Solaris",
+        "author": "Stanisław Lem",
+        "slug": "solaris-stanisław-lem",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/133000/133717/352x500.jpg"
+        },
+        "createdDate": "2024-12-31"
+    },
+    {
+        "id": "holly-stephen-king",
+        "categoryName": "kryminał",
+        "title": "Holly",
+        "author": "Stephen King",
+        "slug": "holly-stephen-king",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5116000/5116335/1153795-352x500.jpg"
+        },
+        "createdDate": "2024-12-19"
+    },
+    {
+        "id": "dzieci-diuny-frank-herbert",
+        "categoryName": "science-fiction",
+        "title": "Dzieci Diuny",
+        "author": "Frank Herbert",
+        "slug": "dzieci-diuny-frank-herbert",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5040000/5040514/1021340-352x500.jpg"
+        },
+        "createdDate": "2024-07-26"
+    },
+    {
+        "id": "człowiek-vs-komputer-gojko-adzic",
+        "categoryName": "popularnonaukowe",
+        "title": "Człowiek vs komputer",
+        "author": "Gojko Adzic",
+        "slug": "człowiek-vs-komputer-gojko-adzic",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4902000/4902800/765013-352x500.jpg"
+        },
+        "createdDate": "2024-06-26"
+    },
+    {
+        "id": "upadek-hyperiona-dan-simmons",
+        "categoryName": "science-fiction",
+        "title": "Upadek Hyperiona",
+        "author": "Dan Simmons",
+        "slug": "upadek-hyperiona-dan-simmons",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/231000/231218/419263-352x500.jpg"
+        },
+        "createdDate": "2024-05-21"
+    },
+    {
+        "id": "życie-z-klocków-ferran-aguilar-david-aguilar",
+        "categoryName": "reportaze",
+        "title": "Życie z klocków",
+        "author": "Ferran Aguilar, David Aguilar",
+        "slug": "życie-z-klocków-ferran-aguilar-david-aguilar",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5088000/5088903/1103802-352x500.jpg"
+        },
+        "createdDate": "2023-12-26"
+    },
+    {
+        "id": "chłopki-opowieść-o-naszych-babkach-joanna-kuciel-frydryszak",
+        "categoryName": "reportaze",
+        "title": "Chłopki. Opowieść o naszych babkach",
+        "author": "Joanna Kuciel-Frydryszak",
+        "slug": "chłopki-opowieść-o-naszych-babkach-joanna-kuciel-frydryszak",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/5066000/5066278/1066485-352x500.jpg"
+        },
+        "createdDate": "2023-11-22"
+    },
+    {
+        "id": "kronika-ptaka-nakreacza-haruki-murakami",
+        "categoryName": "literatura-piękna",
+        "title": "Kronika ptaka nakręcacza",
+        "author": "Haruki Murakami",
+        "slug": "kronika-ptaka-nakreacza-haruki-murakami",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/198000/198030/200476-352x500.jpg"
+        },
+        "createdDate": "2023-10-13"
+    },
+    {
+        "id": "ziemia-obiecana-barack-obama",
+        "categoryName": "biografie",
+        "title": "Ziemia obiecana",
+        "author": "Barack Obama",
+        "slug": "ziemia-obiecana-barack-obama",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4948000/4948129/960122-352x500.jpg"
+        },
+        "createdDate": "2023-10-09"
+    },
+    {
+        "id": "mesjasz-diuny-frank-herbert",
+        "categoryName": "science-fiction",
+        "title": "Mesjasz Diuny",
+        "author": "Frank Herbert",
+        "slug": "mesjasz-diuny-frank-herbert",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/8000/8601/455810-352x500.jpg"
+        },
+        "createdDate": "2023-08-23"
+    },
+    {
+        "id": "tajniki-jezyka-javascript-kyle-simpson",
+        "categoryName": "programowanie",
+        "title": "Tajniki języka JavaScript. Typy i składnia",
+        "author": "Kyle Simpson",
+        "slug": "tajniki-jezyka-javascript-kyle-simpson",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4826000/4826568/635116-352x500.jpg"
+        },
+        "createdDate": "2023-04-20"
+    },
+    {
+        "id": "odwaga-bycia-nielubianym-ichirō-kishimi",
+        "categoryName": "filozofia",
+        "title": "Odwaga bycia nielubianym",
+        "author": "Ichirō Kishimi",
+        "slug": "odwaga-bycia-nielubianym-ichirō-kishimi",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4552000/4552043/1072735-352x500.jpg"
+        },
+        "createdDate": "2023-03-22"
+    },
+    {
+        "id": "gwiazdkowy-prosiaczek-jk-rowling",
+        "categoryName": "literatura-dziecięca",
+        "title": "Gwiazdkowy Prosiaczek",
+        "author": "J.K. Rowling",
+        "slug": "gwiazdkowy-prosiaczek-jk-rowling",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4975000/4975498/960275-352x500.jpg"
+        },
+        "createdDate": "2023-02-24"
+    },
+    {
+        "id": "będzie-bolało-sekretny-dziennik-młodego-lekarza-adam-kay",
+        "categoryName": "biografie",
+        "title": "Będzie bolało. Sekretny dziennik młodego lekarza",
+        "author": "Adam Kay",
+        "slug": "będzie-bolało-sekretny-dziennik-młodego-lekarza-adam-kay",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4850000/4850355/665998-352x500.jpg"
+        },
+        "createdDate": "2023-01-06"
+    },
+    {
+        "id": "pan-raczy-żartować-panie-feynman-richard-p-feynman",
+        "categoryName": "biografie",
+        "title": "Pan raczy żartować, panie Feynman!",
+        "author": "Richard P. Feynman",
+        "slug": "pan-raczy-żartować-panie-feynman-richard-p-feynman",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4860000/4860910/686871-352x500.jpg"
+        },
+        "createdDate": "2022-12-28"
+    },
+    {
+        "id": "stażystka-alicja-sinicka",
+        "categoryName": "kryminał",
+        "title": "Stażystka",
+        "author": "Alicja Sinicka",
+        "slug": "stażystka-alicja-sinicka",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4905000/4905303/859193-352x500.jpg"
+        },
+        "createdDate": "2022-10-23"
+    },
+    {
+        "id": "książka-o-śmieciach-stanisław-łubieński",
+        "categoryName": "publicystyka",
+        "title": "Książka o śmieciach",
+        "author": "Stanisław Łubieński",
+        "slug": "książka-o-śmieciach-stanisław-łubieński",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4924000/4924236/817966-352x500.jpg"
+        },
+        "createdDate": "2020-09-11"
+    },
+    {
+        "id": "cesarz-wszech-chorób-siddhartha-mukherjee",
+        "categoryName": "popularnonaukowe",
+        "title": "Cesarz wszech chorób. Biografia raka",
+        "author": "Siddhartha Mukherjee",
+        "slug": "cesarz-wszech-chorób-siddhartha-mukherjee",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/178000/178682/168201-352x500.jpg"
+        },
+        "createdDate": "2019-06-28"
+    },
+    {
+        "id": "tatuażysta-z-auschwitz-heather-morris",
+        "categoryName": "powieść-historyczna",
+        "title": "Tatuażysta z Auschwitz",
+        "author": "Heather Morris",
+        "slug": "tatuażysta-z-auschwitz-heather-morris",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4845000/4845001/689585-352x500.jpg"
+        },
+        "createdDate": "2019-08-12"
+    },
+    {
+        "id": "hyperion-dan-simmons",
+        "categoryName": "powieść-historyczna",
+        "title": "Hyperion",
+        "author": "Dan Simmons",
+        "slug": "hyperion-dan-simmons",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/231000/231216/1135772-352x500.jpg"
+        },
+        "createdDate": "2022-10-05"
+    },
+    {
+        "id": "wojny-konsolowe-blake-j-harris",
+        "categoryName": "reportaże",
+        "title": "Wojny konsolowe",
+        "author": "Blake J. Harris",
+        "slug": "wojny-konsolowe-blake-j-harris",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4800000/4800907/594390-352x500.jpg"
+        },
+        "createdDate": "2022-07-24"
+    },
+    {
+        "id": "pi-razy-oko-matt-parker",
+        "categoryName": "reportaże",
+        "title": "Pi razy oko. Komedia matematycznych pomyłek",
+        "author": "Matt Parker",
+        "slug": "pi-razy-oko-matt-parker",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4973000/4973487/910043-352x500.jpg"
+        },
+        "createdDate": "2022-06-26"
+    },
+    {
+        "id": "zycie-na-naszej-planecie-david-attenborough",
+        "categoryName": "biografie",
+        "title": "Życie na naszej planecie. Moja historia, wasza przyszłość",
+        "author": "David Attenborough",
+        "slug": "zycie-na-naszej-planecie-david-attenborough",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4951000/4951345/960123-352x500.jpg"
+        },
+        "createdDate": "2022-05-06"
+    },
+    {
+        "id": "stulatek-ktory-wyskoczyl-przez-okno-i-zniknal-jonas-jonasson",
+        "categoryName": "literatura-piękna",
+        "title": "Stulatek, który wyskoczył przez okno i zniknął",
+        "author": "Jonas Jonasson",
+        "slug": "stulatek-ktory-wyskoczyl-przez-okno-i-zniknal-jonas-jonasson",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/222000/222447/680515-352x500.jpg"
+        },
+        "createdDate": "2021-04-30"
+    },
+    {
+        "id": "zakamarki-marki-pawel-tkaczyk",
+        "categoryName": "marketing",
+        "title": "Zakamarki marki",
+        "author": "Paweł Tkaczyk",
+        "slug": "zakamarki-marki-pawel-tkaczyk",
+        "rate": 6,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/111000/111798/352x500.jpg"
+        },
+        "createdDate": "2021-07-18"
+    },
+    {
+        "id": "krol-darknetu-nick-bilton",
+        "categoryName": "reportaże",
+        "title": "Król darknetu. Polowanie na genialnego cyberprzestępcę",
+        "author": "Nick Bilton",
+        "slug": "krol-darknetu-nick-bilton",
+        "rate": 7,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4910000/4910992/798810-352x500.jpg"
+        },
+        "createdDate": "2021-09-05"
+    },
+    {
+        "id": "diuna-frank-herbert",
+        "categoryName": "science-fiction",
+        "title": "Diuna",
+        "author": "Frank Herbert",
+        "slug": "diuna-frank-herbert",
+        "rate": 8,
+        "bookType": "ebook",
+        "currentRead": false,
+        "cover": {
+            "url": "https://s.lubimyczytac.pl/upload/books/4942000/4942534/1177545-352x500.jpg"
+        },
+        "createdDate": "2022-02-07"
+    }
+]

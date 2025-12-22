@@ -72,38 +72,19 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
         include: 2,
     });
 
-    const booksRes = await fetchEntries({
-        content_type: 'book',
-        include: 2,
-        skip: 0,
-        // 200 is fixed value to disable pagination, button for fetching is commented out above
-        limit: 200 || FIRST_PAGE_SIZE,
-        order: '-fields.createdDate',
-        'fields.createdDate[lte]': formatDate({
-            dateObject: new Date(),
-            formatString: 'yyyy-MM-dd HH:mm:ss'
-          }),
-        'fields.rate[exists]': true,
-        select: 'fields.title,fields.slug,fields.cover,fields.author,fields.review,fields.rate',
+    const { getBooks, formatBookForDisplay } = await import('../../lib/books');
+    const booksRes = getBooks({
+        limit: 200,
+        hasRate: true,
+        orderBy: '-createdDate',
+        locale,
     });
 
     const body = await res.data
         .map(p => ({ ...p.fields }))
         .shift();
 
-    const books = await booksRes.data.map(p => ({
-        title: p.fields.title,
-        slug: p.fields.slug,
-        cover: p.fields.cover,
-        author: p.fields.author,
-        rate: p.fields.rate,
-        hasReview: !!p.fields.review,
-        createdDate: formatDate({
-            dateObject: p.fields?.createdDate,
-            formatString: 'dd MMMM yyyy',
-            locale,
-        }),
-    }));
+    const books = booksRes.books.map(book => formatBookForDisplay(book, locale));
 
     if (!body) {
         return {

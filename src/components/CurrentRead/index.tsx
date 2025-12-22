@@ -1,7 +1,6 @@
 import { FC, useCallback } from "react";
 import { BookType } from "../../types/common/Book.types";
 import Image from 'next/image';
-import Link from 'next/link';
 import Button from '../Button';
 import { ButtonType } from "../Button/Button.types";
 import prepareImageUrl from "../../utils/prepareAssetUrl";
@@ -13,11 +12,9 @@ interface CurrentReadProps {
     imageUrl: string;
     affiliateLink: string;
     bookType?: BookType;
-    hasReview: boolean;
-    slug: string;
 }
 
-const CurrentRead: FC<CurrentReadProps> = ({ title, author, imageUrl, affiliateLink, bookType, hasReview, slug }) => {
+const CurrentRead: FC<CurrentReadProps> = ({ title, author, imageUrl, affiliateLink, bookType }) => {
     const generateLabel = useCallback(() => {
         if (bookType === 'ebook') {
             return 'Kup ebook';
@@ -35,13 +32,7 @@ const CurrentRead: FC<CurrentReadProps> = ({ title, author, imageUrl, affiliateL
         </div>
         <div className={styles.content}>
             <h3 className={styles.author}>{author}</h3>
-            {
-                hasReview ? 
-                    <Link href={`/book/${slug}`}>
-                        <h3 className={styles.title}>{title}</h3>
-                    </Link> : 
-                    <h3 className={styles.title}>{title}</h3>
-            }
+            <h3 className={styles.title}>{title}</h3>
             {affiliateLink && <Button.L href={affiliateLink} pattern={ButtonType.CLEAN} label={generateLabel()} isExternal/>}
         </div>
     </div>

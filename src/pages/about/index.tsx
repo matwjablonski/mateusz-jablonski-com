@@ -86,8 +86,6 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
                             imageUrl={book.cover.fields.file.url as string}
                             affiliateLink={book.affiliateLink}
                             bookType={book.bookType}
-                            slug={book.slug}
-                            hasReview={!!book.review}
                         /> : <NoActivity activityName="read" />}
                     </ShortBox>
                     <ShortBox title={t.ABOUT.CURRENT.LISTEN.TITLE}>
@@ -137,7 +135,13 @@ const AboutPage: FC<AboutPageProps> = ({ head, testimonials, body, book, lastCon
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const lastContentRes = await fetchMultipleContentTypesEntries(['article','book','podcast'], 3, mapLocale(locale));
+    const lastContentRes = await fetchMultipleContentTypesEntries(['article','podcast'], 3, mapLocale(locale));
+    const { getBooks, formatBookForDisplay } = await import('../../lib/books');
+    const booksFromJson = getBooks({
+        limit: 1,
+        orderBy: '-createdDate',
+        locale: mapLocale(locale),
+    });
 
     const res = await fetchEntries({
         content_type: 'page',
@@ -153,11 +157,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         locale: mapLocale(locale),
     });
 
-    const booksRes = await fetchEntries({
-        content_type: 'book',
-        include: 2,
-        'fields.currentRead': true,
-        limit: 4,
+    const booksRes = getBooks({
+        limit: 1,
+        currentRead: true,
+        orderBy: '-createdDate',
         locale: mapLocale(locale),
     });
 
@@ -166,9 +169,25 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         ...p.fields,
     }));
 
-    const book = await booksRes.data.map(p => ({
-        ...p.fields,
-      })).shift() || null;
+    console.log(booksRes);
+
+    if (booksFromJson.books.length > 0) {
+        const formattedBook = formatBookForDisplay(booksFromJson.books[0], locale);
+        lastContent.push({
+            type: 'book',
+            ...formattedBook,
+        });
+    }
+
+    lastContent.sort((a, b) => {
+        const aDate = new Date(a.createdDate || 0).getTime();
+        const bDate = new Date(b.createdDate || 0).getTime();
+        return bDate - aDate;
+    });
+
+    lastContent.splice(3);
+
+    const book = booksRes.books[0] || null;
 
     const body = await res.data
         .map(p => ({ ...p.fields }))

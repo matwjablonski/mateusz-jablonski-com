@@ -48,7 +48,6 @@ const RecommendedContent = ({ content, title, text }: RecommendedContentProps) =
                                     title={bookItem.title}
                                     slug={bookItem.slug}
                                     author={bookItem.author}
-                                    excerpt={bookItem.excerpt}
                                     image={bookItem.cover}
                                     createdDate={bookItem.createdDate}
                                     showContentType
@@ -64,7 +63,7 @@ const RecommendedContent = ({ content, title, text }: RecommendedContentProps) =
                                     title={podcastItem.title}
                                     slug={podcastItem.slug}
                                     author={podcastItem.author && podcastItem.author[0].fields?.name as unknown as string || ''}
-                                    excerpt={item.excerpt}
+                                    excerpt={podcastItem.excerpt}
                                     image={podcastItem.featuredImage}
                                     createdDate={podcastItem.createdDate}
                                     podcastName={podcastItem.podcast?.name}

@@ -2,10 +2,9 @@ import { Asset } from 'contentful';
 
 export interface BookBigPreviewProps {
     title: string;
-    excerpt: any;
     author: string;
     slug: string;
-    createdDate: Date;
+    createdDate: Date | string;
     image: Asset;
     showContentType?: boolean;
 }
