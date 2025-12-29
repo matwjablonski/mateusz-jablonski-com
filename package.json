@@ -36,7 +36,7 @@
     "date-fns": "^2.24.0",
     "dotenv": "^16.6.1",
     "husky": "^8.0.3",
-    "jest": "^27.0.6",
+    "jest": "^28.0.0",
     "jest-transform-stub": "^2.0.0",
     "kysely": "^0.28.8",
     "kysely-postgres-js": "^3.0.0",
